@@ -1,4 +1,6 @@
 <?php
+require_once("../include/dbconn.php");
+require_once("../include/define.php");
 session_start();
 
 header("Content-type: text/html; charset=utf-8");
@@ -9,16 +11,6 @@ if(!isset($_POST['submit'])){
 
 $username = htmlspecialchars($_POST['username']);
 $password = $_POST['password'];
-
-//包含数据库连接文件
-$conn = mysql_pconnect("localhost","liyake","me_lyk");
-if(!$conn)
-{
-	$errorcode = 3;
-	die("connect db error!");
-}
-
-mysql_select_db("liyake",$conn);
 
 //检测用户名及密码是否正确
 $result = mysql_query("select * from users where username='".$username."' and password='".$password."' limit 1;");

@@ -1,4 +1,6 @@
 <?php
+	require_once("../include/dbconn.php");
+	require_once("../include/define.php");
 	/*
 	错误码定义
 	1 没有日期参数或日期参数不正确
@@ -49,13 +51,6 @@
 	$isupdate = false;
 	{
 		//先从数据库中获取
-		$conn = mysql_pconnect("localhost","liyake","me_lyk");
-		if(!$conn)
-		{
-			$errorcode = 3;
-			goto ERROR;
-		}
-		mysql_select_db("liyake",$conn);
 		$result = mysql_query("select * from stuff where time='".$date->format('Y-m-j')."';");
 		if(mysql_num_rows($result)>0)
 		{

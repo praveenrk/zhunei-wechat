@@ -1,4 +1,6 @@
 <?php
+require_once("../include/dbconn.php");
+require_once("../include/define.php");
 session_start();
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
@@ -44,15 +46,10 @@ header("Content-type: text/html; charset=utf-8");
 <html>
 <?php
 	//先从数据库中获取
-	$conn = mysql_pconnect("localhost","liyake","me_lyk");
-	if($conn)
+	$result = mysql_query("select name,text,createtime from pray order by id desc limit 10;");
+	while ($row = mysql_fetch_array($result))
 	{
-		mysql_select_db("liyake",$conn);
-		$result = mysql_query("select name,text,createtime from pray order by id desc limit 10;");
-		while ($row = mysql_fetch_array($result))
-		{
-			echo('<pre><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.$row['text'].'</p></pre>');
-		}
+		echo('<pre><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.$row['text'].'</p></pre>');
 	}
 ?>
 <hr/>

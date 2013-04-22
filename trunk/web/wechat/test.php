@@ -1,5 +1,7 @@
 <?php
 //define your token
+require_once("../include/dbconn.php");
+require_once("../include/define.php");
 require_once("html2text.php");
 define("TOKEN", "test");
 //global $helpstr = "帮助列表：\n弥撒:可获取今日弥撒经文及读经\n日祷:可获取今日祷告用文\n圣人:获取圣人传记";
@@ -115,7 +117,7 @@ class wechatCallbackapiTest
 		if($keyword=="0")
 		{
 			$ArtCount = 0;
-			$url = "http://api.liyake.com/getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8);
+			$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8);
 			$json = json_decode(file_get_contents($url),true);
 			foreach ($modemap as $key => $value)
 			{
@@ -140,7 +142,7 @@ class wechatCallbackapiTest
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>1</ArticleCount>
 				<Articles>
-				<item><Title><![CDATA[祈祷意向]]></Title><Url><![CDATA[http://api.liyake.com/pray/index.php]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[http://api.liyake.com/wechat/pics/comp_l1.jpg]]></PicUrl></item>
+				<item><Title><![CDATA[祈祷意向]]></Title><Url><![CDATA['.ROOT_WEB_URL.'pray/index.php]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/comp_l1.jpg]]></PicUrl></item>
 				</Articles>
 				<FuncFlag>1</FuncFlag>
 				</xml>';
@@ -181,17 +183,12 @@ class wechatCallbackapiTest
 	{
 		$article = "";
 		//先从数据库中获取
-		$conn = mysql_pconnect("localhost","liyake","me_lyk");
-		if($conn)
+		$result = mysql_query("select name,text,createtime from pray order by id desc limit 5;");
+		while ($row = mysql_fetch_array($result))
 		{
-			mysql_select_db("liyake",$conn);
-			$result = mysql_query("select name,text,createtime from pray order by id desc limit 5;");
-			while ($row = mysql_fetch_array($result))
-			{
-				if($article!="")
-					$article = $article."\n\n";
-				$article = $article.'昵称：'.$row['name'].'  时间：'.date('m-d H:i',strtotime($row['createtime'])+3600*8)."\n祈祷意向：".$row['text'];
-			}
+			if($article!="")
+				$article = $article."\n\n";
+			$article = $article.'昵称：'.$row['name'].'  时间：'.date('m-d H:i',strtotime($row['createtime'])+3600*8)."\n祈祷意向：".$row['text'];
 		}
 		return $article;
 	}
@@ -210,19 +207,19 @@ class wechatCallbackapiTest
 		'saint' => '圣人传记',
 		);
 		$title = "";
-		$url = "http://api.liyake.com/getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8)."&mode=".$mode;
+		$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8)."&mode=".$mode;
 		if($content=="")
 		{
 			$content = convert_html_to_text(file_get_contents($url));
 		}
-		$picurl = "http://api.liyake.com/wechat/pics/".$mode."1.jpg";
+		$picurl = ROOT_WEB_URL."wechat/pics/".$mode."1.jpg";
 		if(isset($titlemap[$mode]))
 			$title=$titlemap[$mode];
 		$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
 		$resultStr = "";
 		if($isLarge>0)
 		{
-			$picurl = "http://api.liyake.com/wechat/pics/".$mode."_l1.jpg";
+			$picurl = ROOT_WEB_URL."wechat/pics/".$mode."_l1.jpg";
 			$index = strpos($content,"\n",140);
 			$desc = "";
 			if($index>0)
@@ -242,15 +239,6 @@ class wechatCallbackapiTest
 	
 	private function insertIntoDb($get,$post,$result)
 	{
-		$conn = mysql_pconnect("localhost","liyake","me_lyk");
-		if(!$conn)
-		{
-			$errorcode = 3;
-			die("connect db error!");
-		}
-
-		mysql_select_db("liyake",$conn);
-
 		//检测用户名及密码是否正确
 		$result = mysql_query("insert into wechat (get,post) values ('".$result."','".$_ppp."');");
 	}
