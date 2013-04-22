@@ -1,4 +1,6 @@
 <?php
+	require_once("../include/dbconn.php");
+	require_once("../include/define.php");
 	session_start();
 	/*
 	错误码定义
@@ -32,14 +34,6 @@
 	
 	
 	//先从数据库中获取
-	$conn = mysql_pconnect("localhost","liyake","me_lyk");
-	if(!$conn)
-	{
-		$error= "连接数据库失败!";
-		goto END;
-	}
-	
-	mysql_select_db("liyake",$conn);
 	$result = mysql_query("insert into pray (name,text,createtime) values ('".$name."','".$text."',utc_timestamp());");
 	if(mysql_query("select row_count();")<1)
 	{
