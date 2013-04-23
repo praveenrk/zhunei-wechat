@@ -43,7 +43,7 @@
 		$errorcode = 1;
 		goto ERROR;
 	}
-	$date = DateTime::createFromFormat("Y-m-j",$_GET["date"]);
+	$date = DateTime::createFromFormat("Y-m-d",$_GET["date"]);
 	if(date('Y-m-d',strtotime($_GET["date"]))!=$_GET["date"])
 	{
 		$errorcode = 1;
@@ -64,7 +64,7 @@
 	$isupdate = false;
 	{
 		//先从数据库中获取
-		$result = mysql_query("select * from stuff where time='".$date->format('Y-m-j')."';");
+		$result = mysql_query("select * from stuff where time='".$date->format('Y-m-d')."';");
 		if(mysql_num_rows($result)>0)
 		{
 			$isupdate = true;
@@ -102,7 +102,7 @@ GETSTUFF:
 	curl_setopt($mcurl, CURLOPT_RETURNTRANSFER, 1);//设置是否返回信息
 //	curl_setopt($mcurl, CURLOPT_HTTPHEADER, $header);//设置HTTP头
 	curl_setopt($mcurl, CURLOPT_POST, 1);//设置为POST方式
-	curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"sdb":true,"to":"'.$date->format('Y-m-j').'","from":"'.$date->format('Y-m-j').'"}');//POST数据
+	curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"sdb":true,"to":"'.$date->format('Y-m-d').'","from":"'.$date->format('Y-m-d').'"}');//POST数据
 	$response = curl_exec($mcurl);//接收返回信息
 	$json = json_decode($response,true);
 	if($json==null)
@@ -112,7 +112,7 @@ GETSTUFF:
 	
 	{
 		//获取返回的数据
-		$json_date = $json[$date->format('Y-m-j')];
+		$json_date = $json[$date->format('Y-m-d')];
 		if($json_date == null)
 		{
 			goto GETSTUFFERROR;
@@ -159,11 +159,11 @@ GETSTUFF:
 GETSTUFFERROR:
 	if($isupdate)
 	{
-		mysql_query("update stuff set lastupdate=curdate() where time='".$date->format('Y-m-j')."';");
+		mysql_query("update stuff set lastupdate=curdate() where time='".$date->format('Y-m-d')."';");
 	}
 	else
 	{
-		mysql_query("insert into stuff (time,valid,lastupdate) values ('".$date->format('Y-m-j')."',0,curdate());");
+		mysql_query("insert into stuff (time,valid,lastupdate) values ('".$date->format('Y-m-d')."',0,curdate());");
 	}	
 	$errorcode = 2;
 	goto ERROR;
@@ -172,15 +172,16 @@ INSERTSTUFF:
 	//插入到数据库
 	if($isupdate)
 	{
-		mysql_query("update stuff set mass='".$stuff_mass."',med='".$stuff_med."',comp='".$stuff_comp."',let='".$stuff_let."',lod='".$stuff_lod
-		."',thought='".$stuff_thought."',ordo='".$stuff_ordo."',ves='".$stuff_ves."',saint='".$stuff_saint."',valid=1,lastupdate=curdate() "
-		."where time='".$date->format('Y-m-j')."';");
+		mysql_query("update stuff set mass='".mysql_real_escape_string($stuff_mass)."',med='".mysql_real_escape_string($stuff_med)."',comp='".mysql_real_escape_string($stuff_comp)."',let='".mysql_real_escape_string($stuff_let)."',lod='".mysql_real_escape_string($stuff_lod)
+		."',thought='".mysql_real_escape_string($stuff_thought)."',ordo='".mysql_real_escape_string($stuff_ordo)."',ves='".mysql_real_escape_string($stuff_ves)."',saint='".mysql_real_escape_string($stuff_saint)."',valid=1,lastupdate=curdate() "
+		."where time='".$date->format('Y-m-d')."';");
 	}
 	else
 	{
+	
 		$result = mysql_query('insert into stuff (time,mass,med,comp,let,lod,thought,ordo,ves,saint,valid,lastupdate) values '.
-		'("'.$date->format('Y-m-j').'","'.$stuff_mass.'","'.$stuff_med.'","'.$stuff_comp.'","'.$stuff_let.'","'.$stuff_lod
-		.'","'.$stuff_thought.'","'.$stuff_ordo.'","'.$stuff_ves.'","'.$stuff_saint.'",1,curdate());');
+		'("'.$date->format('Y-m-d').'","'.mysql_real_escape_string($stuff_mass).'","'.mysql_real_escape_string($stuff_med).'","'.mysql_real_escape_string($stuff_comp).'","'.mysql_real_escape_string($stuff_let).'","'.mysql_real_escape_string($stuff_lod)
+		.'","'.mysql_real_escape_string($stuff_thought).'","'.mysql_real_escape_string($stuff_ordo).'","'.mysql_real_escape_string($stuff_ves).'","'.mysql_real_escape_string($stuff_saint).'",1,curdate());');
 	}
 	goto END;
 ERROR:
@@ -191,11 +192,20 @@ ERROR:
 	return;
 	
 END:
-	$ret = "";
+	$ret["mass"] = ($stuff_mass);
+	$ret["med"] = ($stuff_med);
+	$ret["comp"] = ($stuff_comp);
+	$ret["let"] =  ($stuff_let);
+	$ret["lod"] =  ($stuff_lod);
+	$ret["thought"] =  ($stuff_thought);
+	$ret["ordo"] =  ($stuff_ordo);
+	$ret["ves"] =  ($stuff_ves);
+	$ret["saint"] =  ($stuff_saint);
 	if($isjson)
 	{
-		$ret = '{"mass":"'.$stuff_mass.'","med":"'.$stuff_med.'","comp":"'.$stuff_comp.'","let":"'.$stuff_let
-		.'","lod":"'.$stuff_lod.'","thought":"'.$stuff_thought.'","ordo":"'.$stuff_ordo.'","ves":"'.$stuff_ves.'","saint":"'.$stuff_saint.'"}';
+		$ret = preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", json_encode($ret));
+//		$ret = '{"mass":"'.$stuff_mass.'","med":"'.$stuff_med.'","comp":"'.$stuff_comp.'","let":"'.$stuff_let
+//		.'","lod":"'.$stuff_lod.'","thought":"'.$stuff_thought.'","ordo":"'.$stuff_ordo.'","ves":"'.$stuff_ves.'","saint":"'.$stuff_saint.'"}';
 	}
 	else
 	{
@@ -206,6 +216,7 @@ END:
 	}
 	
 	$ret = str_replace($trimedUtf8,"",$ret);
+	
 	if($mode!="")
 	{
 		$json = json_decode($ret,true);

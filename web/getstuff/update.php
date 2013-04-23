@@ -25,7 +25,7 @@
 		die("未获取到日期！");
 	}
 	
-	$date = DateTime::createFromFormat("Y-m-j",$_POST["date"]);
+	$date = DateTime::createFromFormat("Y-m-d",$_POST["date"]);
 	if(date('Y-m-d',strtotime($_POST["date"]))!=$_POST["date"])
 	{
 		die("日期格式不正确！");
@@ -43,7 +43,7 @@
 	$stuff_saint = "";		//圣人传记
 	
 	//先从数据库中获取
-	$result = mysql_query("select * from stuff where time='".$date->format('Y-m-j')."';");
+	$result = mysql_query("select * from stuff where time='".$date->format('Y-m-d')."';");
 	if(mysql_num_rows($result)<1)
 	{
 		die("未在数据库中找到相应日期的数据");
@@ -91,7 +91,7 @@
 	//插入到数据库
 	mysql_query("update stuff set mass='".$stuff_mass."',med='".$stuff_med."',comp='".$stuff_comp."',let='".$stuff_let."',lod='".$stuff_lod
 	."',thought='".$stuff_thought."',ordo='".$stuff_ordo."',ves='".$stuff_ves."',saint='".$stuff_saint."',valid=2,lastupdate=curdate() "
-	."where time='".$date->format('Y-m-j')."';");
+	."where time='".$date->format('Y-m-d')."';");
 	
 	exit("更新成功！");
 //	echo json_encode($retArray,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
