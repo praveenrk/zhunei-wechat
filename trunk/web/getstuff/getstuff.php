@@ -1,6 +1,19 @@
 <?php
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
+	function unicode2utf8($str)
+	{
+			if(!$str) return $str;
+			$decode = json_decode($str);
+			if($decode) return $decode;
+			$str = '["' . $str . '"]';
+			$decode = json_decode($str);
+			if(count($decode) == 1){
+					return $decode[0];
+			}
+			return $str;
+	}
+	$trimedUtf8 = array(unicode2utf8("\\u0014"));
 	/*
 	错误码定义
 	1 没有日期参数或日期参数不正确
@@ -191,6 +204,8 @@ END:
 		.'<let><lod>'.htmlspecialchars($stuff_lod, ENT_QUOTES).'</lod><thought>'.htmlspecialchars($stuff_thought, ENT_QUOTES).'</thought><ordo>'
 		.htmlspecialchars($stuff_ordo, ENT_QUOTES).'</ordo><ves>'.htmlspecialchars($stuff_ves, ENT_QUOTES).'</ves><saint>'.htmlspecialchars($stuff_saint, ENT_QUOTES).'</saint>';
 	}
+	
+	$ret = str_replace($trimedUtf8,"",$ret);
 	if($mode!="")
 	{
 		$json = json_decode($ret,true);
