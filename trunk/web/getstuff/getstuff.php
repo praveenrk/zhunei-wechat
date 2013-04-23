@@ -203,9 +203,7 @@ END:
 	$ret["saint"] =  ($stuff_saint);
 	if($isjson)
 	{
-		$ret = preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", json_encode($ret));
-//		$ret = '{"mass":"'.$stuff_mass.'","med":"'.$stuff_med.'","comp":"'.$stuff_comp.'","let":"'.$stuff_let
-//		.'","lod":"'.$stuff_lod.'","thought":"'.$stuff_thought.'","ordo":"'.$stuff_ordo.'","ves":"'.$stuff_ves.'","saint":"'.$stuff_saint.'"}';
+		$ret = json_encode($ret);
 	}
 	else
 	{
