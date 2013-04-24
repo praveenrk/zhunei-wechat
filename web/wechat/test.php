@@ -78,7 +78,7 @@ class wechatCallbackapiTest
 	private function getDefaltReply($postObj)
 	{
 		$reply = "你好，欢迎回复以下编码获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
-			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本";
+			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		$textTpl = "<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
@@ -109,7 +109,7 @@ class wechatCallbackapiTest
 		$time = time();
 
 		$reply = "你好，欢迎回复以下编码获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
-			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本";
+			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		
 		$ArtCount = 1;
 		$Articles = "";
@@ -134,7 +134,6 @@ class wechatCallbackapiTest
 		}
 		else if($keyword=="10")
 		{
-		
 			$textTpl = '<xml>
 				<ToUserName><![CDATA[%s]]></ToUserName>
 				<FromUserName><![CDATA[%s]]></FromUserName>
@@ -147,6 +146,22 @@ class wechatCallbackapiTest
 				<FuncFlag>1</FuncFlag>
 				</xml>';
 			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $this->getPrays());
+			return $resultStr;
+		}
+		else if($keyword=="11")
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[推荐给好友]]></Title><Url><![CDATA['.ROOT_WEB_URL.'wechat/help.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo.jpg]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "详情请点击我");
 			return $resultStr;
 		}
 		
