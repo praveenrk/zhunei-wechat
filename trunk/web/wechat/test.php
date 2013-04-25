@@ -111,26 +111,36 @@ class wechatCallbackapiTest
 		$reply = "你好，欢迎回复以下编码获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
 			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		
-		$ArtCount = 1;
+		$ArtCount = 0;
 		$Articles = "";
 		$keyword = trim($postObj->Content);
 		if($keyword=="0")
 		{
-			$ArtCount = 0;
 			$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8);
 			$json = json_decode(file_get_contents($url),true);
 			foreach ($modemap as $key => $value)
 			{
 				if(isset($json[$value]))
 				{
-					$Articles = $Articles.$this->getSubArticle($value,trim(convert_html_to_text($json[$value])),0);
+					$Articles = $Articles.$this->getSubArticle($value,trim(convert_html_to_text($json[$value])),0,0);
 					$ArtCount = $ArtCount+1;
 				}
 			}
 		}
 		else if(isset($modemap[$keyword]))
 		{
-			$Articles = $this->getSubArticle($modemap[$keyword],"",1);
+			for($i=0;$i<3;$i++)
+			{
+				if($i==0)
+				{
+					$Articles = $Articles.$this->getSubArticle($modemap[$keyword],"",1,$i);
+				}
+				else
+				{
+					$Articles = $Articles.$this->getSubArticle($modemap[$keyword],"",0,$i);
+				}
+				$ArtCount = $ArtCount+1;
+			}
 		}
 		else if($keyword=="10")
 		{
@@ -208,7 +218,7 @@ class wechatCallbackapiTest
 		return $article;
 	}
 	
-	private function getSubArticle($mode,$content,$isLarge)
+	private function getSubArticle($mode,$content,$isLarge,$offset)
 	{
 		$titlemap = array (
 		'mass' => '弥撒及读经',
@@ -222,7 +232,7 @@ class wechatCallbackapiTest
 		'saint' => '圣人传记',
 		);
 		$title = "";
-		$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8)."&mode=".$mode;
+		$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8+($offset*24*3600))."&mode=".$mode;
 		if($content=="")
 		{
 			$content = convert_html_to_text(file_get_contents($url));
@@ -246,7 +256,7 @@ class wechatCallbackapiTest
 		}
 		else
 		{
-			$title = $title."\n".substr($content,0,strpos($content,"\n",2));
+			$title = $title."\n".substr($content,0,strpos($content,"\n",30));
 			$resultStr = sprintf($textTpl,$title,$url,mb_substr($content,0,80,"UTF-8"), $picurl);
 		}
 		return $resultStr;
