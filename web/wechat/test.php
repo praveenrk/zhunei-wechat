@@ -77,7 +77,7 @@ class wechatCallbackapiTest
 	
 	private function getDefaltReply($postObj)
 	{
-		$reply = "你好，欢迎回复以下编码获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
+		$reply = "你好，欢迎回复以下数字获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
 			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		$textTpl = "<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
@@ -108,7 +108,7 @@ class wechatCallbackapiTest
 		$toUsername = $postObj->ToUserName;
 		$time = time();
 
-		$reply = "你好，欢迎回复以下编码获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
+		$reply = "你好，欢迎回复以下数字获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
 			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		
 		$ArtCount = 0;
