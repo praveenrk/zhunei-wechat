@@ -77,17 +77,21 @@ class wechatCallbackapiTest
 	
 	private function getDefaltReply($postObj)
 	{
-		$reply = "你好，欢迎回复以下数字获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
-			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
-		$textTpl = "<xml>
+		$fromUsername = $postObj->FromUserName;
+		$toUsername = $postObj->ToUserName;
+		$time = time();
+		$textTpl = '<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
 			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[text]]></MsgType>
-			<Content><![CDATA[%s]]></Content>
-			<FuncFlag>0</FuncFlag>
-			</xml>";
-		return sprintf($textTpl, $postObj->FromUserName, $postObj->ToUserName, time(), $reply);
+			<MsgType><![CDATA[news]]></MsgType>
+			<ArticleCount>1</ArticleCount>
+			<Articles>
+			<item><Title><![CDATA[使用教程（详情点我）]]></Title><Url><![CDATA['.ROOT_WEB_URL.'wechat/help2.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo.jpg]]></PicUrl></item>
+			</Articles>
+			<FuncFlag>1</FuncFlag>
+			</xml>';
+		return sprintf($textTpl, $fromUsername, $toUsername, $time, "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。");
 	}
 	
 	private function getTextReply($postObj)
@@ -107,9 +111,6 @@ class wechatCallbackapiTest
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
 		$time = time();
-
-		$reply = "你好，欢迎回复以下数字获取信息：\n0、所有信息\n1、弥撒及读经\n2、日祷\n".
-			"3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友";
 		
 		$ArtCount = 0;
 		$Articles = "";
@@ -191,15 +192,7 @@ class wechatCallbackapiTest
 		}
 		else
 		{
-			$textTpl = '<xml>
-				<ToUserName><![CDATA[%s]]></ToUserName>
-				<FromUserName><![CDATA[%s]]></FromUserName>
-				<CreateTime>%s</CreateTime>
-				<MsgType><![CDATA[text]]></MsgType>
-				<Content><![CDATA[%s]]></Content>
-				<FuncFlag>0</FuncFlag>
-				</xml>';
-			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $reply);
+			$resultStr = $this->getDefaltReply($postObj);
 		}
 		return $resultStr;
 	}
