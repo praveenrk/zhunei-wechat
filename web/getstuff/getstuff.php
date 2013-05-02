@@ -221,7 +221,25 @@ END:
 		echo'<head>
 		<meta name="viewport" content="user-scalable=no, width=device-width" />  
 		</head><html>';
-		echo $json[$mode];
+		if($mode=="lod")
+		{
+			$lod_all = $json[$mode];
+			$index_h2 = strpos($lod_all,"</h2>",0);
+			if($index_h2>4 and $index_h2<128)
+			{
+				$lod_first = "<p><strong>序经</strong><br><strong>领</strong>：上主，求祢开启我的口。<br><strong>答</strong>：我的口要赞美祢。</p><p><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>请大家前来，向上主欢呼，<br>向拯救我们的磐石歌舞。<br>一齐到祂面前感恩赞颂，<br>向祂歌唱圣诗，欢呼吟咏。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>因为上主是崇高的天主，<br>是超越诸神的伟大君王；<br>大地深渊都在祂的手中，<br>高山峻岭都是祂的化工，<br>海洋属于祂，因为是祂所创造，<br>陆地属于祂，因为是祂所形成。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>请大家前来叩首致敬，<br>向造我们的天主跪拜，<br>因为祂是我们的天主，<br>我们是祂牧养的子民，<br>是祂亲手领导的羊羣。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>你们今天要听从祂的声音，<br>不要像在默黎巴那样心硬，<br>不要像在旷野中玛撒那天，<br>你们的祖先看到我的工作，<br>在那里仍然试探我，考验我。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>我四十年之久厌恶那一世代，<br>我曾说：这个民族冥顽不灵，<br>他们不肯承认我的道路；<br>因此，我在盛怒之下起誓说：<br>他们绝不得进入我的安居之所。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p><p>愿光荣归于父、及子、及圣神。<br>起初如何，今日亦然，直到永远。阿们。<br><strong>对经</strong>：基督是牧者们的首领，请大家前来朝拜祂，阿肋路亚。</p>";
+				$index_h2 = $index_h2+5;
+				echo substr($lod_all, 0, $index_h2).$lod_first.substr($lod_all, $index_h2);
+			}
+			else
+			{
+				echo $lod_all;
+			}
+		}
+		else
+		{
+			echo $json[$mode];
+		}
 		echo "</html>";
 	}
 	else
