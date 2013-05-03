@@ -77,9 +77,21 @@ class wechatCallbackapiTest
 	
 	private function getDefaltReply($postObj)
 	{
+		$onelodo = "";
+		$result = mysql_query("select lodo from lodo L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM lodo) AS m ON L.ID >= m.ID LIMIT 1;");
+		if ($row = mysql_fetch_array($result))
+		{
+			$onelodo = $row['lodo'];
+		}
+		
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
 		$time = time();
+		$desc = "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。";
+		if($onelodo!="")
+		{
+			$desc = $onelodo."\n\n".$desc;
+		}
 		$textTpl = '<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
@@ -91,7 +103,7 @@ class wechatCallbackapiTest
 			</Articles>
 			<FuncFlag>1</FuncFlag>
 			</xml>';
-		return sprintf($textTpl, $fromUsername, $toUsername, $time, "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。");
+		return sprintf($textTpl, $fromUsername, $toUsername, $time, $desc);
 	}
 	
 	private function getTextReply($postObj)
