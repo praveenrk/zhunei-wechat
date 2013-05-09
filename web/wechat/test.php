@@ -270,7 +270,7 @@ class wechatCallbackapiTest
 	private function insertIntoDb($get,$post,$result)
 	{
 		//检测用户名及密码是否正确
-		$result = mysql_query("insert into wechat (get,post) values ('".$result."','".$_ppp."');");
+		$result = mysql_query("insert into wechat (get,post) values ('".$result."','".$post."');");
 	}
 }
 ?>
