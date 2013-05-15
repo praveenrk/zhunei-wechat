@@ -18,6 +18,7 @@ p
 </style>
 </head>
 <body style="text-align:center;">
+<script type="text/javascript">function audioerror(){var mydiv = document.getElementById("mydiv");var myaudio = document.getElementById("audio");var mysrc = myaudio.src.replace("p.mp3",".mp3");mydiv.removeChild(myaudio);myaudio = document.createElement("audio");myaudio.src = mysrc;myaudio.controls = true;mydiv.appendChild(myaudio);myaudio.play();}</script>
 <p>推荐给朋友</p>
 <p>1、打开本公共帐号，选择查看帐号信息（右上角红框）</p>
 <p><img alt="" src="pics/help_1.png" /></p>
@@ -26,7 +27,7 @@ p
 <p>3、选择弹出菜单中的“推荐给朋友”按钮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p><img alt="" src="pics/help_3.png" /></p>
 <p>4、在后续界面中选择要推荐的朋友们即可&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130513p.mp3" controls></audio>
+<div align="center" id="mydiv"><audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130516p.mp3" controls preload="none" onerror="audioerror()"></audio></div>
 </body>
 </html>
 
