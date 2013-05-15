@@ -2,32 +2,30 @@
 <head>
 <title>推荐给朋友</title>
 <meta http-equiv=Content-Type content="text/html;charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="format-detection" content="telephone=no">
-<style type="text/css">
-p
-{
-	text-indent: 1em;
-	font-family: "Microsoft JhengHei",SimSun,monospace;
-	color:#000000;
-	font-size: 15px;
-	font-weight:bold;
+<meta name="viewport" content="user-scalable=no, width=device-width" /> 
+<script type="text/javascript">
+function audioerror(){
+	var mydiv = document.getElementById("mydiv");
+	var myaudio = document.getElementById("audio");
+	var mysrc = myaudio.src.replace("p.mp3",".mp3");
+	if(isNaN(myaudio.currentTime) || myaudio.currentTime<10)
+	{
+		mydiv.removeChild(myaudio);
+		myaudio = document.createElement("audio");
+		myaudio.src = mysrc;myaudio.controls = true;
+		myaudio.preload = "auto";
+		mydiv.appendChild(myaudio);
+		myaudio.play();
+	}
 }
-</style>
+</script>
 </head>
 <body style="text-align:center;">
-<script type="text/javascript">function audioerror(){var mydiv = document.getElementById("mydiv");var myaudio = document.getElementById("audio");var mysrc = myaudio.src.replace("p.mp3",".mp3");mydiv.removeChild(myaudio);myaudio = document.createElement("audio");myaudio.src = mysrc;myaudio.controls = true;mydiv.appendChild(myaudio);myaudio.play();}</script>
-<p>推荐给朋友</p>
-<p>1、打开本公共帐号，选择查看帐号信息（右上角红框）</p>
-<p><img alt="" src="pics/help_1.png" /></p>
-<p>2、选择帐号信息右上角红框所示按钮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p><img alt="" src="pics/help_2.png" /></p>
-<p>3、选择弹出菜单中的“推荐给朋友”按钮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p><img alt="" src="pics/help_3.png" /></p>
-<p>4、在后续界面中选择要推荐的朋友们即可&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<div align="center" id="mydiv"><audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130516p.mp3" controls preload="none" onerror="audioerror()"></audio></div>
+<div align="center" id="mydiv">
+	<audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130516p.mp3" controls preload="none" onerror="audioerror()" onended="audioerror()"></audio>
+</div>
+</br>
+<pre align="center">提示：播放音频会损耗较多流量</pre>
 </body>
 </html>
 
