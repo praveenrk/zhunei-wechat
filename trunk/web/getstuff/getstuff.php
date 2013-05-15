@@ -239,7 +239,8 @@ END:
 		else if($mode=="thought")
 		{
 			$date = DateTime::createFromFormat("Y-m-d",$_GET["date"]);
-			echo $json[$mode].'</br><div align="center"><audio src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/'.$date->format('Ymd').'p.mp3" controls preload="none"></audio></br><pre>提示：播放音频会损耗较多流量</pre></div>';
+			echo $json[$mode].'</br><div align="center" id="mydiv"><audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/'.$date->format('Ymd').'p.mp3" controls preload="none" onerror="audioerror()" onended="audioerror()"></audio></div></br><pre align="center">提示：播放音频会损耗较多流量</pre>';
+			echo '<script type="text/javascript">function audioerror(){var mydiv = document.getElementById("mydiv");var myaudio = document.getElementById("audio");var mysrc = myaudio.src.replace("p.mp3",".mp3");if(isNaN(myaudio.currentTime) || myaudio.currentTime<10){mydiv.removeChild(myaudio);myaudio = document.createElement("audio");myaudio.src = mysrc;myaudio.controls = true;myaudio.preload = "auto";mydiv.appendChild(myaudio);myaudio.play();}}</script>';
 		}
 		else
 		{
