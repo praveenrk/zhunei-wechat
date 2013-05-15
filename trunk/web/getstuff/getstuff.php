@@ -220,7 +220,7 @@ END:
 		$json = json_decode($ret,true);
 		echo'<head>
 		<meta name="viewport" content="user-scalable=no, width=device-width" />  
-		</head><html>';
+		</head><html><body>';
 		if($mode=="lod")
 		{
 			$lod_all = $json[$mode];
@@ -236,11 +236,16 @@ END:
 				echo $lod_all;
 			}
 		}
+		else if($mode=="thought")
+		{
+			$date = DateTime::createFromFormat("Y-m-d",$_GET["date"]);
+			echo $json[$mode].'</br><div align="center"><audio src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/'.$date->format('Ymd').'p.mp3" controls preload="none"></audio></br><pre>提示：播放音频会损耗较多流量</pre></div>';
+		}
 		else
 		{
 			echo $json[$mode];
 		}
-		echo "</html>";
+		echo "</body></html>";
 	}
 	else
 	{
