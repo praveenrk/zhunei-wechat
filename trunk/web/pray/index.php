@@ -65,16 +65,27 @@ header("Content-type: text/html; charset=utf-8");
 	<input type="submit" value=" 提 交 ">
 </form>
 
-	<script type="text/javascript">
-	var t = document.getElementById('input_text');
-	t.onfocus = function(){
-		if(this.innerHTML == '在此输入你的祈祷意向，然后点击提交'){this.innerHTML = '';}
-	};
+<script type="text/javascript">
+var t = document.getElementById('input_text');
+t.onfocus = function(){
+	if(this.innerHTML == '在此输入你的祈祷意向，然后点击提交'){this.innerHTML = '';}
+};
 
-	t.onblur = function(){
-		if(this.innerHTML == ''){
-			this.innerHTML = '在此输入你的祈祷意向，然后点击提交';
-		}
-	};
-	</script>
+t.onblur = function(){
+	if(this.innerHTML == ''){
+		this.innerHTML = '在此输入你的祈祷意向，然后点击提交';
+	}
+};
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29392184-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </html>
