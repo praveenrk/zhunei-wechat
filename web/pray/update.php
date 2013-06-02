@@ -21,7 +21,7 @@
 	$error = "";
 	if(isset($_POST["text"]))
 		$text = trim($_POST["text"]);
-	if($text=="")
+	if($text==""  || $text=="在此输入你的祈祷意向，然后点击提交")
 	{
 		$error= "请输入祈祷意向!";
 		goto END;
