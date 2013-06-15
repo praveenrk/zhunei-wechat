@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<title>天主教常用祈祷经文</title>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<style type="text/css">
+		.css_btn_class {
+			font-size:16px;
+			font-family:Arial;
+			font-weight:normal;
+			-moz-border-radius:8px;
+			-webkit-border-radius:8px;
+			border-radius:8px;
+			border:1px solid #dcdcdc;
+			padding:9px 18px;
+			text-decoration:none;
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ededed), color-stop(100%, #dfdfdf) );
+			background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+			background:-ms-linear-gradient( top, #ededed 5%, #dfdfdf 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+			background-color:#ededed;
+			color:#777777;
+			display:inline-block;
+			text-shadow:1px 1px 0px #ffffff;
+			-webkit-box-shadow:inset 1px 1px 0px 0px #ffffff;
+			-moz-box-shadow:inset 1px 1px 0px 0px #ffffff;
+			box-shadow:inset 1px 1px 0px 0px #ffffff;
+		}.css_btn_class:hover {
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed) );
+			background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+			background:-ms-linear-gradient( top, #dfdfdf 5%, #ededed 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+			background-color:#dfdfdf;
+		}.css_btn_class:active {
+			position:relative;
+			top:1px;
+		}
+		
+		.URLObj{}
+		.text{}
+		</style>
+		<script type="text/javascript">
+			function getTextInUrl(url)
+			{
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET",url,false);
+				xmlhttp.send();
+				return xmlhttp.responseText;
+			}
+			
+			function gettext(e)
+			{
+				lastE = null;
+				var _t = e.target;
+				var _d = _t.parentNode.parentNode;
+				if(_d == gettext.lastE)
+					return;
+					
+				var _url = window.location.href;
+				_url = _url.replace(/index.html/,_d.id);
+				var newDiv = document.createElement("div");
+				newDiv.class="text";
+				newDiv.innerHTML = getTextInUrl(_url);
+				_d.appendChild(newDiv);
+				if(gettext.lastE!=null)
+				{
+					var text = gettext.lastE.lastChild;
+					gettext.lastE.removeChild(text);
+				}
+				gettext.lastE=_d;
+			}
+		</script>
+	</head>
+	<body>
+		<h2>天主教常用祈祷经文</h2>
+		<div class="URLObj" id="dianshengshui.txt">
+			<p><a href="#dianshengshui.txt" class="css_btn_class" onclick="gettext(event)">点圣水经</a></p>
+		</div>
+		<div class="URLObj" id="shenghao.txt">
+			<p><a href="#shenghao.txt" class="css_btn_class" onclick="gettext(event)">圣号经</a></p>
+		</div>
+		<div class="URLObj" id="tianzhujing.txt">
+			<p><a href="#tianzhujing.txt" class="css_btn_class" onclick="gettext(event)">天主经</a></p>
+		</div>
+		<div class="URLObj" id="shengmujing.txt">
+			<p><a href="#shengmujing.txt" class="css_btn_class" onclick="gettext(event)">圣母经</a></p>
+		</div>
+		<div class="URLObj" id="shengsanguangrongsong.txt">
+			<p><a href="#shengsanguangrongsong.txt" class="css_btn_class" onclick="gettext(event)">圣三光荣颂</a></p>
+		</div>
+		<div class="URLObj" id="xinjing.txt">
+			<p><a href="#xinjing.txt" class="css_btn_class" onclick="gettext(event)">信经</a></p>
+		</div>
+		<div class="URLObj" id="fanqianjing.txt">
+			<p><a href="#fanqianjing.txt" class="css_btn_class" onclick="gettext(event)">饭前经</a></p>
+		</div>
+		<div class="URLObj" id="fanhoujing.txt">
+			<p><a href="#fanhoujing.txt" class="css_btn_class" onclick="gettext(event)">饭后经</a></p>
+		</div>
+		<div class="URLObj" id="lingshengtiqiansong.txt">
+			<p><a href="#lingshengtiqiansong.txt" class="css_btn_class" onclick="gettext(event)">领圣体前诵</a></p>
+		</div>
+		<div class="URLObj" id="lingshengtihousong.txt">
+			<p><a href="#lingshengtihousong.txt" class="css_btn_class" onclick="gettext(event)">领圣体后诵</a></p>
+		</div>
+		<div class="URLObj" id="sanzhongjing.txt">
+			<p><a href="#sanzhongjing.txt" class="css_btn_class" onclick="gettext(event)">三钟经</a></p>
+		</div>
+		<div class="URLObj" id="xilejing.txt">
+			<p><a href="#xilejing.txt" class="css_btn_class" onclick="gettext(event)">喜乐经（复活期代替三钟经）</a></p>
+		</div>
+		<div class="URLObj" id="muhouwanfusong.txt">
+			<p><a href="#muhouwanfusong.txt" class="css_btn_class" onclick="gettext(event)">母后万福颂</a></p>
+		</div>
+		<div class="URLObj" id="fuqiushengshenjianglin_1.txt">
+			<p><a href="#fuqiushengshenjianglin_1.txt" class="css_btn_class" onclick="gettext(event)">伏求圣神降临经（一）</a></p>
+		</div>
+		<div class="URLObj" id="fuqiushengshenjianglin_2.txt">
+			<p><a href="#fuqiushengshenjianglin_2.txt" class="css_btn_class" onclick="gettext(event)">伏求圣神降临经（二）</a></p>
+		</div>
+		<div class="URLObj" id="qiuhushoutianshisong.txt">
+			<p><a href="#qiuhushoutianshisong.txt" class="css_btn_class" onclick="gettext(event)">求护守天使诵</a></p>
+		</div>
+		<div class="URLObj" id="cibeichuanjing.txt">
+			<p><a href="#cibeichuanjing.txt" class="css_btn_class" onclick="gettext(event)">慈悲串经</a></p>
+		</div>
+		<div class="URLObj" id="wubaili.txt">
+			<p><a href="#wubaili.txt" class="css_btn_class" onclick="gettext(event)">五拜礼</a></p>
+		</div>
+		<div class="URLObj" id="meiguijing.txt">
+			<p><a href="#meiguijing.txt" class="css_btn_class" onclick="gettext(event)">玫瑰经念法</a></p>
+		</div>
+		<div class="URLObj" id="huanxi5duan.txt">
+			<p><a href="#huanxi5duan.txt" class="css_btn_class" onclick="gettext(event)">欢喜五端</a></p>
+		</div>
+		<div class="URLObj" id="tongku5duan.txt">
+			<p><a href="#tongku5duan.txt" class="css_btn_class" onclick="gettext(event)">痛苦五端</a></p>
+		</div>
+		<div class="URLObj" id="rongfu5duan.txt">
+			<p><a href="#rongfu5duan.txt" class="css_btn_class" onclick="gettext(event)">荣福五端</a></p>
+		</div>
+		<div class="URLObj" id="guangming5duan.txt">
+			<p><a href="#guangming5duan.txt" class="css_btn_class" onclick="gettext(event)">光明五端</a></p>
+		</div>
+	</body>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29392184-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>

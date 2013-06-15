@@ -86,7 +86,7 @@ class wechatCallbackapiTest
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
 		$time = time();
-		$desc = "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、梵蒂冈中文电台\n12、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。";
+		$desc = "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、梵蒂冈中文电台\n12、常用经文\n13、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。";
 		if($onelodo!="")
 		{
 			$desc = $onelodo."\n\n".$desc;
@@ -187,6 +187,22 @@ class wechatCallbackapiTest
 			return $resultStr;
 		}
 		else if($keyword=="12")
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[常用经文]]></Title><Url><![CDATA['.ROOT_WEB_URL.'prayer/index.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/med_l1.jpg]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "天主教常用经文，详情请点击我");
+			return $resultStr;
+		}
+		else if($keyword=="13")
 		{
 			$textTpl = '<xml>
 				<ToUserName><![CDATA[%s]]></ToUserName>
