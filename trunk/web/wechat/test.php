@@ -126,6 +126,9 @@ class wechatCallbackapiTest
 		$ArtCount = 0;
 		$Articles = "";
 		$keyword = trim($postObj->Content);
+		if( (strpos($keyword,"经")!==false) or (strpos($keyword,"欢喜")!==false) or (strpos($keyword,"痛苦")!==false) or (strpos($keyword,"荣福")!==false) or (strpos($keyword,"光明")!==false) or (strpos($keyword,"玫瑰")!==false) or (strpos($keyword,"颂")!==false) or (strpos($keyword,"诵")!==false) )
+			$keyword = "12";
+		
 		if($keyword=="0")
 		{
 			$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8);
