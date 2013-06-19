@@ -289,14 +289,22 @@ class wechatCallbackapiTest
 			if($index>0)
 				$desc = substr($content,0,$index);
 			else
-				$desc = mb_substr($content,0,100,"UTF-8");				
+				$desc = mb_substr($content,0,20,"UTF-8");
 				
 			$resultStr = sprintf($textTpl,$title,$url,$desc, $picurl);
 		}
 		else
 		{
-			$title = $title."\n".substr($content,0,strpos($content,"\n",30));
-			$resultStr = sprintf($textTpl,$title,$url,mb_substr($content,0,80,"UTF-8"), $picurl);
+			$index = strpos($content,"\n",20);
+			if($index>-1 and $index<100)
+			{
+				$title = $title."\n".substr($content,0,$index);
+			}
+			else
+			{
+				$title = $title."\n".mb_substr($content,0,30,"UTF-8");
+			}
+			$resultStr = sprintf($textTpl,$title,$url,mb_substr($content,0,30,"UTF-8"), $picurl);
 		}
 		return $resultStr;
 	}
