@@ -4,30 +4,6 @@
 <meta http-equiv=Content-Type content="text/html;charset=utf-8">
 <meta name="viewport" content="user-scalable=no, width=device-width" />
 <script type="text/javascript">
-Date.prototype.Format = function (fmt) { //author: meizz 
-    var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
-
-function onBodyLoad()
-{
-	var cnAudio = document.getElementById("audio");
-	var dtNow = new Date();
-	var dtStr = dtNow.Format("ddMMyy");
-	cnAudio.src = "http://media01.vatiradio.va/podcast/feed/cinese_"+dtStr+".mp3";
-	cnAudio.play();
-}
 function cnmetadata(){
 //	if(isNaN(myaudio.currentTime) || myaudio.currentTime<10)
 	var _a = document.getElementById("audio");
@@ -48,11 +24,21 @@ function enmetadata(){
 }
 </script>
 </head>
-<body style="text-align:center;" onload="onBodyLoad();">
+<body style="text-align:center;">
 <h2>梵蒂冈中文电台每日快讯</h2>
 <h3>中文广播</h3>
 <div align="center" id="mydiv">
-	<audio id="audio" src="http://media.vaticanradiowebcast.org/mp3_od/cinese_1.mp3" controls preload="metadata" onloadedmetadata="cnmetadata()"></audio>
+	<audio id="audio" src="<?php
+		$content = file_get_contents("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese");
+		$xml = new DOMDocument();
+		$xml->loadXml($content);
+		$postUrls = $xml->getElementsByTagName("enclosure");
+		foreach($postUrls as $url)
+		{
+			echo $url->getAttribute("url");
+			break;
+		}
+	?>" controls preload="metadata" onloadedmetadata="cnmetadata()"></audio>
 	<pre>预计时长：<font id="dur_cn">0时0分0秒</font></pre>
 </div>
 </br>
