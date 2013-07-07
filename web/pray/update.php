@@ -16,6 +16,14 @@
 	<title>更新结果</title>
 </head>
 <?php
+	function gotoend()
+	{
+		global $error;
+		echo $error;
+		echo '<form action="index.php" method="post">
+		<input style="float:right;" type="submit" value=" 返  回 ">
+	</form>';
+	}
 	$text = "";
 	$name = "";
 	$error = "";
@@ -24,7 +32,7 @@
 	if($text==""  || $text=="在此输入你的祈祷意向，然后点击提交")
 	{
 		$error= "请输入祈祷意向!";
-		goto END;
+		gotoend();
 	}
 	if(isset($_POST['name']))
 	{
@@ -38,14 +46,9 @@
 	if(mysql_query("select row_count();")<1)
 	{
 		$error = "添加祈祷意向失败，请稍后重试...";
-		goto END;
+		gotoend();
 	}
 	
 	$error = "更新成功！";
-	
-END:
-	echo $error;
-	echo '<form action="index.php" method="post">
-	<input style="float:right;" type="submit" value=" 返  回 ">
-</form>'
+	gotoend();
 ?>

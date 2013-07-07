@@ -7,10 +7,14 @@ header("Pragma: no-cache");
 header("Content-type: text/html; charset=utf-8");
 ?>
 <head>
-	<meta name="viewport" content="user-scalable=no, width=device-width" />  
 	<title>代祷本</title>
+	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
 	<style type="text/css">
-	pre
+	div
 	{
 		margin: 10px 0 0 0;
 		padding: 10px;
@@ -20,7 +24,7 @@ header("Content-type: text/html; charset=utf-8");
 		font-family: "Courier New",monospace;
 		font-size: 12px;
 	}
-	pre p
+	div p
 	{
 		text-indent: 1em;
 		font-family: "Microsoft JhengHei",SimSun,monospace;
@@ -28,7 +32,7 @@ header("Content-type: text/html; charset=utf-8");
 		font-size: 15px;
 		font-weight:bold;
 	}
-	pre span
+	div span
 	{
 		color:#999;
 	}
@@ -49,7 +53,7 @@ header("Content-type: text/html; charset=utf-8");
 	$result = mysql_query("select name,text,createtime from pray order by id desc limit 10;");
 	while ($row = mysql_fetch_array($result))
 	{
-		echo('<pre><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.$row['text'].'</p></pre>');
+		echo('<div><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.$row['text'].'</p></div>');
 	}
 ?>
 <hr/>
