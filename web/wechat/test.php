@@ -287,7 +287,10 @@ class wechatCallbackapiTest
 			$index = strpos($content,"\n",140);
 			$desc = "";
 			if($index>0)
+			{
+				$title = $title."\n".substr($content,0,$index);
 				$desc = substr($content,0,$index);
+			}
 			else
 				$desc = mb_substr($content,0,20,"UTF-8");
 				
