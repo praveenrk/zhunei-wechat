@@ -141,6 +141,24 @@ class wechatCallbackapiTest
 					$ArtCount = $ArtCount+1;
 				}
 			}
+			{			
+				//增加代祷本的第一项
+				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA['.ROOT_WEB_URL.'pray/index.php]]></Url><Description><![CDATA[来自于代祷本]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/comp1.jpg]]></PicUrl></item>';
+				
+				$pray = $this->getPrays(1);
+				$index = strpos($pray,"\n",30);
+				$title = "代祷意向:\n";
+				if($index>-1 and $index<100)
+				{
+					$title = $title.substr($pray,0,$index);
+				}
+				else
+				{
+					$title = $title.mb_substr($pray,0,30,"UTF-8");
+				}
+				$Articles = $Articles.sprintf($textTpl,$title);
+				$ArtCount = $ArtCount+1;
+			}
 		}
 		else if(isset($modemap[$keyword]))
 		{
@@ -166,11 +184,11 @@ class wechatCallbackapiTest
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>1</ArticleCount>
 				<Articles>
-				<item><Title><![CDATA[祈祷意向]]></Title><Url><![CDATA['.ROOT_WEB_URL.'pray/index.php]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/comp_l1.jpg]]></PicUrl></item>
+				<item><Title><![CDATA[代祷意向]]></Title><Url><![CDATA['.ROOT_WEB_URL.'pray/index.php]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/comp_l1.jpg]]></PicUrl></item>
 				</Articles>
 				<FuncFlag>1</FuncFlag>
 				</xml>';
-			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $this->getPrays());
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $this->getPrays(5));
 			return $resultStr;
 		}
 		else if($keyword=="11")
@@ -243,16 +261,23 @@ class wechatCallbackapiTest
 		return $resultStr;
 	}
 	
-	private function getPrays()
+	private function getPrays($count)
 	{
 		$article = "";
 		//先从数据库中获取
-		$result = mysql_query("select name,text,createtime from pray order by id desc limit 5;");
+		$result = mysql_query("select name,text,createtime from pray order by id desc limit ".$count.";");
 		while ($row = mysql_fetch_array($result))
 		{
 			if($article!="")
 				$article = $article."\n\n";
-			$article = $article.'昵称：'.$row['name'].'  时间：'.date('m-d H:i',strtotime($row['createtime'])+3600*8)."\n祈祷意向：".$row['text'];
+			if($count==1)
+			{
+				$article = $row['text'];
+			}
+			else
+			{
+				$article = $article.'昵称：'.$row['name'].'  时间：'.date('m-d H:i',strtotime($row['createtime'])+3600*8)."\n".$row['text'];
+			}
 		}
 		return $article;
 	}

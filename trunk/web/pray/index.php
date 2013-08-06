@@ -26,7 +26,7 @@ header("Content-type: text/html; charset=utf-8");
 	}
 	div p
 	{
-		text-indent: 1em;
+		text-indent: 0em;
 		font-family: "Microsoft JhengHei",SimSun,monospace;
 		color:#000000;
 		font-size: 15px;
@@ -53,7 +53,7 @@ header("Content-type: text/html; charset=utf-8");
 	$result = mysql_query("select name,text,createtime from pray order by id desc limit 10;");
 	while ($row = mysql_fetch_array($result))
 	{
-		echo('<div><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.$row['text'].'</p></div>');
+		echo('<div><span  style="width:100%">昵称：'.$row['name'].'  留言时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
 	}
 ?>
 <hr/>
