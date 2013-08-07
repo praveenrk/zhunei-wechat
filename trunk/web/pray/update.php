@@ -34,7 +34,7 @@
 	
 	//先从数据库中获取
 	$result = mysql_query("insert into pray (name,text,createtime) values ('".$name."','".$text."',utc_timestamp());");
-	if(mysql_query("select row_count();")<1)
+	if(mysql_affected_rows()<1)
 	{
 		$error = "添加祈祷意向失败，请稍后重试...";
 		gotoend();
