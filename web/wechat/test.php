@@ -44,6 +44,7 @@ class wechatCallbackapiTest
 				$resultStr = $this->getDefaltReply($postObj);
 			}
 			
+			//将回复插入到数据库中
 			$this->insertIntoDb("",$postStr,$resultStr);
 			echo $resultStr;
 			exit;
@@ -339,6 +340,7 @@ class wechatCallbackapiTest
 	
 	private function insertIntoDb($get,$post,$result)
 	{
+		return;
 		//检测用户名及密码是否正确
 		$result = mysql_query("insert into wechat (get,post) values ('".$result."','".$post."');");
 	}
