@@ -162,6 +162,7 @@
 		global $stuff_ordo;
 		global $stuff_ves;
 		global $stuff_saint;
+		global $trimedUtf8;
 		
 		$ret["mass"] = ($stuff_mass);
 		$ret["med"] = ($stuff_med);

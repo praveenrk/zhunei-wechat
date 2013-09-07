@@ -59,7 +59,7 @@
 			<h2><a href="http://api.liyake.com/pray/index.php" alt="主内青年团代祷本">代祷本</a></h2>
 			</br></br>
 			<h1>欢迎关注主内青年团微信公众帐号</h1>
-			<p>拿起你的微信扫描下面的二维码即可关注</p>
+			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>zhuneiqingnian</b>)，也可以在微信中搜索<b>主内青年</b>进行关注</p>
 			<div><img src="http://api.liyake.com/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
 		</center>
 	</body>
