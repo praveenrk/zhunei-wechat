@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>主内青年团微信公众首页</title>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+	</head>
+	<body>
+		<center>
+			<?php
+				$modemap = array (
+					'弥撒及读经' => 'mass',
+					'日祷' => 'med',
+					'晨祷' => 'lod',
+					'晚祷' => 'ves',
+					'夜祷' => 'comp',
+					'诵读' => 'let',
+					'反省' => 'thought',
+					'礼仪' => 'ordo',
+					'圣人传记' => 'saint',
+					);
+				echo "<h1>天主教每日弥撒及祷告</h1><h2>今天（".gmdate('Y年m月d日',time()+3600*8)."）</h2>";
+				$datestr = gmdate("Y-m-d",time()+3600*8);
+				foreach ($modemap as $key => $value)
+				{
+					echo('<a href="http://api.liyake.com/getstuff/getstuff.php?date='.$datestr.'&mode='.$value.'">'.$key.'</a></br>');
+				}
+				echo "<br/><h2>明天（".gmdate('Y年m月d日',time()+3600*32)."）</h2>";
+				$datestr = gmdate("Y-m-d",time()+3600*32);
+				foreach ($modemap as $key => $value)
+				{
+					echo('<a href="http://api.liyake.com/getstuff/getstuff.php?date='.$datestr.'&mode='.$value.'">'.$key.'</a></br>');
+				}
+				echo "<br/><h2>后天（".gmdate('Y年m月d日',time()+3600*56)."）</h2>";
+				$datestr = gmdate("Y-m-d",time()+3600*56);
+				foreach ($modemap as $key => $value)
+				{
+					echo('<a href="http://api.liyake.com/getstuff/getstuff.php?date='.$datestr.'&mode='.$value.'">'.$key.'</a></br>');
+				}
+			?>
+			<br/><br/><br/>
+			<h1>梵蒂冈中文电台每日快讯</h1>
+			<h2>中文广播</h2>
+			<div align="center" id="mydiv">
+				<audio id="audio" src="http://media01.vatiradio.va/podcast/feed/cinese_<?php echo(gmdate("dmy",time()+3600*8));?>.mp3" controls></audio>
+			</div>
+			</br>
+			<h3>english news</h3>
+			<div align="center" id="mydiv2">
+				<audio id="audioen" src="http://www.vaticanradio-us.org/webcasting/rg_inglese_2_1.mp3" controls></audio>
+			</div>
+			<br/><br/>
+			<h1>欢迎关注主内青年团微信公众帐号</h1>
+			<h2>拿起你的微信扫描下面的二维码即可关注</h2>
+			<div><img src="http://api.liyake.com/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
+		</center>
+	</body>
+	<script type="text/javascript" src="/include/googleanalysis.js"/>
+</html>
