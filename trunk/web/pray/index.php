@@ -85,7 +85,7 @@ header("Content-type: text/html; charset=utf-8");
 	$result = mysql_query("select id,name,text,createtime from pray order by id desc limit 10;");
 	while ($row = mysql_fetch_array($result))
 	{
-		echo('<div class="css_div_class"><span  style="width:100%">['.$row['id'].']昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
+		echo('<div class="css_div_class"><span  style="width:100%">[<a href="detail.php?id='.$row['id'].'">'.$row['id'].'</a>]昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
 	}
 ?>
 <hr/>

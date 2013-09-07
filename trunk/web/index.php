@@ -7,6 +7,12 @@
 	<body>
 		<center>
 			<?php
+				require_once("include/dbconn.php");
+				$result = mysql_query("select lodo from lodo L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM lodo) AS m ON L.ID >= m.ID LIMIT 1;");
+				if ($row = mysql_fetch_array($result))
+				{
+					echo('<h3 style="color:red;">'.$row['lodo'].'</h3>');
+				}
 				$modemap = array (
 					'弥撒及读经' => 'mass',
 					'日祷' => 'med',
@@ -49,8 +55,11 @@
 				<audio id="audioen" src="http://www.vaticanradio-us.org/webcasting/rg_inglese_2_1.mp3" controls></audio>
 			</div>
 			<br/><br/>
+			<h1>主内青年团小工具</h1>
+			<h2><a href="http://api.liyake.com/pray/index.php" alt="主内青年团代祷本">代祷本</a></h2>
+			</br></br>
 			<h1>欢迎关注主内青年团微信公众帐号</h1>
-			<h2>拿起你的微信扫描下面的二维码即可关注</h2>
+			<p>拿起你的微信扫描下面的二维码即可关注</p>
 			<div><img src="http://api.liyake.com/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
 		</center>
 	</body>
