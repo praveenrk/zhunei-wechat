@@ -2,6 +2,7 @@
 session_start();
 header("Content-type: text/html; charset=utf-8");
 ?>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>update</title>
@@ -230,6 +231,7 @@ $(function() {
         }
     </style>
 </head>
+<body>
 <!--
 	$stuff_mass = "";		//弥撒
 	$stuff_med = "";		//日祷
@@ -305,3 +307,6 @@ echo '<input type="button" name="btnUpdate" id="btnUpdate" value=" 更 新 " onc
         <td><textarea class="TextArea1" id="input_saint"></textarea></td>
     </tr>
 </table>
+</body>
+<script type="text/javascript" src="/include/googleanalysis.js"/>
+</html>
