@@ -190,9 +190,7 @@
 		if($mode!="")
 		{
 			$json = json_decode($ret,true);
-			echo'<head>
-			<meta name="viewport" content="user-scalable=no, width=device-width" />  
-			</head><html><body>';
+			echo'<head><meta name="viewport" content="user-scalable=no, width=device-width"/><meta http-equiv=Content-Type content="text/html;charset=utf-8"></head><html><body>';
 			if($mode=="lod")
 			{
 				$lod_all = $json[$mode];
