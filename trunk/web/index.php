@@ -63,5 +63,5 @@
 			<div><img src="http://api.liyake.com/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
 		</center>
 	</body>
-	<script type="text/javascript" src="/include/googleanalysis.js"/>
+	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>

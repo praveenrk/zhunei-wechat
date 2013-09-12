@@ -28,5 +28,5 @@ header("Content-type: text/html; charset=utf-8");
 		echo('<h2>['.$row['id'].']昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</h2><h1>'.nl2br($row['text']).'</h1>');
 	}
 ?>
-<script type="text/javascript" src="/include/googleanalysis.js"/>
+<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>

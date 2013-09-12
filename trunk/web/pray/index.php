@@ -142,5 +142,5 @@ function postText()
 	return xmlhttp.responseText;
 }
 </script>
-<script type="text/javascript" src="/include/googleanalysis.js"/>
+<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>

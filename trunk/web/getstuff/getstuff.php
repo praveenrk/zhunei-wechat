@@ -215,7 +215,7 @@
 			{
 				echo $json[$mode];
 			}
-			echo '</body><script type="text/javascript" src="/include/googleanalysis.js"/></html>';
+			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></html>';
 		}
 		else
 		{

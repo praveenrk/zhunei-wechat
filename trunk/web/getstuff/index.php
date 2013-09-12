@@ -308,5 +308,5 @@ echo '<input type="button" name="btnUpdate" id="btnUpdate" value=" 更 新 " onc
     </tr>
 </table>
 </body>
-<script type="text/javascript" src="/include/googleanalysis.js"/>
+<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>
