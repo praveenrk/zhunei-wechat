@@ -38,7 +38,7 @@
 		
 		$index++;
 	}
-	while($index<4);
+	while($index<5);
 	echo("<br/><br/><h1>done</h1>");
 	echo('<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>');
 ?>
