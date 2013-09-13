@@ -12,7 +12,7 @@
 	header("Content-type: text/html; charset=utf-8");
 ?>
 <?php
-	$id = $_GET['id'];
+	$id = (int)$_GET['id'];
 	
 	//先从数据库中获取
 	$result = mysql_query("delete from pray where id=".$id.";");
