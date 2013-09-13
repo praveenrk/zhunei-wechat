@@ -1,11 +1,13 @@
 <?php
+require_once("../include/define.php");
+
 $id = (int)$_GET['id'];
 if($id<1)
 {
-	header("Location: http://api.liyake.com/pray/index.php");
+	header("Location: ".ROOT_WEB_URL."pray/index.php");
 	die();
 }
-	
+
 require_once("../include/dbconn.php");
 require_once("../include/define.php");
 header("Content-type: text/html; charset=utf-8");

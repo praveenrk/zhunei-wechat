@@ -1,4 +1,6 @@
 <?php
+	require_once("../include/define.php");
+	
 	$modemap = array (
 		'弥撒及读经' => 'mass',
 		'日祷' => 'med',
@@ -27,7 +29,7 @@
 				}
 				else
 				{
-					$url = "http://api.liyake.com/getstuff/getstuff.php?date=".$datestr."&mode=".$value;
+					$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$datestr."&mode=".$value;
 					$contents = file_get_contents($url); 
 					fwrite($fp,$contents);
 					fclose($fp);
