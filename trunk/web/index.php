@@ -7,6 +7,7 @@
 	<body>
 		<center>
 			<?php
+				require_once("include/define.php");
 				require_once("include/dbconn.php");
 				$result = mysql_query("select lodo from lodo L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM lodo) AS m ON L.ID >= m.ID LIMIT 1;");
 				if ($row = mysql_fetch_array($result))
@@ -28,19 +29,19 @@
 				$datestr = gmdate("Y-m-d",time()+3600*8);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="http://api.liyake.com/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 				echo "<br/><h2>明天（".gmdate('Y年m月d日',time()+3600*32)."）</h2>";
 				$datestr = gmdate("Y-m-d",time()+3600*32);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="http://api.liyake.com/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 				echo "<br/><h2>后天（".gmdate('Y年m月d日',time()+3600*56)."）</h2>";
 				$datestr = gmdate("Y-m-d",time()+3600*56);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="http://api.liyake.com/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 			?>
 			<br/><br/><br/>
@@ -56,11 +57,11 @@
 			</div>
 			<br/><br/>
 			<h1>主内青年团小工具</h1>
-			<h2><a href="http://api.liyake.com/pray/index.php" alt="主内青年团代祷本">代祷本</a></h2>
+			<h2><a href="/pray/index.php" alt="主内青年团代祷本">代祷本</a></h2>
 			</br></br>
 			<h1>欢迎关注主内青年团微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>zhuneiqingnian</b>)，也可以在微信中搜索<b>主内青年</b>进行关注</p>
-			<div><img src="http://api.liyake.com/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
+			<div><img src="/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
