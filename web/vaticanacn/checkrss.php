@@ -1,4 +1,21 @@
 <?php
+	/*
+	"love","爱德与关怀"
+	"cath","教会"
+	"social","文化与社会"
+	"vantican","梵蒂冈文献"
+	"meeting","主教会议"
+	"one","大公合一运动"
+	"family","家庭"
+	"youth","青年"
+	"peace","正义与和平"
+	"politics","政治"
+	"talk","宗教与对话"
+	"science","科学与伦理"
+	"peter","教宗与圣座"
+	"spirit","灵修生活"
+	"other","其他"*/
+	
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
 	function get_inner_html($node)
