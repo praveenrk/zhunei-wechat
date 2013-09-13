@@ -1,0 +1,22 @@
+.topic{
+	color: rgb(51, 51, 51);
+	display: block;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+}
+.current{
+}
+.current a{
+	color: #999;
+}
+.topic-title{}
+.content{
+}
+.content img{
+	
+}
+
+a.src{
+
+}
