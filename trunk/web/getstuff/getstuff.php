@@ -1,6 +1,7 @@
 <?php
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
+	require_once("../wechat/html2text.php");
 	
 	
 	function unicode2utf8($str)
@@ -215,7 +216,14 @@
 			{
 				echo $json[$mode];
 			}
-			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></html>';
+			
+			$imgurl = ROOT_WEB_URL."wechat/pics/".$mode."1.jpg";
+			$link = ROOT_WEB_URL.'getstuff/stuff/'.$_GET["date"].'_'.$mode.'.html';
+			$content = convert_html_to_text($json[$mode]);
+			$title = str_replace(PHP_EOL, ' ', mb_substr($content,0,20,"UTF-8"));
+			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><script language="javascript" type="text/javascript">var contentModel={
+	"img_url": "'.$imgurl.'", "img_width": "","img_height": "","link": "'.$link.'", "desc": "'.$title.'", 
+    "title": "'.$title.'", "src": "天主教小助手" };</script><script language="JavaScript" src="http://mat1.gtimg.com/www/js/newsapp/wechat/wechat20130809_min.js" type="text/javascript" charset="utf-8"></script></html>';
 		}
 		else
 		{
