@@ -1,0 +1,70 @@
+{
+	"button" : [
+	{
+		"name" : "实时更新",
+		"sub_button" : [
+		{
+			"type" : "click",
+			"name" : "中文快讯",
+			"key" : "101"
+		},
+		{
+			"type" : "click",
+			"name" : "美文推荐",
+			"key" : "102"
+		}]
+	},
+	{
+		"name" : "每日灵修",
+		"sub_button" : [
+		{
+			"type" : "click",
+			"name" : "弥撒及读经",
+			"key" : "201"
+		},
+		{
+			"type" : "click",
+			"name" : "日课",
+			"key" : "206"
+		},
+		{
+			"type" : "click",
+			"name" : "反省",
+			"key" : "207"
+		},
+		{
+			"type" : "click",
+			"name" : "圣人传记",
+			"key" : "208"
+		},
+		{
+			"type" : "click",
+			"name" : "礼仪",
+			"key" : "209"
+		}]
+	},
+	{
+		"name" : "更多...",
+		"sub_button" : [
+		{
+			"type" : "view",
+			"name" : "梵蒂冈电台",
+			"url" : "http://api.liyake.com/media/vaticanradiowebcast_cn.php"
+		},
+		{
+			"type" : "view",
+			"name" : "代祷本",
+			"url" : "http://api.liyake.com/pray/index.php"
+		},
+		{
+			"type" : "click",
+			"name" : "每日圣言",
+			"key" : "303"
+		},
+		{
+			"type" : "click",
+			"name" : "各地教堂",
+			"key" : "304"
+		}]
+	}]
+}
