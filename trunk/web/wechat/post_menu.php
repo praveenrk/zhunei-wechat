@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-define("ACCESS_TOKEN", "-CE_EQWa1jxr2YRJENNaLt2XwxYFjFlpyk-yDqrhdfwWvIMZIBD0HjmDp0YbrAdCgd4y3xXjzeZbMA0JEn8ka-QOWx40tfEZtgaG8HGpNMlAjpkbRenj01x-86Xm6WUyxkQTTHS_L8dZ2LhcxmsbYg");
+define("ACCESS_TOKEN", "UazvI3hxUcpLuq8umLhK9bOSwZNmOLKNLex0m_lUiCg7oUOzIMkg8vmkCPzPcEFdB6_8LPhgbH_X3L8CnaeeQqmqR3J_DwKl4ibbDcmDg_jsBBZYZFM5eakenSppALF79mLAzJ7trxoSaZ-U3zbEIg");
 
 //创建菜单
 function createMenu($data){
@@ -31,76 +31,7 @@ function deleteMenu(){
 }
 
 
-$data = '{
-	"button" : [
-	{
-		"name" : "实时更新",
-		"sub_button" : [
-		{
-			"type" : "click",
-			"name" : "中文快讯",
-			"key" : "101"
-		},
-		{
-			"type" : "click",
-			"name" : "美文推荐",
-			"key" : "102"
-		}]
-	},
-	{
-		"name" : "每日灵修",
-		"sub_button" : [
-		{
-			"type" : "click",
-			"name" : "弥撒及读经",
-			"key" : "201"
-		},
-		{
-			"type" : "click",
-			"name" : "日课",
-			"key" : "206"
-		},
-		{
-			"type" : "click",
-			"name" : "反省",
-			"key" : "207"
-		},
-		{
-			"type" : "click",
-			"name" : "圣人传记",
-			"key" : "208"
-		},
-		{
-			"type" : "click",
-			"name" : "礼仪",
-			"key" : "209"
-		}]
-	},
-	{
-		"name" : "更多...",
-		"sub_button" : [
-		{
-			"type" : "view",
-			"name" : "梵蒂冈电台",
-			"url" : "http://api.liyake.com/media/vaticanradiowebcast_cn.php"
-		},
-		{
-			"type" : "view",
-			"name" : "代祷本",
-			"url" : "http://api.liyake.com/pray/index.php"
-		},
-		{
-			"type" : "click",
-			"name" : "每日圣言",
-			"key" : "303"
-		},
-		{
-			"type" : "click",
-			"name" : "各地教堂",
-			"key" : "304"
-		}]
-	}]
-}';
+$data = file_get_contents('menu.json');
 
 
 echo createMenu($data);
