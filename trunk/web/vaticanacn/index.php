@@ -63,7 +63,7 @@
 	$resultcount = mysql_num_rows($result);
 	while ($row = mysql_fetch_array($result))
 	{
-		echo('<a href="../'.$row[local].'">'.$row[title].'</a><br/>');
+		echo('<a href="'.$row[local].'">'.$row[title].'</a><br/>');
 	}
 	
 	echo('<span class="pages">');
