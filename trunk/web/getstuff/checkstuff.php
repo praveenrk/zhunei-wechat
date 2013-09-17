@@ -41,8 +41,9 @@
 		$index++;
 	}
 	while($index<5);
+	
 	//检查梵蒂冈广播电台
-	file_get_contents("http://api.liyake.com/vaticanacn/checkrss.php");
+	file_get_contents(ROOT_WEB_URL."vaticanacn/checkrss.php");
 	
 	echo("<br/><br/><h1>done</h1>");
 	echo('<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>');
