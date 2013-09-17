@@ -1,5 +1,5 @@
 <?php
-define("ROOT_WEB_URL", "http://api.liyake.com/");
+define("ROOT_WEB_URL", "http://t.liyake.com/");
 
 function getWechatShareScript($link,$title,$imgurl)
 {
