@@ -19,6 +19,7 @@
 	function error()
 	{
 		global $isjson;
+		global $errorcode;
 		
 		if($isjson)
 			die('{"error":'.$errorcode.'}');
