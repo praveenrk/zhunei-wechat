@@ -6,13 +6,13 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
-	<link href="../articles.css" type="text/css" rel="stylesheet">
+	<link href="articles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
 <?php
-	require_once("../../include/dbconn.php");
-	require_once("../../include/define.php");
+	require_once("../include/dbconn.php");
+	require_once("../include/define.php");
 	
 	$topic = -1;
 	$topiclocal = "";
@@ -37,11 +37,11 @@
 	echo('<div class="topic"><span class="current"><a href="/" alt="主内青年团首页">首页</a>');
 	if($topic>-1)
 	{
-		echo(' › <a href="../topics/">梵蒂冈广播</a></span><h1 class="topic-title">梵蒂冈广播之『'.$topicname.'』</h1></div><div class="content">');
+		echo(' › <a href="index.php">梵蒂冈广播</a></span><h1 class="topic-title">梵蒂冈广播之『'.$topicname.'』</h1></div><div class="content">');
 	}
 	else
 	{
-		echo('</span><h1 class="topic-title">梵蒂冈中文快讯</h1></div><div class="content">');
+		echo(' › <a href="index.php">梵蒂冈广播</a></span><h1 class="topic-title">梵蒂冈中文快讯</h1></div><div class="content">');
 	}
 	
 	
