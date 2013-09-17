@@ -37,7 +37,7 @@ class wechatCallbackapiTest
 			$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
 			if($postObj->Event=="CLICK")
 			{
-				$resultStr = $this->getEventReply($postObj);
+				$resultStr = $this->getDefaltReply($postObj);
 			}
 			else
 			{
@@ -94,7 +94,7 @@ class wechatCallbackapiTest
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
 		$time = time();
-		$desc = "帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、梵蒂冈中文电台\n12、常用经文\n13、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。";
+		$desc = "感谢你的关注，我们正在努力写代码完善『天主教小助手』，后续会为你带来更多的好功能！耶稣爱你！ ^_^";
 		if($onelodo!="")
 		{
 			$desc = $onelodo."\n\n".$desc;
