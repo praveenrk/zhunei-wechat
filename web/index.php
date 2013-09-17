@@ -29,19 +29,19 @@
 				$datestr = gmdate("Y-m-d",time()+3600*8);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 				echo "<br/><h2>明天（".gmdate('Y年m月d日',time()+3600*32)."）</h2>";
 				$datestr = gmdate("Y-m-d",time()+3600*32);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 				echo "<br/><h2>后天（".gmdate('Y年m月d日',time()+3600*56)."）</h2>";
 				$datestr = gmdate("Y-m-d",time()+3600*56);
 				foreach ($modemap as $key => $value)
 				{
-					echo('<a href="'.ROOT_WEB_URL.'getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
+					echo('<a href="/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 			?>
 			<br/><br/><br/>
