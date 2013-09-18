@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>主内青年团微信公众首页</title>
+		<title>天主教小助手微信公众首页</title>
 		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 	</head>
@@ -56,14 +56,14 @@
 				<audio id="audioen" src="http://www.vaticanradio-us.org/webcasting/rg_inglese_2_1.mp3" controls></audio>
 			</div>
 			<br/><br/>
-			<h1>主内青年团小工具</h1>
-			<h2><a href="/pray/index.php" alt="主内青年团代祷本">代祷本</a></h2>
+			<h1>天主教小助手小工具</h1>
+			<h2><a href="/pray/index.php" alt="天主教小助手代祷本">代祷本</a></h2>
 			<br/>
 			<h2><a href="/vaticanacn/index.php" alt="梵蒂冈中文快讯">梵蒂冈中文快讯</a></h2>
 			</br></br>
-			<h1>欢迎关注主内青年团微信公众帐号</h1>
+			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>zhuneiqingnian</b>)，也可以在微信中搜索<b>主内青年</b>进行关注</p>
-			<div><img src="/wechat/pics/qrcode.jpg" alt="主内青年团微信公众名片"></img></div>
+			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
