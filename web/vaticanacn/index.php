@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>梵蒂冈中文快讯——主内青年团</title>
+	<title>梵蒂冈中文快讯——天主教小助手</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
 		}
 	}
 	
-	echo('<div class="topic"><span class="current"><a href="/" alt="主内青年团首页">首页</a>');
+	echo('<div class="topic"><span class="current"><a href="/" alt="天主教小助手首页">首页</a>');
 	if($topic>-1)
 	{
 		echo(' › <a href="index.php">梵蒂冈广播</a></span><h1 class="topic-title">梵蒂冈广播之『'.$topicname.'』</h1></div><div class="content">');
