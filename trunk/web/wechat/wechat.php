@@ -84,31 +84,17 @@ class wechatCallbackapiTest
 	
 	private function getDefaltReply($postObj)
 	{
-		$onelodo = "";
-		$result = mysql_query("select lodo from lodo L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM lodo) AS m ON L.ID >= m.ID LIMIT 1;");
-		if ($row = mysql_fetch_array($result))
-		{
-			$onelodo = $row['lodo'];
-		}
-		
 		$fromUsername = $postObj->FromUserName;
 		$toUsername = $postObj->ToUserName;
 		$time = time();
-		$desc = "感谢你的关注，我们正在努力写代码完善『天主教小助手』，后续会为你带来更多的好功能！耶稣爱你！ ^_^";
-		if($onelodo!="")
-		{
-			$desc = $onelodo."\n\n".$desc;
-		}
+		$desc = "感谢你的关注，我们正在努力完善『天主教小助手』，后续会为你带来更多的好功能！耶稣爱你！ ^_^";
 		$textTpl = '<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
 			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[news]]></MsgType>
-			<ArticleCount>1</ArticleCount>
-			<Articles>
-			<item><Title><![CDATA[使用教程（详情点我）]]></Title><Url><![CDATA['.ROOT_WEB_URL.'wechat/help2.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo.jpg]]></PicUrl></item>
-			</Articles>
-			<FuncFlag>1</FuncFlag>
+			<MsgType><![CDATA[text]]></MsgType>
+			<Content><![CDATA[%s]]></Content>
+			<MsgId>1234567890123456</MsgId>
 			</xml>';
 		return sprintf($textTpl, $fromUsername, $toUsername, $time, $desc);
 	}
