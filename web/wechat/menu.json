@@ -21,11 +21,7 @@
 			"type" : "click",
 			"name" : "日课及读经",
 			"key" : "201"
-		}]
-	},
-	{
-		"name" : "更多...",
-		"sub_button" : [
+		},
 		{
 			"type" : "view",
 			"name" : "梵蒂冈电台",
@@ -35,7 +31,12 @@
 			"type" : "view",
 			"name" : "代祷本",
 			"url" : "http://t.liyake.com/pray/index.php"
-		},
+		}
+		]
+	},
+	{
+		"name" : "更多...",
+		"sub_button" : [
 		{
 			"type" : "click",
 			"name" : "圣经金句",
