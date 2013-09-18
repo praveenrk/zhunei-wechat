@@ -19,28 +19,8 @@
 		"sub_button" : [
 		{
 			"type" : "click",
-			"name" : "弥撒及读经",
+			"name" : "日课及读经",
 			"key" : "201"
-		},
-		{
-			"type" : "click",
-			"name" : "日课",
-			"key" : "206"
-		},
-		{
-			"type" : "click",
-			"name" : "反省",
-			"key" : "207"
-		},
-		{
-			"type" : "click",
-			"name" : "圣人传记",
-			"key" : "208"
-		},
-		{
-			"type" : "click",
-			"name" : "礼仪",
-			"key" : "209"
 		}]
 	},
 	{
@@ -58,7 +38,7 @@
 		},
 		{
 			"type" : "click",
-			"name" : "每日圣言",
+			"name" : "圣经金句",
 			"key" : "303"
 		},
 		{
