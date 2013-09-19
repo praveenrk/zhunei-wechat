@@ -108,7 +108,23 @@ class wechatCallbackapiTest
 		$Articles = "";
 		$resultStr='';
 		
-		if($key=='102')
+		if($key=='101')
+		{
+			//先从数据库中获取
+			$result = mysql_query("select * from vaticanacn where time=(select max(time) from vaticanacn);");
+			while ($row = mysql_fetch_array($result))
+			{
+				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
+				$picurl = $row['picurl'];
+				$url = ROOT_WEB_URL.'vaticanacn/'.$row['local'];
+				$title = $row['title'];
+				$desc = $row['title'];
+				
+				$Articles = $Articles.sprintf($textTpl,$title,$url,$desc, $picurl);
+				$ArtCount++;
+			}
+		}
+		else if($key=='102')
 		{
 			//美文推荐
 			return $this->getDefaltReply($postObj,'『美文推荐』模块正在努力设计中...感谢你的关注！');
