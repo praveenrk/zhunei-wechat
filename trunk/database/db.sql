@@ -49,8 +49,9 @@ create table vaticanacn(
 id int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(id),
 title text,
-src text,
-local text,
+src varchar(512),
+local varchar(512),
 time date,
-cate int
+cate int,
+picurl varchar(10086);
 );
