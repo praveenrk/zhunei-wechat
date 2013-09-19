@@ -4,9 +4,15 @@
 		"name" : "实时更新",
 		"sub_button" : [
 		{
-			"type" : "view",
+			"type" : "click",
 			"name" : "中文快讯",
-			"url" : "http://t.liyake.com/vaticanacn/"
+			"url" : "http://t.liyake.com/vaticanacn/",
+			"key" : "101"
+		},
+		{
+			"type" : "view",
+			"name" : "梵蒂冈电台",
+			"url" : "http://t.liyake.com/media/vaticanradiowebcast_cn.php"
 		},
 		{
 			"type" : "click",
@@ -21,11 +27,6 @@
 			"type" : "click",
 			"name" : "日课及读经",
 			"key" : "201"
-		},
-		{
-			"type" : "view",
-			"name" : "梵蒂冈电台",
-			"url" : "http://t.liyake.com/media/vaticanradiowebcast_cn.php"
 		},
 		{
 			"type" : "view",
