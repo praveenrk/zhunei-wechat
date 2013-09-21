@@ -44,6 +44,11 @@
 			"key" : "303"
 		},
 		{
+			"type" : "view",
+			"name" : "常用经文",
+			"url" : "http://t.liyake.com/prayer/index.html"
+		},
+		{
 			"type" : "click",
 			"name" : "各地教堂",
 			"key" : "304"
