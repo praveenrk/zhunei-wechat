@@ -111,7 +111,8 @@ class wechatCallbackapiTest
 		if($key=='101')
 		{
 			//先从数据库中获取
-			$result = mysql_query("select * from vaticanacn where time=(select max(time) from vaticanacn) order by id desc;");
+//			$result = mysql_query("select * from vaticanacn where time=(select max(time) from vaticanacn) order by id desc;");
+			$result = mysql_query("select * from vaticanacn order by id desc limit 10;");
 			while ($row = mysql_fetch_array($result) and $ArtCount<10)
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
