@@ -7,6 +7,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<link href="articles.css" type="text/css" rel="stylesheet">
+	<style>
+	a{text-decoration:none}
+	a:hover{text-decoration:underline}
+	</style>
 </head>
 <body>
 
