@@ -70,6 +70,7 @@
 		echo('<a href="'.$row[local].'">'.$row[title].'</a><br/>');
 	}
 	
+	
 	echo('<span class="pages">');
 	if($fromid>0)
 	{
@@ -80,8 +81,13 @@
 		echo('<a href="index.php?topic='.$topic.'&from='.($fromid+10).'">下一页</a>');
 	}
 	echo('</span>');
+	echo $_POST['page']
 ?>
+ <form method="post" action="">
+  <input type="text" name="page" value="" style="width:70px"/> <input type="submit" value="Go"/>
+ </form>
 	</div>
+	
 </body>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>
