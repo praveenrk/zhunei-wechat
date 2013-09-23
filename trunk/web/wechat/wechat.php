@@ -128,7 +128,18 @@ class wechatCallbackapiTest
 		else if($key=='102')
 		{
 			//美文推荐
-			return $this->getDefaltReply($postObj,'『美文推荐』模块正在努力设计中...感谢你的关注！');
+			$result = mysql_query("select * from articles order by id desc limit 10;");
+			while ($row = mysql_fetch_array($result) and $ArtCount<10)
+			{
+				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
+				$picurl = "";
+				$url = ROOT_WEB_URL.'articles/articles/'.$row['id'].".html";
+				$title = $row['title'];
+				$desc = $row['title'];
+				
+				$Articles = $Articles.sprintf($textTpl,$title,$url,$desc, $picurl);
+				$ArtCount++;
+			}
 		}
 		else if($key=='201')
 		{
@@ -344,7 +355,7 @@ class wechatCallbackapiTest
 		}
 		else
 		{
-			$resultStr = $this->getDefaltReply($postObj);
+			$resultStr = $this->getDefaltReply($postObj,"帮助列表：\n0、所有信息\n1、弥撒及读经\n2、日祷\n3、晨祷\n4、晚祷\n5、夜祷\n6、诵读\n7、反省\n8、礼仪\n9、圣人传记\n10、代祷本\n11、梵蒂冈中文电台\n12、常用经文\n13、推荐给朋友\n使用说明：回复数字，获取对应信息。如发送“1”可获取“弥撒及读经”。");
 		}
 		return $resultStr;
 	}
