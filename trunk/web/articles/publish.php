@@ -16,6 +16,7 @@ header("Content-type: text/html; charset=utf-8");
 <script type="text/javascript">
 bkLib.onDomLoaded(function() { nicEditors.allTextAreas(); refreshTopics(); });
 
+//对特殊字符串进行转义
 function getinputvalue(obj)
 {
 	var post_Str = obj.replace(/\+/g, "%2B");//"+"转义    
@@ -24,6 +25,7 @@ function getinputvalue(obj)
 	return post_Str;
 }
 
+//退出登录
 function onlogout()
 {
 	var xmlhttp = new XMLHttpRequest();
@@ -39,6 +41,7 @@ function onlogout()
 	xmlhttp.send();
 }
 
+//提交新的类别
 function insertTopic()
 {
 	var xmlhttp = new XMLHttpRequest();
@@ -55,6 +58,7 @@ function insertTopic()
 	xmlhttp.send("mode=add&topic="+document.getElementById('insert_topic').value);
 }
 
+//刷新所有类别
 function refreshTopics()
 {
 	var xmlhttp = new XMLHttpRequest();
@@ -79,6 +83,7 @@ function refreshTopics()
 	xmlhttp.send("mode=get");
 }
 
+//提交文章
 function uploadArticle()
 {
 	var xmlhttp = new XMLHttpRequest();
@@ -88,6 +93,7 @@ function uploadArticle()
 		{
 			alert(xmlhttp.response);
 			$("#btnInsertArticle")[0].disabled = false;
+			
 			return;
 		}
 	}
@@ -123,7 +129,7 @@ echo '<input type="button" name="btnLogin" value=" 注 销 " onclick="onlogout()
 	<input type="text" id="title" class="title"/>
 	<h3>作者：</h3>
 	<input type="text" id="author" class="author"/>
-	<textarea id="content" style="width: 100%; height:50%;">
+	<textarea id="content" style="width:90%; height:50%;">
 	</textarea>
 	<h3>分类：</h3>
 	<select id="topics">

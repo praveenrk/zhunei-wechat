@@ -48,7 +48,8 @@
 			die("未找到参数2！");
 		}
 		$id=htmlspecialchars($_POST['id']);
-		mysql_query('insert into article_topic(name) values("'.$topic.'");');
+		mysql_query('delete from articles where id='.$id);
+		echo("已删除指定文章！");
 	}
 	else if($mode='add')
 	{
@@ -73,5 +74,6 @@
 		mysql_query('insert into articles(title,content,author,topic,src,user) values("'.mysql_real_escape_string($title).'","'.mysql_real_escape_string($title).'","'.mysql_real_escape_string($title).'",'.$topic.',"'.mysql_real_escape_string($srcurl).'","'.$user.'")');
 		$newID = mysql_insert_id();
 		writeArticle($newID,$title,$author,$content,$topic,$srcurl);
+		echo("文章提交成功！");
 	}
 ?>
