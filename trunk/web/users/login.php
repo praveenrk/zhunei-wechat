@@ -10,7 +10,7 @@ if(!isset($_POST['submit'])){
 }
 
 $username = htmlspecialchars($_POST['username']);
-$password = $_POST['password'];
+$password = htmlspecialchars($_POST['password']);
 
 //检测用户名及密码是否正确
 $result = mysql_query("select * from users where username='".$username."' and password='".$password."' limit 1;");
