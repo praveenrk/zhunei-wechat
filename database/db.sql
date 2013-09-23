@@ -55,3 +55,22 @@ time date,
 cate int,
 picurl varchar(10086);
 );
+
+CREATE TABLE IF NOT EXISTS `article_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(512) NOT NULL,
+  `author` varchar(256) NOT NULL,
+  `content` text NOT NULL,
+  `topic` int(11) NOT NULL,
+  `src` text NOT NULL,
+  `user` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `title` (`title`,`author`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
