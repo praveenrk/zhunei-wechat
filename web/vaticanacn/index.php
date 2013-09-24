@@ -7,10 +7,6 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<link href="articles.css" type="text/css" rel="stylesheet">
-	<style>
-	a{text-decoration:none}
-	a:hover{text-decoration:underline}
-	</style>
 </head>
 <body>
 
@@ -67,7 +63,7 @@
 	$resultcount = mysql_num_rows($result);
 	while ($row = mysql_fetch_array($result))
 	{
-		echo('<a href="'.$row[local].'">'.$row[title].'</a><br/>');
+		echo('<div class="link"><a href="'.$row[local].'">'.$row[title].'</a></div>');
 	}
 	
 	
@@ -80,14 +76,8 @@
 	{
 		echo('<a href="index.php?topic='.$topic.'&from='.($fromid+10).'">下一页</a>');
 	}
-	echo('</span>');
-	echo $_POST['page']
+	echo('</span></div>');
 ?>
- <form method="post" action="">
-  <input type="text" name="page" value="" style="width:70px"/> <input type="submit" value="Go"/>
- </form>
-	</div>
-	
 </body>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 </html>
