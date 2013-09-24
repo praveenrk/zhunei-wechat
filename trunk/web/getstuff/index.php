@@ -1,6 +1,7 @@
 <?php
-session_start();
-header("Content-type: text/html; charset=utf-8");
+require_once("../include/dbconn.php");
+require_once("../include/define.php");
+require_once("../users/user.class.php");
 ?>
 <html>
 <head>
@@ -9,7 +10,7 @@ header("Content-type: text/html; charset=utf-8");
 <script type="text/javascript" src="scripts/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="scripts/jHtmlArea-0.7.5.js"></script>
 <script type="text/javascript" src="WdatePicker/WdatePicker.js"></script>
-<link rel="Stylesheet" type="text/css" href="style/jHtmlArea.css" />	
+<link rel="Stylesheet" type="text/css" href="style/jHtmlArea.css" />
 <script type="text/javascript">
 function refreshOK(obj)
 {
@@ -245,20 +246,9 @@ $(function() {
 !-->
 <?php
 //登录
-if(!isset($_SESSION['userid'])){
-    echo '
-<div>
-<label for="username" class="label">用户名:</label>
-<input id="username" name="username" type="text"/>
-<label for="password" class="label">密 码:</label>
-<input id="password" name="password" type="password"/>
-<input type="button" name="btnLogin" value="  确 定  " onclick="onlogin()"/>
-</div>';
-}
-else
+if(User::isLogin())
 {
-	$username = $_SESSION['name'];
-	echo "欢迎你，".$username;
+	echo "欢迎你，".User::getName();
 echo '<input type="button" name="btnLogin" value=" 注 销 " onclick="onlogout()"/>';
 echo '<input type="button" name="btnUpdate" id="btnUpdate" value=" 更 新 " onclick="onupdate()"/>';
 }
