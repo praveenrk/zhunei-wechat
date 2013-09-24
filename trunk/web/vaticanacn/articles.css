@@ -42,14 +42,29 @@ a.src{
 	line-height: 25px;
 }
 
-.content a{
+.link{
+	margin-top:10px;
+}
+
+.link a{
+	color: rgb(48, 135, 253);
+	text-decoration:none;
 	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size:18px;
-	line-height: 35px;
+	line-height:20px;
+}
+
+.pages{
+	display:block;
+	text-align:center;
+	margin-top:10px;
 }
 
 .pages a{
 	color:#999;
-	font-size:15px;
-	line-height: 25px;	
+	font-size:20px;
+	line-height:25px;
+	text-decoration:none;
+	padding-left:5px;
+	padding-right:5px;
 }
