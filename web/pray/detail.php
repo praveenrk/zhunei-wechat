@@ -9,7 +9,6 @@ if($id<1)
 }
 
 require_once("../include/dbconn.php");
-require_once("../include/define.php");
 header("Content-type: text/html; charset=utf-8");
 ?>
 <head>
