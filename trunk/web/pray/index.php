@@ -1,7 +1,7 @@
 <?php
 require_once("../include/dbconn.php");
 require_once("../include/define.php");
-session_start();
+require_once("../users/user.class.php");
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 header("Content-type: text/html; charset=utf-8");
@@ -13,6 +13,26 @@ header("Content-type: text/html; charset=utf-8");
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
+<?php
+if(User::isLogin())
+{
+	echo('<script type="text/javascript">function delPray(id)
+{
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange=function()
+{
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+parent.location.reload();
+return;
+}
+}
+xmlhttp.open("POST","./pray.php",true);
+xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xmlhttp.send("mode=del&id="+id);
+}</script>');
+}
+?>
 	<style type="text/css">
 	.css_div_class
 	{
@@ -83,9 +103,19 @@ header("Content-type: text/html; charset=utf-8");
 	//先从数据库中获取
 //	mysql_query("delete from pray where createtime>(utc_timestamp()-3600);");
 	$result = mysql_query("select id,name,text,createtime from pray order by id desc limit 10;");
-	while ($row = mysql_fetch_array($result))
+	if(User::isLogin())
 	{
-		echo('<div class="css_div_class"><span  style="width:100%">[<a href="detail.php?id='.$row['id'].'">'.$row['id'].'</a>]昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
+		while ($row = mysql_fetch_array($result))
+		{
+			echo('<div class="css_div_class"><span  style="width:100%">[<a href="#" onclick="delPray('.$row['id'].')">删除</a>]昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
+		}
+	}
+	else
+	{
+		while ($row = mysql_fetch_array($result))
+		{
+			echo('<div class="css_div_class"><span  style="width:100%">昵称：'.$row['name'].'  时间：'.date('Y-m-d H:i',strtotime($row['createtime'])+3600*8).'</span><p>'.nl2br($row['text']).'</p></div>');
+		}
 	}
 ?>
 <hr/>
