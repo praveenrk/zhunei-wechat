@@ -1,7 +1,7 @@
 <?php
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
-	session_start();
+	require_once("../users/user.class.php");
 	/*
 	错误码定义
 	1 没有日期参数或日期参数不正确
@@ -11,13 +11,8 @@
 	//http://mhchina.a24.cc/api/v1/getstuff/
 	header("Content-type: text/html; charset=utf-8");
 	
-	if(!isset($_SESSION['isadmin']))
+	if(User::isAdmin())
 	{
-		die("请先登录！");	
-	}
-	if($_SESSION['isadmin']!='1')
-	{
-		echo $_SESSION['isadmin'];
 		die("非管理员帐户！");
 	}
 	if(!isset($_POST['date']))
