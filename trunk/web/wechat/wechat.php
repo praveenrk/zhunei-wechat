@@ -5,6 +5,19 @@ require_once("../include/define.php");
 require_once("html2text.php");
 define("TOKEN", "wechat");
 
+function cn_urlencode($url){
+     $pregstr = "/[\x{4e00}-\x{9fa5}]+/u";//UTF-8中文正则
+    if(preg_match_all($pregstr,$url,$matchArray)){//匹配中文，返回数组
+        foreach($matchArray[0] as $key=>$val){
+            $url=str_replace($val, urlencode($val), $url);//将转译替换中文
+        }
+        if(strpos($url,' ')){//若存在空格
+            $url=str_replace(' ','%20',$url);
+        }
+    }
+    return $url;
+}
+
 $wechatObj = new wechatCallbackapiTest();
 if($wechatObj->checkSignature())
 {
@@ -182,6 +195,42 @@ class wechatCallbackapiTest
 		{
 			//各地教堂
 			return $this->getDefaltReply($postObj,'『各地教堂』模块正在努力设计中...后续会在该模块中展示各地的教堂及弥撒时间，感谢你的关注！');
+		}
+		else if($key=='305')
+		{
+			$id = 0;
+			$result = mysql_query("select * from song L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM song) AS m ON L.ID >= m.ID LIMIT 1;");
+			if ($row = mysql_fetch_array($result))
+			{
+				$id = $row['id'];
+			}
+			$mp3 = "";
+			$name = "";
+			$singer = "";
+			$alume = "";
+			$pic = "";
+			$result = mysql_query('select song.name as name,song.mp3 as mp3,alume.name as aname,alume.pic as pic,singer.name as sname from song,alume,singer where song.alume=alume.id and song.singer=singer.id and song.id='.$id.';');
+			if ($row = mysql_fetch_array($result))
+			{
+				$mp3 = cn_urlencode($row['mp3']);
+				$name = $row['name'];
+				$singer = $row['sname'];
+				$alume = $row['aname'];
+				$pic = $row['pic'];
+			}
+			$textTpl = '<xml>
+				 <ToUserName><![CDATA[%s]]></ToUserName>
+				 <FromUserName><![CDATA[%s]]></FromUserName>
+				 <CreateTime>%s</CreateTime>
+				 <MsgType><![CDATA[music]]></MsgType>
+				 <Music>
+				 <Title><![CDATA[%s]]></Title>
+				 <Description><![CDATA[%s]]></Description>
+				 <MusicUrl><![CDATA[%s]]></MusicUrl>
+				 <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
+				 </Music>
+				 </xml>';
+			return sprintf($textTpl, $postObj->FromUserName, $postObj->ToUserName,time(),$name,$singer.'-'.$alume,$mp3,$mp3);
 		}
 		
 		if($Articles!="")

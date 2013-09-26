@@ -2,6 +2,71 @@
 	require_once("dbconn.php");
 	require_once("simple_html_dom.php");
 	
+	/*
+	{
+		//对数据库进行转码 GBK->UTF8
+		echo("convert singer\n");
+		$result = mysql_query('select id,name from singer;');
+		while ($row = mysql_fetch_array($result))
+		{
+			$name = $row['name'];
+			$id = $row['id'];
+			$name = iconv('GBK','UTF-8',$name);
+			mysql_query('update singer set name="'.$name.'" where id='.$id.';');
+			echo(mysql_affected_rows());
+		}
+		
+		echo("convert alume\n");
+		$result = mysql_query('select id,name from alume;');
+		while ($row = mysql_fetch_array($result))
+		{
+			$name = $row['name'];
+			$id = $row['id'];
+			$name = iconv('GBK','UTF-8',$name);
+			mysql_query('update alume set name="'.$name.'" where id='.$id.';');
+			echo(mysql_affected_rows());
+		}
+		
+		echo("convert song\n");
+		$result = mysql_query('select id,name from song;');
+		while ($row = mysql_fetch_array($result))
+		{
+			$name = $row['name'];
+			$id = $row['id'];
+			$name = iconv('GBK','UTF-8',$name);
+			mysql_query('update song set name="'.$name.'" where id='.$id.';');
+			echo(mysql_affected_rows());
+		}
+		
+		die();
+	}*/
+	{
+		//获取mp3地址
+		$result = mysql_query("select * from song where id>16673;");
+		while ($row = mysql_fetch_array($result))
+		{
+			$src = $row['src'];
+			$id = $row['id'];
+			$name = $row['name'];
+			$html = new simple_html_dom();
+			$html->load_file($src);
+			$s = $html->find('p a[target]');
+			for($i=0;$i<count($s);$i++)
+			{
+				$url = $s[$i]->href;
+				$index = strpos($url,'?');
+				$url = substr($url,0,$index);
+				if(strpos($url,'.mp3')>0 and strpos($url,'ysong.org')>0)
+				{
+					echo($id."\t");
+					mysql_query('update song set mp3="'.$url.'" where id='.$id.';');					
+//					echo(iconv('UTF-8', 'GBK', $url)."\n");
+				}
+			}
+		}
+		die();
+	}
+	
 	{
 		//清空数据库
 //		mysql_query("delete from singer where id>0;");

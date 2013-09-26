@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-define("ACCESS_TOKEN", "fA08WBGor3lnhyh1QezI4oi8Q7QEiBjLEMRZ9ZptR18mFXZyxXeHq-aSvP264JXidj70Ni13QvS4q-kWYQDifTNZUYE3fTKiT6pCHZFyUcH3qEAaY1EHjPUFjb1_l0hZzFCgt4uzGoTKbH28iO4sWA");
+define("ACCESS_TOKEN", "Zz8ucN8_LMtXJdCSeip1krfrAHzaeO1hPTLXFw_yyUmB0iOR84Br0kTlSzY9cJQ-lAChrn-dpjHMxckRBOi-SoMJpjsyBc5A8ThhAVNVKr4hEwTTZPkyBMi2DbeAp2ojkLAO8EzKQv1aF9-ztQ8m-g");
 
 //创建菜单
 function createMenu($data){
