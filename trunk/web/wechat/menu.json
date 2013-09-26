@@ -5,19 +5,19 @@
 		"sub_button" : [
 		{
 			"type" : "click",
-			"name" : "中文快讯",
+			"name" : "普世教会",
 			"url" : "http://t.liyake.com/vaticanacn/",
 			"key" : "101"
 		},
 		{
-			"type" : "view",
-			"name" : "梵蒂冈电台",
-			"url" : "http://t.liyake.com/media/vaticanradiowebcast_cn.php"
+			"type" : "click",
+			"name" : "小助手推荐",
+			"key" : "102"
 		},
 		{
-			"type" : "click",
-			"name" : "美文推荐",
-			"key" : "102"
+			"type" : "view",
+			"name" : "代祷本",
+			"url" : "http://t.liyake.com/pray/index.php"
 		}]
 	},
 	{
@@ -30,19 +30,18 @@
 		},
 		{
 			"type" : "view",
-			"name" : "代祷本",
-			"url" : "http://t.liyake.com/pray/index.php"
-		}
-		]
+			"name" : "梵蒂冈广播",
+			"url" : "http://t.liyake.com/media/vaticanradiowebcast_cn.php"
+		},
+		{
+			"type" : "click",
+			"name" : "每日圣言",
+			"key" : "303"
+		}]
 	},
 	{
 		"name" : "更多...",
 		"sub_button" : [
-		{
-			"type" : "click",
-			"name" : "圣经金句",
-			"key" : "303"
-		},
 		{
 			"type" : "view",
 			"name" : "常用经文",
