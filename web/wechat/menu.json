@@ -53,6 +53,11 @@
 			"key" : "304"
 		},
 		{
+			"type" : "click",
+			"name" : "来一曲",
+			"key" : "305"
+		},
+		{
 			"type" : "view",
 			"name" : "关于我们",
 			"url" : "http://t.liyake.com/3rd/aboutus.html"

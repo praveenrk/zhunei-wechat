@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `alume` (
   `singer` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `src` (`src`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=981 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `singer` (
   `src` varchar(512) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `src` (`src`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=213 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -58,4 +58,4 @@ CREATE TABLE IF NOT EXISTS `song` (
   `singer` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `src` (`src`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15862 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
