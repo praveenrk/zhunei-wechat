@@ -29,7 +29,7 @@
 		}
 		else
 		{
-			fwrite($fp,'<html><head><title>'.$title.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../articles.css" type="text/css" rel="stylesheet"></head><body><div class="topic"><span class="current"><a href="/">首页</a> › <a href="../index.php">美文推荐</a> › <a href="../index.php?topic='.$topic.'">'.$topicName.'</a></span><h1 class="topic-title">'.$title.'</h1></div><div class="content">'.$content.'</div>');
+			fwrite($fp,'<html><head><title>'.$title.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../articles.css" type="text/css" rel="stylesheet"></head><body><div class="topic"><span class="current"><a href="/">首页</a> › <a href="../index.php">小助手推荐</a> › <a href="../index.php?topic='.$topic.'">'.$topicName.'</a></span><h1 class="topic-title">'.$title.'</h1></div><div class="content">'.$content.'</div>');
 			if(!empty($src))
 			{
 				fwrite($fp,'<br/><a class="src" href="'.$src.'">>>>原始文章</a>');
