@@ -15,9 +15,13 @@ body{
 	margin-bottom:10px;
 	font-size: 16px;
 	line-height: 18px;
+	width:200px;
 }
 
-.alume a{
+.alume span{
+	white-space:nowrap;             /* 设置一行显示 */
+	overflow:hidden;
+	text-overflow:ellipsis;
 	display: block;
 	color: rgb(48, 135, 253);
 	text-decoration:none;

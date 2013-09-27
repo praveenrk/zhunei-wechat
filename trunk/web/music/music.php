@@ -75,32 +75,30 @@
  ?>
 	</head>
 	<body>
-
+	<center>
 		<!-- The jPlayer div must not be hidden. Keep it at the root of the body element to avoid any such problems. -->
 		<div id="jquery_jplayer_1" class="cp-jplayer"></div>
-
-		<div class="prototype-wrapper"> <!-- A wrapper to emulate use in a webpage and center align -->
-			<!-- The container for the interface can go where you want to display it. Show and hide it as you need. -->
-			<div class="desc"><?php echo($name);?></div>
-			<div id="cp_container_1" class="cp-container">
-				<div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
-					<div class="cp-buffer-1"></div>
-					<div class="cp-buffer-2"></div>
-				</div>
-				<div class="cp-progress-holder"> <!-- .cp-gt50 only needed when progress is > than 50% -->
-					<div class="cp-progress-1"></div>
-					<div class="cp-progress-2"></div>
-				</div>
-				<div class="cp-circle-control"></div>
-				<ul class="cp-controls">
-					<li><a href="#" class="cp-play" tabindex="1">play</a></li>
-					<li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
-				</ul>
+		<!-- The container for the interface can go where you want to display it. Show and hide it as you need. -->
+		<div class="desc"><?php echo($name);?></div>
+		<div id="cp_container_1" class="cp-container">
+			<div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
+				<div class="cp-buffer-1"></div>
+				<div class="cp-buffer-2"></div>
 			</div>
+			<div class="cp-progress-holder"> <!-- .cp-gt50 only needed when progress is > than 50% -->
+				<div class="cp-progress-1"></div>
+				<div class="cp-progress-2"></div>
+			</div>
+			<div class="cp-circle-control"></div>
+			<ul class="cp-controls">
+				<li><a href="#" class="cp-play" tabindex="1">play</a></li>
+				<li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
+			</ul>
+		</div>
 <?php
 	echo('<div class="desc">歌手：<a href="singer.php?id='.$sid.'" class="alume">'.$singer.'</a></div>');
 	echo('<div class="desc">专辑：<a href="alume.php?id='.$aid.'" class="alume">'.$alume.'</a></div>');
-	echo('<div class="desc"><a href="'.$mp3.'" class="alume">下载歌曲</a></div>');
-	if(User::isAdmin()){echo('<a href="#" onclick="delMusic('.$id.')">删除</a>');}
-	echo('</div></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
+	echo('<div class="desc"><a href="'.$mp3.'" class="download">下载歌曲</a></div>');
+	if(User::isAdmin()){echo('<a style="display:block;clear:left;" href="#" onclick="delMusic('.$id.')">删除</a>');}
+	echo('</center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
 ?>

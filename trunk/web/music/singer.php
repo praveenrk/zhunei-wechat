@@ -49,7 +49,7 @@
 	{
 		if(empty($pic))
 			$pic = $row['pic'];
-		echo('<div class="alume"><a href="alume.php?id='.$row['id'].'">'.$row['name'].'</a><img src="'.$row['pic'].'"/></div>');
+		echo('<a href="alume.php?id='.$row['id'].'"><div class="alume"><span>'.$row['name'].'</span><img src="'.$row['pic'].'"/></div></a>');
 	}
 	if(User::isAdmin()){echo('<br/><br/><br/><a style="display:block;clear:left;" href="#" onclick="delSinger('.$id.')">删除</a>');}
 	echo('</center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/singer.php?id='.$id,$web_title,$pic).'</html>');
