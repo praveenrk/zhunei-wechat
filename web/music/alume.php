@@ -56,5 +56,5 @@
 		echo('<div class="song"><a href="music.php?id='.$row['id'].'">'.$row['name'].'</a></div>');
 	}
 	if(User::isAdmin()){echo('<a style="display:block;clear:left;" href="#" onclick="delAlume('.$id.')">删除</a>');}
-	echo('</center></body></html>');
+	echo('</center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/alume.php?id='.$id,$web_title,$pic).'</html>');
  ?>
