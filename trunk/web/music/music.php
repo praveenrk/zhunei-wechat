@@ -97,11 +97,10 @@
 					<li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li> <!-- Needs the inline style here, or jQuery.show() uses display:inline instead of display:block -->
 				</ul>
 			</div>
-			<?php
-				echo('<div class="desc">歌手：<a href="singer.php?id='.$sid.'" class="alume">'.$singer.'</a></div>');
-				echo('<div class="desc">专辑：<a href="alume.php?id='.$aid.'" class="alume">'.$alume.'</a></div>');
-				if(User::isAdmin()){echo('<a href="#" onclick="delMusic('.$id.')">删除</a>');}
-			?>
-		</div>
-	</body>
-</html>
+<?php
+	echo('<div class="desc">歌手：<a href="singer.php?id='.$sid.'" class="alume">'.$singer.'</a></div>');
+	echo('<div class="desc">专辑：<a href="alume.php?id='.$aid.'" class="alume">'.$alume.'</a></div>');
+	echo('<div class="desc"><a href="'.$mp3.'" class="alume">下载歌曲</a></div>');
+	if(User::isAdmin()){echo('<a href="#" onclick="delMusic('.$id.')">删除</a>');}
+	echo('</div></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
+?>

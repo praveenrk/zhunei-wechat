@@ -43,11 +43,14 @@
 	echo('</head><body><center>');
 	echo('<div class="singer"><h3>'.$name.'</h3></div><br/>');
 	
+	$pic = "";
 	$result = mysql_query('select * from alume where singer='.$id.';');
 	while($row = mysql_fetch_array($result))
 	{
+		if(empty($pic))
+			$pic = $row['pic'];
 		echo('<div class="alume"><a href="alume.php?id='.$row['id'].'">'.$row['name'].'</a><img src="'.$row['pic'].'"/></div>');
 	}
 	if(User::isAdmin()){echo('<br/><br/><br/><a style="display:block;clear:left;" href="#" onclick="delSinger('.$id.')">删除</a>');}
-	echo('</center></body></html>');
+	echo('</center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/singer.php?id='.$id,$web_title,$pic).'</html>');
  ?>
