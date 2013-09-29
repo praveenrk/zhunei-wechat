@@ -42,7 +42,7 @@
 	}
 	$web_title = $name.'——天主教小助手';
 	
-	echo('<html><head><title>'.$web_title.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="user-scalable=no, width=device-width" /><link rel="stylesheet" type="text/css" href="music.css"/><link rel="stylesheet" type="text/css" href="/js/jPlayer/skin/circle.skin/circle.player.css"/><script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/jquery.transform.js"></script><script type="text/javascript" src="/js/jPlayer/js/jquery.grab.js"></script><script type="text/javascript" src="/js/jPlayer/js/jquery.jplayer.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/mod.csstransforms.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/circle.player.js"></script><script type="text/javascript">
+	echo('<html><head><title>'.$web_title.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="user-scalable=no, width=device-width" /><link rel="stylesheet" type="text/css" href="music.css"/><link rel="stylesheet" type="text/css" href="/js/jPlayer/skin/circle.skin/circle.player.css"/><script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/jquery.grab.js"></script><script type="text/javascript" src="/js/jPlayer/js/jquery.jplayer.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/mod.csstransforms.min.js"></script><script type="text/javascript" src="/js/jPlayer/js/circle.player.js"></script><link rel="stylesheet" href="/js/jquery.mobile-1.3.2.min.css" /><script src="/js/jquery.mobile-1.3.2.min.js"></script><script type="text/javascript">
 		$(document).ready(function(){
 			var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
 			{
@@ -75,11 +75,11 @@
  ?>
 	</head>
 	<body>
-	<center>
+	<center><div data-role="page" id="page1">
 		<!-- The jPlayer div must not be hidden. Keep it at the root of the body element to avoid any such problems. -->
 		<div id="jquery_jplayer_1" class="cp-jplayer"></div>
 		<!-- The container for the interface can go where you want to display it. Show and hide it as you need. -->
-		<div class="desc"><?php echo($name);?></div>
+		<div data-theme="d" data-role="header"><h3><?php echo($web_title);?></h3></div>
 		<div id="cp_container_1" class="cp-container">
 			<div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
 				<div class="cp-buffer-1"></div>
@@ -98,7 +98,7 @@
 <?php
 	echo('<div class="desc">歌手：<a href="singer.php?id='.$sid.'" class="alume">'.$singer.'</a></div>');
 	echo('<div class="desc">专辑：<a href="alume.php?id='.$aid.'" class="alume">'.$alume.'</a></div>');
-	echo('<div class="desc"><a href="'.$mp3.'" class="download">下载歌曲</a></div>');
+	echo('<div class="desc"><a data-role="button" href="'.$mp3.'">下载歌曲</a></div><a data-role="button" href="#" onclick="javascript:window.location.href=\'music.php\';">下一首</a>');
 	if(User::isAdmin()){echo('<a style="display:block;clear:left;" href="#" onclick="delMusic('.$id.')">删除</a>');}
-	echo('</center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
+	echo('</div></center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
 ?>

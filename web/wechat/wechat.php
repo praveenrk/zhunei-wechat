@@ -5,19 +5,6 @@ require_once("../include/define.php");
 require_once("html2text.php");
 define("TOKEN", "wechat");
 
-function cn_urlencode($url){
-     $pregstr = "/[\x{4e00}-\x{9fa5}]+/u";//UTF-8中文正则
-    if(preg_match_all($pregstr,$url,$matchArray)){//匹配中文，返回数组
-        foreach($matchArray[0] as $key=>$val){
-            $url=str_replace($val, urlencode($val), $url);//将转译替换中文
-        }
-        if(strpos($url,' ')){//若存在空格
-            $url=str_replace(' ','%20',$url);
-        }
-    }
-    return $url;
-}
-
 $wechatObj = new wechatCallbackapiTest();
 if($wechatObj->checkSignature())
 {
@@ -212,7 +199,7 @@ class wechatCallbackapiTest
 			$result = mysql_query('select song.name as name,song.mp3 as mp3,alume.name as aname,alume.pic as pic,singer.name as sname from song,alume,singer where song.alume=alume.id and song.singer=singer.id and song.id='.$id.';');
 			if ($row = mysql_fetch_array($result))
 			{
-				$mp3 = cn_urlencode($row['mp3']);
+				$mp3 = $row['mp3'];
 				$name = $row['name'];
 				$singer = $row['sname'];
 				$alume = $row['aname'];
