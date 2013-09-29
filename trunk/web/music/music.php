@@ -98,7 +98,7 @@
 <?php
 	echo('<div class="desc">歌手：<a href="singer.php?id='.$sid.'" class="alume">'.$singer.'</a></div>');
 	echo('<div class="desc">专辑：<a href="alume.php?id='.$aid.'" class="alume">'.$alume.'</a></div>');
-	echo('<div class="desc"><a data-role="button" href="'.$mp3.'">下载歌曲</a></div><a data-role="button" href="#" onclick="javascript:window.location.href=\'music.php\';">下一首</a>');
+	echo('<div class="ui-grid-a"><div class="ui-block-a"><a data-role="button" href="'.$mp3.'">下载歌曲</a></div><div class="ui-block-b"><a data-role="button" href="#" onclick="javascript:window.location.href=\'music.php\';">下一首</a></div></div>');
 	if(User::isAdmin()){echo('<a style="display:block;clear:left;" href="#" onclick="delMusic('.$id.')">删除</a>');}
 	echo('</div></center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript(ROOT_WEB_URL.'music/music.php?id='.$id,$web_title,$pic).'</html>');
 ?>
