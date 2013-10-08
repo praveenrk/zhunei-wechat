@@ -7,7 +7,7 @@ header("Pragma: no-cache");
 header("Content-type: text/html; charset=utf-8");
 ?>
 <head>
-	<title>代祷本</title>
+	<title>代祷本——天主教小助手</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,4 +173,5 @@ function postText()
 }
 </script>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
+<?php require_once("../include/define.php"); echo(getWechatShareScript(ROOT_WEB_URL.'pray/index.php','代祷本——天主教小助手',ROOT_WEB_URL.'pray/icon.png'));?>
 </html>
