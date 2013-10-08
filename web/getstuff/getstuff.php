@@ -222,7 +222,7 @@
 			$link = ROOT_WEB_URL.'getstuff/stuff/'.$_GET["date"].'_'.$mode.'.html';
 			$content = convert_html_to_text($json[$mode]);
 			$title = str_replace(PHP_EOL, ' ', mb_substr($content,0,20,"UTF-8"));
-			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js">'.getWechatShareScript($link,$title,$imgurl).'</html>';
+			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript($link,$title,$imgurl).'</html>';
 		}
 		else
 		{
