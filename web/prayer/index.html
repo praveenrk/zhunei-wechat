@@ -10,6 +10,34 @@
 		<style type="text/css">
 		body{background-color:#e2e2e2;font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;}
 		h2{text-align:center;}
+		
+		.group{
+			-moz-border-radius:8px;
+			-webkit-border-radius:8px;
+			border-radius:8px;
+			background-color:#FFFFFF;
+			padding:9px 0px 9px 0px;
+			text-decoration:none;
+			display:inline-block;
+			width:100%;
+			margin-top:10px;
+		}
+		
+		.URLObj{
+			font-size:14px;
+			border-bottom:1px solid #B5B5B5;
+			padding:0px;
+			text-decoration:none;
+			display:block;
+			width:100%;
+			margin-top:-1px;
+		}
+
+		div:last-child
+		{
+			border-bottom:0px;
+		}
+		
 		.css_btn_class {
 			font-size:16px;
 			font-weight:bold;
@@ -17,18 +45,6 @@
 			color:#424242;
 			display:block;
 			padding:10px;
-			text-align:center;
-		}
-		
-		.URLObj{
-			font-size:14px;
-			border:1px solid #B5B5B5;
-			padding:0px;
-			text-decoration:none;
-			background-color:#FFFFFF;
-			display:block;
-			width:100%;
-			margin-top:-1px;
 		}
 		
 		.URLObj div{
@@ -71,6 +87,7 @@
 	</head>
 	<body>
 		<h2>天主教常用经文</h2>
+		<div class="group">
 		<div class="URLObj" id="dianshengshui">
 			<a href="#dianshengshui" class="css_btn_class" onclick="gettext(event)">点圣水经</a>
 		</div>
@@ -83,6 +100,9 @@
 		<div class="URLObj" id="shengmujing">
 			<a href="#shengmujing" class="css_btn_class" onclick="gettext(event)">圣母经</a>
 		</div>
+		</div>
+		
+		<div class="group">
 		<div class="URLObj" id="shengsanguangrongsong">
 			<a href="#shengsanguangrongsong" class="css_btn_class" onclick="gettext(event)">圣三光荣颂</a>
 		</div>
@@ -145,6 +165,7 @@
 		</div>
 		<div class="URLObj" id="kulujing">
 			<a href="#kulujing" class="css_btn_class" onclick="gettext(event)">苦路善工</a>
+		</div>
 		</div>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
