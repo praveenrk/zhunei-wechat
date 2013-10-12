@@ -102,7 +102,7 @@ xmlhttp.send("mode=del&id="+id);
 <?php
 	//先从数据库中获取
 //	mysql_query("delete from pray where createtime>(utc_timestamp()-3600);");
-	$result = mysql_query("select id,name,text,createtime from pray order by id desc limit 10;");
+	$result = mysql_query("select id,name,text,createtime from pray order by id desc limit 20;");
 	if(User::isLogin())
 	{
 		while ($row = mysql_fetch_array($result))
