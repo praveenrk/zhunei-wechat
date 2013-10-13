@@ -25,7 +25,7 @@ $ctypearr=array(
 </div>
 <?php foreach($ctypearr as $k=>$v){?>
 <div class="content">
-	<div ><h1><a href='list.php?ctype=<?=$k?>'><?=$v?></a></h1></div>
+	<div ><h1><a href='list.php?ctype=<?=$k?>'><?php echo $v; ?></a></h1></div>
 	<?php 
 	$lists = $db->select('*','faithlife'," ctype='$k' ",'0,5',' inputtime desc ');
 	if(is_array($lists))foreach($lists as $v){
