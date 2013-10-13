@@ -1,7 +1,7 @@
 {
 	"button" : [
 	{
-		"name" : "实时更新",
+		"name" : "教会动态",
 		"sub_button" : [
 		{
 			"type" : "click",
@@ -11,12 +11,18 @@
 		},
 		{
 			"type" : "click",
+			"name" : "信仰生活",
+			"url" : "http://t.liyake.com/faithlife/",
+			"key" : "103"
+		},
+		{
+			"type" : "click",
 			"name" : "小助手推荐",
 			"key" : "102"
 		},
 		{
 			"type" : "view",
-			"name" : "代祷本",
+			"name" : "彼此代祷",
 			"url" : "http://t.liyake.com/pray/index.php"
 		}]
 	},
@@ -34,9 +40,9 @@
 			"url" : "http://t.liyake.com/media/vaticanradiowebcast_cn.php"
 		},
 		{
-			"type" : "click",
-			"name" : "每日圣言",
-			"key" : "303"
+			"type" : "view",
+			"name" : "色辣芬电台",
+			"url" : "http://t.liyake.com/music/music.php"
 		}]
 	},
 	{
@@ -49,13 +55,8 @@
 		},
 		{
 			"type" : "click",
-			"name" : "各地教堂",
-			"key" : "304"
-		},
-		{
-			"type" : "click",
-			"name" : "来一曲",
-			"key" : "305"
+			"name" : "圣经金句",
+			"key" : "303"
 		},
 		{
 			"type" : "view",

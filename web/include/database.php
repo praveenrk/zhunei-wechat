@@ -3,9 +3,9 @@
 return array (
 	'default' => array (
 		'hostname' => 'localhost',
-		'database' => 'weixin',
-		'username' => 'root',
-		'password' => '',
+		'database' => 'liyake',
+		'username' => 'gospel',
+		'password' => 'gospel',
 		'tablepre' => '',
 		'charset' => 'utf-8',
 		'type' => 'mysql',

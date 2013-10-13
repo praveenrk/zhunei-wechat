@@ -127,13 +127,29 @@ class wechatCallbackapiTest
 		}
 		else if($key=='102')
 		{
-			//美文推荐
+			//小助手推荐
 			$result = mysql_query("select * from articles order by id desc limit 10;");
 			while ($row = mysql_fetch_array($result) and $ArtCount<10)
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
 				$picurl = "";
 				$url = ROOT_WEB_URL.'articles/articles/'.$row['id'].".html";
+				$title = $row['title'];
+				$desc = $row['title'];
+				
+				$Articles = $Articles.sprintf($textTpl,$title,$url,$desc, $picurl);
+				$ArtCount++;
+			}
+		}
+		else if($key=='103')
+		{
+			//信仰生活
+			$result = mysql_query("select * from faithlife order by id desc limit 10;");
+			while ($row = mysql_fetch_array($result) and $ArtCount<10)
+			{
+				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
+				$picurl = "";
+				$url = ROOT_WEB_URL.$row['nurl'];
 				$title = $row['title'];
 				$desc = $row['title'];
 				

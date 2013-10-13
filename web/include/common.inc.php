@@ -2,7 +2,7 @@
 //公共入口
 define('IN_WX', true);
 define('WX_PATH', substr(dirname(__FILE__), 0, -8).DIRECTORY_SEPARATOR);//网站真实路径
-define('SITE_URL','http://www.weixin.com/');//站点访问路径
+define('SITE_URL','http://t.liyake.com/');//站点访问路径
 
 define('ERRORLOG', false);
 define('GZIP', true);

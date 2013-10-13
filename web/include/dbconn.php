@@ -1,5 +1,5 @@
 <?php
-$conn = mysql_pconnect("localhost","liyake","me_lyk");
+$conn = mysql_pconnect("localhost","gospel","gospel");
 if(!$conn)
 {
 	$errorcode = 3;
