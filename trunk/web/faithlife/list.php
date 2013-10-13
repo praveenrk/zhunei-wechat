@@ -13,14 +13,14 @@ $ctype = isset($_GET['ctype']) ? intval($_GET['ctype']) : 1;
 
 $where = " ctype='$ctype' ";
 
-$pagesize=5;//每页条数
+$pagesize=10;//每页条数
 $offset = $pagesize*($page-1);
 $limit = "$offset,$pagesize";
 
 $allnum = $db->get_one( "COUNT(*) AS num",'faithlife',$where);//总条数
 $pages = ceil($allnum['num'] / $pagesize);//总页数
 
-$lists = $db->select('*','faithlife',$where,$limit);
+$lists = $db->select('*','faithlife',$where,$limit,' inputtime desc ');
 ?>
 <html>
 <head>
