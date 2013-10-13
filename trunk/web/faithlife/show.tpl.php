@@ -7,11 +7,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
-<link href="./articles.css" type="text/css" rel="stylesheet">
+<link href="<?=SITE_URL?>faithlife/articles.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="topic">
-<span class="current"><a href="/">首页</a> › <a href="index.php">信仰生活</a> › <a href="index.php?topic=<?=$k?>"><?=$ctypearr[$k]?></a></span>
+<span class="current"><a href="<?=SITE_URL?>">首页</a> › <a href="<?=SITE_URL?>faithlife/index.php">信仰生活</a> › <a href="index.php?topic=<?=$k?>"><?=$ctypearr[$k]?></a></span>
 <h1 class="topic-title"><?=$v['title']?></h1>
 </div>
 <div class="content"><?=$cinfo['content']?></div>
