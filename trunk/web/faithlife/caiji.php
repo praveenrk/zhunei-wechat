@@ -38,7 +38,7 @@ function get_content($url){
 	$html =explode('div class="content">',$html[1]);
 	//print_r($html[1]);exit;
 	if(is_array($html)) $html = explode('<div class="bk10"></div>', $html[1]);
-	$data['content']=$html[0];
+	$data['content']=preg_replace('#(<img[^>]*?)\s+(?i)style\s*=\s*(?:\'[^\']*\'|"[^"]*"|\S+)([^<]*?>)#',"$1$2",$html[0]);
 	//print_r($html[0]);exit;
 	return $data;
 }
@@ -71,8 +71,7 @@ foreach($urls as $k=>$url_list){
 				$addinfo = new_addslashes($addinfo);
 
 				$db->insert($addinfo,'faithlife');
-					
-
+				echo('new '.$file.'</br>');
 			}
 		}
 	}
