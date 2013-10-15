@@ -1,6 +1,8 @@
 <?php
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
+	require_once("../include/wbto.php");
+	
 	session_start();
 	/*
 	错误码定义
@@ -57,4 +59,6 @@
 		$error = "添加祈祷意向失败，请稍后重试...";
 		gotoend();
 	}
+	//send to wbto
+	send_to_wbto('#彼此代祷# '.$name.'：'.$text);
 ?>
