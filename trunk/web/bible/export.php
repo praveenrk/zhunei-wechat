@@ -36,7 +36,7 @@ $body = $doc->documentElement->getElementsByTagName('body')->item(0);
 $fc = null;
 $ft = null;
 $fa = fopen('bible/index.html',"w");
-fwrite($fa,'<head><title>思高版圣经——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../bible.css" type="text/css" rel="stylesheet"></head><body><h2>思高版圣经</h2>');
+fwrite($fa,'<head><title>思高版圣经——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../bible.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body><h2>思高版圣经</h2>');
 $t1content='';
 $t2content='';
 foreach ($body->childNodes AS $item)
@@ -59,7 +59,7 @@ foreach ($body->childNodes AS $item)
 			fclose($ft);
 		}
 		$ft = fopen($tpath.'/index.html',"w");
-		fwrite($ft,'<head><title>'.$t1content.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../template.css" type="text/css" rel="stylesheet"></head><body>');
+		fwrite($ft,'<head><title>'.$t1content.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../template.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body>');
 		fwrite($ft,'<h2>'.$t1content.'</h2><div class="group">');
 		fwrite($fa,'<div class="url"><a href="../'.$tpath.'/index.html" class="btn">'.$t1content.'</a></div>');
 	}
@@ -87,7 +87,7 @@ foreach ($body->childNodes AS $item)
 			fclose($fc);
 		}
 		$fc = fopen($tpath.'/'.sprintf("%03d.html",$c),"w");
-		fwrite($fc,'<head><title>'.$t1content.' '.$item->textContent.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../chapter.css" type="text/css" rel="stylesheet"></head><body>');
+		fwrite($fc,'<head><title>'.$t1content.' '.$item->textContent.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../chapter.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body>');
 		fwrite($fc,'<h2>'.$t2content.'</h2>');
 		$t2content='';
 		fwrite($ft,'<div class="url"><a href="'.sprintf("%03d.html",$c).'" class="btn">'.$item->textContent.'</a></div>');
