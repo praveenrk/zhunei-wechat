@@ -54,6 +54,11 @@
 			"url" : "http://t.liyake.com/prayer/index.html"
 		},
 		{
+			"type" : "view",
+			"name" : "思高圣经",
+			"url" : "http://wechat.cathassist.org/bible/bible/"
+		},
+		{
 			"type" : "click",
 			"name" : "圣经金句",
 			"key" : "303"
