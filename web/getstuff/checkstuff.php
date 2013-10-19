@@ -16,9 +16,26 @@
 	do
 	{
 		$datestr = gmdate("Y-m-d",time()+3600*8+$index*3600*24);
+		
+		$stuffstr = 'stuff/'.$datestr.'.html';
+		$fs=null;
+		if(!file_exists($stuffstr))
+		{
+			$fs = fopen($stuffstr,"w");
+			if(!$fs)
+			{
+				echo "System Error";
+				die();
+			}
+			fwrite($fs,'<head><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link rel="stylesheet" type="text/css" href="../stuff.css" /><title>日课及读经('.$datestr.')</title></head><body><h2>日课及读经('.$datestr.')</h2><div class="group">');
+		}
 		foreach ($modemap as $key => $value)
 		{
 			$filestr = 'stuff/'.$datestr.'_'.$value.'.html';
+			if($fs!=null)
+			{
+				fwrite($fs,'<div class="url"><a href="'.ROOT_WEB_URL.'getstuff/'.$filestr.'" class="btn">'.$key.'</a></div>');
+			}
 			if(!file_exists($filestr))
 			{
 				$fp = fopen($filestr,"w");
@@ -36,6 +53,11 @@
 					echo("generate file '".$filestr."'<br/>");
 				}
 			}
+		}
+		if($fs!=null)
+		{
+			fwrite($fs,'</div></body>');
+			fclose($fs);
 		}
 		
 		$index++;
