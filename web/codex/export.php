@@ -42,7 +42,7 @@ if(is_null($table))
 
 
 $fa = fopen('content/index.html',"w");
-fwrite($fa,'<head><title>天主教教理——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../catechism.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body><h2>天主教教理</h2>');
+fwrite($fa,'<head><title>天主教法典——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../catechism.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body><h2>天主教法典</h2>');
 
 $c = 0;
 $trInTable = $table->getElementsByTagName('tr');
