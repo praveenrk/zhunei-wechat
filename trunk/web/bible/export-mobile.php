@@ -32,6 +32,7 @@ $doc->loadHTML($meta.$contents);
 $t1=0;
 $c=0;
 $tpath="";
+$lastcpath="";
 $body = $doc->documentElement->getElementsByTagName('body')->item(0);
 $fc = null;
 $ft = null;
@@ -46,6 +47,10 @@ foreach ($body->childNodes AS $item)
 	$class = $item->getAttribute('class');
 	if($class=='t1')
 	{
+		if($lastcpath!="")
+		{
+			$lastcpath='../'.sprintf("%03d",$t1).'/'.sprintf("%03d.html",$c-1);
+		}
 		$t1++;
 		$tpath='mobile/'.sprintf("%03d",$t1);
 		mkdir($tpath);
@@ -80,10 +85,14 @@ foreach ($body->childNodes AS $item)
 	}
 	else if($class=='c')
 	{
+		if($c>1)
+		{
+			$lastcpath='../'.sprintf("%03d",$t1).'/'.sprintf("%03d.html",$c-1);
+		}
 		$c++;
 		if($fc)
 		{
-			fwrite($fc,'</body>');
+			fwrite($fc,'<div class="navp"><div class="nav"><a href="'.$lastcpath.'" class="btn">上一章</a></div><div class="nav"><a href="index.html" class="btn">返回</a></div><div class="nav"><a href="../'.sprintf("%03d",$t1).'/'.sprintf("%03d.html",$c).'" class="btn">下一章</a></div></div></body>');
 			fclose($fc);
 		}
 		$fc = fopen($tpath.'/'.sprintf("%03d.html",$c),"w");
@@ -105,8 +114,8 @@ foreach ($body->childNodes AS $item)
 		fwrite($fc,$doc->saveHTML($item));
 	}
 }
-fwrite($fc,'</body>');
-fwrite($ft,'</body>');
+fwrite($fc,'<div class="navp"><div class="nav"><a href="'.'../'.sprintf("%03d",$t1).'/'.sprintf("%03d.html",$c-1).'" class="btn">上一章</a></div><div class="nav"><a href="index.html" class="btn">返回</a></div><div class="nav"><a href="" class="btn">下一章</a></div></div></body>');
+fwrite($ft,'</div></body>');
 fwrite($fa,'</body>');
 fclose($fc);
 fclose($ft);

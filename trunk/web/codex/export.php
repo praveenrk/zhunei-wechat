@@ -62,7 +62,19 @@ foreach ($trInTable as $tr)
 	fwrite($fs,'<head><title>'.$title->textContent.'——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../article.css" type="text/css" rel="stylesheet"></head><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><body><h2>'.$title->textContent.'</h2>');
 	echo('<a href="content/'.$lstr.'">'.$title->textContent.'</a>'.$href.'<br/>');
 	fwrite($fa,'<div class="url"><a href="'.$lstr.'" class="btn">'.$title->textContent.'</a></div>');
-	fwrite($fs,'<div class="aritle"><p>'.$art.'</p></div></body>');
+	
+	if($c==1)
+	{
+		fwrite($fs,'<div class="aritle"><p>'.$art.'</p></div><div class="navp"><div class="nav"><a href="" class="btn">上一章</a></div><div class="nav"><a href="index.html" class="btn">返回主目录</a></div><div class="nav"><a href="'.sprintf("%02d",$c+1).'.html" class="btn">下一章</a></div></div></body>');
+	}
+	else if($c==43)
+	{
+		fwrite($fs,'<div class="aritle"><p>'.$art.'</p></div><div class="navp"><div class="nav"><a href="'.sprintf("%02d",$c-1).'.html" class="btn">上一章</a></div><div class="nav"><a href="index.html" class="btn">返回主目录</a></div><div class="nav"><a href="" class="btn">下一章</a></div></div></body>');
+	}
+	else
+	{
+		fwrite($fs,'<div class="aritle"><p>'.$art.'</p></div><div class="navp"><div class="nav"><a href="'.sprintf("%02d",$c-1).'.html" class="btn">上一章</a></div><div class="nav"><a href="index.html" class="btn">返回</a></div><div class="nav"><a href="'.sprintf("%02d",$c+1).'.html" class="btn">下一章</a></div></div></body>');
+	}
 	fclose($fs);
 }
 
