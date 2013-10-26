@@ -60,5 +60,5 @@
 		gotoend();
 	}
 	//send to wbto
-	send_to_wbto('#彼此代祷# '.$name.'：'.$text);
+	add2weibolist('#彼此代祷# '.$name.'：'.$text);
 ?>
