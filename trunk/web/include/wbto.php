@@ -23,18 +23,22 @@ function send2wbto($content)
 	curl_close($ch);  
 }
 
-function add2weibolist($content)
+function add2weibolist($content,$t=0)
 {
-	mysql_query('insert into weibolist(text) values ("'.mysql_real_escape_string($content).'");');
+	if($t==0)
+	{
+		$t = time()+3600*8;
+	}
+	mysql_query('insert into weibolist(text,time) values ("'.mysql_real_escape_string($content).'","'.gmdate("Y-m-d H:i:s",$t).'");');
 }
 
 function check2updateweibo()
 {
-	$result = mysql_query('select id,text from weibolist order by id desc limit 1;');
+	$result = mysql_query('select id,text,time from weibolist where time<"'.gmdate("Y-m-d H:i:s",time()+3600*8).'";');
 	while ($row = mysql_fetch_array($result))
 	{
 		send2wbto($row['text']);
-		echo('send to wbto "'.$row['text'].'"');
+		echo('send to wbto "'.$row['text'].'"'.'&nbsp;&nbsp;time:'.$row['time']);
 		mysql_query('delete from weibolist where id='.$row['id'].';');
 	}
 }
