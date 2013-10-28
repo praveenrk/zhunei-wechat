@@ -88,7 +88,20 @@ class wechatCallbackapiTest
 		$toUsername = $postObj->ToUserName;
 		$time = time();
 		if($desc=='')
-			$desc = "感谢你的关注，我们正在努力完善『天主教小助手』，后续会为你带来更多的好功能！耶稣爱你！ ^_^";
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[『天主教小助手』使用说明]]></Title><Url><![CDATA[http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000016&itemidx=1&sign=b25680fc633a2f41bb42bc5d38c09f9f#wechat_redirect]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[http://t.liyake.com/wechat/pics/logo_l.png]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			return sprintf($textTpl, $fromUsername, $toUsername, $time, "嗨，亲爱的兄弟姐妹，我是 [天主教小助手] ，是微信平台上的一个[服务号]，是由一群热爱教会的青年人所创建，为大家提供事时更新的教会资讯、美文推荐、每日日课、圣经朗读……希望大家在这个自助式的[天主教小助手]中找到心灵所需。");
+		}
 		$textTpl = '<xml>
 			<ToUserName><![CDATA[%s]]></ToUserName>
 			<FromUserName><![CDATA[%s]]></FromUserName>
