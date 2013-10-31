@@ -1,10 +1,10 @@
 <?php
-$conn = mysql_pconnect("localhost","gospel","gospel");
+$conn = mysql_pconnect("localhost","cathassist","cathassist");
 if(!$conn)
 {
 	$errorcode = 3;
 	die("connect db error!");
 }
 
-mysql_select_db("liyake",$conn);
+mysql_select_db("cathassist",$conn);
 ?>

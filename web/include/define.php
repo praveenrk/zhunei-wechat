@@ -1,5 +1,5 @@
 <?php
-define("ROOT_WEB_URL", "http://t.liyake.com/");
+define("ROOT_WEB_URL", "http://www.cathassist.org/");
 
 function getWechatShareScript($link,$title,$imgurl)
 {
