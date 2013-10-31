@@ -261,7 +261,7 @@
 		$errorcode = 1;
 		error();
 	}
-	$date = new DateTime($_GET["date"]);
+	$date = DateTime::createFromFormat('Y-m-d',$_GET["date"]);
 	if(date('Y-m-d',strtotime($_GET["date"]))!=$_GET["date"])
 	{
 		$errorcode = 1;
