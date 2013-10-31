@@ -2,7 +2,7 @@
 	$nowtime = time()-(time()%(3600*24));
 	$updateStr = date(DATE_ATOM,$nowtime);
 	echo('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
-	echo('<url><loc>http://api.liyake.com/</loc><lastmod>'.$updateStr.'</lastmod><changefreq>always</changefreq><priority>1.0</priority><data><display></display></data></url>');
+	echo('<url><loc>http://www.cathassist.org/</loc><lastmod>'.$updateStr.'</lastmod><changefreq>always</changefreq><priority>1.0</priority><data><display></display></data></url>');
 	$modemap = array (
 		'弥撒及读经' => 'mass',
 		'日祷' => 'med',
@@ -20,12 +20,12 @@
 		$datestr = gmdate("Y-m-d",time()+3600*8+$index*3600*24);
 		foreach ($modemap as $key => $value)
 		{
-			echo('<url><loc>http://api.liyake.com/getstuff/stuff/'.$datestr.'_'.$value.'.html</loc><lastmod>'.$updateStr.'</lastmod><changefreq>monthly</changefreq><priority>0.6</priority><data><display></display></data></url>');
+			echo('<url><loc>http://www.cathassist.org/getstuff/stuff/'.$datestr.'_'.$value.'.html</loc><lastmod>'.$updateStr.'</lastmod><changefreq>monthly</changefreq><priority>0.6</priority><data><display></display></data></url>');
 		}
 		
 		$index++;
 	}
 	while($index<3);
-	echo('<url><loc>http://api.liyake.com/pray/index.php</loc><lastmod>'.$updateStr.'</lastmod><changefreq>always</changefreq><priority>0.8</priority><data><display></display></data></url>');
+	echo('<url><loc>http://www.cathassist.org/pray/index.php</loc><lastmod>'.$updateStr.'</lastmod><changefreq>always</changefreq><priority>0.8</priority><data><display></display></data></url>');
 	echo("</urlset>");
 ?>

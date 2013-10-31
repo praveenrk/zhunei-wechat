@@ -3,9 +3,9 @@
 return array (
 	'default' => array (
 		'hostname' => 'localhost',
-		'database' => 'liyake',
-		'username' => 'gospel',
-		'password' => 'gospel',
+		'database' => 'cathassist',
+		'username' => 'cathassist',
+		'password' => 'cathassist',
 		'tablepre' => '',
 		'charset' => 'utf-8',
 		'type' => 'mysql',

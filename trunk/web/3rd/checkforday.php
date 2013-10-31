@@ -4,7 +4,7 @@
 	require_once("../wechat/html2text.php");
 	
 	echo('<h1>获取每日弥撒、日课</h1>');
-	echo(file_get_contents('http://t.liyake.com/getstuff/checkstuff.php'));
+	echo(file_get_contents(ROOT_WEB_URL.'getstuff/checkstuff.php'));
 	
 	{
 		$dtstr = gmdate("Y-m-d",time()+3600*8);

@@ -96,7 +96,7 @@ class wechatCallbackapiTest
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>1</ArticleCount>
 				<Articles>
-				<item><Title><![CDATA[『天主教小助手』使用说明]]></Title><Url><![CDATA[http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000016&itemidx=1&sign=b25680fc633a2f41bb42bc5d38c09f9f#wechat_redirect]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[http://t.liyake.com/wechat/pics/logo_l.png]]></PicUrl></item>
+				<item><Title><![CDATA[『天主教小助手』使用说明]]></Title><Url><![CDATA[http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000016&itemidx=1&sign=b25680fc633a2f41bb42bc5d38c09f9f#wechat_redirect]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo_l.png]]></PicUrl></item>
 				</Articles>
 				<FuncFlag>1</FuncFlag>
 				</xml>';
