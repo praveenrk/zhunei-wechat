@@ -3,6 +3,7 @@
 		<title>天主教小助手微信公众首页</title>
 		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
+		<link href="/css/index.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
 		<center>
@@ -44,27 +45,20 @@
 					echo('<a href="/getstuff/stuff/'.$datestr.'_'.$value.'.html">'.$key.'</a></br>');
 				}
 			?>
-			<br/><br/><br/>
-			<h1>梵蒂冈中文电台每日快讯</h1>
-			<h2>中文广播</h2>
-			<div align="center" id="mydiv">
-				<audio id="audio" src="http://media01.vatiradio.va/podcast/feed/cinese_<?php echo(gmdate("dmy",time()+3600*8));?>.mp3" controls></audio>
-			</div>
-			</br>
-			<h3>english news</h3>
-			<div align="center" id="mydiv2">
-				<audio id="audioen" src="http://www.vaticanradio-us.org/webcasting/rg_inglese_2_1.mp3" controls></audio>
-			</div>
 			<br/><br/>
 			<h1>天主教小助手小工具</h1>
+			<h2><a href="/bible/bible/" alt="思高版圣经（MP3音频）">思高版圣经（MP3音频）</a></h2>
+			<h2><a href="/media/vaticanradio.html" alt="梵蒂冈广播电台">梵蒂冈广播电台</a></h2>
 			<h2><a href="/pray/index.php" alt="天主教小助手代祷本">代祷本</a></h2>
 			<h2><a href="/vaticanacn/index.php" alt="梵蒂冈中文快讯">梵蒂冈中文快讯</a></h2>
 			<h2><a href="/faithlife/index.php" alt="信仰生活（来源信德网）">信仰生活（来源信德网）</a></h2>
 			<h2><a href="/articles/index.php" alt="主内分享">主内分享（小助手推荐）</a></h2>
+			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
 			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>iGospel</b>)，也可以在微信中搜索<b>天主教小助手</b>进行关注</p>
 			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
+			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/">信德网</a><a href="http://www.chinacath.org/">天主教在线</a><a href="http://apps.thomasluk.idv.hk/">礼仪小百科</a></div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
