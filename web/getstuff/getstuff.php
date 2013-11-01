@@ -194,7 +194,8 @@
 			$json = json_decode($ret,true);
 			$content = convert_html_to_text($json[$mode]);
 			$title = str_replace(PHP_EOL, ' ', mb_substr($content,0,20,"UTF-8"));
-			echo'<head><meta name="viewport" content="user-scalable=no, width=device-width"/><meta http-equiv=Content-Type content="text/html;charset=utf-8"><title>'.$title.'</title></head><html><body>';
+			echo'<head><meta name="viewport" content="user-scalable=no, width=device-width"/><meta http-equiv=Content-Type content="text/html;charset=utf-8"><title>'.$title.'</title>
+		<link href="/css/stuff.css" type="text/css" rel="stylesheet"></head><html><body>';
 			if($mode=="lod")
 			{
 				$lod_all = $json[$mode];
