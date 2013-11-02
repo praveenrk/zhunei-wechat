@@ -364,7 +364,7 @@ class wechatCallbackapiTest
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>1</ArticleCount>
 				<Articles>
-				<item><Title><![CDATA[梵蒂冈中文电台每日快讯]]></Title><Url><![CDATA['.ROOT_WEB_URL.'media/vaticanradiowebcast_cn.php]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/radiovatican.png]]></PicUrl></item>
+				<item><Title><![CDATA[梵蒂冈中文电台每日快讯]]></Title><Url><![CDATA['.ROOT_WEB_URL.'media/vaticanradio.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/radiovatican.png]]></PicUrl></item>
 				</Articles>
 				<FuncFlag>1</FuncFlag>
 				</xml>';
