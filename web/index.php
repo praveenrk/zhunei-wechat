@@ -53,12 +53,13 @@
 			<h2><a href="/vaticanacn/index.php" alt="梵蒂冈中文快讯">梵蒂冈中文快讯</a></h2>
 			<h2><a href="/faithlife/index.php" alt="信仰生活（来源信德网）">信仰生活（来源信德网）</a></h2>
 			<h2><a href="/articles/index.php" alt="主内分享">主内分享（小助手推荐）</a></h2>
+			<h2><a href="/music/music.php" alt="教会歌曲">随机听歌（放松一下）</a></h2>
 			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
 			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>iGospel</b>)，也可以在微信中搜索<b>天主教小助手</b>进行关注</p>
 			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
-			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/">信德网</a><a href="http://www.chinacath.org/">天主教在线</a><a href="http://apps.thomasluk.idv.hk/">礼仪小百科</a><a href="http://www.ntmdzx.com/">北京南堂慕道中心</a></div>
+			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/">信德网</a><a href="http://www.chinacath.org/">天主教在线</a><a href="http://apps.thomasluk.idv.hk/">礼仪小百科</a><a href="http://www.ntmdzx.com/">北京南堂慕道中心</a><a href="http://blog.sina.com.cn/along999">光与爱之家（博客）</a></div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
