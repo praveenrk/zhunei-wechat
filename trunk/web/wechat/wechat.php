@@ -396,7 +396,7 @@ class wechatCallbackapiTest
 				<MsgType><![CDATA[news]]></MsgType>
 				<ArticleCount>1</ArticleCount>
 				<Articles>
-				<item><Title><![CDATA[推荐给好友]]></Title><Url><![CDATA['.ROOT_WEB_URL.'wechat/help.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo.jpg]]></PicUrl></item>
+				<item><Title><![CDATA[推荐给好友]]></Title><Url><![CDATA[http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000019&itemidx=1&sign=7e7dfc456c0bf08bf424ad1eb7ddf61c#wechat_redirect]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/logo.jpg]]></PicUrl></item>
 				</Articles>
 				<FuncFlag>1</FuncFlag>
 				</xml>';
