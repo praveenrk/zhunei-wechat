@@ -146,6 +146,10 @@ class wechatCallbackapiTest
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
 				$picurl = "";
+				if($ArtCount==0)
+				{
+					$picurl = "http://cathassist.org/logo_l.jpg";
+				}
 				$url = ROOT_WEB_URL.'articles/articles/'.$row['id'].".html";
 				$title = $row['title'];
 				$desc = $row['title'];
@@ -162,6 +166,10 @@ class wechatCallbackapiTest
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
 				$picurl = "";
+				if($ArtCount==0)
+				{
+					$picurl = "http://cathassist.org/logo_l.jpg";
+				}
 				$url = ROOT_WEB_URL.$row['nurl'];
 				$title = $row['title'];
 				$desc = $row['title'];
