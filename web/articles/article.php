@@ -34,7 +34,7 @@
 			{
 				fwrite($fp,'<br/><a class="src" href="'.$src.'">>>>原始文章</a>');
 			}
-			fwrite($fp,'</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript($link,$title,"").'</html>');
+			fwrite($fp,'</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript($link,$title,"http://cathassist.org/logo.jpg").'</html>');
 		}
 		fclose($fp);
 		return true;
