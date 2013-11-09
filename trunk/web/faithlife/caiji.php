@@ -7,6 +7,7 @@ $urls=array(
 	'2'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=27',//福音传播
 	'3'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=33',//信德文萃
 	'4'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=39',//礼仪生活
+	'5'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=44',//礼仪生活
 );
 $cjconfig=array('sourcecharset'=>'utf-8','sourcetype'=>4);
 $ctypearr=array(
@@ -14,6 +15,7 @@ $ctypearr=array(
 '2'=>'福音传播',
 '3'=>'信德文萃',
 '4'=>'礼仪生活',
+'5'=>'网友分享',
 );
 
 function get_content($url){
@@ -51,7 +53,12 @@ foreach($urls as $k=>$url_list){
 	//var_dump($url );exit;
 	if (is_array($url) && !empty($url)){
 		foreach ($url as $v) {
-			if (empty($v['url']) || empty($v['title'])) continue;
+			//if (empty($v['url']) || empty($v['title']) || (strpos($v['url'],'www.chinacatholic.org')<1)) continue;
+			if (empty($v['url']) || empty($v['title']) || (strpos($v['url'],'www.chinacatholic.org')<1))
+			{
+				echo('<b>invalid url:'.$v['url'].'</b><br/>');
+				continue;
+			}
 			//$v = new_addslashes($v);
 			$v['title'] = strip_tags($v['title']);
 			$md5 = md5($v['url']);
