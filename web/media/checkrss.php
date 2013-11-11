@@ -1,6 +1,6 @@
 <?php
 	require_once("../include/define.php");
-	function getAudio($rss,&$link)
+	function getAudio($rss,&$link,$abstime=0)
 	{
 		$rsscontent = file_get_contents($rss);
 		$rss = simplexml_load_string($rsscontent);
@@ -10,7 +10,7 @@
 			$item = $channel->item[0];
 			$enclosure = $item->enclosure;
 			$link = $enclosure['url'];
-			return date("Y-m-d", strtotime($item->pubDate));
+			return date("Y-m-d", strtotime($item->pubDate)+$abstime);
 		}
 	}
 	
@@ -22,9 +22,11 @@
 	$enetitle = "English News(evening)";
 	$cnmass = "http://media.vaticanradiowebcast.org/mp3_od/messa_cinese_1.mp3";
 	$cnmasstitle = "主日弥撒";
+	$cndaystr = "";
 	
 	{
-		$cndaytitle = '中文广播('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese",$cnday).')';
+		$cndaystr = getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese",$cnday,3600*24);
+		$cndaytitle = '中文广播('.$cndaystr.')';
 		$enmtitle = 'English News('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=rg_inglese_1",$enmorning).' morning)';
 		$enetitle = 'English News('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=rg_inglese_2",$enevening).' evening)';
 		$cnmasstitle = '主日弥撒('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=messa_cinese",$cnmass).')';
@@ -42,5 +44,16 @@
 	fwrite($fp,getWechatShareScript(ROOT_WEB_URL.'media/vaticanradiowebcast_cn.html','梵蒂冈广播电台',ROOT_WEB_URL.'media/icon.jpg'));
 	fwrite($fp,'</html>');
 	fclose($fp);
+	
+	$fpv = fopen("../wechat/vaticanradio.xml","w");
+	fwrite($fpv,'<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[music]]></MsgType>
+		 <Music>
+		 <Title><![CDATA[梵蒂冈中文广播]]></Title>
+		 <Description><![CDATA['.$cndaystr.']]></Description>
+		 <MusicUrl><![CDATA['.$cnday.']]></MusicUrl>
+		 <HQMusicUrl><![CDATA['.$cnday.']]></HQMusicUrl>
+		 </Music>
+		 </xml>');
+	fclose($fpv);
 	echo("check vaticanradio(".date("Y-m-d",time()).")");
 ?>

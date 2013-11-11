@@ -365,18 +365,8 @@ class wechatCallbackapiTest
 		}
 		else if($keyword=="11")
 		{
-			$textTpl = '<xml>
-				<ToUserName><![CDATA[%s]]></ToUserName>
-				<FromUserName><![CDATA[%s]]></FromUserName>
-				<CreateTime>%s</CreateTime>
-				<MsgType><![CDATA[news]]></MsgType>
-				<ArticleCount>1</ArticleCount>
-				<Articles>
-				<item><Title><![CDATA[梵蒂冈中文电台每日快讯]]></Title><Url><![CDATA['.ROOT_WEB_URL.'media/vaticanradio.html]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'wechat/pics/radiovatican.png]]></PicUrl></item>
-				</Articles>
-				<FuncFlag>1</FuncFlag>
-				</xml>';
-			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "点此可进入收听页面\n温馨提示：播放音频会损耗较多流量");
+			$textTpl = file_get_contents("vaticanradio.xml");
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time);
 			return $resultStr;
 		}
 		else if($keyword=="12")
