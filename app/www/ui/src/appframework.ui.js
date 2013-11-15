@@ -100,27 +100,7 @@
         }, false);
 
         function setupCustomTheme() {
-
-            if (that.useOSThemes) {
-                if ($.os.android) $("#afui").addClass("android");
-                else if ($.os.ie) {
-                    $("#afui").addClass("win8");
-                    $("head").append($.create("script", {
-                        src: "plugins/af.8tiles.js"
-                    }));
-                } else if ($.os.blackberry||$.os.blackberry10||$.os.playbook) {
-                    $("#afui").addClass("bb");
-                    that.backButtonText = "Back";                
-                } else if ($.os.ios7)
-                    $("#afui").addClass("ios7");
-                else if ($.os.ios)
-                    $("#afui").addClass("ios");
-            }
-            if($.os.ios){
-                $("head").find("#iosBlurrHack").remove();
-                $("head").append("<style id='iosBlurrHack'>#afui .panel > * {-webkit-backface-visibility: hidden;-webkit-perspective: 1000;}</style>");
-            }
-            
+            $("#afui").addClass("ios7");
         }
     };
 
