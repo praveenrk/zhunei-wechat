@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/icons.css" />
 	<link rel="stylesheet" type="text/css" href="./css/afui.custom.css"/>
 	<script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./af.mvc.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>
@@ -27,10 +28,12 @@
 	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./app.js"></script>
 	<script>
 		var webRoot = "/app/";
 		$.ui.autoLaunch = false;
 		$.ui.openLinksNewTab = false;
+		$.ui.useInteralRouting = false;
 		
 		if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
 			var script = document.createElement("script");
@@ -42,32 +45,6 @@
 		$(document).ready(function(){
 			$.ui.launch();
 		});
-		
-		function loadPage(r,i)
-		{
-			$.ajax({
-				type:"GET",
-				url:webRoot+r,
-				success:function(data){
-					$('#home div').empty();
-					var c = $('#home div')[0];
-					var d = document.createElement("div");
-					d.id = i;
-					d.innerHTML = data;
-					c.appendChild(d);
-				}
-			})
-		}
-		
-		function clickMenu(ev)
-		{
-			var ev = ev || window.event;
-			var e = ev.srcElement || ev.target;
-			var i= e.href.substring(e.href.lastIndexOf("#")+1);
-			var s = i.replace("_","/");
-			s = s.replace("-",".");
-			loadPage(s,i);
-		}
 	</script>
 </head>
 <body>
@@ -76,17 +53,29 @@
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
 	</div>
 	<div id="content">
-		<div title='天主教小助手' id="home" class="panel" selected="true" data-footer='none'>
-		<h1>Hello World!!!</h1>
-		</div>
+		    <div title='天主教小助手' id="create-todo" class="panel" selected="true" data-footer='none'>
+            <div style="overflow:hidden;">
+                <a href="/todo/save"  id="saveButton" style="width: 50%;float: left;height: 50px;" >Save</a>
+                <input type="button" id="cancelButton" style="width: 50%;float: left;height: 50px;" value="Cancel" />
+            </div>
+
+            <div id='leftTodo'></div>
+
+            <div id='completedTodo'></div>
+
+        </div>
+
+        <div title='Archived' id="archived" class="panel">
+            <div id='archivedTodo'></div>
+        </div>
 	</div>
 	<nav>
 		<ul class="list">
 			<li><a href="javascript:loadPage('main/index.html')">首页</a></li>
 			<li class="divider">教会动态</li>
-			<li><a href="#main_index-html" onclick="clickMenu(event)">普世教会</a></li>
+			<li><a href="/articles/vatican">普世教会</a></li>
 			<li><a href="/articles/" data-persist-ajax="false" data-refresh-ajax="false" title="信仰生活" data-pull-scroller="true">信仰生活</a></li>
-			<li><a href="#article">主内分享</a></li>
+			<li><a href="/todo/init">主内分享</a></li>
 			<li><a href="#pray">彼此代祷</a></li>
 			<li class="divider">每日灵修</li>
 			<li><a href="#stuff">日课及读经</a></li>
