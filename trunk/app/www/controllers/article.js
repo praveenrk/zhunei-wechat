@@ -4,23 +4,10 @@ var articleCtrl = $.mvc.controller.create('article', {
         "list_item":"views/list_item.tpl"
     },
     default:function() {
-		$("#main").html($.template('list_tpl', {
-                title: 'Active',
-                listCSS: 'active mainScreen',
-                items: articles,
-                state: 'active',
-                checked: '',
-                archiveText: 'Archive'
-            }));
-		return;
-		articles.fetchAll(function(all) {
+		myRemoteAdapter.fetchAll('stuff',function(all) {
             $("#main").html($.template('list_tpl', {
-                title: 'Active',
-                listCSS: 'active mainScreen',
-                items: all,
-                state: 'active',
-                checked: '',
-                archiveText: 'Archive'
+                title: '日课及读经',
+                items: all
             }));
 		});
     },

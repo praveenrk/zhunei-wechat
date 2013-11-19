@@ -4,6 +4,7 @@ app.loadModels(["article"]);
 app.loadControllers(["article"]);
 //Routing by hash change
 //app.listenHashChange();
+localDB = window.indexedDB.open('cathassist',2);
 
 //We wait until app.ready is available to fetch the data, then we wire up the existing data in the templates
 app.ready(function(){
