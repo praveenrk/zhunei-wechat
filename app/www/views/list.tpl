@@ -1,6 +1,4 @@
-<div style="margin-top:25px; text-align:center; font-size:20px;">
-   {{=it.title}} Todos (&nbsp;<span class='count'>{{=it.items.length}}</span>&nbsp;) - swipe to archive
-</div>
+<div style="margin-top:25px; text-align:center; font-size:20px;">{{=it.title}}</div>
 <ul id="todo-list" class="{{=it.listCSS}}">
     {{ for(var i=0;i<it.items.length;i++){
     }}
