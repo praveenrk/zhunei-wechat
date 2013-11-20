@@ -1,4 +1,11 @@
-{{$.ui.titleBar.textContent = stuffconfig[it.type]+"("+it.date+")";}}
+{{
+	$.ui.titleBar.textContent = stuffconfig[it.type];
+	var bb = $("#backButton")[0];
+	bb.href="/stuff/getstuff/"+it.date;
+	bb.innerHTML= '日课...';
+	bb.style.visibility = 'visible';
+	$("#menubadge")[0].style.float = 'right';
+}}
 <div id="stuff_detail">
 {{=it.stuff}}
 </div>
