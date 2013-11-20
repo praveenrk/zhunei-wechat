@@ -4,7 +4,8 @@
 	}}
 	<li class="artitem"><a href="/stuff/detail/{{=it.date.Format("yyyy-MM-dd")}}/{{=c}}">
 		<img src="./pics/{{=c}}.jpg" class="artimg" />
-		<p class="artcontent">{{=htmlencode(htmldecode(it.stuff[c]).substr(0,50))}}</p>
+		<h3 class="arttitle">{{=stuffconfig[c]}}</h3>
+		<p class="artcontent">{{=htmlencode(htmldecode(it.stuff[c]).substr(0,30))}}</p>
 	</a></li>
 	{{}}}
 </ul>
