@@ -37,7 +37,7 @@ $.mvc.controller.create('stuff', {
 		"stuff_detail_tpl": "views/stuff_detail.tpl"
     },
     default:function() {
-		$.ui.showMask();
+		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date();
 		stuffs.fetchStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
             $("#main").html($.template('list_stuff_tpl', {
@@ -45,8 +45,8 @@ $.mvc.controller.create('stuff', {
                 stuff: all,
 				date: dtNow
             }));
+			$.ui.hideMask();
 		});
-		$.ui.hideMask();
 		$.ui.scrollToTop("#mainc",-10);
 		if($.ui.isSideMenuOn())
 			$.ui.toggleSideMenu();
@@ -57,6 +57,22 @@ $.mvc.controller.create('stuff', {
     init: function() {
         var self = this;
     },
+	getstuff: function(_d)
+	{
+		$.ui.showMask("加载日课及读经...");
+		var dtNow = new Date(_d);
+		stuffs.fetchStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
+            $("#main").html($.template('list_stuff_tpl', {
+                title: '日课及读经',
+                stuff: all,
+				date: dtNow
+            }));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
 	detail: function(_d,_t)
 	{
 		stuffs.fetchStuff(_d,_t,function(t) {
