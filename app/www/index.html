@@ -9,6 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" type="text/css" href="./css/icons.css" />
 	<link rel="stylesheet" type="text/css" href="./css/afui.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="./css/app.css"/>
 	<script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./af.mvc.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
@@ -41,7 +42,7 @@
 			var tag = $("head").append(script);
 			$.os.desktop = true;
 		}
-			
+		
 		$(document).ready(function(){
 			$.ui.launch();
 		});
@@ -53,13 +54,13 @@
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
 	</div>
 	<div id="content">
-		<div title='天主教小助手' id="create-todo" class="panel" selected="true" data-footer='none'>
+		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='none'>
 			<div id='main'></div>
 		</div>
 	</div>
 	<nav>
 		<ul class="list">
-			<li><a href="javascript:loadPage('main/index.html')">首页</a></li>
+			<li><a href="/stuff">首页</a></li>
 			<li class="divider">教会动态</li>
 			<li><a href="/article">普世教会</a></li>
 			<li><a href="articles/" data-persist-ajax="false" data-refresh-ajax="false" title="信仰生活" data-pull-scroller="true">信仰生活</a></li>
