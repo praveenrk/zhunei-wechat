@@ -39,7 +39,7 @@ $.mvc.controller.create('stuff', {
     default:function() {
 		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date();
-		stuffs.fetchStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
+		localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
             $("#main").html($.template('list_stuff_tpl', {
                 title: '日课及读经',
                 stuff: all,
@@ -61,7 +61,7 @@ $.mvc.controller.create('stuff', {
 	{
 		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date(_d);
-		stuffs.fetchStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
+		localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
             $("#main").html($.template('list_stuff_tpl', {
                 title: '日课及读经',
                 stuff: all,
@@ -75,7 +75,7 @@ $.mvc.controller.create('stuff', {
 	},
 	detail: function(_d,_t)
 	{
-		stuffs.fetchStuff(_d,_t,function(t) {
+		localDB.getStuff(_d,_t,function(t) {
 			$("#main").html($.template('stuff_detail_tpl', {
                 type: _t,
                 stuff: t,
@@ -92,13 +92,16 @@ $.mvc.controller.create('stuff', {
 
 $.mvc.controller.create('article', {
     views: {
-        "list_tpl": "views/list.tpl",
-        "list_item":"views/list_item.tpl"
+        "list_article_tpl": "views/list_article.tpl",
+        "article_detail_tpl":"views/article_detail.tpl"
     },
-    default:function() {
-		myRemoteAdapter.fetchAll('stuff',function(all) {
-            $("#main").html($.template('list_tpl', {
-                title: '日课及读经',
+    vaticanacn:function(page) {
+		if((!page)||(page==""))
+			page="0";
+		page = parseInt(page);
+		localDB.getVaticanacnList(page,function(all) {
+            $("#main").html($.template('list_article_tpl', {
+                title: "梵蒂冈中文快讯",
                 items: all
             }));
 		});
