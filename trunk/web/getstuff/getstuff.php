@@ -175,9 +175,14 @@
 		$ret["ordo"] =  ($stuff_ordo);
 		$ret["ves"] =  ($stuff_ves);
 		$ret["saint"] =  ($stuff_saint);
-		if($isjson)
+		if($isjson>0)
 		{
 			$ret = json_encode($ret);
+			if($isjson==2)
+			{
+				echo $_GET['callback'].'('.$ret.')';
+				die();
+			}
 		}
 		else
 		{
@@ -244,13 +249,15 @@
 	header("Pragma: no-cache");
 	header("Content-type: text/html; charset=utf-8");
 	require_once("chinese_conversion/convert.php");
-	$isjson = true;
+	$isjson = 1;
 	$errorcode = 1;
 	$mode="";
 	if(array_key_exists("type",$_GET))
 	{
 		if($_GET["type"]=="xml")
-			$isjson = false;
+			$isjson = 0;
+		else if($_GET["type"]=="jsonp")
+			$isjson = 2;
 	}
 	if(array_key_exists("mode",$_GET))
 	{
