@@ -12,20 +12,27 @@ app.ready(function(){
 
 
 function CathAssistDB(){
-	this.db = openDatabase("CathAssist", "0.9", "database for cathassist.org", 200000);
-	this.server = "http://cathassist.org/";
-	
-	if(!this.db)
-		return null;
+	try
+	{
+		this.db = openDatabase(this.dbName, this.dbVersion, "database for cathassist.org", 200000);
+	}
+	catch(e)
+	{
+		alert("目前『天主教小助手』无法支持你的系统！");
+	}
 	this.db.transaction(function(tx){
 		tx.executeSql('CREATE TABLE IF NOT EXISTS stuff (date unique,mass,med,comp,let,lod,thought,ordo,ves,saint)');
 	});
 }
 CathAssistDB.prototype = {
+	db:null,
+	dbName:"CathAssist",
+	dbVersion:"0.9",
+	server:"http://cathassist.org/",
     getStuff:function(date,type,callback){
-		if(!this.db)
+		if(!localDB.db)
 			return null;
-		this.db.transaction(function(tx){
+		localDB.db.transaction(function(tx){
 			tx.executeSql('select mass,med,comp,let,lod,thought,ordo,ves,saint from stuff where date=?', [date], function(tx,r){
 				if(r.rows.length>0)
 				{
@@ -56,9 +63,9 @@ CathAssistDB.prototype = {
 		});
     },
 	setStuff:function(date,data){
-		if(!this.db)
+		if(!localDB.db)
 			return null;
-		this.db.transaction(function(tx){
+		localDB.db.transaction(function(tx){
 			tx.executeSql('delete from stuff where date=?', [date]);
 			tx.executeSql('insert into stuff(date,mass,med,comp,let,lod,thought,ordo,ves,saint) values(?,?,?,?,?,?,?,?,?,?)',[date,data['mass'],data['med'],data['comp'],data['let'],data['lod'],data['thought'],data['ordo'],data['ves'],data['saint']]);
 		});
