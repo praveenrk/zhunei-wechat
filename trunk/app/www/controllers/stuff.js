@@ -95,11 +95,11 @@ $.mvc.controller.create('article', {
         "list_article_tpl": "views/list_article.tpl",
         "article_detail_tpl":"views/article_detail.tpl"
     },
-    vaticanacn:function(page) {
-		if((!page)||(page==""))
-			page="0";
-		page = parseInt(page);
-		localDB.getVaticanacnList(page,function(all) {
+    vaticanacn:function(from) {
+		if((!from)||(from==""))
+			from="-1";
+		from = parseInt(from);
+		localDB.getVaticanacnList(from,function(all) {
             $("#main").html($.template('list_article_tpl', {
                 title: "梵蒂冈中文快讯",
                 items: all
