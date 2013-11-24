@@ -4,16 +4,16 @@
 	
 	function getList($from,$count)
 	{
-		$sql = 'select id,title,picurl,cate from vaticanacn where id<'.$from.' order by id desc limit '.$count.';';
+		$sql = 'select id,title,picurl,cate,time from vaticanacn where id<'.$from.' order by id desc limit '.$count.';';
 		if($from<0)
 		{
-			$sql = 'select id,title,picurl,cate from vaticanacn order by id desc limit '.$count.';';
+			$sql = 'select id,title,picurl,cate,time from vaticanacn order by id desc limit '.$count.';';
 		}
 		$result = mysql_query($sql);
 		$i = 0;
 		while ($row = mysql_fetch_array($result))
 		{
-			$ret[$i] = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>$row['picurl'],'cate'=>$row['cate']);
+			$ret[$i] = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>$row['picurl'],'cate'=>$row['cate'],'time'=>$row['time']);
 			$i++;
 		}
 		return $ret;
