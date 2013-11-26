@@ -82,7 +82,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
             agent.startFeedbackActivity();
         } else if (preference == click_share) {
             final UMSocialService mController = UMServiceFactory.getUMSocialService("cathbible",RequestType.SOCIAL);
-            mController.openUserCenter(this, SocializeConstants.FLAG_USER_CENTER_LOGIN_VERIFY);
+            mController.openUserCenter(this, SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);

@@ -24,6 +24,7 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.media.UMImage;
 
 import java.util.Random;
 
