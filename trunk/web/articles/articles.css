@@ -1,7 +1,9 @@
+body{
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
 .topic{
 	color: rgb(232, 82, 152);
 	display: block;
-	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size: 18px;
 	line-height: 20px;
 }
@@ -10,7 +12,6 @@
 .current a{
 	color: rgb(232, 82, 152);
 	text-decoration:none;
-	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size: 18px;
 	line-height: 20px;
 }
@@ -23,7 +24,6 @@
 .content{
 	color:rgb(137,137,137);
 	text-decoration:none;
-	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size:18px;
 	line-height: 20px;
 }
@@ -37,7 +37,6 @@
 a.src{
 	color: rgb(48, 135, 253);
 	text-decoration:none;
-	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size:18px;
 	line-height: 25px;
 }
@@ -52,4 +51,8 @@ a.src{
 	color:#999;
 	font-size:15px;
 	line-height: 25px;	
+}
+
+audio{
+	width:100%
 }

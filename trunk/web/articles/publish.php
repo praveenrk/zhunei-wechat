@@ -14,7 +14,11 @@ header("Content-type: text/html; charset=utf-8");
 <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="nicEdit/nicEdit.js"></script>
 <script type="text/javascript">
-bkLib.onDomLoaded(function() { nicEditors.allTextAreas(); refreshTopics(); });
+bkLib.onDomLoaded(function(){
+		new nicEditor({buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','fontFormat','indent','outdent','image','upload','link','unlink','forecolor','bgcolor','html','xhtml']}).panelInstance('content');
+		refreshTopics();
+	}
+);
 
 //对特殊字符串进行转义
 function getinputvalue(obj)
