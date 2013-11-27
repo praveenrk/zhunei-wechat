@@ -24,17 +24,17 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
     public void onCreate(Bundle savedInstanceState) {
         setTheme(CommonPara.THEME);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_chapter_select);
+        setContentView(R.layout.chapter_select);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mChapter = (GridView) findViewById(R.id.grid_act_chapter_select_chapter);
+        mChapter = (GridView) findViewById(R.id.grid);
 
         SimpleAdapter adapter = new SimpleAdapter(this,
                 GetData(),
-                R.layout.grid_menu_text,
+                R.layout.chapter_select_item,
                 new String[]{"chapter"},
-                new int[]{R.id.grid_menu_text_text});
+                new int[]{R.id.text});
         mChapter.setAdapter(adapter);
         mChapter.setOnItemClickListener(this);
     }

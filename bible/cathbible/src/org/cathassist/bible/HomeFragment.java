@@ -1,6 +1,5 @@
 package org.cathassist.bible;
 
-import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.media.UMImage;
 
 import java.util.Random;
 
@@ -56,12 +54,12 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_home, null);
-        mVerse = (TextView) view.findViewById(R.id.text_home_verse);
-        mMark = (TextView) view.findViewById(R.id.text_home_mark);
-        mLast = (TextView) view.findViewById(R.id.text_home_last);
-        mShare = (Button) view.findViewById(R.id.button_home_share);
-        mStatus = (LinearLayout) view.findViewById(R.id.layout_home_status);
+        View view = inflater.inflate(R.layout.home, null);
+        mVerse = (TextView) view.findViewById(R.id.text_verse);
+        mMark = (TextView) view.findViewById(R.id.text_mark);
+        mLast = (TextView) view.findViewById(R.id.text_last);
+        mShare = (Button) view.findViewById(R.id.button_share);
+        mStatus = (LinearLayout) view.findViewById(R.id.layout_status);
 
         mVerse.setOnClickListener(this);
         mMark.setOnClickListener(this);
@@ -85,7 +83,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         FragmentTransaction fragTrans;
 
         switch (v.getId()) {
-            case R.id.text_home_verse:
+            case R.id.text_verse:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
                     CommonPara.currentBook = mVerseBook;
                     CommonPara.currentChapter = mVerseChapter;
@@ -96,11 +94,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
-                    fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+                    fragTrans.replace(R.id.content_frame, new BibleReadFragment());
                     fragTrans.commit();
                 }
                 break;
-            case R.id.text_home_mark:
+            case R.id.text_mark:
                 if (mMarkBook * mMarkChapter * mMarkSection != 0) {
                     CommonPara.currentBook = mMarkBook;
                     CommonPara.currentChapter = mMarkChapter;
@@ -111,11 +109,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
-                    fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+                    fragTrans.replace(R.id.content_frame, new BibleReadFragment());
                     fragTrans.commit();
                 }
                 break;
-            case R.id.text_home_last:
+            case R.id.text_last:
                 if (CommonPara.lastBook * CommonPara.lastChapter * CommonPara.lastSection != 0) {
                     CommonPara.currentBook = CommonPara.lastBook;
                     CommonPara.currentChapter = CommonPara.lastChapter;
@@ -126,11 +124,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
-                    fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+                    fragTrans.replace(R.id.content_frame, new BibleReadFragment());
                     fragTrans.commit();
                 }
                 break;
-            case R.id.button_home_share:
+            case R.id.button_share:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
                     String content = mVerse.getText().toString().trim();
                     final UMSocialService mController = UMServiceFactory.getUMSocialService("cathbible",

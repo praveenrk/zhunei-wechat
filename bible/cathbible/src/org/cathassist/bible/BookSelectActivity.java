@@ -25,18 +25,18 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
     public void onCreate(Bundle savedInstanceState) {
         setTheme(CommonPara.THEME);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_book_select);
+        setContentView(R.layout.book_select);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mList = (ListView) findViewById(R.id.list_act_book_select_book);
+        mList = (ListView) findViewById(R.id.list);
         mList.setDivider(null);
 
         SimpleAdapter adapter = new SimpleAdapter(this,
                 GetData(),
-                R.layout.list_menu_text,
+                R.layout.book_select_item,
                 new String[]{"book"},
-                new int[]{R.id.list_menu_text_text});
+                new int[]{R.id.list});
         mList.setAdapter(adapter);
         mList.setOnItemClickListener(this);
     }

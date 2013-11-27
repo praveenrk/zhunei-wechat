@@ -31,7 +31,7 @@ public class MainActivity extends SlidingFragmentActivity {
         LoadLast();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frag_content);
+        setContentView(R.layout.main_content);
 
         if (CommonPara.auto_update) {
             UmengUpdateAgent.setUpdateOnlyWifi(!CommonPara.allow_gprs);
@@ -42,10 +42,10 @@ public class MainActivity extends SlidingFragmentActivity {
         agent.sync();
 
         mActionBar = getSupportActionBar();
-        setBehindContentView(R.layout.frag_menu);
+        setBehindContentView(R.layout.nav);
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
-        fragTrans.replace(R.id.frag_menu_frame, new MenuFragment());
-        fragTrans.replace(R.id.frag_content_frame, new HomeFragment());
+        fragTrans.replace(R.id.nav_frame, new NavFragment());
+        fragTrans.replace(R.id.content_frame, new HomeFragment());
         fragTrans.commit();
 
         InitSlidingMenu();

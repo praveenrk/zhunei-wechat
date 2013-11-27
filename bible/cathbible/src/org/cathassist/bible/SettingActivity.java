@@ -36,7 +36,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
     public void onCreate(Bundle savedInstanceState) {
         setTheme(CommonPara.THEME);
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.layout.act_setting);
+        addPreferencesFromResource(R.layout.setting);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

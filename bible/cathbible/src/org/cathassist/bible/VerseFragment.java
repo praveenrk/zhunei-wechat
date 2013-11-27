@@ -41,7 +41,7 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_verse, null);
+        View view = inflater.inflate(R.layout.verse, null);
         mNext = (Button) view.findViewById(R.id.button_verse_next);
         mVerse = (TextView) view.findViewById(R.id.text_verse_content);
         mNext.setOnClickListener(this);
@@ -75,7 +75,7 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
-                    fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+                    fragTrans.replace(R.id.content_frame, new BibleReadFragment());
                     fragTrans.commit();
                 }
                 break;

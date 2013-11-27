@@ -76,15 +76,15 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_bible_read, null);
-        mList = (ListView) view.findViewById(R.id.list_bible_read_content);
-        mBook = (Button) view.findViewById(R.id.button_bible_read_book);
-        mChapter = (Button) view.findViewById(R.id.button_bible_read_chapter);
-        mLeft = (Button) view.findViewById(R.id.button_bible_read_left);
-        mRight = (Button) view.findViewById(R.id.button_bible_read_right);
-        mStart = (Button) view.findViewById(R.id.button_bible_read_start);
-        mProgress = (SeekBar) view.findViewById(R.id.bar_bible_read_progress);
-        mMp3Layout = (LinearLayout) view.findViewById(R.id.layout_bible_read_mp3);
+        View view = inflater.inflate(R.layout.bible_read, null);
+        mList = (ListView) view.findViewById(R.id.list);
+        mBook = (Button) view.findViewById(R.id.button_book);
+        mChapter = (Button) view.findViewById(R.id.button_chapter);
+        mLeft = (Button) view.findViewById(R.id.button_left);
+        mRight = (Button) view.findViewById(R.id.button_right);
+        mStart = (Button) view.findViewById(R.id.button_start);
+        mProgress = (SeekBar) view.findViewById(R.id.bar_mp3);
+        mMp3Layout = (LinearLayout) view.findViewById(R.id.layout_mp3);
 
         mBook.setOnClickListener(this);
         mChapter.setOnClickListener(this);
@@ -137,21 +137,21 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         intent = new Intent();
 
         switch (v.getId()) {
-            case R.id.button_bible_read_book:
+            case R.id.button_book:
                 intent.setClass(mActivity, BookSelectActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button_bible_read_chapter:
+            case R.id.button_chapter:
                 intent.setClass(mActivity, ChapterSelectActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button_bible_read_left:
+            case R.id.button_left:
                 ChangeVerse(false);
                 break;
-            case R.id.button_bible_read_right:
+            case R.id.button_right:
                 ChangeVerse(true);
                 break;
-            case R.id.button_bible_read_start:
+            case R.id.button_start:
                 CheckMp3();
                 break;
             default:
@@ -454,10 +454,10 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
             ViewHolder vh;
             if (convertView == null) {
                 vh = new ViewHolder();
-                convertView = mInflater.inflate(R.layout.list_parallel_text, null);
+                convertView = mInflater.inflate(R.layout.bible_read_item, null);
 
-                vh.title = (TextView) convertView.findViewById(R.id.para_title);
-                vh.content = (TextView) convertView.findViewById(R.id.para_content);
+                vh.title = (TextView) convertView.findViewById(R.id.title);
+                vh.content = (TextView) convertView.findViewById(R.id.content);
 
                 convertView.setTag(vh);
             } else {
