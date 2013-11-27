@@ -3,7 +3,8 @@
 
     <string name="app_name">公教磐石圣经</string>
     <string name="action_settings">设置</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="book">卷</string>
+    <string name="chapter">章</string>
     <string name="left_sign">&lt;</string>
     <string name="right_sign">&gt;</string>
     <string name="start_sign">&gt;</string>

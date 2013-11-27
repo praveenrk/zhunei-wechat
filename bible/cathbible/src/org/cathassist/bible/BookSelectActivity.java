@@ -28,6 +28,7 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
         setContentView(R.layout.book_select);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("选择卷");
 
         mList = (ListView) findViewById(R.id.list);
         mList.setDivider(null);

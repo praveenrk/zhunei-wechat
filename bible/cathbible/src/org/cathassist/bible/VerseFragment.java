@@ -38,6 +38,7 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
         mActivity = (MainActivity) getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
+        mActivity.getSupportActionBar().setTitle("金句");
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
