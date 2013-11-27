@@ -40,8 +40,8 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_mark, null);
-        mList = (ListView) view.findViewById(R.id.list_frag_mark_content);
+        View view = inflater.inflate(R.layout.mark, null);
+        mList = (ListView) view.findViewById(R.id.list);
         mList.setOnItemClickListener(this);
 
         return view;
@@ -72,7 +72,7 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();
-        fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+        fragTrans.replace(R.id.content_frame, new BibleReadFragment());
         fragTrans.commit();
     }
 
@@ -81,9 +81,9 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         try {
             SimpleAdapter adapter = new SimpleAdapter(mActivity,
                     mData,
-                    R.layout.list_double_text,
+                    R.layout.mark_item,
                     new String[]{"title", "content"},
-                    new int[]{R.id.double_title, R.id.double_content});
+                    new int[]{R.id.title, R.id.content});
 
             mList.setAdapter(adapter);
             mList.setSelection(CommonPara.bookmarkPos);

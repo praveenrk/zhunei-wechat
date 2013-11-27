@@ -5,18 +5,18 @@
     android:padding="6dp">
 
     <ImageView
-        android:id="@+id/list_menu_img_img"
+        android:id="@+id/img"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:scaleType="centerInside"
-        android:padding="@dimen/ultra_small_margin"
+        android:padding="5dp"
         android:contentDescription="@string/app_name" />
 
     <TextView
-        android:id="@+id/list_menu_img_text"
+        android:id="@+id/text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textSize="@dimen/large_font_size" />
+        android:textSize="22sp" />
 
 </LinearLayout>

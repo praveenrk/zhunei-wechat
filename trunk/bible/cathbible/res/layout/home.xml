@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="@dimen/default_margin"
+    android:padding="12dp"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -14,51 +14,51 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text="@string/bible_verse"
-	        android:textSize="@dimen/small_font_size" />
+	        android:textSize="16sp" />
 	    <TextView
-	        android:id="@+id/text_home_verse"
+	        android:id="@+id/text_verse"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:textSize="@dimen/default_font_size" />
+	        android:textSize="20sp" />
 	    
 	    <Button
-	        android:id="@+id/button_home_share"
+	        android:id="@+id/button_share"
 	        android:layout_width="match_parent"
-	        android:layout_height="@dimen/default_button_height"
+	        android:layout_height="42dp"
 	        android:layout_gravity="center"
 	        android:text="@string/share_verse"
-	        android:textSize="@dimen/default_font_size" />
+	        android:textSize="20sp" />
 	
 	    <LinearLayout
-	        android:id="@+id/layout_home_status"
+	        android:id="@+id/layout_status"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical" 
-		    android:layout_marginTop="@dimen/default_margin">
+		    android:layout_marginTop="12dp">
 		
 		    <TextView
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:text="@string/last_mark"
-		        android:textSize="@dimen/small_font_size"
+		        android:textSize="16sp"
                 android:layout_marginTop="10dp"/>
 		    <TextView
-		        android:id="@+id/text_home_mark"
+		        android:id="@+id/text_mark"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="@dimen/default_font_size" />
+		        android:textSize="20sp" />
 		    
 		    <TextView
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:text="@string/last_read"
-		        android:textSize="@dimen/small_font_size"
+		        android:textSize="16sp"
                 android:layout_marginTop="10dp"/>
 		    <TextView
-		        android:id="@+id/text_home_last"
+		        android:id="@+id/text_last"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="@dimen/default_font_size" />
+		        android:textSize="20sp" />
 
 		</LinearLayout>
 	</LinearLayout>

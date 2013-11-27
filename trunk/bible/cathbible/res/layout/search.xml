@@ -9,31 +9,31 @@
         android:orientation="horizontal" >
         
         <EditText
-            android:id="@+id/text_frag_search_word"
-            android:layout_height="@dimen/default_button_height"    
+            android:id="@+id/text_word"
+            android:layout_height="42dp"
             android:layout_width="wrap_content"
             android:layout_weight="1"   
             android:ems="10"
             android:hint="@string/search_hint" />
         
         <Button
-            android:id="@+id/button_frag_search_click"
+            android:id="@+id/button_search"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/default_button_height"
+            android:layout_height="42dp"
             android:layout_weight="0"  
             android:text="@string/search" />            
         
     </LinearLayout>    
     
     <TextView
-        android:id="@+id/text_frag_search_count"
+        android:id="@+id/text_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_vertical_margin"
-        android:textSize="@dimen/default_font_size" />
+        android:padding="4dp"
+        android:textSize="20sp" />
         
     <ListView
-            android:id="@+id/list_frag_search_content"
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

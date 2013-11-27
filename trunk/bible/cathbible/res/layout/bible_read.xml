@@ -7,47 +7,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
         <Button
-            android:id="@+id/button_bible_read_book"
+            android:id="@+id/button_book"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/default_button_height"
-            android:textSize ="@dimen/default_font_size" />
+            android:layout_height="42dp"
+            android:textSize ="20sp" />
         <Button
-            android:id="@+id/button_bible_read_chapter"
+            android:id="@+id/button_chapter"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/default_button_height"
-            android:layout_toRightOf="@id/button_bible_read_book"
-            android:textSize ="@dimen/default_font_size" />
+            android:layout_height="40sp"
+            android:layout_toRightOf="@id/button_book"
+            android:textSize ="20sp" />
         <Button
-            android:id="@+id/button_bible_read_right"
-            android:layout_width="@dimen/default_button_width"
-            android:layout_height="@dimen/default_button_height"
+            android:id="@+id/button_right"
+            android:layout_width="42sp"
+            android:layout_height="42sp"
             android:layout_alignParentRight="true"
             android:text="@string/right_sign" 
-            android:textSize ="@dimen/default_font_size"/>        
+            android:textSize ="20sp"/>
         <Button
-            android:id="@+id/button_bible_read_left"
-            android:layout_width="@dimen/default_button_width"
-            android:layout_height="@dimen/default_button_height"
-            android:layout_toLeftOf="@id/button_bible_read_right"
+            android:id="@+id/button_left"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_toLeftOf="@id/button_right"
             android:text="@string/left_sign"
-            android:textSize="@dimen/default_font_size" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <LinearLayout 
-        android:id="@+id/layout_bible_read_mp3"
+        android:id="@+id/layout_mp3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:orientation="horizontal">
         <Button
-            android:id="@+id/button_bible_read_start"
-            android:layout_width="@dimen/default_button_width"
-            android:layout_height="@dimen/default_button_height"
+            android:id="@+id/button_start"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:text="@string/start_sign"
-            android:textSize ="@dimen/default_font_size" />
+            android:textSize ="20sp" />
         <SeekBar 
-            android:id="@+id/bar_bible_read_progress" 
+            android:id="@+id/bar_mp3"
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/default_button_height"            
+            android:layout_height="42dp"
             android:paddingTop="5dp"            
             android:paddingLeft="20dp"
             android:paddingRight="10dp"
@@ -60,7 +60,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
         <ListView
-            android:id="@+id/list_bible_read_content"
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

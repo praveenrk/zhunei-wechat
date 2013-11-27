@@ -7,38 +7,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >                
         <Button
-            android:id="@+id/button_act_mark_content_delete"
+            android:id="@+id/button_delete"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_button_height"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:text="@string/delete" />    
         
         <Button
-            android:id="@+id/button_act_mark_content_cancel"
+            android:id="@+id/button_cancel"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_button_height"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:text="@string/cancel" />    
         
         <Button
-            android:id="@+id/button_act_mark_content_confirm"
+            android:id="@+id/button_confirm"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/default_button_height"
+            android:layout_height="42dp"
             android:layout_weight="1"
             android:text="@string/confirm" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/text_act_mark_content_title"
+        android:id="@+id/text_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/default_button_height"
+        android:layout_height="42dp"
         android:layout_weight="0"     
         android:ems="10"
         android:hint="@string/mark_title" >
     </EditText>
     
     <EditText
-        android:id="@+id/text_act_mark_content_content"
+        android:id="@+id/text_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

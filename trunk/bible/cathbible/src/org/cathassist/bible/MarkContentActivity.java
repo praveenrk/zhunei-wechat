@@ -33,18 +33,18 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(CommonPara.THEME);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_mark_content);
+        setContentView(R.layout.mark_content);
 
         Intent intent = getIntent();
         mBook = intent.getIntExtra("book", 1);
         mChapter = intent.getIntExtra("chapter", 1);
         mSection = intent.getIntExtra("section", 1);
 
-        mTitle = (EditText) findViewById(R.id.text_act_mark_content_title);
-        mContent = (EditText) findViewById(R.id.text_act_mark_content_content);
-        mComfirm = (Button) findViewById(R.id.button_act_mark_content_confirm);
-        mDelete = (Button) findViewById(R.id.button_act_mark_content_delete);
-        mCancel = (Button) findViewById(R.id.button_act_mark_content_cancel);
+        mTitle = (EditText) findViewById(R.id.text_title);
+        mContent = (EditText) findViewById(R.id.text_content);
+        mComfirm = (Button) findViewById(R.id.button_confirm);
+        mDelete = (Button) findViewById(R.id.button_delete);
+        mCancel = (Button) findViewById(R.id.button_cancel);
 
         mComfirm.setOnClickListener(this);
         mDelete.setOnClickListener(this);
@@ -56,13 +56,13 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_act_mark_content_confirm:
+            case R.id.button_confirm:
                 SaveBookmark();
                 break;
-            case R.id.button_act_mark_content_delete:
+            case R.id.button_delete:
                 DeleteBookmark();
                 break;
-            case R.id.button_act_mark_content_cancel:
+            case R.id.button_cancel:
                 CancelBookmark();
                 break;
         }

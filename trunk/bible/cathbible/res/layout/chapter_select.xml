@@ -3,14 +3,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <GridView
-        android:id="@+id/grid_act_chapter_select_chapter"
+        android:id="@+id/grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnWidth="90dp"
         android:gravity="center"
         android:horizontalSpacing="8dp"
-        android:numColumns="6"
+        android:numColumns="5"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="@dimen/default_vertical_margin" />
+        android:verticalSpacing="4dp" />
     
 </LinearLayout>

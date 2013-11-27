@@ -53,12 +53,12 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_search, null);
+        View view = inflater.inflate(R.layout.search, null);
 
-        button_search = (Button) view.findViewById(R.id.button_frag_search_click);
-        list_search = (ListView) view.findViewById(R.id.list_frag_search_content);
-        text_search = (EditText) view.findViewById(R.id.text_frag_search_word);
-        text_search_count = (TextView) view.findViewById(R.id.text_frag_search_count);
+        button_search = (Button) view.findViewById(R.id.button_search);
+        list_search = (ListView) view.findViewById(R.id.list);
+        text_search = (EditText) view.findViewById(R.id.text_word);
+        text_search_count = (TextView) view.findViewById(R.id.text_count);
 
         button_search.setOnClickListener(this);
         list_search.setOnItemClickListener(this);
@@ -85,7 +85,7 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_frag_search_click:
+            case R.id.button_search:
                 CommonPara.searchPos = 0;
                 SearchVerse();
                 break;
@@ -107,7 +107,7 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();
-        fragTrans.replace(R.id.frag_content_frame, new BibleReadFragment());
+        fragTrans.replace(R.id.content_frame, new BibleReadFragment());
         fragTrans.commit();
     }
 
@@ -119,9 +119,9 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         try {
             SimpleAdapter adapter = new SimpleAdapter(mActivity,
                     mData,
-                    R.layout.list_parallel_text,
+                    R.layout.search_item,
                     new String[]{"title", "verse"},
-                    new int[]{R.id.para_title, R.id.para_content});
+                    new int[]{R.id.title, R.id.content});
 
             list_search.setAdapter(adapter);
             list_search.setSelection(CommonPara.searchPos);

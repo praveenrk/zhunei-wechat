@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MenuFragment extends SherlockFragment implements OnItemClickListener {
+public class NavFragment extends SherlockFragment implements OnItemClickListener {
     private static final int INTENT_SET = 0;
     private MainActivity mActivity;
     private ActionBar mActionBar;
@@ -42,8 +42,8 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_menu, null);
-        mMenu = (ListView) view.findViewById(R.id.frag_menu_list);
+        View view = inflater.inflate(R.layout.nav, null);
+        mMenu = (ListView) view.findViewById(R.id.list);
         mMenu.setOnItemClickListener(this);
         List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
         for (int i = 0; i < CommonPara.menuName.length; i++) {
@@ -54,9 +54,9 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
         }
 
         String[] from = {"img", "text"};
-        int[] to = {R.id.list_menu_img_img, R.id.list_menu_img_text};
+        int[] to = {R.id.img, R.id.text};
 
-        SimpleAdapter adapter = new SimpleAdapter(mActivity, list, R.layout.list_menu_img, from, to);
+        SimpleAdapter adapter = new SimpleAdapter(mActivity, list, R.layout.nav_item, from, to);
         mMenu.setAdapter(adapter);
         return view;
     }
@@ -71,7 +71,7 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
                     mFragment = new HomeFragment();
-                    fragTrans.replace(R.id.frag_content_frame, mFragment);
+                    fragTrans.replace(R.id.content_frame, mFragment);
                     fragTrans.commit();
                 }
                 delayToggle();
@@ -84,7 +84,7 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
                     mFragment = new BibleReadFragment();
-                    fragTrans.replace(R.id.frag_content_frame, mFragment);
+                    fragTrans.replace(R.id.content_frame, mFragment);
                     fragTrans.commit();
                 }
                 delayToggle();
@@ -97,7 +97,7 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
                     mFragment = new MarkFragment();
-                    fragTrans.replace(R.id.frag_content_frame, mFragment);
+                    fragTrans.replace(R.id.content_frame, mFragment);
                     fragTrans.commit();
                 }
                 delayToggle();
@@ -110,7 +110,7 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
                     mFragment = new VerseFragment();
-                    fragTrans.replace(R.id.frag_content_frame, mFragment);
+                    fragTrans.replace(R.id.content_frame, mFragment);
                     fragTrans.commit();
                 }
                 delayToggle();
@@ -122,7 +122,7 @@ public class MenuFragment extends SherlockFragment implements OnItemClickListene
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
                     mFragment = new SearchFragment();
-                    fragTrans.replace(R.id.frag_content_frame, mFragment);
+                    fragTrans.replace(R.id.content_frame, mFragment);
                     fragTrans.commit();
                 }
                 delayToggle();
