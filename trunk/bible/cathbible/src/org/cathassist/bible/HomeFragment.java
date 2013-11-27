@@ -50,6 +50,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         mActivity = (MainActivity) getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
+        mActivity.getSupportActionBar().setTitle("主页");
     }
 
     @Override

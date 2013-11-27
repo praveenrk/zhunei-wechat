@@ -37,6 +37,7 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         mActivity = (MainActivity) getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
+        mActivity.getSupportActionBar().setTitle("书签");
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

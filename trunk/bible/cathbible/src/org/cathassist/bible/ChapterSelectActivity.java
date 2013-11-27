@@ -27,6 +27,7 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
         setContentView(R.layout.chapter_select);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("选择章");
 
         mChapter = (GridView) findViewById(R.id.grid);
 

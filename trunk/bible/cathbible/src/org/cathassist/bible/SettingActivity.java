@@ -39,6 +39,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         addPreferencesFromResource(R.layout.setting);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("设置");
 
         intent = new Intent(this, MainActivity.class);
         setResult(CommonPara.NOT_NEED_RESTART, intent);

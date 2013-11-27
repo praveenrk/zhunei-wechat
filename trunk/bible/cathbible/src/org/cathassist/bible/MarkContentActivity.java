@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;
 
@@ -35,6 +37,9 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mark_content);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("书签内容");
+
         Intent intent = getIntent();
         mBook = intent.getIntExtra("book", 1);
         mChapter = intent.getIntExtra("chapter", 1);
@@ -51,6 +56,16 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
         mCancel.setOnClickListener(this);
 
         GetContent();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

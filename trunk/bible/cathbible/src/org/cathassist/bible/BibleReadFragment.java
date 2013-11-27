@@ -41,6 +41,9 @@ import org.cathassist.bible.lib.ProgressShow;
 import org.cathassist.bible.lib.ProgressShow.ProgressCallBack;
 import org.cathassist.bible.lib.VerseInfo;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -55,10 +58,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     List<Map<String, String>> mContent;
     private MainActivity mActivity = null;
     private ListView mList;
-    private Button mBook;
-    private Button mChapter;
-    private Button mLeft;
-    private Button mRight;
     private Button mStart;
     private SeekBar mProgress;
     private LinearLayout mMp3Layout;
@@ -72,24 +71,18 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (MainActivity) getSherlockActivity();
+        setHasOptionsMenu(true);
+        mActivity.getSupportActionBar().setTitle("圣经");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bible_read, null);
         mList = (ListView) view.findViewById(R.id.list);
-        mBook = (Button) view.findViewById(R.id.button_book);
-        mChapter = (Button) view.findViewById(R.id.button_chapter);
-        mLeft = (Button) view.findViewById(R.id.button_left);
-        mRight = (Button) view.findViewById(R.id.button_right);
         mStart = (Button) view.findViewById(R.id.button_start);
         mProgress = (SeekBar) view.findViewById(R.id.bar_mp3);
         mMp3Layout = (LinearLayout) view.findViewById(R.id.layout_mp3);
 
-        mBook.setOnClickListener(this);
-        mChapter.setOnClickListener(this);
-        mLeft.setOnClickListener(this);
-        mRight.setOnClickListener(this);
         mList.setOnItemClickListener(this);
         mList.setOnItemLongClickListener(this);
 
@@ -131,26 +124,43 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         StopMp3();
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        intent = new Intent();
 
-        switch (v.getId()) {
-            case R.id.button_book:
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.bible_read_menu,menu);
+        MenuItem book = menu.findItem(R.id.book);
+        MenuItem chapter = menu.findItem(R.id.chapter);
+        book.setTitle(VerseInfo.CHN_ABBR[CommonPara.currentBook]);
+        chapter.setTitle(String.valueOf(CommonPara.currentChapter));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent();
+        switch (item.getItemId()){
+            case R.id.book:
                 intent.setClass(mActivity, BookSelectActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button_chapter:
+            case R.id.chapter:
                 intent.setClass(mActivity, ChapterSelectActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.button_left:
+            case R.id.left:
                 ChangeVerse(false);
                 break;
-            case R.id.button_right:
+            case R.id.right:
                 ChangeVerse(true);
                 break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.button_start:
                 CheckMp3();
                 break;
@@ -170,7 +180,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     public void onClick(DialogInterface dialog, int which) {
                         Map<String, String> map = mContent.get(pos);
 
-                        String bookName = mBook.getText().toString().trim();
+                        String bookName = VerseInfo.CHN_NAME[Integer.parseInt(map.get("book"))];
                         String content = map.get("verse") + "\n\n"
                                 + "(" + bookName + " "
                                 + map.get("chapter") + ":"
@@ -229,7 +239,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        if (fromUser == true) {
+        if (fromUser) {
             if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
                 mMediaPlayer.seekTo(progress * mMediaPlayer.getDuration() / 100);
             }
@@ -336,11 +346,13 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
 
     public void SetButtonName() {
         CommonPara.currentCount = VerseInfo.CHAPTER_COUNT[CommonPara.currentBook];
-        mBook.setText(VerseInfo.CHN_NAME[CommonPara.currentBook]);
-        mChapter.setText("第" + CommonPara.currentChapter + "章");
 
         if (CommonPara.currentBook != 1) {
             CommonPara.previousCount = VerseInfo.CHAPTER_COUNT[CommonPara.currentBook - 1];
+        }
+
+        if (isAdded()) {
+            mActivity.supportInvalidateOptionsMenu();
         }
     }
 
