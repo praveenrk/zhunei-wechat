@@ -127,23 +127,12 @@ xmlhttp.send("mode=del&id="+id);
 		?>"></input>
 	<br/>
 	<p>代祷内容：</p>
-	<textarea id="input_text" name="text" style="width:100%; height:80px">在此输入你的代祷意向，然后点击提交</textarea><br/>
+	<textarea id="input_text" name="text" style="width:100%; height:80px" placeholder="在此输入你的代祷意向，然后点击提交"></textarea><br/>
 	</p>
 	<div align="center"><a href="#" class="css_btn_class" onclick="postText()">提交</a></div>
 </form>
 
 <script type="text/javascript">
-var t = document.getElementById('input_text');
-t.onfocus = function(){
-	if(this.innerHTML == '在此输入你的代祷意向，然后点击提交'){this.innerHTML = '';}
-};
-
-t.onblur = function(){
-	if(this.innerHTML == ''){
-		this.innerHTML = '在此输入你的代祷意向，然后点击提交';
-	}
-};
-
 function postText()
 {
 	var nick = document.getElementById('input_name').value;
