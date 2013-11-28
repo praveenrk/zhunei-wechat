@@ -53,7 +53,6 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
         CommonPara.currentBook = arg2 + 1;
         CommonPara.currentChapter = 1;
         CommonPara.currentSection = 0;
-        CommonPara.bibleDevitionPos = 0;
         CommonPara.bibleMp3Pos = 0;
 
         Intent intent = new Intent();

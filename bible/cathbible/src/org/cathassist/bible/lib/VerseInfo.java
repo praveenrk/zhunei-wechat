@@ -1,5 +1,7 @@
 package org.cathassist.bible.lib;
 
+import com.umeng.common.net.s;
+
 public class VerseInfo {
     public static final String[] CHN_NAME =
             {"", "创世纪", "出谷纪", "肋未纪", "户藉纪", "申命纪", "若苏厄书", "民长纪", "卢德传", "撒慕尔纪上",
@@ -38,4 +40,93 @@ public class VerseInfo {
                     21, 28, 16, 16, 13, 6, 6, 4, 4, 5,
                     3, 6, 4, 3, 1, 13, 5, 5, 3, 5,
                     1, 1, 1, 22};
+
+    public static final String[] BOOK_SCOPE = {"全书（创-默）","旧约（创-拉）","新约（玛-默）","梅瑟五书（创-申）","旧约史书（苏-加下）","智慧书（约-德）","大先知书（依-达）","小先知书（欧-拉）","四福音（玛-若）","教会历史（宗）","保禄书信（罗-费）","公函（希-犹）","若望默示录（默）"};
+
+    public static final int WHOLE_BOOK = 0;
+    public static final int OLD_TESTAMENT = 1;
+    public static final int NEW_TESTAMENT = 2;
+    public static final int PENTATEUCH = 3;
+    public static final int HISTORY = 4;
+    public static final int WISDOM_AND_POETRY = 5;
+    public static final int MAJOR_PROPHETS = 6;
+    public static final int MINOR_PROPHETS = 7;
+    public static final int GOSPELS = 8;
+    public static final int ACTS_OF_APOSTLES = 9;
+    public static final int PAULINE_EPISTLES = 10;
+    public static final int GENERAL_EPISTLES = 11;
+    public static final int APOCALYPTIC = 12;
+
+    public static int getBookType(int book) {
+        int type = 0;
+        if(book >= 1 && book <= 5) {
+            type = PENTATEUCH;
+        } else if(book >= 6 && book <= 21) {
+            type = HISTORY;
+        } else if(book >= 22 && book <= 28) {
+            type = WISDOM_AND_POETRY;
+        } else if(book >= 29 && book <= 34) {
+            type = MAJOR_PROPHETS;
+        } else if(book >= 35 && book <= 46) {
+            type = MINOR_PROPHETS;
+        } else if(book >= 47 && book <= 50) {
+            type = GOSPELS;
+        } else if(book >= 51 && book <= 51) {
+            type = ACTS_OF_APOSTLES;
+        } else if(book >= 52 && book <= 64) {
+            type = PAULINE_EPISTLES;
+        } else if(book >= 65 && book <= 72) {
+            type = GENERAL_EPISTLES;
+        } else if(book >= 73 && book <= 73) {
+            type = APOCALYPTIC;
+        }
+        return type;
+    }
+
+    public static String getSearchScope(int scope) {
+        String scopeString = "";
+        switch (scope) {
+            case OLD_TESTAMENT:
+                scopeString = " AND book >= 1 AND book <= 46 ";
+                break;
+            case NEW_TESTAMENT:
+                scopeString = " AND book >= 40 AND book <= 73 ";
+                break;
+            case PENTATEUCH:
+                scopeString = " AND book >= 1 AND book <= 5 ";
+                break;
+            case HISTORY:
+                scopeString = " AND book >= 6 AND book <= 21 ";
+                break;
+            case WISDOM_AND_POETRY:
+                scopeString = " AND book >= 22 AND book <= 28 ";
+                break;
+            case MAJOR_PROPHETS:
+                scopeString = " AND book >= 29 AND book <= 34 ";
+                break;
+            case MINOR_PROPHETS:
+                scopeString = " AND book >= 35 AND book <= 46 ";
+                break;
+            case GOSPELS:
+                scopeString = " AND book >= 47 AND book <= 50 ";
+                break;
+            case ACTS_OF_APOSTLES:
+                scopeString = " AND book = 51 ";
+                break;
+            case PAULINE_EPISTLES:
+                scopeString = " AND book >= 52 AND book <= 64 ";
+                break;
+            case GENERAL_EPISTLES:
+                scopeString = " AND book >= 65 AND book <= 72 ";
+                break;
+            case APOCALYPTIC:
+                scopeString = " AND book = 73 ";
+                break;
+            case WHOLE_BOOK:
+                scopeString = " AND book >= 1 AND book <= 73 ";
+            default:
+                break;
+        }
+        return scopeString;
+    }
 }

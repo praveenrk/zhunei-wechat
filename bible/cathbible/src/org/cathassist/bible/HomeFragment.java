@@ -1,5 +1,6 @@
 package org.cathassist.bible;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ import com.actionbarsherlock.app.SherlockFragment;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -50,7 +55,9 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         mActivity = (MainActivity) getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
-        mActivity.getSupportActionBar().setTitle("主页");
+        mActivity.getSupportActionBar().setTitle(R.string.app_name);
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -69,14 +76,43 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 
         if (new Database(mActivity).OpenDbCheck()) {
             mStatus.setVisibility(View.VISIBLE);
+            mShare.setVisibility(View.VISIBLE);
             ShowVerse();
             ShowMark();
             ShowLast();
         } else {
             mVerse.setText("天主竟这样爱了世界，甚至赐下了自己的独生子，使凡信他的人不至丧亡，反而获得永生。(若望福音 3:16)");
             mStatus.setVisibility(View.GONE);
+            mShare.setVisibility(View.GONE);
         }
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.home_menu,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.refresh:
+                if (new Database(mActivity).OpenDbCheck()) {
+                    mStatus.setVisibility(View.VISIBLE);
+                    mShare.setVisibility(View.VISIBLE);
+                    ShowVerse();
+                    ShowMark();
+                    ShowLast();
+                } else {
+                    mVerse.setText("天主竟这样爱了世界，甚至赐下了自己的独生子，使凡信他的人不至丧亡，反而获得永生。(若望福音 3:16)");
+                    mStatus.setVisibility(View.GONE);
+                    mShare.setVisibility(View.GONE);
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -89,7 +125,6 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     CommonPara.currentBook = mVerseBook;
                     CommonPara.currentChapter = mVerseChapter;
                     CommonPara.currentSection = mVerseSection;
-                    CommonPara.bibleDevitionPos = 0;
 
                     CommonPara.menuIndex = CommonPara.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -104,7 +139,6 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     CommonPara.currentBook = mMarkBook;
                     CommonPara.currentChapter = mMarkChapter;
                     CommonPara.currentSection = mMarkSection;
-                    CommonPara.bibleDevitionPos = 0;
 
                     CommonPara.menuIndex = CommonPara.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -119,7 +153,6 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                     CommonPara.currentBook = CommonPara.lastBook;
                     CommonPara.currentChapter = CommonPara.lastChapter;
                     CommonPara.currentSection = CommonPara.lastSection;
-                    CommonPara.bibleDevitionPos = 0;
 
                     CommonPara.menuIndex = CommonPara.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);

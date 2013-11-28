@@ -20,12 +20,12 @@
     <string name="last_mark">最新书签</string>
     <string name="last_read">上次阅读</string>
     <string name="today_qt">今日QT</string>
-    <string name="refresh">刷新</string>
     <string name="close">关闭</string>
-    <string name="main_page">首页</string>    
-    <string name="search_hint">多个关键词用空格隔开</string>    
-    <string name="search">搜索</string> 
-    <string name="user_center">用户中心</string>  
+    <string name="main_page">首页</string>
+    <string name="search_hint">多个关键词用空格隔开</string>
+    <string name="search">搜索</string>
+    <string name="search_scope">搜索范围</string>
+    <string name="user_center">用户中心</string>
     <string name="share_settings">分享设置</string>
     <string name="read_settings">阅读设置</string>
     <string name="about">关于</string>
@@ -48,5 +48,7 @@
     <string name="bible_version_4">New Revised Standard Version</string>
     <string name="bible_version_5">King James Version</string>
     <string name="notice">提醒：本软件即将停止更新，请至各大应用市场下载《读圣经》软件。</string>
-
+    <string name="refresh">刷新</string>
+    <string name="next">下一条</string>
+    <string name="search_count">搜索到0条</string>
 </resources>
