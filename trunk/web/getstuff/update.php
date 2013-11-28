@@ -11,7 +11,7 @@
 	//http://mhchina.a24.cc/api/v1/getstuff/
 	header("Content-type: text/html; charset=utf-8");
 	
-	if(User::isAdmin())
+	if(!User::isAdmin())
 	{
 		die("非管理员帐户！");
 	}
