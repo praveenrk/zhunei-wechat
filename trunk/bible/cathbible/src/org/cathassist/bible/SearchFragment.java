@@ -102,7 +102,7 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         mScope = position;
-        SearchVerse();
+        //SearchVerse();
     }
 
     @Override
