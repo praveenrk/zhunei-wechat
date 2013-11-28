@@ -19,7 +19,7 @@
 	        android:id="@+id/text_verse"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:textSize="20sp" />
+	        android:textSize="18sp" />
 	    
 	    <Button
 	        android:id="@+id/button_share"
@@ -27,7 +27,7 @@
 	        android:layout_height="42dp"
 	        android:layout_gravity="center"
 	        android:text="@string/share_verse"
-	        android:textSize="20sp" />
+	        android:textSize="18sp" />
 	
 	    <LinearLayout
 	        android:id="@+id/layout_status"
@@ -46,7 +46,7 @@
 		        android:id="@+id/text_mark"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="20sp" />
+		        android:textSize="18sp" />
 		    
 		    <TextView
 		        android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 		        android:id="@+id/text_last"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="20sp" />
+		        android:textSize="18sp" />
 
 		</LinearLayout>
 	</LinearLayout>

@@ -14,7 +14,7 @@ public class CommonPara {
     public static final String STORE_NAME = "Settings";
     public static final int DB_CONTENT_COUNT = 100;
     public static final String BIBLE_MP3_URL = "http://bcs.duapp.com/cathassist/bible/mp3/";
-    public static final String[] menuName =
+    public static final String[] MENU_NAME =
             {"主页", "圣经", "书签", "金句", "搜索", "设置"};
     public static final int MENU_HOME = 0;
     public static final int MENU_BIBLE = 1;
@@ -50,18 +50,7 @@ public class CommonPara {
     public static int lastBook;
     public static int lastChapter;
     public static int lastSection;
-    public static int currentYear;
-    public static int currentMonth;
-    public static int currentDay;
-    public static int todayYear;
-    public static int todayMonth;
-    public static int todayDay;
-    public static int bookYear;
-    public static int bookMonth;
-    public static int bookDay;
-    public static int bibleDevitionPos = 0;
     public static int bookmarkPos = 0;
-    public static int searchPos = 0;
     public static int bibleMp3Pos = 0;
     public static int menuIndex = 0;
 }

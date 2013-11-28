@@ -67,7 +67,6 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         CommonPara.currentBook = Integer.parseInt(map.get("book"));
         CommonPara.currentChapter = Integer.parseInt(map.get("chapter"));
         CommonPara.currentSection = Integer.parseInt(map.get("section"));
-        CommonPara.bibleDevitionPos = 0;
 
         CommonPara.menuIndex = CommonPara.MENU_BIBLE;
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);

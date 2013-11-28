@@ -14,10 +14,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -25,6 +27,10 @@ import com.actionbarsherlock.app.SherlockFragment;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
@@ -32,16 +38,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchFragment extends SherlockFragment implements OnClickListener, OnItemClickListener {
-    int count = 0;
+public class SearchFragment extends SherlockFragment implements OnClickListener, OnItemClickListener, AdapterView.OnItemSelectedListener {
+    int mCount = 0;
     private Button button_search;
     private ListView list_search;
     private EditText text_search;
-    private TextView text_search_count;
     private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     private List<Map<String, String>> mData = new ArrayList<Map<String, String>>();
+    private Spinner mSpinner;
+    private ArrayAdapter<String> mScopeAdapter;
+    private int mScope = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +58,8 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
         mActivity.getSupportActionBar().setTitle("搜索");
+
+        setHasOptionsMenu(true);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,10 +69,17 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         button_search = (Button) view.findViewById(R.id.button_search);
         list_search = (ListView) view.findViewById(R.id.list);
         text_search = (EditText) view.findViewById(R.id.text_word);
-        text_search_count = (TextView) view.findViewById(R.id.text_count);
 
         button_search.setOnClickListener(this);
         list_search.setOnItemClickListener(this);
+
+        mSpinner = (Spinner)view.findViewById(R.id.spinner);
+        mScopeAdapter = new ArrayAdapter<String>(getSherlockActivity(),
+                R.layout.sherlock_spinner_item,
+                VerseInfo.BOOK_SCOPE);
+        mScopeAdapter.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
+        mSpinner.setAdapter(mScopeAdapter);
+        mSpinner.setOnItemSelectedListener(this);
 
         return view;
     }
@@ -74,24 +91,41 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         text_search.setText(settings.getString("search_key", ""));
         text_search.setSelectAllOnFocus(true);
 
-        SearchVerse();
+        //SearchVerse();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        CommonPara.searchPos = list_search.getFirstVisiblePosition();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        mScope = position;
+        SearchVerse();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_search:
-                CommonPara.searchPos = 0;
                 SearchVerse();
                 break;
-
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.search_menu,menu);
+        MenuItem count = menu.findItem(R.id.search_count);
+        count.setTitle(mCount==-1?"正在搜索":"搜索到"+mCount+"条");
     }
 
     @Override
@@ -102,7 +136,6 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         CommonPara.currentBook = Integer.parseInt(map.get("book"));
         CommonPara.currentChapter = Integer.parseInt(map.get("chapter"));
         CommonPara.currentSection = Integer.parseInt(map.get("section"));
-        CommonPara.bibleDevitionPos = 0;
 
         CommonPara.menuIndex = CommonPara.MENU_BIBLE;
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -114,7 +147,8 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
 
     private void SearchVerse() {
         list_search.setAdapter(null);
-        text_search_count.setText("正在搜索，请稍候");
+        mCount = -1;
+        mActivity.supportInvalidateOptionsMenu();
         mData = GetData();
 
         try {
@@ -125,8 +159,7 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
                     new int[]{R.id.title, R.id.content});
 
             list_search.setAdapter(adapter);
-            list_search.setSelection(CommonPara.searchPos);
-            text_search_count.setText("共搜索到" + count + "条经文");
+            mActivity.supportInvalidateOptionsMenu();
 
             InputMethodManager inputMethodManager = (InputMethodManager) mActivity.getSystemService
                     (Context.INPUT_METHOD_SERVICE);
@@ -158,11 +191,11 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
                 String condition = "%"
                         + text_search.getText().toString().trim()
                         .replace(' ', '%') + "%";
-                String sql = "select book,chapter,section,chn from cathbible where chn like '" + condition + "' ";
+                String sql = "select book,chapter,section,chn from cathbible where chn like '" + condition + "'" + VerseInfo.getSearchScope(mScope);
 
                 cursor = db.rawQuery(sql, null);
 
-                count = cursor.getCount();
+                mCount = cursor.getCount();
                 while (cursor.moveToNext()) {
                     int book = cursor.getInt(cursor.getColumnIndex("book"));
 
@@ -183,10 +216,13 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
                         data.add(map);
                     }
                 }
-
+            } else {
+                mCount = 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            mCount = 0;
+            data.clear();
         } finally {
             if (cursor != null) {
                 cursor.close();

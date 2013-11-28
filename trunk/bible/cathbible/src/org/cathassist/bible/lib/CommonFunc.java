@@ -25,11 +25,8 @@ public class CommonFunc {
         SharedPreferences.Editor editor = settings.edit();
 
         Calendar calendar = Calendar.getInstance();
-        CommonPara.todayYear = calendar.get(Calendar.YEAR);
-        CommonPara.todayMonth = calendar.get(Calendar.MONTH) + 1;
-        CommonPara.todayDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-        CommonPara.font_size = settings.getFloat("font_size", 20);
+        CommonPara.font_size = settings.getFloat("font_size", 18);
         editor.putFloat("font_size", CommonPara.font_size);
         CommonPara.always_bright = settings.getBoolean("always_bright", false);
         editor.putBoolean("always_bright", CommonPara.always_bright);
@@ -68,13 +65,6 @@ public class CommonFunc {
         CommonPara.currentChapter = settings.getInt("currentChapter", 1);
         CommonPara.currentSection = settings.getInt("currentSection", 0);
 
-        CommonPara.currentYear = CommonPara.todayYear;
-        CommonPara.currentMonth = CommonPara.todayMonth;
-        CommonPara.currentDay = CommonPara.todayDay;
-
-        CommonPara.bookYear = CommonPara.todayYear;
-        CommonPara.bookMonth = CommonPara.todayMonth;
-        CommonPara.bookDay = CommonPara.todayDay;
     }
 
     public static String GetVerName(Context context) {

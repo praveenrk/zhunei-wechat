@@ -46,10 +46,10 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
         mMenu = (ListView) view.findViewById(R.id.list);
         mMenu.setOnItemClickListener(this);
         List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-        for (int i = 0; i < CommonPara.menuName.length; i++) {
+        for (int i = 0; i < CommonPara.MENU_NAME.length; i++) {
             HashMap<String, String> map = new HashMap<String, String>();
             map.put("img", Integer.toString(R.drawable.ic_launcher));
-            map.put("text", CommonPara.menuName[i]);
+            map.put("text", CommonPara.MENU_NAME[i]);
             list.add(map);
         }
 

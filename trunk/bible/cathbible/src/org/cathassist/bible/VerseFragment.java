@@ -17,12 +17,15 @@ import com.actionbarsherlock.app.SherlockFragment;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.slidingmenu.lib.SlidingMenu;
 
 import java.util.Random;
 
 public class VerseFragment extends SherlockFragment implements OnClickListener {
-    private Button mNext;
     private TextView mVerse;
     private int mVerseBook = 0;
     private int mVerseChapter = 0;
@@ -39,13 +42,13 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
         mActivity.getSupportActionBar().setTitle("金句");
+
+        setHasOptionsMenu(true);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.verse, null);
-        mNext = (Button) view.findViewById(R.id.button_verse_next);
         mVerse = (TextView) view.findViewById(R.id.text_verse_content);
-        mNext.setOnClickListener(this);
         mVerse.setOnClickListener(this);
 
         return view;
@@ -58,19 +61,32 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        FragmentTransaction fragTrans = null;
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.verse_menu,menu);
+    }
 
-        switch (v.getId()) {
-            case R.id.button_verse_next:
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.next:
                 GetVerse();
                 break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        FragmentTransaction fragTrans;
+
+        switch (v.getId()) {
             case R.id.text_verse_content:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
                     CommonPara.currentBook = mVerseBook;
                     CommonPara.currentChapter = mVerseChapter;
                     CommonPara.currentSection = mVerseSection;
-                    CommonPara.bibleDevitionPos = 0;
 
                     CommonPara.menuIndex = CommonPara.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);

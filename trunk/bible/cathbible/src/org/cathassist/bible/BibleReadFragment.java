@@ -16,6 +16,7 @@ import android.text.ClipboardManager;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -123,7 +124,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         CommonPara.bibleMp3Pos = mMp3Pos;
         StopMp3();
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -391,7 +391,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         }
         StopMp3();
         CommonPara.currentSection = 0;
-        CommonPara.bibleDevitionPos = 0;
         CommonPara.bibleMp3Pos = 0;
         mMp3Pos = CommonPara.bibleMp3Pos;
         mProgress.setProgress(mMp3Pos);
