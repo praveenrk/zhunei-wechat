@@ -1,3 +1,3 @@
 <?php
-echo("http://cathassist.org/bible/mp3/");
+echo("http://bcs.duapp.com/cathassist/bible/mp3/");
 ?>
