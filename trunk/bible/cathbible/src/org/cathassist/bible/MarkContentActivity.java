@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.lib.CommonPara;
@@ -20,12 +21,9 @@ import org.cathassist.bible.lib.Database;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MarkContentActivity extends SherlockActivity implements OnClickListener {
+public class MarkContentActivity extends SherlockActivity {
     EditText mTitle;
     EditText mContent;
-    Button mComfirm;
-    Button mDelete;
-    Button mCancel;
     int mBook;
     int mChapter;
     int mSection;
@@ -47,41 +45,32 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
 
         mTitle = (EditText) findViewById(R.id.text_title);
         mContent = (EditText) findViewById(R.id.text_content);
-        mComfirm = (Button) findViewById(R.id.button_confirm);
-        mDelete = (Button) findViewById(R.id.button_delete);
-        mCancel = (Button) findViewById(R.id.button_cancel);
-
-        mComfirm.setOnClickListener(this);
-        mDelete.setOnClickListener(this);
-        mCancel.setOnClickListener(this);
 
         GetContent();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getSupportMenuInflater().inflate(R.menu.mark_content_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button_confirm:
-                SaveBookmark();
-                break;
-            case R.id.button_delete:
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.delete:
                 DeleteBookmark();
                 break;
-            case R.id.button_cancel:
-                CancelBookmark();
+            case R.id.confirm:
+                SaveBookmark();
                 break;
         }
-
+        return super.onOptionsItemSelected(item);
     }
 
     private void SaveBookmark() {
@@ -131,10 +120,6 @@ public class MarkContentActivity extends SherlockActivity implements OnClickList
                 }
             }
         }
-        this.finish();
-    }
-
-    private void CancelBookmark() {
         this.finish();
     }
 

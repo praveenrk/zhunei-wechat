@@ -41,11 +41,12 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
     }
 
     @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        CommonPara.currentChapter = arg2 + 1;
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        CommonPara.currentChapter = position + 1;
         CommonPara.currentSection = 0;
         CommonPara.bibleMp3Pos = 0;
 
+        view.setBackgroundColor(getResources().getColor(R.color.light_blue));
         this.finish();
     }
 
