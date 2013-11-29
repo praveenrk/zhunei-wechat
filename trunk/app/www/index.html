@@ -43,11 +43,35 @@
 			var script = document.createElement("script");
 			script.src = "plugins/af.desktopBrowsers.js";
 			var tag = $("head").append(script);
-			$.os.desktop = true;
 		}
 		
 		$(document).ready(function(){
 			$.ui.launch();
+		});
+		
+		
+		var myScroller;
+		$.ui.ready(function () {
+			myScroller = $("#mainc").scroller();
+			myScroller.addInfinite();
+			myScroller.addPullToRefresh();
+			//this.setRefreshContent("New content")
+			$.bind(myScroller, "refresh-trigger", function () {
+				console.log("准备刷新");
+			});
+			
+			$.bind(myScroller, "refresh-release", function () {
+				console.log("刷新中。。。");
+			});
+
+			$.bind(myScroller, "refresh-cancel", function () {
+				console.log("取消刷新");
+			});
+
+			$.bind(myScroller, "infinite-scroll", function () {
+				console.log("获取更多");
+			});
+            $("#mainc").css("overflow", "auto");
 		});
 	</script>
 </head>
@@ -66,7 +90,7 @@
 			<li><a href="/stuff">首页</a></li>
 			<li class="divider">教会动态</li>
 			<li><a href="/article/vaticanacn">普世教会</a></li>
-			<li><a href="articles/" data-persist-ajax="false" data-refresh-ajax="false" title="信仰生活" data-pull-scroller="true">信仰生活</a></li>
+			<li><a href="/articles/">信仰生活</a></li>
 			<li><a href="/todo/init">主内分享</a></li>
 			<li><a href="#pray">彼此代祷</a></li>
 			<li class="divider">每日灵修</li>
