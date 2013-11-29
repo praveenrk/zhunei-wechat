@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>天主教小助手</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css" href="./css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="./css/afui.custom.css"/>
+	<link rel="stylesheet" type="text/css" href="./css/app.css"/>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
+	<!--<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./js/jq.appframework.js"></script>-->
+	<script type="text/javascript" charset="utf-8" src="./af.mvc.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.selectBox.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/src/appframework.ui.js"></script>
+	<!-- <script type="text/javascript" charset="utf-8" src="./ui/transitions/all.js"></script> -->
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/fade.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/flip.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/pop.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slide.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./app.js"></script>
+	<script>
+		var webRoot = "/app/";
+		$.ui.autoLaunch = false;
+		$.ui.openLinksNewTab = false;
+		$.ui.useInteralRouting = false;
+		
+		if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+			var script = document.createElement("script");
+			script.src = "plugins/af.desktopBrowsers.js";
+			var tag = $("head").append(script);
+		}
+		
+		$(document).ready(function(){
+			$.ui.launch();
+		});
+		
+		
+		var myScroller;
+		$.ui.ready(function () {
+			myScroller = $("#mainc").scroller();
+			myScroller.addInfinite();
+			myScroller.addPullToRefresh();
+			//this.setRefreshContent("New content")
+			$.bind(myScroller, "refresh-trigger", function () {
+				console.log("准备刷新");
+			});
+			
+			$.bind(myScroller, "refresh-release", function () {
+				console.log("刷新中。。。");
+			});
+
+			$.bind(myScroller, "refresh-cancel", function () {
+				console.log("取消刷新");
+			});
+
+			$.bind(myScroller, "infinite-scroll", function () {
+				console.log("获取更多");
+			});
+            $("#mainc").css("overflow", "auto");
+		});
+	</script>
+</head>
+<body>
+<div id="afui" class="">
+	<div id="header">
+		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
+	</div>
+	<div id="content">
+		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='none'>
+			<div id='main'></div>
+		</div>
+	</div>
+	<nav>
+		<ul class="list">
+			<li><a href="/stuff">首页</a></li>
+			<li class="divider">教会动态</li>
+			<li><a href="/article/vaticanacn">普世教会</a></li>
+			<li><a href="/articles/">信仰生活</a></li>
+			<li><a href="/todo/init">主内分享</a></li>
+			<li><a href="#pray">彼此代祷</a></li>
+			<li class="divider">每日灵修</li>
+			<li><a href="/stuff">日课及读经</a></li>
+			<li><a href="#broadcast">梵蒂冈广播</a></li>
+			<li><a href="#music">色辣芬电台</a></li>
+			<li class="divider">小助手</li>
+			<li><a href="#bible">思高圣经</a></li>
+			<li><a href="#prayer">常用经文</a></li>
+		</ul>
+	</nav>
+</div>
+</body>
+</html>
