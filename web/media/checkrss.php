@@ -1,7 +1,11 @@
 <?php
 	require_once("../include/define.php");
+	require_once("../include/bcs/bcs.class.php");
+	$bcs = new BaiduBCS ();
+
 	function getAudio($rss,&$link,$abstime=0)
 	{
+		global $bcs;
 		$rsscontent = file_get_contents($rss);
 		$rss = simplexml_load_string($rsscontent);
 		$channel = $rss->channel;
@@ -10,6 +14,15 @@
 			$item = $channel->item[0];
 			$enclosure = $item->enclosure;
 			$link = $enclosure['url'];
+			if($abstime>0)
+			{
+				$strDate = date("Y-m-d",strtotime($item->pubDate)+$abstime);
+				$remote = '/vaticanradio/cn/mp3/'.$strDate.'.mp3';
+				if($bcs->is_object_exist(BCS_BUCKET,$remote))
+				{
+					$link = 'http://bcs.duapp.com/cathassist/vaticanradio/cn/mp3/'.$strDate.'.mp3';
+				}
+			}
 			return date("Y-m-d", strtotime($item->pubDate)+$abstime);
 		}
 	}

@@ -28,6 +28,15 @@
 		echo('upload "'.$remote.'" to bcs!'.'<br/>');
 	}
 	
+	function url_exists($urlpath)
+	{
+		$h = get_headers($urlpath);
+		if(strpos($h[0],'OK')>-1)
+		{
+			return true;
+		}
+		return false;
+	}
 	
 	{
 		//更新梵蒂冈广播
@@ -45,6 +54,27 @@
 			if(!$bcs->is_object_exist(BCS_BUCKET,$remote)){
 				upload2bcsbyurl($remote,$link);
 			}
+			$i++;
+		}
+	}
+	
+	{
+		//更新“圣言及反思”音频
+		$tmNow = time();
+		$i = 0;
+		while($i<15)
+		{
+			$link = 'http://apps.thomasluk.idv.hk/apps/themes/read_bible/'.date('Ymd',$tmNow).'p.mp3';
+			$remote = '/thought/mp3/'.date('Y-m-d',$tmNow).'.mp3';
+			if(url_exists($link))
+			{
+				if(!$bcs->is_object_exist(BCS_BUCKET,$remote))
+				{
+					upload2bcsbyurl($remote,$link);
+				}
+			}
+			
+			$tmNow = $tmNow+3600*24;
 			$i++;
 		}
 	}
