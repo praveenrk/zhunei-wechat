@@ -1,0 +1,51 @@
+<?php
+	require_once("../include/define.php");
+	require_once("../include/bcs/bcs.class.php");
+	set_time_limit(60*15);		//设置超时为15分钟
+	error_reporting(E_ERROR | E_PARSE);
+	$bcs = new BaiduBCS ();
+		
+	function curl_download($remote, $local) {
+		$cp = curl_init($remote);
+		$fp = fopen($local, "w");
+
+		curl_setopt($cp, CURLOPT_FILE, $fp);
+		curl_setopt($cp, CURLOPT_HEADER, 0);
+
+		curl_exec($cp);
+		curl_close($cp);
+		fclose($fp);
+	}
+	
+	function upload2bcsbyurl($remote, $url)
+	{
+		global $bcs;
+		$name = basename($url);
+		$local = './objs/'.time().'_'.$name;
+		curl_download($url,$local);
+		$response = $bcs->create_object_superfile(BCS_BUCKET,$remote,$local);
+		unlink($local);
+		echo('upload "'.$remote.'" to bcs!'.'<br/>');
+	}
+	
+	
+	{
+		//更新梵蒂冈广播
+		$rsscontent = file_get_contents("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese");
+		$rss = simplexml_load_string($rsscontent);
+		$channel = $rss->channel;
+		$i = 0;
+		while($i<count($channel->item))
+		{
+			$item = $channel->item[$i];
+			$enclosure = $item->enclosure;
+			$link = $enclosure['url'];
+			$name = date("Y-m-d", strtotime($item->pubDate)+3600*24);
+			$remote = '/vaticanradio/cn/mp3/'.$name.'.mp3';
+			if(!$bcs->is_object_exist(BCS_BUCKET,$remote)){
+				upload2bcsbyurl($remote,$link);
+			}
+			$i++;
+		}
+	}
+?>
