@@ -44,7 +44,7 @@
 		$rss = simplexml_load_string($rsscontent);
 		$channel = $rss->channel;
 		$i = 0;
-		while($i<count($channel->item))
+		while($i<2)
 		{
 			$item = $channel->item[$i];
 			$enclosure = $item->enclosure;
@@ -61,9 +61,12 @@
 	{
 		//更新“圣言及反思”音频
 		$tmNow = time();
+		$base = intval(date('H',$tmNow))%12;
 		$i = 0;
-		while($i<15)
+		while($i<2)
 		{
+			$tmNow = time()+($base+$i*12)*3600*24;
+			$strDate = date('Y-m-d',$tmNow);
 			$link = 'http://apps.thomasluk.idv.hk/apps/themes/read_bible/'.date('Ymd',$tmNow).'p.mp3';
 			$remote = '/thought/mp3/'.date('Y-m-d',$tmNow).'.mp3';
 			if(url_exists($link))
@@ -73,8 +76,7 @@
 					upload2bcsbyurl($remote,$link);
 				}
 			}
-			
-			$tmNow = $tmNow+3600*24;
+
 			$i++;
 		}
 	}
