@@ -156,16 +156,16 @@ function getinputvalue(obj)
 	var post_Str = obj.replace(/\+/g, "%2B");//"+"转义    
 	var post_Str= post_Str.replace(/\&/g, "%26");//"&"  
 	var post_Str= post_Str.replace(/\#/g, "%23");//"#"
-	return post_Str;
+	return encodeURI(post_Str);
 }
 
 function onupdate()
 {
-	if(!isAllInputValid())
-	{
-		alert("文字中不允许出现特殊字符： \" \' { }");
-		return;
-	}
+//	if(!isAllInputValid())
+//	{
+//		alert("文字中不允许出现特殊字符： \" \' { }");
+//		return;
+//	}
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function()
 	{
