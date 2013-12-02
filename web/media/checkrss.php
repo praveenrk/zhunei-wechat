@@ -46,7 +46,7 @@
 	}
 	
 	$fp = fopen("vaticanradio.html","w");
-	fwrite($fp,'<html><head><title>梵蒂冈广播电台——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="user-scalable=no, width=device-width" /><link rel="stylesheet" type="text/css" href="vaticanradiowebcast_cn.css"/></head><body><center><h2>梵蒂冈广播电台</h2><h3>'.$cndaytitle.'</h3>
+	fwrite($fp,'<html><head><title>梵蒂冈广播电台——天主教小助手</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="user-scalable=no, width=device-width" /><link rel="stylesheet" type="text/css" href="vaticanradiowebcast_cn.css"/></head><body><div style="float:right"><a href="http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000002&itemidx=1&sign=e5eb309ec3013bbc30d7d3b5d339d499#wechat_redirect" class="btn" style="color:rgb(48, 135, 253);">关注我们</a></div><center style="clear:right;"><h2>梵蒂冈广播电台</h2><h3>'.$cndaytitle.'</h3>
 	<audio src="'.$cnday.'" controls></audio><h3>'.$enmtitle.'</h3>
 	<audio src="'.$enmorning.'" controls></audio>
 	<h3>'.$enetitle.'</h3>
