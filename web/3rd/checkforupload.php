@@ -23,7 +23,7 @@
 		$name = basename($url);
 		$local = './objs/'.time().'_'.$name;
 		curl_download($url,$local);
-		$response = $bcs->create_object_superfile(BCS_BUCKET,$remote,$local);
+		$response = $bcs->create_object(BCS_BUCKET,$remote,$local);
 		unlink($local);
 		echo('upload "'.$remote.'" to bcs!'.'<br/>');
 	}
