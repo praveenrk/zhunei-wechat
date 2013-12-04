@@ -180,7 +180,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
     private void download(final int book, final int chapter) {
         final File file = getFilePath(getFileName(mPath, book, chapter));
         if (file.exists()) {
-            new AlertDialog.Builder(this).setIcon(R.drawable.ic_launcher).setTitle("是否重新下载此音频？")
+            new AlertDialog.Builder(this).setTitle("是否重新下载此音频？")
                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
