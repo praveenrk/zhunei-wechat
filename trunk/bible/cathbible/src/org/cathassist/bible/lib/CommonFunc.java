@@ -57,7 +57,7 @@ public class CommonFunc {
     public static void InitOncePara(Context context) {
         CommonPara.DB_CONTENT_PATH = context.getDatabasePath(CommonPara.DB_CONTENT_NAME).getParent() + "/";
         CommonPara.DB_DATA_PATH = context.getDatabasePath(CommonPara.DB_DATA_NAME).getParent() + "/";
-        CommonPara.BIBLE_MP3_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/petroschurch/cathbible/bible/mp3/";
+        CommonPara.BIBLE_MP3_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cathbible/bible/mp3/";
 
         SharedPreferences settings = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
 

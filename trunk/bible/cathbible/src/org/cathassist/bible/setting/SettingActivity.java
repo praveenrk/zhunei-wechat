@@ -1,4 +1,4 @@
-package org.cathassist.bible;
+package org.cathassist.bible.setting;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,9 @@ import android.preference.PreferenceScreen;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
+
+import org.cathassist.bible.MainActivity;
+import org.cathassist.bible.R;
 import org.cathassist.bible.lib.CommonFunc;
 import org.cathassist.bible.lib.CommonPara;
 import com.umeng.fb.FeedbackAgent;
@@ -23,6 +26,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
     private PreferenceScreen click_about;
     private PreferenceScreen click_share;
     private PreferenceScreen click_feedback;
+    private PreferenceScreen click_mp3_manage;
     private ListPreference list_font_size;
     private CheckBoxPreference check_always_bright;
     private CheckBoxPreference check_theme_black;
@@ -47,6 +51,8 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         click_about = (PreferenceScreen) findPreference("click_about");
         click_share = (PreferenceScreen) findPreference("click_share");
         click_share.setOnPreferenceChangeListener(this);
+        click_mp3_manage = (PreferenceScreen) findPreference("click_mp3_manage");
+        click_mp3_manage.setOnPreferenceChangeListener(this);
         click_feedback = (PreferenceScreen) findPreference("click_feedback");
         click_feedback.setOnPreferenceChangeListener(this);
         list_font_size = (ListPreference) findPreference("font_size");
@@ -84,6 +90,10 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         } else if (preference == click_share) {
             final UMSocialService mController = UMServiceFactory.getUMSocialService("cathbible",RequestType.SOCIAL);
             mController.openUserCenter(this, SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
+        } else if(preference == click_mp3_manage) {
+            Intent intent = new Intent();
+            intent.setClass(this,Mp3ManageActivity.class);
+            startActivity(intent);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);

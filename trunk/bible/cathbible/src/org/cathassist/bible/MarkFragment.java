@@ -17,6 +17,8 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;
+import org.cathassist.bible.read.BibleReadFragment;
+
 import com.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
