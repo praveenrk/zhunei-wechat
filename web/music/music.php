@@ -35,9 +35,6 @@
 		$pic = $row['pic'];
 		$aid = $row['aid'];
 		$sid = $row['sid'];
-		
-		$mp3 = str_replace('（','%EF%BC%88',$mp3);
-		$mp3 = str_replace('）','%EF%BC%89',$mp3);
 	}
 	else
 	{
