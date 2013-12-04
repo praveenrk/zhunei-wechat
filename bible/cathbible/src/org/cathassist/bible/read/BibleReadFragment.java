@@ -1,4 +1,4 @@
-package org.cathassist.bible;
+package org.cathassist.bible.read;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,7 +16,6 @@ import android.text.ClipboardManager;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.TypedValue;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +33,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
+
+import org.cathassist.bible.MainActivity;
+import org.cathassist.bible.MarkContentActivity;
+import org.cathassist.bible.R;
 import org.cathassist.bible.lib.CommonFunc;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.Database;

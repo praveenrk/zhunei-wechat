@@ -1,4 +1,4 @@
-package org.cathassist.bible;
+package org.cathassist.bible.read;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+
+import org.cathassist.bible.R;
 import org.cathassist.bible.lib.CommonPara;
 import org.cathassist.bible.lib.VerseInfo;
 

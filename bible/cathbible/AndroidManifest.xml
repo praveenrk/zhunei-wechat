@@ -31,10 +31,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.cathassist.bible.BookSelectActivity" />
-        <activity android:name="org.cathassist.bible.ChapterSelectActivity" />
-        <activity android:name="org.cathassist.bible.MarkContentActivity" />
-        <activity android:name="org.cathassist.bible.SettingActivity" />
+        <activity android:name=".read.BookSelectActivity" />
+        <activity android:name=".read.ChapterSelectActivity" />
+        <activity android:name=".MarkContentActivity" />
+        <activity android:name=".setting.SettingActivity" />
+        <activity android:name=".setting.Mp3ManageActivity" />
+        <activity android:name=".setting.Mp3ManageDetailActivity" />
         
         <activity android:name="com.umeng.fb.ConversationActivity"/>
 		<activity android:name="com.umeng.fb.ContactActivity"/>

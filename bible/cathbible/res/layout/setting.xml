@@ -19,7 +19,11 @@
         <PreferenceScreen 
             android:key="click_share"
             android:title="@string/share_settings" 
-            android:summary="分享到微博、空间设置" />   
+            android:summary="分享到微博、空间设置" />
+        <PreferenceScreen
+            android:key="click_mp3_manage"
+            android:title="@string/mp3_manage_settings"
+            android:summary="圣经朗读Mp3音频批量管理" />
         <CheckBoxPreference  
             android:key="auto_update"
             android:title="@string/auto_update" 
