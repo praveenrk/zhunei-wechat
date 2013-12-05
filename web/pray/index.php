@@ -13,26 +13,48 @@ header("Content-type: text/html; charset=utf-8");
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
-<?php
+	<script type="text/javascript" language="javascript" src="/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript">
+	function postText()
+	{
+		var nick = $("#input_name").val();
+		var text = $("#input_text").val();
+		var cap = $("#input_cap").val();
+		
+		if(text == '在此输入你的代祷意向，然后点击提交')
+		{
+			alert("请输入代祷意向");
+			return;
+		}
+		
+		
+		$.post("./update.php",{'name':nick,'text':text,'cap':cap},function(msg){
+				if(msg==""){
+					window.location.reload();
+					window.scrollTo();
+				}else{
+					alert(msg);
+				}
+			});
+	}
+	<?php
 if(User::isLogin())
 {
-	echo('<script type="text/javascript">function delPray(id)
+	echo('function delPray(id)
 {
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange=function()
-{
-if (xmlhttp.readyState==4 && xmlhttp.status==200)
-{
-parent.location.reload();
-return;
-}
-}
-xmlhttp.open("POST","./pray.php",true);
-xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-xmlhttp.send("mode=del&id="+id);
-}</script>');
+$.post("./pray.php",{"mode":"del","id":id},function(msg){
+		parent.location.reload();
+	});
+}');
 }
 ?>
+	$(function(){
+		//算术验证
+		$("#getcode_math").click(function(){
+			$(this).attr("src",'/include/captcha/code_math.php?' + Math.random());
+		});
+	});
+	</script>
 	<style type="text/css">
 	.css_div_class
 	{
@@ -57,14 +79,8 @@ xmlhttp.send("mode=del&id="+id);
 		color:#999;
 	}
 	
-	input[type=submit]
-	{
-		margin: 20px 0 0 20%;
-		background-position: bottom left;
-		width: 60%;
-		height: 30px;
-		background-color:#f5f5f;
-	}
+	input{}
+	
 	.css_btn_class {
 		font-size:16px;
 		font-family:Arial;
@@ -129,38 +145,9 @@ xmlhttp.send("mode=del&id="+id);
 	<p>代祷内容：</p>
 	<textarea id="input_text" name="text" style="width:100%; height:80px" placeholder="在此输入你的代祷意向，然后点击提交"></textarea><br/>
 	</p>
+	<p>验证码：<input name="cap" id="input_cap" type="text" maxlength="4" /><img src="/include/captcha/code_math.php" id="getcode_math" title="看不清，点击换一张" align="absmiddle"/></p>
 	<div align="center"><a href="#" class="css_btn_class" onclick="postText()">提交</a></div>
 </form>
-
-<script type="text/javascript">
-function postText()
-{
-	var nick = document.getElementById('input_name').value;
-	var text = document.getElementById('input_text').value;
-	
-	if(text == '在此输入你的代祷意向，然后点击提交')
-	{
-		alert("请输入代祷意向");
-		return;
-	}
-	
-	var data = "name="+window.encodeURIComponent(nick)+"&text="+window.encodeURIComponent(text);
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","./update.php",false);
-	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xmlhttp.send(data);
-	if(xmlhttp.responseText=="")
-	{
-		window.location.reload();
-		window.scrollTo();
-	}
-	else
-	{
-		alert(xmlhttp.responseText);
-	}
-	return xmlhttp.responseText;
-}
-</script>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 <?php require_once("../include/define.php"); echo(getWechatShareScript(ROOT_WEB_URL.'pray/index.php','代祷本——天主教小助手',ROOT_WEB_URL.'pray/icon.png'));?>
 </html>

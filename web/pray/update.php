@@ -46,6 +46,19 @@
 		$_SESSION['pray_time'] = $cur_time;
 	}
 	
+	if(!isset($_POST['cap']))
+	{
+		die('验证码错误！');
+	}
+	else
+	{
+		$cap = trim($_POST['cap']);
+		if($cap!=$_SESSION["helloweba_math"])
+		{
+			die('验证码错误！');
+		}
+	}
+	
 	if(isset($_POST['name']))
 	{
 		$name=trim($_POST['name']);
