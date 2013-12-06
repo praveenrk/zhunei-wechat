@@ -39,17 +39,7 @@ $.mvc.controller.create('stuff', {
     default:function() {
 		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date();
-		localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
-            $("#main").html($.template('list_stuff_tpl', {
-                title: '日课及读经',
-                stuff: all,
-				date: dtNow
-            }));
-			$.ui.hideMask();
-		});
-		$.ui.scrollToTop("#mainc",-10);
-		if($.ui.isSideMenuOn())
-			$.ui.toggleSideMenu();
+		this.getstuff(dtNow.Format("yyyy-MM-dd"));
     },
     /* This is executed when the controller is created.  It assumes the views are loaded, but can not interact with models
      * This is useful for wiring up page events, etc.
@@ -57,18 +47,38 @@ $.mvc.controller.create('stuff', {
     init: function() {
         var self = this;
     },
-	getstuff: function(_d)
+	update: function() {
+		var dtNow = new Date();
+		this.getstuff(dtNow.Format("yyyy-MM-dd"),'update');
+	},
+	getstuff: function(_d,_u)
 	{
 		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date(_d);
-		localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
-            $("#main").html($.template('list_stuff_tpl', {
-                title: '日课及读经',
-                stuff: all,
-				date: dtNow
-            }));
-			$.ui.hideMask();
-		});
+		if($.mvc.update)
+		{
+			localDB.updateStuff(dtNow.Format("yyyy-MM-dd"),function(all) {
+				$("#main").html($.template('list_stuff_tpl', {
+					title: '日课及读经',
+					stuff: all,
+					date: dtNow
+				}));
+				$.ui.hideMask();
+				myScroller.hideRefresh();
+			});
+		}
+		else
+		{
+			localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
+				$("#main").html($.template('list_stuff_tpl', {
+					title: '日课及读经',
+					stuff: all,
+					date: dtNow
+				}));
+				$.ui.hideMask();
+				myScroller.hideRefresh();
+			});
+		}
 		$.ui.scrollToTop("#mainc",-10);
 		if($.ui.isSideMenuOn())
 			$.ui.toggleSideMenu();
@@ -96,16 +106,51 @@ $.mvc.controller.create('article', {
         "article_detail_tpl":"views/article_detail.tpl"
     },
     vaticanacn:function(from) {
+		$.ui.showMask("加载普世教会...");
+		var refresh = false;
 		if((!from)||(from==""))
 			from="-1";
+		if($.mvc.update)
+		{
+			from = "-1";
+			refresh = true;
+		}
+		else if($.mvc.more)
+		{
+			from = art_next_from;
+			refresh = true;
+		}
 		from = parseInt(from);
 		localDB.getVaticanacnList(from,function(all) {
             $("#main").html($.template('list_article_tpl', {
                 title: "梵蒂冈中文快讯",
                 items: all
             }));
-		});
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+			
+			$.ui.hideMask();
+			myScroller.hideRefresh();
+		},refresh);
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
     },
+	vaticanacn_item:function(id) {
+		$.ui.showMask("加载文章...");
+		localDB.getVaticanacnItem(id,function(all) {
+			$("#main").html($.template('article_detail_tpl', {
+                item: all
+            }));
+			$.ui.hideMask();
+			myScroller.hideRefresh();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
     /* This is executed when the controller is created.  It assumes the views are loaded, but can not interact with models
      * This is useful for wiring up page events, etc.
      */

@@ -1183,6 +1183,7 @@
                     $.trigger(that, "refresh-finish");
                 }
             }, HIDE_REFRESH_TIME);
+            $.trigger(that, "refresh-finish");
             this.refreshTriggered = false;
         };
 

@@ -15,7 +15,7 @@ h3.arttitle{
 img.artimg{
 	float: left;
 	margin: 0 15px 0 0;
-	height: 80px;
+	max-width: 80px;
 }
 
 p.artcontent{

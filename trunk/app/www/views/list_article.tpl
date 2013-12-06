@@ -6,7 +6,7 @@
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.items){
 	}}
-	<li class="artitem"><a href="/stuff/detail/">
+	<li class="artitem"><a href="/article/vaticanacn_item/{{=it.items[c]['id']}}">
 		<img src="{{=it.items[c]['pic']}}" class="artimg" />
 		<h3 class="arttitle">{{=it.items[c]['title']}}</h3>
 		<p class="artcontent">{{=it.items[c]['title']}}</p>
