@@ -165,6 +165,8 @@
         if(url[0] == "/") url = url.substr(1);
         if(url[url.length-1]=="/") url=url.slice(0,-1);
         url = url.split("/");
+		
+		$.mvc.cur = origUrl;
 
         if(url.length > 1) {
             route = url.splice(0, 1);
