@@ -1,6 +1,18 @@
 <?php
 	require_once("../include/dbconn.php");
 	require_once("../include/define.php");
+	function get_inner_html($node)
+	{
+		$innerHTML= '';
+		$children = $node->childNodes;
+		foreach ($children as $child)
+		{
+			$innerHTML .= $child->ownerDocument->saveXML( $child );
+		}
+
+		return $innerHTML;
+	}
+	
 	
 	function getList($from,$count)
 	{
@@ -15,6 +27,20 @@
 		{
 			$ret[$i] = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>$row['picurl'],'cate'=>$row['cate'],'time'=>$row['time']);
 			$i++;
+		}
+		return $ret;
+	}
+	function getItem($id)
+	{
+		$sql = 'select id,title,picurl,local,cate,time from vaticanacn where id='.$id.';';
+		$result = mysql_query($sql);
+		if ($row = mysql_fetch_array($result))
+		{
+			$contents = file_get_contents('./'.$row['local']);
+			$begin = strpos($contents,'<div class="content">')+21;
+			$end = strpos($contents,'</div><br/><br/><a class="src"',$begin);
+			$content = substr($contents,$begin,$end-$begin);
+			$ret = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>$row['picurl'],'cate'=>$row['cate'],'time'=>$row['time'],'content'=>$content);
 		}
 		return $ret;
 	}
@@ -43,6 +69,18 @@
 				$count = (int)($_GET['count']);
 			}
 			echo $_GET['callback'].'('.json_encode(getList($from,$count)).')';
+		}
+		else if($_GET["mode"]=="item")
+		{
+			if(array_key_exists("id",$_GET))
+			{
+				$id = $_GET["id"];
+				echo $_GET['callback'].'('.json_encode(getItem($id)).')';
+			}
+			else
+			{
+				echo $_GET['callback'].'()';
+			}
 		}
 	}
 ?>
