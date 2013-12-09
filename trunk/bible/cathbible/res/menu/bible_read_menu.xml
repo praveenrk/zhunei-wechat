@@ -11,15 +11,4 @@
         android:showAsAction="always"
         android:title="@string/chapter"/>
 
-    <item
-        android:id="@+id/left"
-        android:orderInCategory="2"
-        android:showAsAction="always"
-        android:title="@string/left_sign"/>
-
-    <item
-        android:id="@+id/right"
-        android:orderInCategory="3"
-        android:showAsAction="always"
-        android:title="@string/right_sign"/>
 </menu>
