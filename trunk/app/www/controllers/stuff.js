@@ -47,38 +47,38 @@ $.mvc.controller.create('stuff', {
     init: function() {
         var self = this;
     },
-	update: function() {
+	update: function(_d) {
+		$.ui.showMask("更新日课及读经...");
 		var dtNow = new Date();
-		this.getstuff(dtNow.Format("yyyy-MM-dd"),'update');
+		if(_d)
+		{
+			dtNow = new Date(_d);
+		}
+		
+		localDB.updateStuff(dtNow.Format("yyyy-MM-dd"),function(all) {
+			$("#main").html($.template('list_stuff_tpl', {
+				title: '日课及读经',
+				stuff: all,
+				date: dtNow
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
 	},
 	getstuff: function(_d,_u)
 	{
 		$.ui.showMask("加载日课及读经...");
 		var dtNow = new Date(_d);
-		if($.mvc.update)
-		{
-			localDB.updateStuff(dtNow.Format("yyyy-MM-dd"),function(all) {
-				$("#main").html($.template('list_stuff_tpl', {
-					title: '日课及读经',
-					stuff: all,
-					date: dtNow
-				}));
-				$.ui.hideMask();
-				myScroller.hideRefresh();
-			});
-		}
-		else
-		{
-			localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
-				$("#main").html($.template('list_stuff_tpl', {
-					title: '日课及读经',
-					stuff: all,
-					date: dtNow
-				}));
-				$.ui.hideMask();
-				myScroller.hideRefresh();
-			});
-		}
+		localDB.getStuff(dtNow.Format("yyyy-MM-dd"),'',function(all) {
+			$("#main").html($.template('list_stuff_tpl', {
+				title: '日课及读经',
+				stuff: all,
+				date: dtNow
+			}));
+			$.ui.hideMask();
+		});
 		$.ui.scrollToTop("#mainc",-10);
 		if($.ui.isSideMenuOn())
 			$.ui.toggleSideMenu();
@@ -130,7 +130,6 @@ $.mvc.controller.create('article', {
 			art_next_to = all[0].id;
 			
 			$.ui.hideMask();
-			myScroller.hideRefresh();
 		},refresh);
 		
 		$.ui.scrollToTop("#mainc",-10);
@@ -144,7 +143,6 @@ $.mvc.controller.create('article', {
                 item: all
             }));
 			$.ui.hideMask();
-			myScroller.hideRefresh();
 		});
 		
 		$.ui.scrollToTop("#mainc",-10);
