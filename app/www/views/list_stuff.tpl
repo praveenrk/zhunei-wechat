@@ -7,14 +7,10 @@
 	nextDate = dtNext.Format("yyyy-MM-dd");
 	prevDate = dtPrev.Format("yyyy-MM-dd");
 }}
-<div style="width:100%;text-align:center;font-size:20px;height:40px;line-height:40px;">
-	<div style="float:left">
-	<a class="button previous" href="/stuff/getstuff/{{=prevDate}}"></a>
-	</div>
-	{{=it.date.Format("yyyy年MM月dd日")}}
-	<div style="float:right">
-	<a class="button next" href="/stuff/getstuff/{{=nextDate}}""></a>
-	</div>
+<div class="button-grouped flex">
+	<a class="button icon left" href="/stuff/getstuff/{{=prevDate}}">上一日</a>
+	<a class="button icon refresh" href="/stuff/update/{{=it.date.Format("yyyy-MM-dd")}}">{{=it.date.Format("yyyy年MM月dd日")}}</a>
+	<a class="button icon right" href="/stuff/getstuff/{{=nextDate}}">下一日</a>
 </div>
 <div style="clear:both"></div>
 <ul id="stuff-list" class="list">
