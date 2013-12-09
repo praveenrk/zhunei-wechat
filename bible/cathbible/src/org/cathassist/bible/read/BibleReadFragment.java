@@ -25,6 +25,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -62,7 +63,10 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     List<Map<String, String>> mContent;
     private MainActivity mActivity = null;
     private ListView mList;
-    private Button mStart;
+    private ImageView mLeft, mRight, mSound;
+    private View mMusicPanel;
+    private TextView mStart, mPlay, mPrev, mNext, mMode;
+    private Button mMusicCancel, mMusicDown;
     private SeekBar mProgress;
     private LinearLayout mMp3Layout;
     private List<Integer> mMarkedSections = new ArrayList<Integer>();
@@ -83,9 +87,31 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bible_read, null);
         mList = (ListView) view.findViewById(R.id.list);
-        mStart = (Button) view.findViewById(R.id.button_start);
+        mStart = (TextView) view.findViewById(R.id.button_start);
         mProgress = (SeekBar) view.findViewById(R.id.bar_mp3);
         mMp3Layout = (LinearLayout) view.findViewById(R.id.layout_mp3);
+
+        mLeft = (ImageView) view.findViewById(R.id.action_bar_left);
+        mLeft.setOnClickListener(this);
+        mRight = (ImageView) view.findViewById(R.id.action_bar_right);
+        mRight.setOnClickListener(this);
+        mSound = (ImageView) view.findViewById(R.id.action_bar_sound);
+        mSound.setOnClickListener(this);
+
+        mMusicPanel = view.findViewById(R.id.music_panel);
+        mMusicPanel.setVisibility(View.GONE);
+        mMusicCancel = (Button) view.findViewById(R.id.btn_music_cancel);
+        mMusicCancel.setOnClickListener(this);
+        mMusicDown = (Button) view.findViewById(R.id.btn_music_down);
+        mMusicDown.setOnClickListener(this);
+        mPrev = (TextView) view.findViewById(R.id.music_prev);
+        mPrev.setOnClickListener(this);
+        mPlay = (TextView) view.findViewById(R.id.music_play);
+        mPlay.setOnClickListener(this);
+        mNext = (TextView) view.findViewById(R.id.music_next);
+        mNext.setOnClickListener(this);
+        mMode = (TextView) view.findViewById(R.id.music_mode);
+        mMode.setOnClickListener(this);
 
         mList.setOnItemClickListener(this);
         mList.setOnItemLongClickListener(this);
@@ -135,7 +161,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         inflater.inflate(R.menu.bible_read_menu,menu);
         MenuItem book = menu.findItem(R.id.book);
         MenuItem chapter = menu.findItem(R.id.chapter);
-        book.setTitle(VerseInfo.CHN_ABBR[CommonPara.currentBook]);
+        book.setTitle(VerseInfo.CHN_NAME[CommonPara.currentBook]);
         chapter.setTitle(String.valueOf(CommonPara.currentChapter));
     }
 
@@ -151,12 +177,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 intent.setClass(mActivity, ChapterSelectActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.left:
-                ChangeVerse(false);
-                break;
-            case R.id.right:
-                ChangeVerse(true);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -166,6 +186,20 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         switch (v.getId()) {
             case R.id.button_start:
                 CheckMp3();
+                break;
+            case R.id.action_bar_left:
+                ChangeVerse(false);
+                break;
+            case R.id.action_bar_right:
+                ChangeVerse(true);
+                break;
+            case R.id.action_bar_sound:
+                mMusicPanel.setVisibility(View.VISIBLE);
+                break;
+            case R.id.btn_music_cancel:
+                mMusicPanel.setVisibility(View.GONE);
+                break;
+            case R.id.btn_music_down:
                 break;
             default:
                 break;
@@ -386,7 +420,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
             if (CommonPara.currentChapter < CommonPara.currentCount) {
                 CommonPara.currentChapter++;
             } else {
-                if (CommonPara.currentBook < 66) {
+                if (CommonPara.currentBook < 73) {
                     CommonPara.currentBook++;
                     CommonPara.currentChapter = 1;
                 }
@@ -504,6 +538,12 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     vh.title.setTextColor(CommonPara.DEFAULT_TEXT_COLOR);
                     vh.content.setTextColor(CommonPara.DEFAULT_TEXT_COLOR);
                 }
+            }
+
+            if (position == getCount() - 1) {
+                convertView.setPadding(5, 5, 5, 100);
+            } else {
+                convertView.setPadding(5, 5, 5, 5);
             }
             return convertView;
         }

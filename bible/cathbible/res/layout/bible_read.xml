@@ -1,19 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
     <LinearLayout 
         android:id="@+id/layout_mp3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:visibility="gone">
         <Button
             android:id="@+id/button_start"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:background="@drawable/button_selector"
+            android:background="@drawable/button_trans_selector"
             android:text="@string/start_sign"
             android:textSize ="20sp" />
         <SeekBar 
@@ -38,5 +38,9 @@
             android:cacheColorHint="#00000000"
             android:fadingEdge="none" />
     </LinearLayout>
+
+    <include layout="@layout/bible_read_action_bar" />
+
+    <include layout="@layout/bible_read_music_panel" />
     
-</LinearLayout>
+</RelativeLayout>
