@@ -34,3 +34,7 @@ li.artitem:hover {
 #stuff_detail p{
     font-size:1em;
 }
+
+audio{
+	width:100%;
+}

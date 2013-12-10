@@ -70,43 +70,6 @@
 			//$.os.ie=true;
 			$("#afui").get(0).className='ios7';
 		});
-		/*
-		var myScroller;
-		$.ui.ready(function () {
-			myScroller = $("#mainc").scroller();
-			myScroller.addInfinite();
-			myScroller.addPullToRefresh();
-			//this.setRefreshContent("New content")
-			$.bind(myScroller, "refresh-trigger", function () {
-				myScroller.refreshContainer.style.visibility = 'visible';
-				this.setRefreshContent("更新本日内容……");
-			});
-			
-			$.bind(myScroller, "refresh-release", function () {
-				this.setRefreshContent("正在更新……");
-				$.mvc.update = true;
-				$.mvc.route($.mvc.cur);
-				$.mvc.update = false;
-//				$("#mainc_pulldown").hide();
-			});
-
-			$.bind(myScroller, "refresh-cancel", function () {
-				myScroller.refreshContainer.style.visibility = 'hidden';
-			});
-			$.bind(myScroller, "refresh-finish", function() {
-				myScroller.refreshContainer.style.visibility = 'hidden';
-			});
-
-			$.bind(myScroller, "infinite-scroll", function () {
-				myScroller.refreshContainer.style.visibility = 'hidden';
-				$.mvc.more = true;
-				$.mvc.route($.mvc.cur);
-				myScroller.infiniteTriggered = false;
-				$.mvc.more = false;
-				console.log("more...");
-			});
-            $("#mainc").css("overflow", "auto");
-		});*/
 	</script>
 </head>
 <body>
