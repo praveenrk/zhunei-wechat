@@ -327,7 +327,7 @@
  * Optimizations and bug improvements by Intel
  * @copyright Intel
  */ (function ($) {
-    var HIDE_REFRESH_TIME = 75; // hide animation of pull2ref duration in ms
+    var HIDE_REFRESH_TIME = 325; // hide animation of pull2ref duration in ms
     var cache = [];
     var objId = function (obj) {
         if (!obj.afScrollerId) obj.afScrollerId = $.uuid();
@@ -566,20 +566,20 @@
                     if (orginalEl !== null) {
                         afEl = af(orginalEl);
                     } else {
-                        afEl = af("<div id='" + this.container.id + "_pulldown' class='afscroll_refresh' style='border-radius:.6em;border: 1px solid #2A2A2A;background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#666666),color-stop(1,#222222));background:#222222;margin:0px;height:60px;position:relative;text-align:center;line-height:60px;color:white;width:100%;'>" + this.refreshContent + "</div>");
+                        afEl = af("<div id='" + this.container.id + "_pulldown' class='afscroll_refresh' style='position:relative;height:60px;text-align:center;line-height:60px;font-weight:bold;'>" + this.refreshContent + "</div>");
                     }
                 } else {
                     afEl = af(this.refreshElement);
                 }
                 var el = afEl.get(0);
 
-                this.refreshContainer = af("<div style=\"overflow:hidden;width:100%;height:0;margin:0;padding:0;padding-left:5px;padding-right:5px;display:none;\"></div>");
+                this.refreshContainer = af('<div style="overflow:hidden;height:0;width:100%;display:none;"></div>');
                 $(this.el).prepend(this.refreshContainer.append(el, 'top'));
                 this.refreshContainer = this.refreshContainer[0];
             },
             fireRefreshRelease: function (triggered, allowHide) {
                 if (!this.refresh || !triggered) return;
-
+                this.setRefreshContent("Refreshing...");
                 var autoCancel = $.trigger(this, 'refresh-release', [triggered]) !== false;
                 this.preventHideRefresh = false;
                 this.refreshRunning = true;
@@ -837,13 +837,23 @@
             var difX = newcX-this.cX;
 
             //check for trigger
-            if (this.refresh && (this.el.scrollTop) < 0) {
+            if (this.refresh && (this.el.scrollTop < -this.refreshHeight)) {
                 this.showRefresh();
-                //check for cancel
-            } else if (this.refreshTriggered && this.refresh && (this.el.scrollTop > this.refreshHeight)) {
+            //check for cancel when refresh is running
+            } else if (this.refresh && this.refreshTriggered && this.refreshRunning && (this.el.scrollTop > this.refreshHeight)) {
                 this.refreshTriggered = false;
+                this.refreshRunning = false;
                 if (this.refreshCancelCB) clearTimeout(this.refreshCancelCB);
                 this.hideRefresh(false);
+                this.setRefreshContent("Pull to Refresh");
+                $.trigger(this, 'refresh-cancel');
+            //check for cancel when refresh is not running
+            } else if (this.refresh && this.refreshTriggered && !this.refreshRunning && (this.el.scrollTop > -this.refreshHeight)) {
+                this.refreshTriggered = false;
+                this.refreshRunning = false;
+                if (this.refreshCancelCB) clearTimeout(this.refreshCancelCB);
+                this.hideRefresh(false);
+                this.setRefreshContent("Pull to Refresh");
                 $.trigger(this, 'refresh-cancel');
             }
 
@@ -853,6 +863,7 @@
         nativeScroller.prototype.showRefresh = function () {
             if (!this.refreshTriggered) {
                 this.refreshTriggered = true;
+                this.setRefreshContent("Release to Refresh");
                 $.trigger(this, 'refresh-trigger');
             }
         };
@@ -905,16 +916,18 @@
 
             var that = this;
             var endAnimationCb = function (canceled) {
+                that.refreshContainer.style.top = "-60px";
+                that.refreshContainer.style.position = "absolute";
+                that.dY = that.cY = 0;
                 if (!canceled) { //not sure if this should be the correct logic....
                     that.el.style[$.feat.cssPrefix + "Transform"] = "none";
                     that.el.style[$.feat.cssPrefix + "TransitionProperty"] = "none";
                     that.el.scrollTop = 0;
                     that.logPos(that.el.scrollLeft, 0);
+                    that.refreshRunning = false;
+                    that.setRefreshContent("Pull to Refresh");
+                    $.trigger(that, "refresh-finish");
                 }
-                that.refreshContainer.style.top = "-60px";
-                that.refreshContainer.style.position = "absolute";
-                that.dY = that.cY = 0;
-                $.trigger(that, "refresh-finish");
             };
 
             if (animate === false || !that.afEl.css3Animate) {
@@ -1399,9 +1412,11 @@
             if (this.refresh && !this.preventPullToRefresh) {
                 if (!this.refreshTriggered && this.lastScrollInfo.top > this.refreshHeight) {
                     this.refreshTriggered = true;
+                    this.setRefreshContent("Release to Refresh");
                     $.trigger(this, 'refresh-trigger');
                 } else if (this.refreshTriggered && this.lastScrollInfo.top < this.refreshHeight) {
                     this.refreshTriggered = false;
+                    this.setRefreshContent("Pull to Refresh");
                     $.trigger(this, 'refresh-cancel');
                 }
             }
@@ -1496,16 +1511,22 @@
         };
 
         jsScroller.prototype.hideRefresh = function (animate) {
-            var that = this;
             if (this.preventHideRefresh) return;
-            this.scrollerMoveCSS({
-                x: 0,
-                y: 0,
-                complete: function () {
-                    $.trigger(that, "refresh-finish");
-                }
-            }, HIDE_REFRESH_TIME);
-            this.refreshTriggered = false;
+            var that = this;
+            var endAnimationCb = function () {
+                that.setRefreshContent("Pull to Refresh");
+                $.trigger(that, "refresh-finish");
+            };
+            this.scrollerMoveCSS({x: 0, y: 0}, HIDE_REFRESH_TIME);
+            if (animate === false || !that.afEl.css3Animate) {
+                endAnimationCb();
+            } else {
+                that.afEl.css3Animate({
+                    time: HIDE_REFRESH_TIME + "ms",
+                    complete: endAnimationCb
+                });
+            }
+            this.refreshTriggered = false;            
         };
 
         jsScroller.prototype.setMomentum = function (scrollInfo) {
@@ -2546,7 +2567,7 @@
     var inputElementRequiresNativeTap = $.os.blackberry||$.os.fennec || ($.os.android && !$.os.chrome); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
     var selectElementRequiresNativeTap = $.os.blackberry||$.os.fennec || ($.os.android && !$.os.chrome); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
     var focusScrolls = $.os.ios; //devices scrolling on focus instead of resizing
-    var requirePanning = $.os.ios; //devices which require panning feature
+    var requirePanning = $.os.ios&&!$.os.ios7; //devices which require panning feature
     var addressBarError = 0.97; //max 3% error in position
     var maxHideTries = 2; //HideAdressBar does not retry more than 2 times (3 overall)
     var skipTouchEnd = false; //Fix iOS bug with alerts/confirms
@@ -3751,9 +3772,17 @@
             var that = this;
             var menu = $.query("#menu");
             var els = $.query("#content,  #header, #navbar");
+            var panelMask = $.query(".afui_panel_mask");
             time = time || this.transitionTime;
             var open = this.isSideMenuOn();
 
+            if(panelMask.length === 0 && window.innerWidth < $.ui.fixedSideMenuWidth){
+                els.append('<div class="afui_panel_mask"></div>');
+                $(".afui_panel_mask").bind("touchend", function(){
+                    $.ui.toggleSideMenu(false);
+                });
+            }
+            
             if (force === 2 || (!open && ((force !== undefined && force !== false) || force === undefined))) {
                 this.togglingSideMenu = true;
                 menu.show();
@@ -3764,6 +3793,9 @@
                         that.togglingSideMenu = false;
                         els.vendorCss("Transition", "");
                         if (callback) callback(canceled);
+                        if(window.innerWidth < $.ui.fixedSideMenuWidth){
+                            panelMask.show();
+                        }
                     }
                 });
 
@@ -3779,6 +3811,9 @@
                         that.togglingSideMenu = false;
                         if (callback) callback(canceled);
                         menu.hide();
+                        if(window.innerWidth < $.ui.fixedSideMenuWidth){
+                            panelMask.hide();
+                        }
                     }
                 });
             }
@@ -4034,6 +4069,11 @@
             $.query("#afui_mask").hide();
         },
         /**
+         * @api private
+        */
+        modalReference_:null,
+
+        /**
          * Load a content panel in a modal window.  We set the innerHTML so event binding will not work.  Please use the data-load or panelloaded events to setup any event binding
            ```
            $.ui.showModal("#myDiv","fade");
@@ -4049,9 +4089,22 @@
             if (typeof(id) === "string")
                 id = "#" + id.replace("#", "");
             var $panel = $.query(id);
+            this.modalReference_=$panel;
+
             if ($panel.length) {
                 var useScroller = this.scrollingDivs.hasOwnProperty( $panel.attr("id") );
-                modalDiv.html($.feat.nativeTouchScroll || !useScroller ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
+                var useScroller = this.scrollingDivs.hasOwnProperty($panel.attr("id"));
+                //modalDiv.html($.feat.nativeTouchScroll || !useScroller ? $.query(id).html() : $.query(id).get(0).childNodes[0].innerHTML + '', true);
+                modalDiv.empty();
+                var elemsToCopy;
+                if($.feat.nativeTouchScroll || !useScroller ){
+                    elemsToCopy=$panel.contents();
+                }
+                else {
+                    elemsToCopy=$($panel.get(0).childNodes[0]).contents();
+                }
+                modalDiv.append(elemsToCopy);
+
                 modalDiv.append("<a onclick='$.ui.hideModal();' class='closebutton modalbutton'></a>");
                 that.modalWindow.style.display = "block";
 
@@ -4084,18 +4137,33 @@
          */
         hideModal: function() {
             var self = this;
-            $.query("#modalContainer").html("", true);
+            //$.query("#modalContainer").html("", true);
+            var $cnt=$.query("#modalContainer");
+            $cnt.find(".closebutton.modalbutton").remove();
+            var useScroller = this.scrollingDivs.hasOwnProperty(this.modalReference_.attr("id"));
+
 
             this.runTransition(self.modalTransition, self.modalWindow, self.modalTransContainer, true);
-
             this.scrollingDivs.modal_container.disable();
 
-            var tmp = $.query($.query("#modalContainer").data("panel"));
+            //var tmp = $.query($.query("#modalContainer").data("panel"));
+            var tmp = $.query($cnt.data("panel"));
+
             var fnc = tmp.data("unload");
             if (typeof fnc == "string" && window[fnc]) {
                 window[fnc](tmp.get(0));
             }
             tmp.trigger("unloadpanel");
+            setTimeout(function(){               
+                if($.feat.nativeTouchScroll || !useScroller){
+                    self.modalReference_.append($cnt.contents());
+                }
+                else {
+                    $(self.modalReference_.get(0).childNodes[0]).append($cnt.contents());
+                }
+                $cnt.html("", true);
+            },this.transitionTime);
+
 
         },
 
@@ -4200,7 +4268,7 @@
                 jsScroll = true;
                 hasScroll = true;
             }
-            var title=tmp.title||tmp.getAttribute("data-title");
+            var title=tmp.getAttribute("data-title")||tmp.title;
             tmp.title="";
             tmp.setAttribute("data-title",title);
 
@@ -4823,7 +4891,7 @@
             }
 
             //insert backbutton (should optionally be left to developer..)
-            $(this.header).html('<a id="backButton" class="button"></a> <h1 id="pageTitle"></h1>' + header.innerHTML);
+            $(this.header).html('<a id="backButton" class="button"></a> <h1 id="pageTitle"></h1>' + this.header.innerHTML);
             this.backButton = $.query("#header #backButton").css("visibility", "hidden");
             $(document).on("click", "#header #backButton", function(e) {
                 e.preventDefault();
@@ -5175,7 +5243,7 @@
 
 //The following functions are utilitiy functions for afui within intel xdk.
 
-(function() {
+(function($) {
     $(document).one("intel.xdk.device.ready", function() { //in intel xdk, we need to undo the height stuff since it causes issues.
         $.ui.isIntel=true;
         setTimeout(function() {
@@ -5201,7 +5269,7 @@
             }
         });
     }
-})();
+})(af);
 
 (function($ui){
         function fadeTransition (oldDiv, currDiv, back) {

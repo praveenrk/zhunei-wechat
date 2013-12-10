@@ -8,15 +8,29 @@
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" type="text/css" href="./css/icons.css" />
-	<link rel="stylesheet" type="text/css" href="./css/main.css" />
-	<link rel="stylesheet" type="text/css" href="./css/buttons.css" />
-	<link rel="stylesheet" type="text/css" href="./css/forms.css" />
-	<link rel="stylesheet" type="text/css" href="./css/afui.custom.css"/>
-	<link rel="stylesheet" type="text/css" href="./css/app.css"/>
+	<link rel="stylesheet" type="text/css" href="./css/src/main.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/appframework.css"  />
+
+	<link rel="stylesheet" type="text/css" href="./css/src/badges.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/buttons.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/lists.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/forms.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/grid.css" />
+
+	<link rel="stylesheet" type="text/css" href="./plugins/css/af.actionsheet.css" />
+	<link rel="stylesheet" type="text/css" href="./plugins/css/af.popup.css" />
+	<link rel="stylesheet" type="text/css" href="./plugins/css/af.selectBox.css" />
+
+	<link rel="stylesheet" type="text/css" href="./css/src/android.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/win8.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/bb.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/ios7.css" />
+	<link rel="stylesheet" type="text/css" href="./css/src/ios.css" />
+	<link rel="stylesheet" type="text/css" href="./css/app.css" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<script type="text/javascript" charset="utf-8" src="./appframework.js"></script>
-	<!--<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
-	<script type="text/javascript" charset="utf-8" src="./js/jq.appframework.js"></script>-->
+	<!--<script type="text/javascript" charset="utf-8" src="./jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./jq.appframework.js"></script>-->
 	<script type="text/javascript" charset="utf-8" src="./af.mvc.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.actionsheet.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
@@ -50,6 +64,11 @@
 		
 		$(document).ready(function(){
 			$.ui.launch();
+		});
+		
+		$.ui.ready(function(){
+			//$.os.ie=true;
+			$("#afui").get(0).className='ios7';
 		});
 		/*
 		var myScroller;

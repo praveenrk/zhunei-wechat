@@ -7,7 +7,7 @@
 	-webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* set highlight color for user interaction */
 	-moz-tap-highlight-color:rgba(0, 0, 0, 0); /* set highlight color for user interaction */
 	-ms-touch-action:none;
-	-moz-user-select:-moz-none
+	-moz-user-select:-moz-none;
 	-webkit-touch-callout: none; /* prevent the popup menu on any links*/
 	margin:0;
 	padding:0;
@@ -66,6 +66,8 @@ body {
 #afui #modalContainer > * {
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
+	background: black;
+    color:white;
 }
 
 
@@ -424,6 +426,8 @@ body {
 
 
 #afui_mask { position:absolute;top:45%;z-index:999999; }
+
+.afui_panel_mask { position:absolute;top:0;bottom:0;left:0;right:0;z-index:2000;background-color:rgba(0,0,0,0.1);display:none}
 
 
 #afui .hasMenu{
