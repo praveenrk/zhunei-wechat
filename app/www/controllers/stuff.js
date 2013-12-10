@@ -452,23 +452,52 @@ $.mvc.controller.create('settings', {
 //思高圣经
 $.mvc.controller.create('bible', {
     views: {
-        "bible_index_tpl": "views/bible_index.tpl"
+        "bible_tpl": "views/bible.tpl",
+		"template_tpl": "views/template.tpl",
+		"chapter_tpl": "views/chapter.tpl"
     },
 	
     default:function() {
 		$.ui.showMask("加载思高圣经...");
 		$.get("./res/bible/index.json",function(j){
-			$("#main").html($.template('bible_index_tpl', {
+			$("#main").html($.template('bible_tpl', {
 				title: '思高圣经',
 				items: JSON.parse(j)
 			}));
-			
 			$.ui.hideMask();
 		});
 		$.ui.scrollToTop("#mainc",-10);
 		if($.ui.isSideMenuOn())
 			$.ui.toggleSideMenu();
     },
+	template:function(t)
+	{
+		$.get("./res/bible/"+t+"/index.json",function(j)
+		{
+			$("#main").html($.template('template_tpl', {
+				title: '思高圣经',
+				url: '/bible',
+				items: JSON.parse(j)
+			}));
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	chapter:function(t,c)
+	{
+		$.get("./res/bible/"+t+"/"+c,function(j)
+		{
+			$("#main").html($.template('chapter_tpl', {
+				title: '思高圣经',
+				url: '/bible',
+				items: JSON.parse(j)
+			}));
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
 	
 	init: function(){
 		var self = this;
