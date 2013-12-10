@@ -17,4 +17,12 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="LightTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:windowBackground">@drawable/default_bg</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.Sherlock">
+        <item name="android:windowBackground">@drawable/dark_bg</item>
+    </style>
+
 </resources>

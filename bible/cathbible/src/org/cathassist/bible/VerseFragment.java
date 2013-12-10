@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
 import org.cathassist.bible.read.BibleReadFragment;
@@ -84,11 +84,11 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
         switch (v.getId()) {
             case R.id.text_verse_content:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
-                    CommonPara.currentBook = mVerseBook;
-                    CommonPara.currentChapter = mVerseChapter;
-                    CommonPara.currentSection = mVerseSection;
+                    Para.currentBook = mVerseBook;
+                    Para.currentChapter = mVerseChapter;
+                    Para.currentSection = mVerseSection;
 
-                    CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+                    Para.menuIndex = Para.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
@@ -101,13 +101,13 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
 
     private void GetVerse() {
         Random random = new Random(System.currentTimeMillis());
-        int id = random.nextInt(CommonPara.VERSE_NUMBER) % (CommonPara.VERSE_NUMBER - 1 + 1) + 1;
+        int id = random.nextInt(Para.VERSE_NUMBER) % (Para.VERSE_NUMBER - 1 + 1) + 1;
 
         SQLiteDatabase db = null;
         Cursor cursor = null;
 
         try {
-            db = new Database(mActivity).DbConnection(CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME);
+            db = new Database(mActivity).DbConnection(Para.DB_CONTENT_PATH + Para.DB_CONTENT_NAME);
 
             if (db != null) {
                 String sql = "select * from verse where _id = " + id;

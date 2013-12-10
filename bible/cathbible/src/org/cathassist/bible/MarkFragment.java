@@ -15,7 +15,7 @@ import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.read.BibleReadFragment;
 
@@ -59,18 +59,18 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
     @Override
     public void onPause() {
         super.onPause();
-        CommonPara.bookmarkPos = mList.getFirstVisiblePosition();
+        Para.bookmarkPos = mList.getFirstVisiblePosition();
     }
 
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         Map<String, String> map = mData.get(arg2);
 
         FragmentTransaction fragTrans;
-        CommonPara.currentBook = Integer.parseInt(map.get("book"));
-        CommonPara.currentChapter = Integer.parseInt(map.get("chapter"));
-        CommonPara.currentSection = Integer.parseInt(map.get("section"));
+        Para.currentBook = Integer.parseInt(map.get("book"));
+        Para.currentChapter = Integer.parseInt(map.get("chapter"));
+        Para.currentSection = Integer.parseInt(map.get("section"));
 
-        CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+        Para.menuIndex = Para.MENU_BIBLE;
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();
@@ -88,7 +88,7 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
                     new int[]{R.id.title, R.id.content});
 
             mList.setAdapter(adapter);
-            mList.setSelection(CommonPara.bookmarkPos);
+            mList.setSelection(Para.bookmarkPos);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -100,8 +100,8 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         Cursor cursor = null;
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
-        db = new Database(mActivity).DbConnection(CommonPara.DB_DATA_PATH + CommonPara.DB_DATA_NAME);
-        dbBook = new Database(mActivity).DbConnection(CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME);
+        db = new Database(mActivity).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
+        dbBook = new Database(mActivity).DbConnection(Para.DB_CONTENT_PATH + Para.DB_CONTENT_NAME);
         try {
             String sql = "select * from bookmark order by updatetime DESC";
             cursor = db.rawQuery(sql, null);

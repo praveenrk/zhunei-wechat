@@ -19,15 +19,19 @@
 	        android:id="@+id/text_verse"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:textSize="18sp" />
-	    
+	        android:textSize="18sp"
+            android:background="@drawable/text_selector"/>
+
 	    <Button
 	        android:id="@+id/button_share"
 	        android:layout_width="match_parent"
 	        android:layout_height="42dp"
 	        android:layout_gravity="center"
 	        android:text="@string/share_verse"
-	        android:textSize="18sp" />
+	        android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/blue_button_selector"/>
 	
 	    <LinearLayout
 	        android:id="@+id/layout_status"
@@ -35,7 +39,7 @@
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical" 
 		    android:layout_marginTop="12dp">
-		
+
 		    <TextView
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
@@ -46,8 +50,9 @@
 		        android:id="@+id/text_mark"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="18sp" />
-		    
+		        android:textSize="18sp"
+                android:background="@drawable/text_selector"/>
+
 		    <TextView
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
@@ -58,7 +63,8 @@
 		        android:id="@+id/text_last"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:textSize="18sp" />
+		        android:textSize="18sp"
+                android:background="@drawable/text_selector"/>
 
 		</LinearLayout>
 	</LinearLayout>

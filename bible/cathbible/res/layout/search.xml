@@ -20,7 +20,8 @@
             android:layout_marginRight="10dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:hint="@string/search_hint" />
+            android:hint="@string/search_hint"
+            android:textColor="@color/dark_gray"/>
         
         <Button
             android:id="@+id/button_search"

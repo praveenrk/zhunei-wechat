@@ -17,7 +17,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.R;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class Mp3ManageActivity  extends SherlockActivity implements AdapterView.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp3_manage);
 
@@ -63,13 +63,13 @@ public class Mp3ManageActivity  extends SherlockActivity implements AdapterView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD){
             Toast.makeText(this,"您的操作系统版本过低，不能使用此功能",Toast.LENGTH_SHORT).show();
-            return;
+        } else {
+            Intent intent = new Intent();
+            intent.setClass(this,Mp3ManageDetailActivity.class);
+            intent.putExtra("name",mMp3List.get(position).get("name"));
+            intent.putExtra("path",mMp3List.get(position).get("path"));
+            startActivity(intent);
         }
-        Intent intent = new Intent();
-        intent.setClass(this,Mp3ManageDetailActivity.class);
-        intent.putExtra("name",mMp3List.get(position).get("name"));
-        intent.putExtra("path",mMp3List.get(position).get("path"));
-        startActivity(intent);
     }
 
     public static class Mp3ManageAdapter extends ArrayAdapter<Map<String,String>> {
