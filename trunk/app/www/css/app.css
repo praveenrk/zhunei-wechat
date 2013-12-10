@@ -9,7 +9,7 @@ ul.artlist a{
 }
 
 h3.arttitle{
-	font-size: 18px;
+	font-size: 1.2em;
 }
 
 img.artimg{
@@ -19,11 +19,11 @@ img.artimg{
 }
 
 p.artcontent{
-	font-size: 18px;
+	font-size: 1em;
 }
 
 li.artitem{
-	padding: 10px;
+	padding: 0.8em;
 	overflow: auto;
 }
 
@@ -32,5 +32,5 @@ li.artitem:hover {
 }
 
 #stuff_detail p{
-    font-size:14px;
+    font-size:1em;
 }
