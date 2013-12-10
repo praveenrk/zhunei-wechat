@@ -36,7 +36,13 @@ $body = $doc->documentElement->getElementsByTagName('body')->item(0);
 $fc = null;
 $ft = null;
 $fa = fopen('json/index.json',"w");
-fwrite($fa,'{');
+$jsonAll = null;
+$jsonT = null;
+$jsonC = null;
+$j1 = 0;
+$jt = 0;
+$jc = 0;
+$ctext = '';
 $t1content='';
 $t2content='';
 foreach ($body->childNodes AS $item)
@@ -50,18 +56,35 @@ foreach ($body->childNodes AS $item)
 		$tpath='json/'.sprintf("%03d",$t1);
 		mkdir($tpath);
 		$t1content = $item->textContent;
-		echo('<a href="'.$tpath.'/index.html">'.$doc->saveHTML($item).'</a>');
+		echo('<a href="'.$tpath.'/index.json">'.$doc->saveHTML($item).'</a>');
 		$c=0;
 		
 		if($ft)
 		{
-			fwrite($ft,'</div></body>');
+			fwrite($ft,json_encode($jsonT,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
 			fclose($ft);
+			$jsonT = null;
+			$jt=0;
 		}
-		$ft = fopen($tpath.'/index.html',"w");
-		fwrite($ft,'<head><title>'.$t1content.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../template.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body>');
-		fwrite($ft,'<h2>'.$t1content.'</h2><div class="group">');
-		fwrite($fa,'{"type":"t1","url":"./res/bible/'.sprintf("%03d",$t1).'/index.json","text":"'.$t1content.'"},');
+		$ft = fopen($tpath.'/index.json',"w");
+		$jsonT['title'] = $t1content;
+		$jsonT['url'] = '/bible/template/'.sprintf("%03d",$t1);
+		if($t1==1)
+		{
+			$jsonAll[$j1]['type'] = 'a';
+			$jsonAll[$j1]['text'] = '旧约圣经';
+			$j1++;
+		}
+		else if($t1==47)
+		{
+			$jsonAll[$j1]['type'] = 'a';
+			$jsonAll[$j1]['text'] = '新约圣经';
+			$j1++;
+		}
+		$jsonAll[$j1]['type'] = 't1';
+		$jsonAll[$j1]['url'] = '/bible/template/'.sprintf("%03d",$t1);
+		$jsonAll[$j1]['text'] = $t1content;
+		$j1++;
 	}
 	else if($class=='t2')
 	{
@@ -73,43 +96,59 @@ foreach ($body->childNodes AS $item)
 		}
 		else
 		{
-			fwrite($fc,'<h2>'.$item->textContent.'</h2>');
+			$jsonC['title'] = $item->textContent;
 			echo($doc->saveHTML($item));
 		}
-		fwrite($ft,'</div><h3>'.$item->textContent.'</h3><div class="group">');
+		$jsonT['items'][$jt]['type']='b';
+		$jsonT['items'][$jt]['text']=$item->textContent;
+		$jt++;
 	}
 	else if($class=='c')
 	{
 		$c++;
 		if($fc)
 		{
-			fwrite($fc,'</body>');
+			$jsonC['text'] = $ctext;
+			fwrite($fc,json_encode($jsonC,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
 			fclose($fc);
+			$jsonC = null;
+			$ctext = '';
+			$jc==0;
 		}
-		$fc = fopen($tpath.'/'.sprintf("%03d.html",$c),"w");
-		fwrite($fc,'<head><title>'.$t1content.' '.$item->textContent.'</title><meta http-equiv=Content-Type content="text/html;charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no"><link href="../../chapter.css" type="text/css" rel="stylesheet"><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script></head><body>');
-		fwrite($fc,'<h2>'.$t2content.'</h2>');
+		$fc = fopen($tpath.'/'.sprintf("%03d.json",$c),"w");
+		$jsonC['ptitle'] = $t1content;
+		$jsonC['purl'] = '/bible/template/'.sprintf("%03d",$t1);
+		$jsonC['title'] = $t1content.' '.$item->textContent;
+		$jsonC['url'] = '/bible/chapter/'.sprintf("%03d",$t1).'/'.sprintf("%03d.json",$c);
+		$jsonC['mp3']='/'.sprintf("%03d",$t1).'/'.sprintf("%03d.mp3",$c);
+		$ctext = $ctext.'<h2>'.$t2content.'</h2>';
 		$t2content='';
-		fwrite($ft,'<div class="url"><a href="'.sprintf("%03d.html",$c).'" class="btn">'.$item->textContent.'</a></div>');
+		
+		$jsonT['items'][$jt]['type']='c';
+		$jsonT['items'][$jt]['text']=$item->textContent;
+		$jsonT['items'][$jt]['url']='/bible/chapter/'.sprintf("%03d",$t1).'/'.sprintf("%03d.json",$c);
+		$jt++;
 		echo($doc->saveHTML($item));
-		fwrite($fc,'<h3>'.$t1content.' '.$item->textContent.'</h3>');
-		fwrite($fc,'<audio src="../../mp3/'.sprintf("%03d",$t1).'/'.sprintf("%03d",$c).'.mp3" controls></audio>');
+		$ctext = $ctext.'<h3>'.$t1content.' '.$item->textContent.'</h3>';
 	}
 	else if($class=='t3')
 	{
-		fwrite($fc,$doc->saveHTML($item));
+		$ctext = $ctext.$doc->saveHTML($item);
 		echo($doc->saveHTML($item));
 	}
 	else if($class=='s')
 	{
-		fwrite($fc,$doc->saveHTML($item));
+		$ctext = $ctext.$doc->saveHTML($item);
 	}
 }
-fwrite($fc,'</body>');
-fwrite($ft,'</body>');
-fwrite($fa,'}');
+$jsonC['text'] = $ctext;
+fwrite($fc,json_encode($jsonC,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
 fclose($fc);
+
+fwrite($ft,json_encode($jsonT,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
 fclose($ft);
+
+fwrite($fa,json_encode($jsonAll,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
 fclose($fa);
 echo('</body>');
 ?>
