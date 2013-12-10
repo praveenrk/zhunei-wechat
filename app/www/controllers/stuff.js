@@ -350,3 +350,54 @@ $.mvc.controller.create('article', {
         var self = this;
     }
 });
+
+
+//代祷本
+$.mvc.controller.create('pray', {
+    views: {
+        "list_pray_tpl": "views/list_pray.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载代祷意向...");
+		localDB.getPray(function(all) {
+			$("#main").html($.template('list_pray_tpl', {
+				title: '彼此代祷',
+				items: all
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//代祷本
+$.mvc.controller.create('radio', {
+    views: {
+        "radio_tpl": "views/radio.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载梵蒂冈广播...");
+		localDB.getRadio(function(all) {
+			$("#main").html($.template('radio_tpl', {
+				title: '梵蒂冈广播',
+				item: all
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
