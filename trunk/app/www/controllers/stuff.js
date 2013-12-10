@@ -377,7 +377,7 @@ $.mvc.controller.create('pray', {
 	}
 });
 
-//代祷本
+//梵蒂冈广播
 $.mvc.controller.create('radio', {
     views: {
         "radio_tpl": "views/radio.tpl"
@@ -390,6 +390,79 @@ $.mvc.controller.create('radio', {
 				title: '梵蒂冈广播',
 				item: all
 			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//色辣芬电台
+$.mvc.controller.create('music', {
+    views: {
+        "music_tpl": "views/music.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载色辣芬电台...");
+		localDB.getMusic(function(all) {
+			$("#main").html($.template('music_tpl', {
+				title: '色辣芬电台',
+				item: all
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//设置
+$.mvc.controller.create('settings', {
+    views: {
+        "settings_tpl": "views/settings.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载设置...");
+		$("#main").html($.template('settings_tpl', {
+			title: '设置'
+		}));
+		$.ui.hideMask();
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//思高圣经
+$.mvc.controller.create('bible', {
+    views: {
+        "bible_index_tpl": "views/bible_index.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载思高圣经...");
+		$.get("./res/bible/index.json",function(j){
+			$("#main").html($.template('bible_index_tpl', {
+				title: '思高圣经',
+				items: JSON.parse(j)
+			}));
+			
 			$.ui.hideMask();
 		});
 		$.ui.scrollToTop("#mainc",-10);
