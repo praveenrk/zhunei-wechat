@@ -35,18 +35,18 @@ public class Database {
     }
 
     public boolean OpenDbCheck() {
-        final boolean contentCheck = CheckDatabase(CommonPara.DB_CONTENT_PATH, CommonPara.DB_CONTENT_NAME, CommonPara.DB_CONTENT_VER);
-        final int dataVersion = CheckData(CommonPara.DB_DATA_PATH, CommonPara.DB_DATA_NAME);
+        final boolean contentCheck = CheckDatabase(Para.DB_CONTENT_PATH, Para.DB_CONTENT_NAME, Para.DB_CONTENT_VER);
+        final int dataVersion = CheckData(Para.DB_DATA_PATH, Para.DB_DATA_NAME);
 
-        if (!contentCheck || (dataVersion != CommonPara.DB_DATA_VER)) {
+        if (!contentCheck || (dataVersion != Para.DB_DATA_VER)) {
             if (!contentCheck) {
-                CopyBigDatabase(CommonPara.DB_CONTENT_ASSET, CommonPara.DB_CONTENT_NAME,
-                        CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME,
-                        CommonPara.DB_CONTENT_COUNT);
+                CopyBigDatabase(Para.DB_CONTENT_ASSET, Para.DB_CONTENT_NAME,
+                        Para.DB_CONTENT_PATH + Para.DB_CONTENT_NAME,
+                        Para.DB_CONTENT_COUNT);
             }
 
-            if (dataVersion != CommonPara.DB_DATA_VER) {
-                UpdateData(CommonPara.DB_DATA_PATH, CommonPara.DB_DATA_NAME, dataVersion);
+            if (dataVersion != Para.DB_DATA_VER) {
+                UpdateData(Para.DB_DATA_PATH, Para.DB_DATA_NAME, dataVersion);
             }
             return false;
         }
@@ -177,12 +177,12 @@ public class Database {
 
                                 sql = "CREATE TABLE version (ver integer)";
                                 db.execSQL(sql);
-                                sql = "insert into version (ver) values (" + CommonPara.DB_DATA_VER + ")";
+                                sql = "insert into version (ver) values (" + Para.DB_DATA_VER + ")";
                                 db.execSQL(sql);
 
                                 sql = "CREATE TABLE verse (_id integer NOT NULL PRIMARY KEY AUTOINCREMENT, progress integer)";
                                 db.execSQL(sql);
-                                for (int i = 0; i < CommonPara.VERSE_NUMBER; i++) {
+                                for (int i = 0; i < Para.VERSE_NUMBER; i++) {
                                     sql = "insert into verse (progress) values (0)";
                                     db.execSQL(sql);
                                 }

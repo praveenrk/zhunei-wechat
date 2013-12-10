@@ -31,7 +31,8 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.R;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Func;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.VerseInfo;
 
 import java.io.File;
@@ -55,37 +56,10 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
     private MusicManagementAdapter mMusicAdapter;
     private List<String> mGroup = new ArrayList<String>();
 
-    private static File getFilePath(String name) {
-        File file;
-        file = new File(CommonPara.BIBLE_MP3_PATH + name);
-        if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
-        }
-        return file;
-    }
-
-    private static String getUrlPath(String name) {
-        String url = CommonPara.BIBLE_MP3_URL + name;
-
-        return url;
-    }
-
-    private static String getFileName(String version, int book, int chapter) {
-        String name = version + "/"
-                + String.format("%03d", book) + "_"
-                + String.format("%03d", chapter) + ".mp3";
-        return name;
-    }
-
-    private static String getUrlName(String version, int book, int chapter) {
-        String name = String.format("%03d", book) + "/"
-                + String.format("%03d", chapter) + ".mp3";
-        return name;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mp3_manage_detail);
 
@@ -116,7 +90,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                         if (titleView != null && titleView.getTag() != null && titleView.getTag() instanceof Integer) {
                             int book = (Integer) titleView.getTag() + 1;
                             int chapter = childPosition + 1;
-                            final File file = getFilePath(getFileName(mPath, book, chapter));
+                            final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
                             if (file.exists()) {
                                 new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定删除此音频文件？")
                                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
@@ -172,13 +146,13 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
     }
 
     private void remove(final int book, final int chapter) {
-        final File file = getFilePath(getFileName(mPath, book, chapter));
+        final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
         file.delete();
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     private void download(final int book, final int chapter) {
-        final File file = getFilePath(getFileName(mPath, book, chapter));
+        final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
         if (file.exists()) {
             new AlertDialog.Builder(this).setTitle("是否重新下载此音频？")
                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
@@ -189,24 +163,22 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                         }
                     }).setNegativeButton(R.string.cancel, null).show();
         } else {
-            /*
-            TextView tv = (TextView) findViewById(R.id.child_name);
-            if (tv != null) {
-                String text = tv.getText().toString();
-                tv.setText(text.replace("点击下载", "正在下载...").replace("已下载", "正在重新下载..."));
-            }*/
-            String url = getUrlPath(getUrlName(mPath, book, chapter));
-            DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            Uri uri = Uri.parse(url);
-            DownloadManager.Request request = new DownloadManager.Request(uri);
-            request.setDestinationUri(Uri.fromFile(file));
-            request.setTitle(getString(R.string.app_name));
-            request.setDescription("下载MP3中...");
+            if (Func.isWifi(this) || Para.allow_gprs) {
+                String url = Func.getUrlPath(Func.getUrlName(mPath, book, chapter));
+                DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                Uri uri = Uri.parse(url);
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setDestinationUri(Uri.fromFile(file));
+                request.setTitle(getString(R.string.app_name));
+                request.setDescription("下载MP3中...");
 
-            try {
-                long reference = downloadManager.enqueue(request);
-            } catch (Exception e) {
-                Toast.makeText(this, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
+                try {
+                    long reference = downloadManager.enqueue(request);
+                } catch (Exception e) {
+                    Toast.makeText(this, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(this, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -269,7 +241,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
             } else {
                 vh = (ViewHolder) convertView.getTag();
             }
-            File file = getFilePath(getFileName(mPath, groupPosition + 1, childPosition + 1));
+            File file = Func.getFilePath(Func.getFileName(mPath, groupPosition + 1, childPosition + 1));
             String state = file.exists() ? " (已下载)":"";// : " (点击下载)";
 
             String title = getGroup(groupPosition) + getChild(groupPosition, childPosition) + state;

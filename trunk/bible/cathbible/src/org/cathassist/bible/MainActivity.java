@@ -9,8 +9,9 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
-import org.cathassist.bible.lib.CommonFunc;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Func;
+import org.cathassist.bible.lib.Para;
+
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;
@@ -23,18 +24,19 @@ public class MainActivity extends SlidingFragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        CommonFunc.InitCommonPara(this);
-        CommonFunc.InitOncePara(this);
-        CommonFunc.LoadTheme();
-        setTheme(CommonPara.THEME);
-        CommonFunc.InitTheme(this);
+        Func.InitCommonPara(this);
+        Func.InitOncePara(this);
+        Func.LoadTheme();
+        setTheme(Para.THEME);
+
+        Func.InitTheme(this);
         LoadLast();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_content);
 
-        if (CommonPara.auto_update) {
-            UmengUpdateAgent.setUpdateOnlyWifi(!CommonPara.allow_gprs);
+        if (Para.auto_update) {
+            UmengUpdateAgent.setUpdateOnlyWifi(!Para.allow_gprs);
             UmengUpdateAgent.update(this);
         }
 
@@ -56,7 +58,7 @@ public class MainActivity extends SlidingFragmentActivity {
         super.onResume();
         MobclickAgent.onResume(this);
 
-        if (CommonPara.always_bright) {
+        if (Para.always_bright) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -72,11 +74,11 @@ public class MainActivity extends SlidingFragmentActivity {
     @Override
     protected void onDestroy() {
         super.onPause();
-        SharedPreferences settings = getSharedPreferences(CommonPara.STORE_NAME, MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("currentBook", CommonPara.currentBook);
-        editor.putInt("currentChapter", CommonPara.currentChapter);
-        editor.putInt("currentSection", CommonPara.currentSection);
+        editor.putInt("currentBook", Para.currentBook);
+        editor.putInt("currentChapter", Para.currentChapter);
+        editor.putInt("currentSection", Para.currentSection);
         editor.commit();
     }
 
@@ -116,7 +118,7 @@ public class MainActivity extends SlidingFragmentActivity {
         //设置右菜单阴影图片
         //slidingMenu.setSecondaryShadowDrawable(R.drawable.right_shadow);
         //设置菜单占屏幕的比例
-        slidingMenu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 3);
+        slidingMenu.setBehindOffset(getWindowManager().getDefaultDisplay().getWidth() / 4);
         //设置滑动时菜单的是否淡入淡出
         slidingMenu.setFadeEnabled(false);
         //设置淡入淡出的比例
@@ -131,9 +133,9 @@ public class MainActivity extends SlidingFragmentActivity {
     }
 
     private void LoadLast() {
-        CommonPara.lastBook = CommonPara.currentBook;
-        CommonPara.lastChapter = CommonPara.currentChapter;
-        CommonPara.lastSection = CommonPara.currentSection;
+        Para.lastBook = Para.currentBook;
+        Para.lastChapter = Para.currentChapter;
+        Para.lastSection = Para.currentSection;
     }
 
 }

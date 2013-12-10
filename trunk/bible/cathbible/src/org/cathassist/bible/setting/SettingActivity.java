@@ -14,8 +14,9 @@ import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.MainActivity;
 import org.cathassist.bible.R;
-import org.cathassist.bible.lib.CommonFunc;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Func;
+import org.cathassist.bible.lib.Para;
+
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.socialize.common.SocializeConstants;
 import com.umeng.socialize.controller.RequestType;
@@ -38,7 +39,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.layout.setting);
 
@@ -46,7 +47,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         getSupportActionBar().setTitle("设置");
 
         intent = new Intent(this, MainActivity.class);
-        setResult(CommonPara.NOT_NEED_RESTART, intent);
+        setResult(Para.NOT_NEED_RESTART, intent);
 
         click_about = (PreferenceScreen) findPreference("click_about");
         click_share = (PreferenceScreen) findPreference("click_share");
@@ -68,9 +69,9 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         check_allow_gprs = (CheckBoxPreference) findPreference("allow_gprs");
         check_allow_gprs.setOnPreferenceChangeListener(this);
 
-        theme = CommonPara.theme_black;
+        theme = Para.theme_black;
 
-        click_about.setSummary("软件版本" + "  " + CommonFunc.GetVerName(this));
+        click_about.setSummary("软件版本" + "  " + Func.GetVerName(this));
     }
 
     @Override
@@ -101,7 +102,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        SharedPreferences settings = getSharedPreferences(CommonPara.STORE_NAME, MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
 
         if (preference == list_font_size) {
@@ -120,12 +121,12 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
         editor.commit();
 
-        CommonFunc.InitCommonPara(this);
+        Func.InitCommonPara(this);
 
-        if (theme != CommonPara.theme_black) {
-            setResult(CommonPara.NEED_RESTART, intent);
+        if (theme != Para.theme_black) {
+            setResult(Para.NEED_RESTART, intent);
         } else {
-            setResult(CommonPara.NOT_NEED_RESTART, intent);
+            setResult(Para.NOT_NEED_RESTART, intent);
         }
         return true;
     }

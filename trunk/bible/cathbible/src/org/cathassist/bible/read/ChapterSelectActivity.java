@@ -11,7 +11,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.R;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.VerseInfo;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chapter_select);
 
@@ -44,9 +44,9 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        CommonPara.currentChapter = position + 1;
-        CommonPara.currentSection = 0;
-        CommonPara.bibleMp3Pos = 0;
+        Para.currentChapter = position + 1;
+        Para.currentSection = 0;
+        Para.bibleMp3Pos = 0;
 
         view.setBackgroundColor(getResources().getColor(R.color.light_blue));
         this.finish();
@@ -65,7 +65,7 @@ public class ChapterSelectActivity extends SherlockActivity implements OnItemCli
     private List<Map<String, String>> GetData() {
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
-        int max = VerseInfo.CHAPTER_COUNT[CommonPara.currentBook];
+        int max = VerseInfo.CHAPTER_COUNT[Para.currentBook];
         for (int i = 1; i <= max; i++) {
             Map<String, String> map = new HashMap<String, String>();
             map.put("chapter", String.valueOf(i));

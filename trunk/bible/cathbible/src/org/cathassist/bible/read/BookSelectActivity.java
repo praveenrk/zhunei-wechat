@@ -15,7 +15,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.R;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.VerseInfo;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_select);
 
@@ -121,10 +121,10 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        CommonPara.currentBook = position + 1;
-        CommonPara.currentChapter = 1;
-        CommonPara.currentSection = 0;
-        CommonPara.bibleMp3Pos = 0;
+        Para.currentBook = position + 1;
+        Para.currentChapter = 1;
+        Para.currentSection = 0;
+        Para.bibleMp3Pos = 0;
 
         view.setBackgroundColor(getResources().getColor(R.color.light_blue));
         Intent intent = new Intent();

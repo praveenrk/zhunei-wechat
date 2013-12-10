@@ -16,7 +16,7 @@ import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.read.BibleReadFragment;
 import org.cathassist.bible.setting.SettingActivity;
 
@@ -40,7 +40,7 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
         mActivity = (MainActivity) getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
-        CommonPara.menuIndex = CommonPara.MENU_HOME;
+        Para.menuIndex = Para.MENU_HOME;
     }
 
     @Override
@@ -49,10 +49,10 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
         mMenu = (ListView) view.findViewById(R.id.list);
         mMenu.setOnItemClickListener(this);
         List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-        for (int i = 0; i < CommonPara.MENU_NAME.length; i++) {
+        for (int i = 0; i < Para.MENU_NAME.length; i++) {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put("img", Integer.toString(R.drawable.ic_launcher));
-            map.put("text", CommonPara.MENU_NAME[i]);
+            map.put("img", Integer.toString(Para.MENU_IMAGE[i]));
+            map.put("text", Para.MENU_NAME[i]);
             list.add(map);
         }
 
@@ -67,9 +67,9 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case CommonPara.MENU_HOME:
-                if (CommonPara.menuIndex != CommonPara.MENU_HOME) {
-                    CommonPara.menuIndex = CommonPara.MENU_HOME;
+            case Para.MENU_HOME:
+                if (Para.menuIndex != Para.MENU_HOME) {
+                    Para.menuIndex = Para.MENU_HOME;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
@@ -80,9 +80,9 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
                 delayToggle();
                 break;
 
-            case CommonPara.MENU_BIBLE:
-                if (CommonPara.menuIndex != CommonPara.MENU_BIBLE) {
-                    CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+            case Para.MENU_BIBLE:
+                if (Para.menuIndex != Para.MENU_BIBLE) {
+                    Para.menuIndex = Para.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
@@ -93,9 +93,9 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
                 delayToggle();
                 break;
 
-            case CommonPara.MENU_MARK:
-                if (CommonPara.menuIndex != CommonPara.MENU_MARK) {
-                    CommonPara.menuIndex = CommonPara.MENU_MARK;
+            case Para.MENU_MARK:
+                if (Para.menuIndex != Para.MENU_MARK) {
+                    Para.menuIndex = Para.MENU_MARK;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
@@ -106,9 +106,9 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
                 delayToggle();
                 break;
 
-            case CommonPara.MENU_VERSE:
-                if (CommonPara.menuIndex != CommonPara.MENU_VERSE) {
-                    CommonPara.menuIndex = CommonPara.MENU_VERSE;
+            case Para.MENU_VERSE:
+                if (Para.menuIndex != Para.MENU_VERSE) {
+                    Para.menuIndex = Para.MENU_VERSE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
@@ -118,9 +118,9 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
                 }
                 delayToggle();
                 break;
-            case CommonPara.MENU_SEARCH:
-                if (CommonPara.menuIndex != CommonPara.MENU_SEARCH) {
-                    CommonPara.menuIndex = CommonPara.MENU_SEARCH;
+            case Para.MENU_SEARCH:
+                if (Para.menuIndex != Para.MENU_SEARCH) {
+                    Para.menuIndex = Para.MENU_SEARCH;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
@@ -131,7 +131,7 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
                 delayToggle();
                 break;
 
-            case CommonPara.MENU_SET:
+            case Para.MENU_SET:
                 Intent intent;
                 intent = new Intent();
                 intent.setClass(mActivity, SettingActivity.class);
@@ -152,7 +152,7 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case INTENT_SET:
-                if (resultCode == CommonPara.NEED_RESTART) {
+                if (resultCode == Para.NEED_RESTART) {
                     Reload();
                 }
                 break;

@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import org.cathassist.bible.R;
 
-public class CommonPara {
+public class Para {
     public static final String DB_CONTENT_ASSET = "cathbible";
     public static final String DB_CONTENT_NAME = "cathbible.db";
     public static final int DB_CONTENT_VER = 1;
@@ -16,6 +16,9 @@ public class CommonPara {
     public static final String BIBLE_MP3_URL = "http://bcs.duapp.com/cathassist/bible/mp3/";
     public static final String[] MENU_NAME =
             {"主页", "圣经", "书签", "金句", "搜索", "设置"};
+    public static final int[] MENU_IMAGE =
+            {R.drawable.nav_home, R.drawable.nav_bible, R.drawable.nav_mark,
+             R.drawable.nav_verse, R.drawable.nav_search, R.drawable.nav_setting};
     public static final int MENU_HOME = 0;
     public static final int MENU_BIBLE = 1;
     public static final int MENU_MARK = 2;
@@ -33,7 +36,8 @@ public class CommonPara {
     public static String BIBLE_MP3_PATH = "";
     public static int DEFAULT_TEXT_COLOR = Color.BLACK;
     public static int HIGHLIGHT_TEXT_COLOR = Color.BLUE;
-    public static int THEME = R.style.Theme_Sherlock;
+    public static int THEME = R.style.LightTheme;
+    public static int BACKGROUND = R.drawable.default_bg;
     public static Float font_size;
     public static boolean always_bright;
     public static boolean theme_black;

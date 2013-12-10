@@ -23,7 +23,7 @@ import android.widget.Spinner;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
 import org.cathassist.bible.read.BibleReadFragment;
@@ -87,7 +87,7 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences settings = mActivity.getSharedPreferences(CommonPara.STORE_NAME, Context.MODE_PRIVATE);
+        SharedPreferences settings = mActivity.getSharedPreferences(Para.STORE_NAME, Context.MODE_PRIVATE);
         text_search.setText(settings.getString("search_key", ""));
         text_search.setSelectAllOnFocus(true);
 
@@ -133,11 +133,11 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         Map<String, String> map = mData.get(arg2);
 
         FragmentTransaction fragTrans;
-        CommonPara.currentBook = Integer.parseInt(map.get("book"));
-        CommonPara.currentChapter = Integer.parseInt(map.get("chapter"));
-        CommonPara.currentSection = Integer.parseInt(map.get("section"));
+        Para.currentBook = Integer.parseInt(map.get("book"));
+        Para.currentChapter = Integer.parseInt(map.get("chapter"));
+        Para.currentSection = Integer.parseInt(map.get("section"));
 
-        CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+        Para.menuIndex = Para.MENU_BIBLE;
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();
@@ -177,13 +177,13 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
 
         try {
             db = new Database(mActivity)
-                    .DbConnection(CommonPara.DB_CONTENT_PATH
-                            + CommonPara.DB_CONTENT_NAME);
+                    .DbConnection(Para.DB_CONTENT_PATH
+                            + Para.DB_CONTENT_NAME);
 
             String text = text_search.getText().toString().trim();
             if (!text.equals("")) {
                 SharedPreferences settings = mActivity.getSharedPreferences(
-                        CommonPara.STORE_NAME, Context.MODE_PRIVATE);
+                        Para.STORE_NAME, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("search_key", text);
                 editor.commit();

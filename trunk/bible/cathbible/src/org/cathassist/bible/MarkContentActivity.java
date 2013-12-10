@@ -6,16 +6,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
 
 import java.text.SimpleDateFormat;
@@ -31,7 +28,7 @@ public class MarkContentActivity extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(CommonPara.THEME);
+        setTheme(Para.THEME);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mark_content);
 
@@ -80,7 +77,7 @@ public class MarkContentActivity extends SherlockActivity {
 
         SQLiteDatabase db = null;
         try {
-            db = new Database(this).DbConnection(CommonPara.DB_DATA_PATH + CommonPara.DB_DATA_NAME);
+            db = new Database(this).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
             String sql;
 
             String updateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
@@ -109,7 +106,7 @@ public class MarkContentActivity extends SherlockActivity {
         if (mIsExist) {
             SQLiteDatabase db = null;
             try {
-                db = new Database(this).DbConnection(CommonPara.DB_DATA_PATH + CommonPara.DB_DATA_NAME);
+                db = new Database(this).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
                 String sql = "delete from bookmark where book = " + mBook + " and chapter = " + mChapter + " and section = " + mSection;
                 db.execSQL(sql);
             } catch (SQLException e) {
@@ -128,7 +125,7 @@ public class MarkContentActivity extends SherlockActivity {
         Cursor cursor = null;
 
         try {
-            db = new Database(this).DbConnection(CommonPara.DB_DATA_PATH + CommonPara.DB_DATA_NAME);
+            db = new Database(this).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
 
             String sql = "select * from bookmark where book = " + mBook + " and chapter = " + mChapter + " and section = " + mSection;
             cursor = db.rawQuery(sql, null);

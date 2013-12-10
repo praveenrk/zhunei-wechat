@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.CommonPara;
+import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
 import org.cathassist.bible.lib.VerseInfo;
 import org.cathassist.bible.read.BibleReadFragment;
@@ -122,11 +122,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         switch (v.getId()) {
             case R.id.text_verse:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
-                    CommonPara.currentBook = mVerseBook;
-                    CommonPara.currentChapter = mVerseChapter;
-                    CommonPara.currentSection = mVerseSection;
+                    Para.currentBook = mVerseBook;
+                    Para.currentChapter = mVerseChapter;
+                    Para.currentSection = mVerseSection;
 
-                    CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+                    Para.menuIndex = Para.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
@@ -136,11 +136,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                 break;
             case R.id.text_mark:
                 if (mMarkBook * mMarkChapter * mMarkSection != 0) {
-                    CommonPara.currentBook = mMarkBook;
-                    CommonPara.currentChapter = mMarkChapter;
-                    CommonPara.currentSection = mMarkSection;
+                    Para.currentBook = mMarkBook;
+                    Para.currentChapter = mMarkChapter;
+                    Para.currentSection = mMarkSection;
 
-                    CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+                    Para.menuIndex = Para.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
@@ -149,12 +149,12 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                 }
                 break;
             case R.id.text_last:
-                if (CommonPara.lastBook * CommonPara.lastChapter * CommonPara.lastSection != 0) {
-                    CommonPara.currentBook = CommonPara.lastBook;
-                    CommonPara.currentChapter = CommonPara.lastChapter;
-                    CommonPara.currentSection = CommonPara.lastSection;
+                if (Para.lastBook * Para.lastChapter * Para.lastSection != 0) {
+                    Para.currentBook = Para.lastBook;
+                    Para.currentChapter = Para.lastChapter;
+                    Para.currentSection = Para.lastSection;
 
-                    CommonPara.menuIndex = CommonPara.MENU_BIBLE;
+                    Para.menuIndex = Para.MENU_BIBLE;
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();
@@ -183,13 +183,13 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 
     private void ShowVerse() {
         Random random = new Random(System.currentTimeMillis());
-        int id = random.nextInt(CommonPara.VERSE_NUMBER) % (CommonPara.VERSE_NUMBER - 1 + 1) + 1;
+        int id = random.nextInt(Para.VERSE_NUMBER) % (Para.VERSE_NUMBER - 1 + 1) + 1;
 
         SQLiteDatabase db = null;
         Cursor cursor = null;
 
         try {
-            db = new Database(mActivity).DbConnection(CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME);
+            db = new Database(mActivity).DbConnection(Para.DB_CONTENT_PATH + Para.DB_CONTENT_NAME);
 
             if (db != null) {
                 String sql = "select * from verse where _id = " + id;
@@ -246,7 +246,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         Cursor cursor = null;
 
         try {
-            db = new Database(getSherlockActivity()).DbConnection(CommonPara.DB_DATA_PATH + CommonPara.DB_DATA_NAME);
+            db = new Database(getSherlockActivity()).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
 
             if (db != null) {
                 String sql = "select * from bookmark order by updatetime DESC limit 1";
@@ -292,31 +292,31 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         Cursor cursor = null;
 
         try {
-            db = new Database(mActivity).DbConnection(CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME);
+            db = new Database(mActivity).DbConnection(Para.DB_CONTENT_PATH + Para.DB_CONTENT_NAME);
 
             if (db != null) {
-                String sql = "select chn from cathbible where book = " + CommonPara.lastBook
-                        + " and chapter = " + CommonPara.lastChapter
-                        + " and section = " + CommonPara.lastSection;
+                String sql = "select chn from cathbible where book = " + Para.lastBook
+                        + " and chapter = " + Para.lastChapter
+                        + " and section = " + Para.lastSection;
                 cursor = db.rawQuery(sql, null);
 
                 cursor.moveToFirst();
                 String content = cursor.getString(cursor.getColumnIndex("chn"));
 
-                String title = "(" + VerseInfo.CHN_NAME[CommonPara.lastBook] + " " + CommonPara.lastChapter;
-                if (CommonPara.lastSection > 1000) {
+                String title = "(" + VerseInfo.CHN_NAME[Para.lastBook] + " " + Para.lastChapter;
+                if (Para.lastSection > 1000) {
                     title += ")";
                 } else {
-                    title += ":" + CommonPara.lastSection + ")";
+                    title += ":" + Para.lastSection + ")";
                 }
 
                 mLast.setText(content + title);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            CommonPara.lastBook = 0;
-            CommonPara.lastChapter = 0;
-            CommonPara.lastSection = 0;
+            Para.lastBook = 0;
+            Para.lastChapter = 0;
+            Para.lastSection = 0;
 
             mLast.setText("无上次阅读经文");
         } finally {
