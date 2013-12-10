@@ -105,29 +105,29 @@ $.mvc.controller.create('article', {
         "list_article_tpl": "views/list_article.tpl",
         "article_detail_tpl":"views/article_detail.tpl"
     },
-    vaticanacn:function(from) {
+	//普世教会文章
+    vaticanacn:function(from,r) {
 		$.ui.showMask("加载普世教会...");
-		var refresh = false;
-		if((!from)||(from==""))
-			from="-1";
-		if($.mvc.update)
+		var refresh = true;
+		if((!r)||(r==""))
 		{
-			from = "-1";
-			refresh = true;
+			refresh = false;
 		}
-		else if($.mvc.more)
+		if((!from)||(from==""))
 		{
-			from = art_next_from;
-			refresh = true;
+			from="-1";
 		}
 		from = parseInt(from);
 		localDB.getVaticanacnList(from,function(all) {
-            $("#main").html($.template('list_article_tpl', {
-                title: "梵蒂冈中文快讯",
-                items: all
-            }));
 			art_next_from = all[all.length-1].id;
 			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "普世教会",
+                items: all,
+				list: '/article/vaticanacn/',
+				item: '/article/vaticanacn_item/',
+				back: '/article/vaticanacn_back/'
+            }));
 			
 			$.ui.hideMask();
 		},refresh);
@@ -136,11 +136,205 @@ $.mvc.controller.create('article', {
 		if($.ui.isSideMenuOn())
 			$.ui.toggleSideMenu();
     },
+	vaticanacn_back:function(to)
+	{
+		if((!to)||(to==""))
+		{
+			to='-1';
+		}
+		to = parseInt(to);
+		if(to<1)
+			return;
+		$.ui.showMask("加载普世教会...");
+		localDB.getVaticanacnBackList(to,function(all) {
+			if(all.length<1)
+			{
+				$.ui.hideMask();
+				return;
+			}
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "普世教会",
+                items: all,
+				list: '/article/vaticanacn/',
+				item: '/article/vaticanacn_item/',
+				back: '/article/vaticanacn_back/'
+            }));
+			
+			$.ui.hideMask();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
 	vaticanacn_item:function(id) {
 		$.ui.showMask("加载文章...");
 		localDB.getVaticanacnItem(id,function(all) {
 			$("#main").html($.template('article_detail_tpl', {
-                item: all
+                item: all,
+				list: '/article/vaticanacn/',
+				text: '普世教会'
+            }));
+			$.ui.hideMask();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	//信仰生活文章
+    faithlife:function(from,r) {
+		$.ui.showMask("加载信仰生活...");
+		var refresh = true;
+		if((!r)||(r==""))
+		{
+			refresh = false;
+		}
+		if((!from)||(from==""))
+		{
+			from="-1";
+		}
+		from = parseInt(from);
+		localDB.getFaithLifeList(from,function(all) {
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "信仰生活",
+                items: all,
+				list: '/article/faithlife/',
+				item: '/article/faithlife_item/',
+				back: '/article/faithlife_back/'
+            }));
+			
+			$.ui.hideMask();
+		},refresh);
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	faithlife_back:function(to)
+	{
+		if((!to)||(to==""))
+		{
+			to='-1';
+		}
+		to = parseInt(to);
+		if(to<1)
+			return;
+		$.ui.showMask("加载信仰生活...");
+		localDB.getFaithLifeBackList(to,function(all) {
+			if(all.length<1)
+			{
+				$.ui.hideMask();
+				return;
+			}
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "信仰生活",
+                items: all,
+				list: '/article/faithlife/',
+				item: '/article/faithlife_item/',
+				back: '/article/faithlife_back/'
+            }));
+			
+			$.ui.hideMask();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	faithlife_item:function(id) {
+		$.ui.showMask("加载文章...");
+		localDB.getFaithLifeItem(id,function(all) {
+			$("#main").html($.template('article_detail_tpl', {
+                item: all,
+				list: '/article/faithlife/',
+				text: '信仰生活'
+            }));
+			$.ui.hideMask();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	
+	//主内分享文章
+    articles:function(from,r) {
+		$.ui.showMask("加载主内分享...");
+		var refresh = true;
+		if((!r)||(r==""))
+		{
+			refresh = false;
+		}
+		if((!from)||(from==""))
+		{
+			from="-1";
+		}
+		from = parseInt(from);
+		localDB.getArticlesList(from,function(all) {
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "主内分享",
+                items: all,
+				list: '/article/articles/',
+				item: '/article/articles_item/',
+				back: '/article/articles_back/'
+            }));
+			
+			$.ui.hideMask();
+		},refresh);
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	articles_back:function(to)
+	{
+		if((!to)||(to==""))
+		{
+			to='-1';
+		}
+		to = parseInt(to);
+		if(to<1)
+			return;
+		$.ui.showMask("加载主内分享...");
+		localDB.getArticlesBackList(to,function(all) {
+			if(all.length<1)
+			{
+				$.ui.hideMask();
+				return;
+			}
+			art_next_from = all[all.length-1].id;
+			art_next_to = all[0].id;
+            $("#main").html($.template('list_article_tpl', {
+                title: "主内分享",
+                items: all,
+				list: '/article/articles/',
+				item: '/article/articles_item/',
+				back: '/article/articles_back/'
+            }));
+			
+			$.ui.hideMask();
+		});
+		
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	articles_item:function(id) {
+		$.ui.showMask("加载文章...");
+		localDB.getArticlesItem(id,function(all) {
+			$("#main").html($.template('article_detail_tpl', {
+                item: all,
+				list: '/article/articles/',
+				text: '主内分享'
             }));
 			$.ui.hideMask();
 		});
