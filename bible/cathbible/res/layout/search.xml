@@ -13,7 +13,7 @@
         
         <EditText
             android:id="@+id/text_word"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_width="wrap_content"
             android:background="@drawable/input_selector"
             android:layout_weight="1"
@@ -26,8 +26,9 @@
         <Button
             android:id="@+id/button_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"  
+            android:layout_height="35dp"
+            android:layout_weight="0"
+            android:background="@drawable/blue_button_selector"
             android:text="@string/search" />            
         
     </LinearLayout>

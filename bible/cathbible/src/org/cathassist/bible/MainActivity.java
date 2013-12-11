@@ -1,7 +1,12 @@
 package org.cathassist.bible;
 
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.WindowManager;
@@ -11,6 +16,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
 import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
+import org.cathassist.bible.music.MusicPlayService;
 
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
@@ -18,9 +24,10 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 
-public class MainActivity extends SlidingFragmentActivity {
+public class MainActivity extends SlidingFragmentActivity implements ServiceConnection{
     private long mExitTime = 0;
     private ActionBar mActionBar;
+    private MusicPlayService mMusicPlayService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,7 @@ public class MainActivity extends SlidingFragmentActivity {
         setTheme(Para.THEME);
 
         Func.InitTheme(this);
-        LoadLast();
+        loadLast();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_content);
@@ -50,7 +57,9 @@ public class MainActivity extends SlidingFragmentActivity {
         fragTrans.replace(R.id.content_frame, new HomeFragment());
         fragTrans.commit();
 
-        InitSlidingMenu();
+        initSlidingMenu();
+
+        bindMusicPlayService();
     }
 
     @Override
@@ -80,6 +89,10 @@ public class MainActivity extends SlidingFragmentActivity {
         editor.putInt("currentChapter", Para.currentChapter);
         editor.putInt("currentSection", Para.currentSection);
         editor.commit();
+
+        if(mMusicPlayService != null) {
+            unbindMusicPlayService();
+        }
     }
 
     @Override
@@ -107,7 +120,7 @@ public class MainActivity extends SlidingFragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    private void InitSlidingMenu() {
+    private void initSlidingMenu() {
         SlidingMenu slidingMenu = getSlidingMenu();
         //设置是左滑还是右滑，还是左右都可以滑
         slidingMenu.setMode(SlidingMenu.LEFT);
@@ -132,10 +145,33 @@ public class MainActivity extends SlidingFragmentActivity {
         mActionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void LoadLast() {
+    private void loadLast() {
         Para.lastBook = Para.currentBook;
         Para.lastChapter = Para.currentChapter;
         Para.lastSection = Para.currentSection;
     }
 
+    public MusicPlayService getMusicPlayService() {
+        return mMusicPlayService;
+    }
+
+    private void bindMusicPlayService() {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, MusicPlayService.class);
+        bindService(intent, this, Service.BIND_AUTO_CREATE);
+    }
+
+    private void unbindMusicPlayService() {
+        unbindService(this);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        mMusicPlayService = ((MusicPlayService.MusicPlayBinder)service).getService();
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
 }
