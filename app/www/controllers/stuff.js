@@ -504,6 +504,28 @@ $.mvc.controller.create('bible', {
 	}
 });
 
+//常用经文
+$.mvc.controller.create('prayer', {
+    default:function() {
+		$.ui.showMask("加载常用经文...");
+		$.get("./res/prayer/index.html",function(j){
+			$("#main").html(j);
+			
+			$.ui.titleBar.textContent = '常用经文';
+			$("#backButton")[0].style.visibility = 'hidden';
+			$("#menubadge")[0].style.float = 'left';
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
 //天主教教理
 $.mvc.controller.create('catechism', {
     views: {
