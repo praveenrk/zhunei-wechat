@@ -49,6 +49,7 @@ import org.cathassist.bible.lib.Download;
 import org.cathassist.bible.lib.ProgressShow;
 import org.cathassist.bible.lib.ProgressShow.ProgressCallBack;
 import org.cathassist.bible.lib.VerseInfo;
+import org.cathassist.bible.music.MusicPlayService;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -79,6 +80,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     private Handler mMp3Handler = null;
     private Thread mMp3Thread = null;
     private int mMp3Pos = 0;
+    private MusicPlayService mService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +88,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         mActivity = (MainActivity) getSherlockActivity();
         setHasOptionsMenu(true);
         mActivity.getSupportActionBar().setTitle("圣经");
+        mService = ((MainActivity)getSherlockActivity()).getMusicPlayService();
     }
 
     @Override
@@ -202,6 +205,9 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 break;
             case R.id.action_bar_sound:
                 mMusicPanel.setVisibility(View.VISIBLE);
+                break;
+            case R.id.music_play:
+                mService.play(mPath,Para.currentBook,Para.currentChapter);
                 break;
             case R.id.btn_music_cancel:
                 mMusicPanel.setVisibility(View.GONE);
@@ -420,7 +426,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private void download(final int book, final int chapter) {
+    private long download(final int book, final int chapter) {
+        long reference = -1;
         final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
@@ -434,14 +441,15 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 request.setDescription("下载MP3中...");
 
                 try {
-                    long reference = downloadManager.enqueue(request);
+                    reference = downloadManager.enqueue(request);
                 } catch (Exception e) {
-                    Toast.makeText(getSherlockActivity(), "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mActivity, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
                 }
             } else {
                 Toast.makeText(mActivity, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
             }
         }
+        return reference;
     }
 
     private void GetVerse() {
