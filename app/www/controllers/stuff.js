@@ -503,3 +503,83 @@ $.mvc.controller.create('bible', {
 		var self = this;
 	}
 });
+
+//天主教教理
+$.mvc.controller.create('catechism', {
+    views: {
+        "catechism_tpl": "views/catechism.tpl",
+		"chapter_tpl": "views/chapter.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载天主教教理...");
+		$.get("./res/catechism/index.json",function(j){
+			$("#main").html($.template('catechism_tpl', {
+				title: '教理',
+				items: JSON.parse(j)
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	chapter:function(c)
+	{
+		$.get("./res/catechism/"+c,function(j)
+		{
+			$("#main").html($.template('chapter_tpl', {
+				title: '教理',
+				url: '/catechism',
+				items: JSON.parse(j)
+			}));
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//天主教法典
+$.mvc.controller.create('codex', {
+    views: {
+        "codex_tpl": "views/catechism.tpl",
+		"chapter_tpl": "views/chapter.tpl"
+    },
+	
+    default:function() {
+		$.ui.showMask("加载天主教法典...");
+		$.get("./res/codex/index.json",function(j){
+			$("#main").html($.template('codex_tpl', {
+				title: '法典',
+				items: JSON.parse(j)
+			}));
+			$.ui.hideMask();
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	chapter:function(c)
+	{
+		$.get("./res/codex/"+c,function(j)
+		{
+			$("#main").html($.template('chapter_tpl', {
+				title: '法典',
+				url: '/codex',
+				items: JSON.parse(j)
+			}));
+		});
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+	},
+	
+	init: function(){
+		var self = this;
+	}
+});
