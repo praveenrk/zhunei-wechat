@@ -25,12 +25,11 @@ app.loadControllers(["stuff"]);
 //Routing by hash change
 //app.listenHashChange();
 
-//We wait until app.ready is available to fetch the data, then we wire up the existing data in the templates
-app.ready(function(){
+window.addEventListener("popstate", function(){
 	var _u = getQueryString('route');
 	if(_u)
 	{
-		$.mvc.route(_u);
+		$.mvc.route(_u,null,true);
 	}
 	else
 	{

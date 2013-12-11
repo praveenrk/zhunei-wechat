@@ -172,7 +172,10 @@
 			if(_r.indexOf(baseUrl) === 0)
 				_r = _r.substring(baseUrl.length, _r.length);
 			if(_r[0] == "/")
-				window.history.pushState('','','?route='+_r);
+			{
+				if(noHistory!==true)
+					window.history.pushState('','','?route='+_r);
+			}
 		}
 
         if(url.length > 1) {
