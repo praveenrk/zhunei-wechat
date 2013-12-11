@@ -67,6 +67,7 @@
 		});
 		
 		$.ui.ready(function(){
+			$.os.useOSThemes=true;
 			var _t = window.localStorage.theme;
 			if(_t && _t!='')
 			{
@@ -74,16 +75,6 @@
 			}
 		});
 		
-		function setTheme(_t)
-		{
-		   $.os.useOSThemes=true;
-			if(_t=="win8")
-			{
-				$.os.ie=true;
-			}
-			$("#afui").get(0).className=_t;
-			window.localStorage.theme=_t;
-		}
 	</script>
 </head>
 <body>

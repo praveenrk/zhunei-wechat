@@ -435,9 +435,14 @@ $.mvc.controller.create('settings', {
 	
     default:function() {
 		$.ui.showMask("加载设置...");
-		$("#main").html($.template('settings_tpl', {
-			title: '设置'
-		}));
+		$.get("./res/settings.html",function(j){
+			$("#main").html(j);
+			
+			$.ui.titleBar.textContent = '设置';
+			$("#backButton")[0].style.visibility = 'hidden';
+			$("#menubadge")[0].style.float = 'left';
+			$.ui.hideMask();
+		});
 		$.ui.hideMask();
 		$.ui.scrollToTop("#mainc",-10);
 		if($.ui.isSideMenuOn())
