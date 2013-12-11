@@ -10,7 +10,9 @@
 	{{ for (var c in it.items){
 	}}
 	<li class="artitem"><a href="{{=it.item}}{{=it.items[c]['id']}}">
+		{{if(it.items[c]['pic'] && it.items[c]['pic']!=''){}}
 		<img src="{{=it.items[c]['pic']}}" class="artimg" />
+		{{}}}
 		<h3 class="arttitle">{{=it.items[c]['title']}}</h3>
 		<p class="artcontent">{{=it.items[c]['title']}}</p>
 	</a></li>
