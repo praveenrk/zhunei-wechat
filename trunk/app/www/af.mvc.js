@@ -171,7 +171,8 @@
 			var _r = origUrl;
 			if(_r.indexOf(baseUrl) === 0)
 				_r = _r.substring(baseUrl.length, _r.length);
-			window.history.pushState('','','?route='+_r);
+			if(_r[0] == "/")
+				window.history.pushState('','','?route='+_r);
 		}
 
         if(url.length > 1) {
