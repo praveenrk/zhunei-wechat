@@ -166,7 +166,13 @@
         if(url[url.length-1]=="/") url=url.slice(0,-1);
         url = url.split("/");
 		
-		$.mvc.cur = origUrl;
+		{
+			//修改url
+			var _r = origUrl;
+			if(_r.indexOf(baseUrl) === 0)
+				_r = _r.substring(baseUrl.length, _r.length);
+			window.history.pushState('','','?route='+_r);
+		}
 
         if(url.length > 1) {
             route = url.splice(0, 1);
