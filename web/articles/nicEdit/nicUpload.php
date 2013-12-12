@@ -1,6 +1,6 @@
 <?php
 define('NICUPLOAD_PATH', '../images');
-define('NICUPLOAD_URI', '/articles/images');
+define('NICUPLOAD_URI', 'http://cathassist.org/articles/images');
 
 $nicupload_allowed_extensions = array('jpg','jpeg','png','gif','bmp');
 
