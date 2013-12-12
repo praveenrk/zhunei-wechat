@@ -1,0 +1,17 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://app.cathassist.org"
+      },
+      "urls": [ "http://cathassist.org/" ]
+   },
+   "description": "天主教小助手",
+   "icons": {
+      "128": "128.png"
+   },
+   "manifest_version": 2,
+   "name": "天主教小助手",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0",
+   "web_accessible_resources": [ "128.png" ]
+}
