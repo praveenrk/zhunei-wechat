@@ -30,6 +30,30 @@ function htmldecode(s)
 }
 
 
+//首页
+$.mvc.controller.create('home', {
+    views: {
+        "home_tpl": "views/home.tpl"
+    },
+    default:function() {
+		$.ui.showMask("加载首页...");
+		
+		$("#main").html($.template('home_tpl', {
+			title: '天主教小助手',
+			date: new Date()
+		}));
+		$.ui.hideMask();
+		$.ui.scrollToTop("#mainc",-10);
+		if($.ui.isSideMenuOn())
+			$.ui.toggleSideMenu();
+    },
+	
+	init: function(){
+		var self = this;
+	}
+});
+
+//日课及读经
 var stuffconfig = {'mass':'弥撒','med':'日祷','comp':'夜祷','let':'诵读','lod':'晨祷','thought':'反省','ordo':'礼仪','ves':'晚祷','saint':'圣人传记'};
 $.mvc.controller.create('stuff', {
     views: {
@@ -429,10 +453,6 @@ $.mvc.controller.create('music', {
 
 //设置
 $.mvc.controller.create('settings', {
-    views: {
-        "settings_tpl": "views/settings.tpl"
-    },
-	
     default:function() {
 		$.ui.showMask("加载设置...");
 		$.get("./res/settings.html",function(j){
@@ -493,6 +513,7 @@ $.mvc.controller.create('bible', {
 	{
 		$.get("./res/bible/"+t+"/"+c,function(j)
 		{
+			window.localStorage.lastbible = '/bible/chapter/'+t+'/'+c;
 			$("#main").html($.template('chapter_tpl', {
 				title: '思高圣经',
 				url: '/bible',
