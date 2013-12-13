@@ -1,0 +1,68 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="@style/Theme.Sherlock.Light">
+        <item name="android:background">#00000000</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:windowBackground">@drawable/background</item>
+        <item name="actionBarStyle">@style/blue_ActionBar</item>
+        <item name="android:actionBarStyle">@style/blue_ActionBar</item>
+        <item name="android:actionDropDownStyle">@style/Widget.Sherlock.Spinner.DropDown.ActionBar</item>
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+    </style>
+
+    <style name="StyledIndicators" parent="@style/Theme.Sherlock">
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+    </style>
+
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/custom_tab_indicator</item>
+    </style>
+
+    <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#ffffff</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:shadowDx">0.5</item>
+        <item name="android:shadowDy">0.5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="allPageContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+
+    <style name="blue_ActionBar" parent="@style/Widget.Sherlock.ActionBar">
+        <item name="background">@drawable/ic_tab_blue_background</item>
+        <item name="android:background">@drawable/ic_tab_blue_background</item>
+        <item name="android:titleTextStyle">@style/ActionbarTitleTextStyle</item>
+        <item name="titleTextStyle">@style/ActionbarTitleTextStyle</item>
+    </style>
+
+    <style name="ActionbarTitleTextStyle" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+        
+    <style name="BlackDialogTheme" parent="@android:Theme.Dialog">
+		<item name="android:textColor">#fff</item>
+		 <item name="android:background">#00000000</item>
+	</style>
+</resources>
