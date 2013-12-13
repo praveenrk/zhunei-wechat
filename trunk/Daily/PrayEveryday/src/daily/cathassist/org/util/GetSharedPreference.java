@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.util;
+package daily.cathassist.org.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

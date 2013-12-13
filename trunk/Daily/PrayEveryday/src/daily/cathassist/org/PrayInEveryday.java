@@ -1,13 +1,9 @@
-package com.flyworkspace.prayineveryday;
+package daily.cathassist.org;
 
-import com.flyworkspace.prayineveryday.database.TodoDbAdapter;
-import com.flyworkspace.prayineveryday.provider.UpdateApp;
+import daily.cathassist.org.database.TodoDbAdapter;
 
 import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 public class PrayInEveryday extends Application {
@@ -24,7 +20,6 @@ public class PrayInEveryday extends Application {
 
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
 		super.onCreate();
 		getApplicationContext().sendBroadcast(new Intent("finish"));
 		Log.e("APPonCreate", "APPonCreate");

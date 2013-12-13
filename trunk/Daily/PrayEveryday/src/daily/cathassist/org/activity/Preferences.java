@@ -1,43 +1,21 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
-import android.text.Html;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.flyworkspace.prayineveryday.PrayInEveryday;
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.activity.MainActivity.DownloadData;
-import com.flyworkspace.prayineveryday.provider.UpdateApp;
-import com.flyworkspace.prayineveryday.provider.UpdateManager;
-import com.flyworkspace.prayineveryday.util.NetworkTool;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
-import com.flyworkspace.prayineveryday.util.PublicFunction.OnClickCancelListener;
 import com.umeng.analytics.MobclickAgent;
+
+import daily.cathassist.org.R;
+import daily.cathassist.org.provider.UpdateApp;
+import daily.cathassist.org.util.PublicFunction;
+import daily.cathassist.org.util.PublicFunction.OnClickCancelListener;
 
 public class Preferences extends SherlockPreferenceActivity implements
 		OnPreferenceClickListener,OnClickCancelListener {

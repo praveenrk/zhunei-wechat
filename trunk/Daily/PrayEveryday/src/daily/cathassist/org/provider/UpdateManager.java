@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.provider;
+package daily.cathassist.org.provider;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,12 +12,12 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.flyworkspace.prayineveryday.PrayInEveryday;
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.activity.MainActivity;
-import com.flyworkspace.prayineveryday.activity.Preferences;
-import com.flyworkspace.prayineveryday.util.NetworkTool;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
+import daily.cathassist.org.PrayInEveryday;
+import daily.cathassist.org.R;
+import daily.cathassist.org.activity.MainActivity;
+import daily.cathassist.org.activity.Preferences;
+import daily.cathassist.org.util.NetworkTool;
+import daily.cathassist.org.util.PublicFunction;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

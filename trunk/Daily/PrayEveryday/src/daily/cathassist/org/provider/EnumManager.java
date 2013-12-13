@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.provider;
+package daily.cathassist.org.provider;
 
 public class EnumManager {
 	public enum ContentType {

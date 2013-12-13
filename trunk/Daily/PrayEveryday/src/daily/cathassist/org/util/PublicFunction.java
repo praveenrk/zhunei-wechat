@@ -1,9 +1,9 @@
-package com.flyworkspace.prayineveryday.util;
+package daily.cathassist.org.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.flyworkspace.prayineveryday.R;
+import daily.cathassist.org.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -145,7 +145,7 @@ public class PublicFunction {
 		int verCode = -1;
 		try {
 			verCode = context.getPackageManager().getPackageInfo(
-					"com.flyworkspace.prayineveryday", 0).versionCode;
+					"daily.cathassist.org", 0).versionCode;
 		} catch (NameNotFoundException e) {
 		}
 		return verCode;
@@ -155,7 +155,7 @@ public class PublicFunction {
 		String verName = "";
 		try {
 			verName = context.getPackageManager().getPackageInfo(
-					"com.flyworkspace.prayineveryday", 0).versionName;
+					"daily.cathassist.org", 0).versionName;
 		} catch (NameNotFoundException e) {
 		}
 		return verName;

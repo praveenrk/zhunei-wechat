@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.download;
+package daily.cathassist.org.download;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.flyworkspace.prayineveryday.PrayInEveryday;
+import daily.cathassist.org.PrayInEveryday;
 
 import android.net.ParseException;
 import android.os.AsyncTask;

@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,20 +11,21 @@ import org.json.JSONObject;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.flyworkspace.prayineveryday.PrayInEveryday;
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.bean.CalendarDay;
-import com.flyworkspace.prayineveryday.bean.DayContent;
-import com.flyworkspace.prayineveryday.database.TodoDbAdapter;
-import com.flyworkspace.prayineveryday.provider.EnumManager.ContentType;
-import com.flyworkspace.prayineveryday.provider.MainActivityFragmentPagerAdapter;
-import com.flyworkspace.prayineveryday.provider.UpdateApp;
-import com.flyworkspace.prayineveryday.util.GetSharedPreference;
-import com.flyworkspace.prayineveryday.util.NetworkTool;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
-import com.flyworkspace.prayineveryday.util.PublicFunction.OnClickCancelListener;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.viewpagerindicator.TabPageIndicator;
+
+import daily.cathassist.org.PrayInEveryday;
+import daily.cathassist.org.R;
+import daily.cathassist.org.bean.CalendarDay;
+import daily.cathassist.org.bean.DayContent;
+import daily.cathassist.org.database.TodoDbAdapter;
+import daily.cathassist.org.provider.MainActivityFragmentPagerAdapter;
+import daily.cathassist.org.provider.UpdateApp;
+import daily.cathassist.org.provider.EnumManager.ContentType;
+import daily.cathassist.org.util.GetSharedPreference;
+import daily.cathassist.org.util.NetworkTool;
+import daily.cathassist.org.util.PublicFunction;
+import daily.cathassist.org.util.PublicFunction.OnClickCancelListener;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
