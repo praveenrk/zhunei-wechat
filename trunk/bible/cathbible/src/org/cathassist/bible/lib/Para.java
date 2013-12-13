@@ -3,6 +3,7 @@ package org.cathassist.bible.lib;
 import android.graphics.Color;
 
 import org.cathassist.bible.R;
+import org.cathassist.bible.music.MusicPlayService;
 
 public class Para {
     public static final String DB_CONTENT_ASSET = "cathbible";
@@ -55,6 +56,7 @@ public class Para {
     public static int lastChapter;
     public static int lastSection;
     public static int bookmarkPos = 0;
-    public static int bibleMp3Pos = 0;
+    public static int mp3Mode = MusicPlayService.MODE_SINGLE;
     public static int menuIndex = 0;
+    public static String mp3Ver = "chn";
 }

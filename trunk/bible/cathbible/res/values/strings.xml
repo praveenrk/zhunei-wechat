@@ -52,11 +52,11 @@
     <string name="refresh">刷新</string>
     <string name="next">下一条</string>
     <string name="search_count">搜索到0条</string>
-    <string name="music_prev">上一章</string>
+    <string name="music_prev">上章</string>
     <string name="music_play">播放</string>
     <string name="music_pause">暂停</string>
-    <string name="music_next">下一章</string>
-    <string name="music_order">顺序播</string>
+    <string name="music_next">下章</string>
+    <string name="music_single">单章</string>
     <string name="music_down">下载本章</string>
     <string name="music_down_book">下载本卷</string>
     <string name="return_back">返回</string>
