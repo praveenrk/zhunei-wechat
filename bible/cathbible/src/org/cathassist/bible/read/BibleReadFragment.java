@@ -9,13 +9,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.ClipboardManager;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -30,7 +28,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -64,22 +61,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BibleReadFragment extends SherlockFragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener, OnSeekBarChangeListener {
+public class BibleReadFragment extends SherlockFragment implements OnClickListener, OnItemClickListener,
+        OnItemLongClickListener, OnSeekBarChangeListener, MusicPlayService.OnPlayListener, MusicPlayService.OnPlayChangedListener, MusicPlayService.OnCompletionListener {
     List<Map<String, String>> mContent;
     private String mPath = "chn";
     private MainActivity mActivity = null;
     private ListView mList;
     private ImageView mLeft, mRight, mSound;
     private View mMusicPanel;
-    private TextView mStart, mPlay, mPrev, mNext, mMode;
+    private TextView mPlay, mPrev, mNext, mMode, mMusicTitle, mPast, mTotal;
     private Button mMusicCancel, mMusicDown, mMusicDownBook;
-    private SeekBar mProgress;
-    private LinearLayout mMp3Layout;
+    private SeekBar mSeekBar;
     private List<Integer> mMarkedSections = new ArrayList<Integer>();
-    private MediaPlayer mMediaPlayer;
-    private Handler mMp3Handler = null;
-    private Thread mMp3Thread = null;
-    private int mMp3Pos = 0;
     private MusicPlayService mService;
 
     @Override
@@ -95,9 +88,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bible_read, null);
         mList = (ListView) view.findViewById(R.id.list);
-        mStart = (TextView) view.findViewById(R.id.button_start);
-        mProgress = (SeekBar) view.findViewById(R.id.bar_mp3);
-        mMp3Layout = (LinearLayout) view.findViewById(R.id.layout_mp3);
+        mList.setOnItemClickListener(this);
+        mList.setOnItemLongClickListener(this);
 
         mLeft = (ImageView) view.findViewById(R.id.action_bar_left);
         mLeft.setOnClickListener(this);
@@ -122,20 +114,33 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         mNext.setOnClickListener(this);
         mMode = (TextView) view.findViewById(R.id.music_mode);
         mMode.setOnClickListener(this);
+        mSeekBar = (SeekBar) view.findViewById(R.id.music_seekbar);
+        mSeekBar.setOnSeekBarChangeListener(this);
 
-        mList.setOnItemClickListener(this);
-        mList.setOnItemLongClickListener(this);
+        mMusicTitle = (TextView) view.findViewById(R.id.music_title);
+        mPast = (TextView) view.findViewById(R.id.music_left_time_indicator);
+        mTotal = (TextView) view.findViewById(R.id.music_right_time_indicator);
 
-        mStart.setOnClickListener(this);
-        mProgress.setOnSeekBarChangeListener(this);
+        mService.setPlayMode(Para.mp3Mode);
+        mService.setOnPlayListener(this);
+        mService.setOnPlayChangedListener(this);
+        mService.setOnCompletionListener(this);
 
-        mMp3Handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                CheckMp3();
-                super.handleMessage(msg);
-            }
-        };
+        switch (Para.mp3Mode) {
+            case MusicPlayService.MODE_SINGLE:
+            default:
+                mMode.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_mode_single, 0, 0);
+                mMode.setText("单章");
+                break;
+            case MusicPlayService.MODE_SINGLE_LOOP:
+                mMode.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_mode_single_loop, 0, 0);
+                mMode.setText("重复");
+                break;
+            case MusicPlayService.MODE_ORDER:
+                mMode.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_mode_order, 0, 0);
+                mMode.setText("顺序");
+                break;
+        }
 
         return view;
     }
@@ -143,25 +148,13 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     @Override
     public void onResume() {
         super.onResume();
-        if (Para.mp3_ver == 0) {
-            mMp3Layout.setVisibility(View.GONE);
-            Para.bibleMp3Pos = 0;
-        }
-        mMp3Pos = Para.bibleMp3Pos;
-        if (mMp3Pos == 0) {
-            mProgress.setProgress(mMp3Pos);
-        }
-        SetButtonName();
-        GetVerse();
-        ChangePosition();
+        reloadChapter();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Para.currentSection = Integer.valueOf(mContent.get(mList.getFirstVisiblePosition()).get("section"));
-        Para.bibleMp3Pos = mMp3Pos;
-        StopMp3();
     }
 
     @Override
@@ -180,10 +173,12 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         Intent intent = new Intent();
         switch (item.getItemId()){
             case R.id.book:
+                mService.stop();
                 intent.setClass(mActivity, BookSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.chapter:
+                mService.stop();
                 intent.setClass(mActivity, ChapterSelectActivity.class);
                 startActivity(intent);
                 break;
@@ -194,9 +189,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_start:
-                CheckMp3();
-                break;
             case R.id.action_bar_left:
                 ChangeVerse(false);
                 break;
@@ -207,62 +199,78 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 mMusicPanel.setVisibility(View.VISIBLE);
                 break;
             case R.id.music_play:
-                mService.play(mPath,Para.currentBook,Para.currentChapter);
+                if(checkMp3()) {
+                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                } else {
+                    Func.downChapter(mActivity);
+                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                }
+                break;
+            case R.id.music_prev:
+                ChangeVerse(false);
+                mService.stop();
+                if(checkMp3()) {
+                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                } else {
+                    Func.downChapter(mActivity);
+                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                }
+                break;
+            case R.id.music_next:
+                ChangeVerse(true);
+                mService.stop();
+                if(checkMp3()) {
+                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                } else {
+                    Func.downChapter(mActivity);
+                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                }
+                break;
+            case R.id.music_mode:
+                switch (Para.mp3Mode) {
+                    case MusicPlayService.MODE_SINGLE:
+                        Para.mp3Mode = MusicPlayService.MODE_SINGLE_LOOP;
+                        mMode.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.music_mode_single_loop,0,0);
+                        mMode.setText("重复");
+                        break;
+                    case MusicPlayService.MODE_SINGLE_LOOP:
+                        Para.mp3Mode = MusicPlayService.MODE_ORDER;
+                        mMode.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_mode_order, 0, 0);
+                        mMode.setText("顺序");
+                        break;
+                    case MusicPlayService.MODE_ORDER:
+                    default:
+                        Para.mp3Mode = MusicPlayService.MODE_SINGLE;
+                        mMode.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_mode_single, 0, 0);
+                        mMode.setText("单章");
+                        break;
+                }
+                mService.setPlayMode(Para.mp3Mode);
+                SharedPreferences settings = mActivity.getSharedPreferences(Para.STORE_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("mp3Mode", Para.mp3Mode);
+                editor.commit();
                 break;
             case R.id.btn_music_cancel:
                 mMusicPanel.setVisibility(View.GONE);
                 break;
             case R.id.btn_music_down:
-                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD){
-                    downChapter();
-                } else {
-                    download(Para.currentBook, Para.currentChapter);
-                    Toast.makeText(mActivity, "下载已添加", Toast.LENGTH_SHORT).show();
-                }
+                Func.downChapter(mActivity);
                 break;
             case R.id.btn_music_down_book:
-                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD){
-                    Toast.makeText(getSherlockActivity(),"您的操作系统版本过低，不能使用此功能",Toast.LENGTH_SHORT).show();
-                } else {
-                    for(int i=1;i<=VerseInfo.CHAPTER_COUNT[Para.currentBook];i++) {
-                        download(Para.currentBook,i);
-                    }
-                    Toast.makeText(mActivity, "下载已添加", Toast.LENGTH_SHORT).show();
-                }
+                Func.downBook(mActivity);
                 break;
             default:
                 break;
         }
     }
 
-    private void downChapter() {
+    private boolean checkMp3() {
         final File file = Func.getFilePath(Func.getFileName(mPath, Para.currentBook, Para.currentChapter));
-
-        if (!file.exists()) {
-            new File(file.getParent()).mkdirs();
-            final String url = Para.BIBLE_MP3_URL
-                    + String.format("%03d", Para.currentBook) + "/"
-                    + String.format("%03d", Para.currentChapter) + ".mp3";
-
-            if (Func.isWifi(mActivity) || Para.allow_gprs) {
-                final ProgressShow dialog = new ProgressShow(
-                        mActivity, "请稍候", "正在载入", ProgressShow.DIALOG_TYPE_SPINNER, ProgressShow.DIALOG_DEFAULT_MAX);
-                dialog.ShowDialog(new ProgressCallBack() {
-                    public void action() {
-                        if (Download.DownFile(url, file.getAbsolutePath())) {
-                            mMp3Handler.sendEmptyMessage(0);
-                        }
-                        dialog.CloseDialog();
-                    }
-                });
-            } else {
-                Toast.makeText(mActivity, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
-            }
-
-        } else {
-            PlayMp3();
-        }
+        return file.exists();
     }
+
+
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -335,121 +343,38 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
         if (fromUser) {
-            if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
-                mMediaPlayer.seekTo(progress * mMediaPlayer.getDuration() / 100);
-            }
+            mService.setProgress(progress);
         }
     }
 
-    private void CheckMp3() {
-        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
-            StopMp3();
+    @Override
+    public void onPlay(int progress, int duration) {
+        mSeekBar.setMax(duration);
+        mSeekBar.setProgress(progress);
+        mPast.setText(String.format("%02d",progress/1000/60) + ":" + String.format("%02d",progress/1000%60));
+        mTotal.setText(String.format("%02d",duration/1000/60) + ":" + String.format("%02d",duration/1000%60));
+    }
+
+    @Override
+    public void onPlayChanged(boolean isPlay) {
+        if(isPlay) {
+            mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
+            mPlay.setText("暂停");
         } else {
-            final String mp3 = Para.BIBLE_MP3_PATH + "chn/"
-                    + String.format("%03d", Para.currentBook) + "_"
-                    + String.format("%03d", Para.currentChapter) + ".mp3";
-            final File file = new File(mp3);
-            if (!file.exists()) {
-                new File(file.getParent()).mkdirs();
-                if (Func.isWifi(mActivity) || Para.allow_gprs) {
-                    final String url = Para.BIBLE_MP3_URL
-                            + String.format("%03d", Para.currentBook) + "/"
-                            + String.format("%03d", Para.currentChapter) + ".mp3";
-                    final ProgressShow dialog = new ProgressShow(
-                            mActivity, "请稍候", "正在载入", ProgressShow.DIALOG_TYPE_SPINNER, ProgressShow.DIALOG_DEFAULT_MAX);
-                    dialog.ShowDialog(new ProgressCallBack() {
-                        public void action() {
-                            if (Download.DownFile(url, mp3)) {
-                                mMp3Handler.sendEmptyMessage(0);
-                            }
-                            dialog.CloseDialog();
-                        }
-                    });
-                } else {
-                    Toast.makeText(mActivity, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
-                }
-
-            } else {
-                PlayMp3();
-            }
+            mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_play, 0, 0);
+            mPlay.setText("播放");
         }
     }
 
-    private void PlayMp3() {
-        String file = Para.BIBLE_MP3_PATH + "chn/"
-                + String.format("%03d", Para.currentBook) + "_"
-                + String.format("%03d", Para.currentChapter) + ".mp3";
-        mMediaPlayer = new MediaPlayer();
-        try {
-            mMediaPlayer.setDataSource(file);
-            mMediaPlayer.prepare();
-            mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-                public void onCompletion(MediaPlayer player) {
-                    try {
-                        mMediaPlayer.stop();
-                        ChangeVerse(true);
-                        CheckMp3();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            mMediaPlayer.start();
-            mMediaPlayer.seekTo(mMp3Pos);
-            mMp3Thread = new Thread(new Runnable() {
-                public void run() {
-                    try {
-                        while (mMediaPlayer.isPlaying()) {
-                            mProgress.setProgress(mMediaPlayer.getCurrentPosition() * 100 / mMediaPlayer.getDuration());
-                            mMp3Pos = mMediaPlayer.getCurrentPosition();
-                            Thread.sleep(200);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            mMp3Thread.start();
-            mStart.setText(R.string.pause_sign);
-        } catch (Exception e) {
-            e.printStackTrace();
-            StopMp3();
-        }
+    @Override
+    public void onCompletion() {
+        reloadChapter();
     }
 
-    private void StopMp3() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-        }
-        mStart.setText(R.string.start_sign);
-        Para.bibleMp3Pos = mMp3Pos;
-    }
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private long download(final int book, final int chapter) {
-        long reference = -1;
-        final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
-        if (!file.exists()) {
-            new File(file.getParent()).mkdirs();
-            if (Func.isWifi(mActivity) || Para.allow_gprs) {
-                String url = Func.getUrlPath(Func.getUrlName(mPath, book, chapter));
-                DownloadManager downloadManager = (DownloadManager) getSherlockActivity().getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse(url);
-                DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setDestinationUri(Uri.fromFile(file));
-                request.setTitle(getString(R.string.app_name));
-                request.setDescription("下载MP3中...");
-
-                try {
-                    reference = downloadManager.enqueue(request);
-                } catch (Exception e) {
-                    Toast.makeText(mActivity, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(mActivity, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
-            }
-        }
-        return reference;
+    private void reloadChapter() {
+        SetButtonName();
+        GetVerse();
+        ChangePosition();
     }
 
     private void GetVerse() {
@@ -471,10 +396,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         if (Para.currentBook != 1) {
             Para.previousCount = VerseInfo.CHAPTER_COUNT[Para.currentBook - 1];
         }
-
-        if (isAdded()) {
-            mActivity.supportInvalidateOptionsMenu();
-        }
+        mMusicTitle.setText(VerseInfo.CHN_NAME[Para.currentBook]+" 第"+Para.currentChapter+"章");
+        mActivity.supportInvalidateOptionsMenu();
     }
 
     private void ChangePosition() {
@@ -491,34 +414,9 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     public void ChangeVerse(Boolean isNext) {
-        if (!isNext) {
-            if (Para.currentChapter > 1) {
-                Para.currentChapter--;
-            } else {
-                if (Para.currentBook > 1) {
-                    Para.currentBook--;
-                    Para.currentChapter = Para.previousCount;
-                }
-            }
-        } else {
-            if (Para.currentChapter < Para.currentCount) {
-                Para.currentChapter++;
-            } else {
-                if (Para.currentBook < 73) {
-                    Para.currentBook++;
-                    Para.currentChapter = 1;
-                }
-            }
-        }
-        StopMp3();
-        Para.currentSection = 0;
-        Para.bibleMp3Pos = 0;
-        mMp3Pos = Para.bibleMp3Pos;
-        mProgress.setProgress(mMp3Pos);
+        Func.ChangeChapter(isNext);
 
-        SetButtonName();
-        GetVerse();
-        ChangePosition();
+        reloadChapter();
     }
 
     private List<Map<String, String>> GetData() {

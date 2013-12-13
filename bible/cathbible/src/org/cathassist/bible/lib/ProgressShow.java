@@ -48,8 +48,8 @@ public class ProgressShow {
         dialog.setTitle(title);
         dialog.setMessage(message);
         dialog.setIndeterminate(false);
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
+        //dialog.setCancelable(false);
+        //dialog.setCanceledOnTouchOutside(false);
         dialog.setProgress(-dialog.getProgress());
     }
 

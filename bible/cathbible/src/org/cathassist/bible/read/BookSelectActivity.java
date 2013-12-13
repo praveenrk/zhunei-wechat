@@ -124,7 +124,6 @@ public class BookSelectActivity extends SherlockActivity implements OnItemClickL
         Para.currentBook = position + 1;
         Para.currentChapter = 1;
         Para.currentSection = 0;
-        Para.bibleMp3Pos = 0;
 
         view.setBackgroundColor(getResources().getColor(R.color.light_blue));
         Intent intent = new Intent();
