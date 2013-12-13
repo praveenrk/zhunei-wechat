@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.provider;
+package daily.cathassist.org.provider;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -14,11 +14,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.flyworkspace.prayineveryday.PrayInEveryday;
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.activity.Preferences;
-import com.flyworkspace.prayineveryday.util.NetworkTool;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
+import daily.cathassist.org.PrayInEveryday;
+import daily.cathassist.org.R;
+import daily.cathassist.org.activity.Preferences;
+import daily.cathassist.org.util.NetworkTool;
+import daily.cathassist.org.util.PublicFunction;
 
 public class UpdateApp extends AsyncTask<String, Integer, String> {
 	private int newVerCode;

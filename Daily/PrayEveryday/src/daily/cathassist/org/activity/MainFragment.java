@@ -1,13 +1,11 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
-import java.util.Calendar;
-import java.util.Date;
-
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.bean.CalendarDay;
-import com.flyworkspace.prayineveryday.database.TodoDbAdapter;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
 import com.spreada.utils.chinese.ZHConverter;
+
+import daily.cathassist.org.R;
+import daily.cathassist.org.bean.CalendarDay;
+import daily.cathassist.org.database.TodoDbAdapter;
+import daily.cathassist.org.util.PublicFunction;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,9 +19,8 @@ import android.widget.TextView;
 
 public final class MainFragment extends Fragment {
 	private TextView txtDayTitle, txtDate, txtSolarTerms, txtHoliday,
-			txtFestival, txtDayNature, txtBibleSentence, txtBible, txtPrayTime,
+			txtFestival, txtDayNature, txtBibleSentence, txtBible,
 			txtPray;
-	private Calendar calendar;
 	private TodoDbAdapter dbHelper;
 	private CalendarDay calendarDay;
 	private String dateString;
@@ -124,7 +121,6 @@ public final class MainFragment extends Fragment {
 		txtBible = (TextView) view.findViewById(R.id.txt_bible);
 		txtPray = (TextView) view.findViewById(R.id.txt_pray);
 		txtBibleSentence = (TextView) view.findViewById(R.id.bible_sentence);
-		txtPrayTime = (TextView) view.findViewById(R.id.pray_time);
 	}
 
 	private void setListener() {

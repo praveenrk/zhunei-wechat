@@ -1,14 +1,14 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.bean.DateBean;
-import com.flyworkspace.prayineveryday.database.TodoDbAdapter;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
+import daily.cathassist.org.R;
+import daily.cathassist.org.bean.DateBean;
+import daily.cathassist.org.database.TodoDbAdapter;
+import daily.cathassist.org.util.PublicFunction;
 
 import android.content.Context;
 import android.os.Bundle;

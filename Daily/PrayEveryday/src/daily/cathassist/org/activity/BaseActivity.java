@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;

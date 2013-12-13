@@ -1,13 +1,11 @@
-package com.flyworkspace.prayineveryday.activity;
+package daily.cathassist.org.activity;
 
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.bean.DayContent;
-import com.flyworkspace.prayineveryday.database.TodoDbAdapter;
-import com.flyworkspace.prayineveryday.util.CreateHtmlFile;
-import com.flyworkspace.prayineveryday.util.PublicFunction;
 import com.spreada.utils.chinese.ZHConverter;
 
-import android.content.Intent;
+import daily.cathassist.org.R;
+import daily.cathassist.org.bean.DayContent;
+import daily.cathassist.org.database.TodoDbAdapter;
+import daily.cathassist.org.util.CreateHtmlFile;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;

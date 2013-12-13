@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.database;
+package daily.cathassist.org.database;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -10,8 +10,6 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
 
 	public static final String DB_NAME = "PrayEveryDay.db";
 	public static final int DB_VERSION = 1;
-
-	private Context mContext;// 本地Context对象
 
 	public DataBaseOpenHelper(Context context, String name,
 			CursorFactory factory, int version) {

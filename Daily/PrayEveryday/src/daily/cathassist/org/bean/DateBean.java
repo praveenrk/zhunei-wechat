@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.bean;
+package daily.cathassist.org.bean;
 
 public class DateBean {
 	private long id;

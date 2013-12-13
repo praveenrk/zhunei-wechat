@@ -1,14 +1,12 @@
-package com.flyworkspace.prayineveryday.provider;
+package daily.cathassist.org.provider;
 
 import java.util.ArrayList;
 
-import com.flyworkspace.prayineveryday.R;
-import com.flyworkspace.prayineveryday.activity.MainFragment;
-import com.flyworkspace.prayineveryday.activity.PrayFragment;
 import com.viewpagerindicator.IconPagerAdapter;
 
+import daily.cathassist.org.R;
+
 import android.app.Activity;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;

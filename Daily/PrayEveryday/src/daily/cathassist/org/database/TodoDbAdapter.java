@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.database;
+package daily.cathassist.org.database;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +7,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.flyworkspace.prayineveryday.bean.CalendarDay;
-import com.flyworkspace.prayineveryday.bean.DateBean;
-import com.flyworkspace.prayineveryday.bean.DayContent;
+import daily.cathassist.org.bean.CalendarDay;
+import daily.cathassist.org.bean.DateBean;
+import daily.cathassist.org.bean.DayContent;
 
 import android.content.ContentValues;
 import android.content.Context;

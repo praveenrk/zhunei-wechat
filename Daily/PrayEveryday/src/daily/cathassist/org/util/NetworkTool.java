@@ -1,4 +1,4 @@
-package com.flyworkspace.prayineveryday.util;
+package daily.cathassist.org.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
