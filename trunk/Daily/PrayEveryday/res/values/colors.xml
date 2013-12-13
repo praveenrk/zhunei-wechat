@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="holo_blue_bright">#FF00DDFF</color>
+    <color name="LightSkyBlue">#FF87CEFA</color>
+    <color name="buttom_bar_click">#0099CC</color>
+    <color name="tab_icon_grey">#555555</color>
+</resources>
