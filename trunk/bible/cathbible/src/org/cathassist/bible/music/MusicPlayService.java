@@ -1,41 +1,30 @@
 package org.cathassist.bible.music;
 
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
-import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.widget.Toast;
 
-import org.cathassist.bible.lib.Download;
 import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
-import org.cathassist.bible.lib.ProgressShow;
 
 import java.io.File;
-import java.util.Timer;
 
 
-public class MusicPlayService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener{
+public class MusicPlayService extends Service implements MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener {
+    public static final int STATUS_IDLE = 0;
+    public static final int MODE_SINGLE = 0;
+    public static final int MODE_SINGLE_LOOP = 1;
+    public static final int MODE_ORDER = 2;
     private OnCompletionListener mOnCompletionListener;
     private OnPlayListener mOnPlayListener;
     private OnPlayChangedListener mOnPlayChangedListener;
-
     private MediaPlayer mPlayer;
     private String mLast = "";
     private String mPath = "chn";
-
-    public static final int STATUS_IDLE = 0;
-
-    public static final int MODE_SINGLE = 0;
-    public static final int MODE_SINGLE_LOOP =1;
-    public static final int MODE_ORDER = 2;
-
     private int mPlayMode;
     private Handler mPlayHandler;
     private Runnable mPlayRunnable;
@@ -65,9 +54,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayRunnable = new Runnable() {
             @Override
             public void run() {
-                if(mPlayer.isPlaying()) {
+                if (mPlayer.isPlaying()) {
                     if (mOnPlayListener != null) {
-                        mOnPlayListener.onPlay(getProgress(),getDuration());
+                        mOnPlayListener.onPlay(getProgress(), getDuration());
                     }
                 }
                 mPlayHandler.postDelayed(this, 1000);
@@ -77,8 +66,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     public void playNet(String path, int book, int chapter) {
         String file = Func.getUrlPath(Func.getUrlName(path, book, chapter));
-        if(mLast.equals(file) && getProgress() < getDuration()) {            //同一首
-            if(mPlayer.isPlaying()) {           //在播放
+        if (mLast.equals(path + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
+            if (mPlayer.isPlaying()) {           //在播放
                 pause();
             } else {
                 start();
@@ -89,7 +78,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                 try {
                     mPlayer.setDataSource(file);
                     mPlayer.prepareAsync();
-                    mLast = file;
+                    mLast = path + "/" + book + "/" + chapter;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -99,8 +88,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     public void play(String path, int book, int chapter) {
         String file = Func.getFilePath(Func.getFileName(path, book, chapter)).getAbsolutePath();
-        if(mLast.equals(file) && getProgress() < getDuration()) {            //同一首
-            if(mPlayer.isPlaying()) {           //在播放
+        if (mLast.equals(path + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
+            if (mPlayer.isPlaying()) {           //在播放
                 pause();
             } else {
                 start();
@@ -110,7 +99,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             try {
                 mPlayer.setDataSource(file);
                 mPlayer.prepareAsync();
-                mLast = file;
+                mLast = path + "/" + book + "/" + chapter;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -151,7 +140,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
     }
 
     public void setProgress(int progress) {
-        if(mPlayer.isPlaying()) {
+        if (mPlayer.isPlaying()) {
             mPlayer.seekTo(progress);
         }
     }
@@ -166,18 +155,18 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        if(mPlayMode == MODE_SINGLE) {
+        if (mPlayMode == MODE_SINGLE) {
             stop();
-        } else if(mPlayMode == MODE_SINGLE_LOOP) {
+        } else if (mPlayMode == MODE_SINGLE_LOOP) {
             play(mPath, Para.currentBook, Para.currentChapter);
-        } else if(mPlayMode == MODE_ORDER) {
+        } else if (mPlayMode == MODE_ORDER) {
             Func.ChangeChapter(true);
             final File file = Func.getFilePath(Func.getFileName(mPath, Para.currentBook, Para.currentChapter));
-            if(file.exists()) {
+            if (file.exists()) {
                 play(mPath, Para.currentBook, Para.currentChapter);
             } else {
                 Func.downChapter(this);
-                playNet(mPath,Para.currentBook,Para.currentChapter);
+                playNet(mPath, Para.currentBook, Para.currentChapter);
             }
         }
         if (mOnCompletionListener != null) {
@@ -190,33 +179,33 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         start();
     }
 
-    public class MusicPlayBinder extends Binder {
-        public MusicPlayService getService() {
-            return MusicPlayService.this;
-        }
-    }
-
-    public interface OnCompletionListener {
-        void onCompletion();
-    }
-
     public void setOnCompletionListener(OnCompletionListener listener) {
         mOnCompletionListener = listener;
-    }
-
-    public interface OnPlayListener {
-        void onPlay(int progress, int duration);
     }
 
     public void setOnPlayListener(OnPlayListener listener) {
         mOnPlayListener = listener;
     }
 
+    public void setOnPlayChangedListener(OnPlayChangedListener listener) {
+        mOnPlayChangedListener = listener;
+    }
+
+    public interface OnCompletionListener {
+        void onCompletion();
+    }
+
+    public interface OnPlayListener {
+        void onPlay(int progress, int duration);
+    }
+
     public interface OnPlayChangedListener {
         void onPlayChanged(boolean isPlay);
     }
 
-    public void setOnPlayChangedListener(OnPlayChangedListener listener) {
-        mOnPlayChangedListener = listener;
+    public class MusicPlayBinder extends Binder {
+        public MusicPlayService getService() {
+            return MusicPlayService.this;
+        }
     }
 }
