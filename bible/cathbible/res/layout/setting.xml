@@ -9,9 +9,13 @@
         android:title="@string/user_center" >
         
         <PreferenceScreen 
-            android:key="click_about"
-            android:title="@string/about"
-            android:summary="软件版本：1.6" />              
+            android:key="click_version"
+            android:title="@string/version"
+            android:summary="软件版本：1.0" />
+        <PreferenceScreen
+            android:key="click_about_us"
+            android:title="@string/about_us"
+            android:summary="关于天主教小助手" />
         <PreferenceScreen 
             android:key="click_feedback"
             android:title="@string/feedback" 
@@ -29,15 +33,13 @@
             android:title="@string/auto_update" 
             android:summaryOn="打开自动检测更新"
             android:summaryOff="关闭自动检测更新"
-            android:defaultValue="true" 
-            android:enabled="true"/>
+            android:defaultValue="true" />
         <CheckBoxPreference  
             android:key="allow_gprs"
             android:title="@string/allow_gprs" 
             android:summaryOn="允许使用数据流量"
             android:summaryOff="不允许使用数据流量"
-            android:defaultValue="false" 
-            android:enabled="true"/>          
+            android:defaultValue="false" />
     </PreferenceCategory>
       
     <PreferenceCategory 
@@ -47,7 +49,7 @@
             android:key="font_size"
             android:title="@string/font_size"
             android:summary="选择合适的阅读字号"
-            android:defaultValue="20"
+            android:defaultValue="18"
             android:entryValues="@array/font_size_value" 
             android:entries="@array/font_size_entry" 
             android:dialogTitle="选择字号"/>
@@ -56,22 +58,19 @@
             android:title="@string/always_bright" 
             android:summaryOn="背景灯常亮"
             android:summaryOff="背景灯随系统控制"
-            android:defaultValue="false" 
-            android:enabled="true"/>
+            android:defaultValue="true" />
         <CheckBoxPreference  
             android:key="theme_black"
             android:title="@string/theme_black" 
             android:summaryOn="使用深色主题"
             android:summaryOff="使用浅色主题"
-            android:defaultValue="false" 
-            android:enabled="true"/>
+            android:defaultValue="false" />
         <CheckBoxPreference  
             android:key="show_color"
             android:title="@string/show_color" 
             android:summaryOn="高亮显示"
             android:summaryOff="不高亮显示"
-            android:defaultValue="true" 
-            android:enabled="true"/>
+            android:defaultValue="true" />
     </PreferenceCategory>
 
 </PreferenceScreen>

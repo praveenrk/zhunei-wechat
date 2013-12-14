@@ -23,7 +23,7 @@
         <item name="actionBarTabTextStyle">@style/Widget.Sherlock.ActionBar.TabText</item>
         <item name="actionModeStyle">@style/Widget.Sherlock.ActionMode</item>
         <item name="actionModeCloseButtonStyle">@style/Widget.Sherlock.ActionButton.CloseMode</item>
-        <item name="actionBarStyle">@style/Widget.Sherlock.ActionBar</item>
+        <item name="actionBarStyle">@style/Widget.Sherlock.ActionBar.Solid</item>
         <item name="actionBarSize">@dimen/abs__action_bar_default_height</item>
         <!-- Internal --><item name="actionModePopupWindowStyle">@style/Widget.Sherlock.PopupWindow.ActionMode</item>
         <item name="actionBarWidgetTheme">@null</item>

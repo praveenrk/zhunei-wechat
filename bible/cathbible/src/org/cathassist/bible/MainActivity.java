@@ -18,6 +18,8 @@ import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.music.MusicPlayService;
 
+import com.mozillaonline.providers.DownloadManager;
+import com.mozillaonline.providers.downloads.DownloadService;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;
@@ -28,6 +30,7 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
     private long mExitTime = 0;
     private ActionBar mActionBar;
     private MusicPlayService mMusicPlayService;
+    private DownloadManager mDownloadManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,17 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         initSlidingMenu();
 
         bindMusicPlayService();
+        mDownloadManager = new DownloadManager(getContentResolver(), getPackageName());
+        startDownloadService();
+
+        if(Func.isWifi(this) || Para.allow_gprs) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Func.getMp3RootUrl();
+                }
+            }).start();
+        }
     }
 
     @Override
@@ -143,6 +157,16 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         slidingMenu.invalidate();
 
         mActionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    public DownloadManager getDownloadManager() {
+        return mDownloadManager;
+    }
+
+    private void startDownloadService() {
+        Intent intent = new Intent();
+        intent.setClass(this, DownloadService.class);
+        startService(intent);
     }
 
     private void loadLast() {

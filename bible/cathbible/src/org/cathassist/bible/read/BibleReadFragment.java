@@ -19,6 +19,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -62,9 +63,10 @@ import java.util.List;
 import java.util.Map;
 
 public class BibleReadFragment extends SherlockFragment implements OnClickListener, OnItemClickListener,
-        OnItemLongClickListener, OnSeekBarChangeListener, MusicPlayService.OnPlayListener, MusicPlayService.OnPlayChangedListener, MusicPlayService.OnCompletionListener {
+        OnItemLongClickListener, OnSeekBarChangeListener,
+        MusicPlayService.OnPlayListener, MusicPlayService.OnPlayChangedListener, MusicPlayService.OnCompletionListener,
+        View.OnTouchListener{
     List<Map<String, String>> mContent;
-    private String mPath = "chn";
     private MainActivity mActivity = null;
     private ListView mList;
     private ImageView mLeft, mRight, mSound;
@@ -90,6 +92,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         mList = (ListView) view.findViewById(R.id.list);
         mList.setOnItemClickListener(this);
         mList.setOnItemLongClickListener(this);
+        mList.setOnTouchListener(this);
 
         mLeft = (ImageView) view.findViewById(R.id.action_bar_left);
         mLeft.setOnClickListener(this);
@@ -200,30 +203,30 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 break;
             case R.id.music_play:
                 if(checkMp3()) {
-                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                    mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity);
-                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_prev:
                 ChangeVerse(false);
                 mService.stop();
                 if(checkMp3()) {
-                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                    mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity);
-                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_next:
                 ChangeVerse(true);
                 mService.stop();
                 if(checkMp3()) {
-                    mService.play(mPath,Para.currentBook,Para.currentChapter);
+                    mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity);
-                    mService.playNet(mPath,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_mode:
@@ -255,10 +258,16 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 mMusicPanel.setVisibility(View.GONE);
                 break;
             case R.id.btn_music_down:
-                Func.downChapter(mActivity);
+                Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 break;
             case R.id.btn_music_down_book:
-                Func.downBook(mActivity);
+                new AlertDialog.Builder(mActivity).setTitle("确定下载整卷" + VerseInfo.CHN_NAME[Para.currentBook] + "？")
+                        .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Func.downBook(mActivity, Para.mp3Ver, Para.currentBook);
+                            }
+                        }).setNegativeButton(R.string.cancel, null).show();
                 break;
             default:
                 break;
@@ -266,11 +275,9 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     private boolean checkMp3() {
-        final File file = Func.getFilePath(Func.getFileName(mPath, Para.currentBook, Para.currentChapter));
+        final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
         return file.exists();
     }
-
-
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -469,6 +476,16 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
         }
 
         return data;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (v.getId()) {
+            case R.id.list:
+                mMusicPanel.setVisibility(View.GONE);
+                break;
+        }
+        return false;
     }
 
     class BibleAdapter extends BaseAdapter {
