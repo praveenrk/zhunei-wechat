@@ -65,6 +65,7 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         bindMusicPlayService();
         mDownloadManager = new DownloadManager(getContentResolver(), getPackageName());
         startDownloadService();
+        Func.setDownloadManager(mDownloadManager);
 
         if(Func.isWifi(this) || Para.allow_gprs) {
             new Thread(new Runnable() {

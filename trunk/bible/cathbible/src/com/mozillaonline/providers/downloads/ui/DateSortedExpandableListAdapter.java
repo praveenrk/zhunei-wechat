@@ -31,7 +31,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.mozillaonline.downloadprovider.R;
+import org.cathassist.bible.R;
 import com.mozillaonline.providers.DownloadManager;
 
 /**

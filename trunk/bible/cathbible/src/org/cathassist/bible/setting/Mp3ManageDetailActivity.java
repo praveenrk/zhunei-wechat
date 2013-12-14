@@ -2,7 +2,6 @@ package org.cathassist.bible.setting;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,6 +25,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.mozillaonline.providers.DownloadManager;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;
