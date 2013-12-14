@@ -14,7 +14,6 @@ public class Para {
     public static final int VERSE_NUMBER = 473;
     public static final String STORE_NAME = "Settings";
     public static final int DB_CONTENT_COUNT = 100;
-    public static final String BIBLE_MP3_URL = "http://bcs.duapp.com/cathassist/bible/mp3/";
     public static final String[] MENU_NAME =
             {"主页", "圣经", "书签", "金句", "搜索", "设置"};
     public static final int[] MENU_IMAGE =
@@ -32,6 +31,7 @@ public class Para {
     public static final int VERSE_CHOISE_MARK = 0;
     public static final int VERSE_CHOISE_COPY = 1;
     public static final int VERSE_CHOISE_SHARE = 2;
+    public static String BIBLE_MP3_URL = "http://bcs.duapp.com/cathassist/bible/mp3/";
     public static String DB_CONTENT_PATH = "";
     public static String DB_DATA_PATH = "";
     public static String BIBLE_MP3_PATH = "";
@@ -42,7 +42,6 @@ public class Para {
     public static Float font_size;
     public static boolean always_bright;
     public static boolean theme_black;
-    public static boolean full_screen;
     public static boolean auto_update;
     public static boolean show_color;
     public static boolean allow_gprs;

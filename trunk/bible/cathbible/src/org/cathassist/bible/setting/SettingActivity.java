@@ -8,6 +8,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.view.View;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -24,7 +25,8 @@ import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 
 public class SettingActivity extends SherlockPreferenceActivity implements OnPreferenceChangeListener {
-    private PreferenceScreen click_about;
+    private PreferenceScreen click_version;
+    private PreferenceScreen click_about_us;
     private PreferenceScreen click_share;
     private PreferenceScreen click_feedback;
     private PreferenceScreen click_mp3_manage;
@@ -49,13 +51,12 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         intent = new Intent(this, MainActivity.class);
         setResult(Para.NOT_NEED_RESTART, intent);
 
-        click_about = (PreferenceScreen) findPreference("click_about");
+        click_version = (PreferenceScreen) findPreference("click_version");
+        click_about_us = (PreferenceScreen) findPreference("click_about_us");
         click_share = (PreferenceScreen) findPreference("click_share");
-        click_share.setOnPreferenceChangeListener(this);
         click_mp3_manage = (PreferenceScreen) findPreference("click_mp3_manage");
-        click_mp3_manage.setOnPreferenceChangeListener(this);
         click_feedback = (PreferenceScreen) findPreference("click_feedback");
-        click_feedback.setOnPreferenceChangeListener(this);
+
         list_font_size = (ListPreference) findPreference("font_size");
         list_font_size.setOnPreferenceChangeListener(this);
         check_always_bright = (CheckBoxPreference) findPreference("always_bright");
@@ -71,7 +72,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
         theme = Para.theme_black;
 
-        click_about.setSummary("软件版本" + "  " + Func.GetVerName(this));
+        click_version.setSummary("软件版本" + "  " + Func.GetVerName(this));
     }
 
     @Override
@@ -84,8 +85,17 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == click_feedback) {
+        if(preference == click_version) {
+            Intent intent = new Intent();
+            intent.setClass(this,VersionActivity.class);
+            startActivity(intent);
+        } else if(preference == click_about_us) {
+            Intent intent = new Intent();
+            intent.setClass(this,AboutUsActivity.class);
+            startActivity(intent);
+        } else if (preference == click_feedback) {
             FeedbackAgent agent = new FeedbackAgent(this);
             agent.startFeedbackActivity();
         } else if (preference == click_share) {
@@ -130,4 +140,5 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
         }
         return true;
     }
+
 }

@@ -1,6 +1,5 @@
 package org.cathassist.bible.setting;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -10,13 +9,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +46,11 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
             }
         }
     };
-
     private String mName;
     private String mPath;
     private ExpandableListView mExpandableListView;
     private MusicManagementAdapter mMusicAdapter;
     private List<String> mGroup = new ArrayList<String>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +67,27 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                download(groupPosition + 1, childPosition + 1);
-                Toast.makeText(Mp3ManageDetailActivity.this, "下载已添加", Toast.LENGTH_SHORT).show();
+                final int book = groupPosition + 1;
+                final int chapter = childPosition + 1;
+                final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
+                if (file.exists()) {
+                    new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("是否重新下载此音频？")
+                            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    file.delete();
+                                    mMusicAdapter.notifyDataSetChanged();
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Func.downChapter(Mp3ManageDetailActivity.this, mPath, book, chapter);
+                                        }
+                                    }, 500);
+                                }
+                            }).setNegativeButton(R.string.cancel, null).show();
+                } else {
+                    Func.downChapter(Mp3ManageDetailActivity.this, mPath, book, chapter);
+                }
                 return false;
             }
         });
@@ -81,44 +95,33 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         mExpandableListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                final View v = view;
                 int packedPositionType = ExpandableListView.getPackedPositionType(id);
                 switch (packedPositionType) {
                     case ExpandableListView.PACKED_POSITION_TYPE_CHILD:
-                        final int childPosition = ExpandableListView.getPackedPositionChild(id);
-                        View titleView = v.findViewById(R.id.child_name);
-                        if (titleView != null && titleView.getTag() != null && titleView.getTag() instanceof Integer) {
-                            int book = (Integer) titleView.getTag() + 1;
-                            int chapter = childPosition + 1;
-                            final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
-                            if (file.exists()) {
-                                new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定删除此音频文件？")
-                                        .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                file.delete();
-                                                Toast.makeText(Mp3ManageDetailActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
-                                                mMusicAdapter.notifyDataSetChanged();
-                                            }
-                                        }).setNegativeButton(R.string.cancel, null).show();
-                            }
+                        int bookChild = ExpandableListView.getPackedPositionGroup(id) + 1;
+                        int chapterChild = ExpandableListView.getPackedPositionChild(id) + 1;
+                        final File file = Func.getFilePath(Func.getFileName(mPath, bookChild, chapterChild));
+                        if (file.exists()) {
+                            new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定删除此音频文件？")
+                                    .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            file.delete();
+                                            Toast.makeText(Mp3ManageDetailActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                                            mMusicAdapter.notifyDataSetChanged();
+                                        }
+                                    }).setNegativeButton(R.string.cancel, null).show();
                         }
                         return true;
                     case ExpandableListView.PACKED_POSITION_TYPE_GROUP:
-                        final int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-                        new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定下载整卷" + VerseInfo.CHN_NAME[groupPosition + 1] + "？")
+                        final int book = ExpandableListView.getPackedPositionGroup(id) + 1;
+                        new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定下载整卷" + VerseInfo.CHN_NAME[book] + "？")
                                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        int book = groupPosition + 1;
-                                        int chapterCount = VerseInfo.CHAPTER_COUNT[book];
-                                        for (int i = 1; i <= chapterCount; i++) {
-                                            download(book, i);
-                                        }
-                                        Toast.makeText(Mp3ManageDetailActivity.this, "《" + VerseInfo.CHN_NAME[book] + "》整卷书已加入下载队列", Toast.LENGTH_SHORT).show();
+                                        Func.downBook(Mp3ManageDetailActivity.this, mPath, book);
                                     }
                                 }).setNegativeButton(R.string.cancel, null).show();
-
                         return true;
                     default:
                         break;
@@ -145,44 +148,6 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void remove(final int book, final int chapter) {
-        final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
-        file.delete();
-    }
-
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private void download(final int book, final int chapter) {
-        final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
-        if (file.exists()) {
-            new AlertDialog.Builder(this).setTitle("是否重新下载此音频？")
-                    .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            file.delete();
-                            download(book, chapter);
-                        }
-                    }).setNegativeButton(R.string.cancel, null).show();
-        } else {
-            if (Func.isWifi(this) || Para.allow_gprs) {
-                String url = Func.getUrlPath(Func.getUrlName(mPath, book, chapter));
-                DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse(url);
-                DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setDestinationUri(Uri.fromFile(file));
-                request.setTitle(getString(R.string.app_name));
-                request.setDescription("下载MP3中...");
-
-                try {
-                    long reference = downloadManager.enqueue(request);
-                } catch (Exception e) {
-                    Toast.makeText(this, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(this, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
     private void loadDate() {
         mGroup.clear();
         for (int i = 1; i <= 73; i++) {
@@ -190,9 +155,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         }
         mMusicAdapter = new MusicManagementAdapter(this);
         mExpandableListView.setAdapter(mMusicAdapter);
-        Toast toast = Toast.makeText(this, "长按书卷名,下载该章节全部音频", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-        toast.show();
+        Toast.makeText(this, "长按书卷名,下载该卷全部音频", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -242,7 +205,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                 vh = (ViewHolder) convertView.getTag();
             }
             File file = Func.getFilePath(Func.getFileName(mPath, groupPosition + 1, childPosition + 1));
-            String state = file.exists() ? " (已下载)":"";// : " (点击下载)";
+            String state = file.exists() ? " (已下载)" : "";
 
             String title = getGroup(groupPosition) + getChild(groupPosition, childPosition) + state;
             SpannableString spannable = new SpannableString(title);

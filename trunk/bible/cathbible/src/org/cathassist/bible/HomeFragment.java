@@ -16,11 +16,6 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import org.cathassist.bible.lib.Para;
-import org.cathassist.bible.lib.Database;
-import org.cathassist.bible.lib.VerseInfo;
-import org.cathassist.bible.read.BibleReadFragment;
-
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
@@ -28,6 +23,11 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
+
+import org.cathassist.bible.lib.Database;
+import org.cathassist.bible.lib.Para;
+import org.cathassist.bible.lib.VerseInfo;
+import org.cathassist.bible.read.BibleReadFragment;
 
 import java.util.Random;
 
@@ -39,7 +39,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
     private TextView mMark;
     private TextView mLast;
     private Button mShare;
-    private LinearLayout mStatus;
+    private LinearLayout mStatus, mSlide;
     private int mVerseBook = 0;
     private int mVerseChapter = 0;
     private int mVerseSection = 0;
@@ -68,6 +68,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         mLast = (TextView) view.findViewById(R.id.text_last);
         mShare = (Button) view.findViewById(R.id.button_share);
         mStatus = (LinearLayout) view.findViewById(R.id.layout_status);
+        mSlide = (LinearLayout) view.findViewById(R.id.layout_slide);
 
         mVerse.setOnClickListener(this);
         mMark.setOnClickListener(this);
@@ -77,6 +78,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
         if (new Database(mActivity).OpenDbCheck()) {
             mStatus.setVisibility(View.VISIBLE);
             mShare.setVisibility(View.VISIBLE);
+            mSlide.setVisibility(View.GONE);
             ShowVerse();
             ShowMark();
             ShowLast();
@@ -84,6 +86,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
             mVerse.setText("天主竟这样爱了世界，甚至赐下了自己的独生子，使凡信他的人不至丧亡，反而获得永生。(若望福音 3:16)");
             mStatus.setVisibility(View.GONE);
             mShare.setVisibility(View.GONE);
+            mSlide.setVisibility(View.VISIBLE);
         }
         return view;
     }
@@ -92,12 +95,12 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
-        inflater.inflate(R.menu.home_menu,menu);
+        inflater.inflate(R.menu.home_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.refresh:
                 if (new Database(mActivity).OpenDbCheck()) {
                     mStatus.setVisibility(View.VISIBLE);
@@ -226,9 +229,9 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                 mVerse.setText(content + title);
             }
         } catch (Exception e) {
-            mVerseBook = 0;
-            mVerseChapter = 0;
-            mVerseSection = 0;
+            mVerseBook = 50;
+            mVerseChapter = 3;
+            mVerseSection = 16;
 
             mVerse.setText("天主竟这样爱了世界，甚至赐下了自己的独生子，使凡信他的人不至丧亡，反而获得永生。(若望福音 3:16)");
         } finally {

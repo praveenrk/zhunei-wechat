@@ -1,7 +1,6 @@
 package org.cathassist.bible.lib;
 
 import android.annotation.TargetApi;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -13,17 +12,22 @@ import android.os.Build;
 import android.os.Environment;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.cathassist.bible.R;
 
 import java.io.File;
-import java.util.Calendar;
 
 public class Func {
     public static boolean isWifi(Context mContext) {
         ConnectivityManager connectivityManager = (ConnectivityManager) mContext
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        return  (activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI);
+        return (activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI);
     }
 
     public static void InitCommonPara(Context context) {
@@ -32,7 +36,7 @@ public class Func {
 
         Para.font_size = settings.getFloat("font_size", 18);
         editor.putFloat("font_size", Para.font_size);
-        Para.always_bright = settings.getBoolean("always_bright", false);
+        Para.always_bright = settings.getBoolean("always_bright", true);
         editor.putBoolean("always_bright", Para.always_bright);
         Para.theme_black = settings.getBoolean("theme_black", false);
         editor.putBoolean("theme_black", Para.theme_black);
@@ -70,7 +74,20 @@ public class Func {
         Para.currentChapter = settings.getInt("currentChapter", 1);
         Para.currentSection = settings.getInt("currentSection", 0);
         Para.mp3Mode = settings.getInt("mp3Mode", 0);
+    }
 
+    public static void getMp3RootUrl() {
+        String httpUrl = "http://cathassist.org/bible/getbiblemp3root.php";
+        HttpGet httpRequest = new HttpGet(httpUrl);
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse httpResponse = httpclient.execute(httpRequest);
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                Para.BIBLE_MP3_URL = EntityUtils.toString(httpResponse.getEntity());
+            }
+        } catch (Exception e) {
+
+        }
     }
 
     public static String GetVerName(Context context) {
@@ -134,16 +151,13 @@ public class Func {
         Para.currentSection = 0;
     }
 
-    public static void downChapter(Context context) {
-        final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+    public static void downChapter(Context context, String version, int book, int chapter) {
+        final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
-            final String url = Para.BIBLE_MP3_URL
-                    + String.format("%03d", Para.currentBook) + "/"
-                    + String.format("%03d", Para.currentChapter) + ".mp3";
-
+            final String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
             if (Func.isWifi(context) || Para.allow_gprs) {
-                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD){
+                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -151,7 +165,7 @@ public class Func {
                         }
                     }).start();
                 } else {
-                    download(context, Para.currentBook, Para.currentChapter);
+                    download(context, version, book, chapter);
                     Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
                 }
             } else {
@@ -160,13 +174,13 @@ public class Func {
         }
     }
 
-    public static void downBook(Context context) {
+    public static void downBook(Context context, String version, int book) {
         if (Func.isWifi(context) || Para.allow_gprs) {
-            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD){
-                Toast.makeText(context,"您的操作系统版本过低，不能使用此功能",Toast.LENGTH_SHORT).show();
+            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+                Toast.makeText(context, "您的操作系统版本过低，不能使用此功能", Toast.LENGTH_SHORT).show();
             } else {
-                for(int i=1;i<=VerseInfo.CHAPTER_COUNT[Para.currentBook];i++) {
-                    download(context,Para.currentBook,i);
+                for (int i = 1; i <= VerseInfo.CHAPTER_COUNT[book]; i++) {
+                    download(context, version, book, i);
                 }
                 Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
             }
@@ -176,12 +190,12 @@ public class Func {
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    private static long download(Context context, final int book, final int chapter) {
+    public static long download(Context context, String version, int book, int chapter) {
         long reference = -1;
-        final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, book, chapter));
+        final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
-            String url = Func.getUrlPath(Func.getUrlName(Para.mp3Ver, book, chapter));
+            String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
             DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
             Uri uri = Uri.parse(url);
             DownloadManager.Request request = new DownloadManager.Request(uri);

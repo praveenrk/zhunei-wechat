@@ -67,5 +67,19 @@
                 android:background="@drawable/text_selector"/>
 
 		</LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_slide"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/slide_open_nav"
+                android:scaleType="center"/>
+        </LinearLayout>
 	</LinearLayout>
 </ScrollView>
