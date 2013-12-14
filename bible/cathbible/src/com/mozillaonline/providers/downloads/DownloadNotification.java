@@ -28,7 +28,11 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.mozillaonline.downloadprovider.R;
+import com.mozillaonline.providers.downloads.ui.DownloadList;
+
+import org.cathassist.bible.MainActivity;
+import org.cathassist.bible.R;
+
 
 /**
  * This class handles the updating of the Notification Manager for the
@@ -191,6 +195,12 @@ class DownloadNotification {
             expandedView.setTextViewText(R.id.progress_text,
                     getDownloadingText(item.mTotalTotal, item.mTotalCurrent));
             expandedView.setImageViewResource(R.id.appIcon, iconResource);
+
+            Intent appIntent = new Intent();
+            appIntent.setClass(mContext, DownloadList.class);
+            expandedView.setOnClickPendingIntent(R.id.root, PendingIntent
+                    .getActivity(mContext, 10, appIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+
             n.contentView = expandedView;
 
             Intent intent = new Intent(Constants.ACTION_LIST);

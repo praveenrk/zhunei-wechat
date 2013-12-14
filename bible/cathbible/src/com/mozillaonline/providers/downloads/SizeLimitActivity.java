@@ -30,7 +30,7 @@ import android.net.Uri;
 import android.text.format.Formatter;
 import android.util.Log;
 
-import com.mozillaonline.downloadprovider.R;
+import org.cathassist.bible.R;
 
 /**
  * Activity to show dialogs to the user when a download exceeds a limit on download sizes for

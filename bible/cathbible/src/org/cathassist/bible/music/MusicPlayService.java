@@ -106,8 +106,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             if (file.exists()) {
                 play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
             } else {
-                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                reset();
                 playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
             }
         }
         return super.onStartCommand(intent, flags, startId);
@@ -136,7 +137,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                 .getService(this, 1, playIntent, PendingIntent.FLAG_UPDATE_CURRENT));
         mRemote.setOnClickPendingIntent(R.id.noti_next, PendingIntent
                 .getService(this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-        mRemote.setOnClickPendingIntent(R.id.noti_icon, PendingIntent
+        mRemote.setOnClickPendingIntent(R.id.root, PendingIntent
                 .getActivity(this, 3, appIntent, PendingIntent.FLAG_UPDATE_CURRENT));
 
         mNotification = new Notification();
@@ -223,6 +224,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayer.reset();
         mLast = "";
         mPlayHandler.removeCallbacks(mPlayRunnable);
+        mRemote.setTextViewText(R.id.noti_name, "停止播放");
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
         startForeground("MusicPlayService".hashCode(), mNotification);
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
@@ -233,6 +235,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
     private void pause() {
         mPlayer.pause();
         mPlayHandler.removeCallbacks(mPlayRunnable);
+        mRemote.setTextViewText(R.id.noti_name, "暂停播放");
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
         startForeground("MusicPlayService".hashCode(), mNotification);
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
@@ -261,7 +264,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
     @Override
     public void onCompletion(MediaPlayer mp) {
         if (mPlayMode == MODE_SINGLE) {
-            stop();
+            reset();
         } else if (mPlayMode == MODE_SINGLE_LOOP) {
             play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
         } else if (mPlayMode == MODE_ORDER) {
@@ -270,8 +273,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             if (file.exists()) {
                 play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
             } else {
-                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
                 playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
             }
         }
         for(OnCompletionListener listener : mOnCompletionListener) {

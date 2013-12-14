@@ -22,7 +22,7 @@ import android.view.MotionEvent;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 
-import com.mozillaonline.downloadprovider.R;
+import org.cathassist.bible.R;
 
 /**
  * This class customizes RelativeLayout to directly handle clicks on the left part of the view and

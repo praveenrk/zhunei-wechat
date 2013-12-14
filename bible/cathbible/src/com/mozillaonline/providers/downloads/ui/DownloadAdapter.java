@@ -40,7 +40,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.mozillaonline.downloadprovider.R;
+import org.cathassist.bible.R;
 import com.mozillaonline.providers.DownloadManager;
 import com.mozillaonline.providers.downloads.ui.DownloadItem.DownloadSelectListener;
 

@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.mozillaonline.providers.DownloadManager;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -23,6 +25,12 @@ import org.cathassist.bible.R;
 import java.io.File;
 
 public class Func {
+    private static DownloadManager mDownloadManager;
+
+    public static void setDownloadManager(DownloadManager manager) {
+        mDownloadManager = manager;
+    }
+
     public static boolean isWifi(Context mContext) {
         ConnectivityManager connectivityManager = (ConnectivityManager) mContext
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -148,6 +156,10 @@ public class Func {
                 }
             }
         }
+        Para.currentCount = VerseInfo.CHAPTER_COUNT[Para.currentBook];
+        if (Para.currentBook != 1) {
+            Para.previousCount = VerseInfo.CHAPTER_COUNT[Para.currentBook - 1];
+        }
         Para.currentSection = 0;
     }
 
@@ -155,19 +167,9 @@ public class Func {
         final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
-            final String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
             if (Func.isWifi(context) || Para.allow_gprs) {
-                if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Download.DownFile(url, file.getAbsolutePath());
-                        }
-                    }).start();
-                } else {
-                    download(context, version, book, chapter);
-                    Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
-                }
+                download(context, version, book, chapter);
+                Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
             }
@@ -176,14 +178,10 @@ public class Func {
 
     public static void downBook(Context context, String version, int book) {
         if (Func.isWifi(context) || Para.allow_gprs) {
-            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-                Toast.makeText(context, "您的操作系统版本过低，不能使用此功能", Toast.LENGTH_SHORT).show();
-            } else {
-                for (int i = 1; i <= VerseInfo.CHAPTER_COUNT[book]; i++) {
-                    download(context, version, book, i);
-                }
-                Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
+            for (int i = 1; i <= VerseInfo.CHAPTER_COUNT[book]; i++) {
+                download(context, version, book, i);
             }
+            Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
         }
@@ -196,15 +194,14 @@ public class Func {
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
             String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
-            DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
             Uri uri = Uri.parse(url);
             DownloadManager.Request request = new DownloadManager.Request(uri);
             request.setDestinationUri(Uri.fromFile(file));
-            request.setTitle(context.getString(R.string.app_name));
-            request.setDescription("下载MP3中...");
+            request.setTitle(VerseInfo.CHN_NAME[book]+"第"+chapter+"章");
+            request.setDescription("下载中");
 
             try {
-                reference = downloadManager.enqueue(request);
+                reference = mDownloadManager.enqueue(request);
             } catch (Exception e) {
                 Toast.makeText(context, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_SHORT).show();
             }

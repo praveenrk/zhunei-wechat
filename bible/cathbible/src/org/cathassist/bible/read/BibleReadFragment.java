@@ -1,18 +1,12 @@
 package org.cathassist.bible.read;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.text.TextPaint;
@@ -43,9 +37,6 @@ import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.Database;
-import org.cathassist.bible.lib.Download;
-import org.cathassist.bible.lib.ProgressShow;
-import org.cathassist.bible.lib.ProgressShow.ProgressCallBack;
 import org.cathassist.bible.lib.VerseInfo;
 import org.cathassist.bible.music.MusicPlayService;
 
@@ -205,8 +196,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 if(checkMp3()) {
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_prev:
@@ -215,8 +206,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 if(checkMp3()) {
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_next:
@@ -225,8 +216,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 if(checkMp3()) {
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_mode:
@@ -398,11 +389,6 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     public void SetButtonName() {
-        Para.currentCount = VerseInfo.CHAPTER_COUNT[Para.currentBook];
-
-        if (Para.currentBook != 1) {
-            Para.previousCount = VerseInfo.CHAPTER_COUNT[Para.currentBook - 1];
-        }
         mMusicTitle.setText(VerseInfo.CHN_NAME[Para.currentBook]+" 第"+Para.currentChapter+"章");
         mActivity.supportInvalidateOptionsMenu();
     }

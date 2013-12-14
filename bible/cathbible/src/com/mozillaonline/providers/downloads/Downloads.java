@@ -29,7 +29,7 @@ public final class Downloads implements BaseColumns {
     /**
      * DownloadProvider authority
      */
-    public static final String AUTHORITY = "com.mozillaonline.downloads";
+    public static final String AUTHORITY = "org.cathassist.bible.downloads";
 
     /**
      * @hide
