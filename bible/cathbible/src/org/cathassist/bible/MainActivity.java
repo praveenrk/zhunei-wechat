@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
+
+import org.cathassist.bible.lib.FragmentManager;
 import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.music.MusicPlayService;
@@ -38,10 +40,9 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         Func.InitOncePara(this);
         Func.LoadTheme();
         setTheme(Para.THEME);
-
         Func.InitTheme(this);
         loadLast();
-
+        FragmentManager.initFragments();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_content);
 
@@ -57,7 +58,7 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         setBehindContentView(R.layout.nav);
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
         fragTrans.replace(R.id.nav_frame, new NavFragment());
-        fragTrans.replace(R.id.content_frame, new HomeFragment());
+        fragTrans.replace(R.id.content_frame, FragmentManager.homeFragment);
         fragTrans.commit();
 
         initSlidingMenu();
@@ -97,7 +98,6 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
 
     @Override
     protected void onDestroy() {
-        super.onPause();
         SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putInt("currentBook", Para.currentBook);
@@ -108,6 +108,10 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         if(mMusicPlayService != null) {
             unbindMusicPlayService();
         }
+        Intent intent = new Intent();
+        intent.setClass(this, DownloadService.class);
+        stopService(intent);
+        super.onDestroy();
     }
 
     @Override

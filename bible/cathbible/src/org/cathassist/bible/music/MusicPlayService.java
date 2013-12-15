@@ -54,6 +54,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public boolean onUnbind(Intent intent) {
+        stop();
         mPlayer.release();
         mPlayer = null;
         return super.onUnbind(intent);

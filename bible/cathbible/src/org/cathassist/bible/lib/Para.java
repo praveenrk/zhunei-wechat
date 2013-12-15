@@ -8,7 +8,7 @@ import org.cathassist.bible.music.MusicPlayService;
 public class Para {
     public static final String DB_CONTENT_ASSET = "cathbible";
     public static final String DB_CONTENT_NAME = "cathbible.db";
-    public static final int DB_CONTENT_VER = 1;
+    public static final int DB_CONTENT_VER = 2;
     public static final String DB_DATA_NAME = "data.db";
     public static final int DB_DATA_VER = 1;
     public static final int VERSE_NUMBER = 473;
@@ -50,7 +50,6 @@ public class Para {
     public static int currentChapter;
     public static int currentSection;
     public static int currentCount;
-    public static int previousCount;
     public static int lastBook;
     public static int lastChapter;
     public static int lastSection;
