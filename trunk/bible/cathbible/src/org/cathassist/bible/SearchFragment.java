@@ -140,8 +140,9 @@ public class SearchFragment extends SherlockFragment implements OnClickListener,
         Para.menuIndex = Para.MENU_BIBLE;
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        mActivity.getMusicPlayService().stop();
         fragTrans = mManager.beginTransaction();
-        fragTrans.replace(R.id.content_frame, new BibleReadFragment());
+        fragTrans.replace(R.id.content_frame, org.cathassist.bible.lib.FragmentManager.bibleReadFragment);
         fragTrans.commit();
     }
 

@@ -184,9 +184,11 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.action_bar_left:
+                mService.stop();
                 ChangeVerse(false);
                 break;
             case R.id.action_bar_right:
+                mService.stop();
                 ChangeVerse(true);
                 break;
             case R.id.action_bar_sound:
@@ -201,8 +203,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 }
                 break;
             case R.id.music_prev:
-                ChangeVerse(false);
                 mService.stop();
+                ChangeVerse(false);
                 if(checkMp3()) {
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
@@ -211,8 +213,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 }
                 break;
             case R.id.music_next:
-                ChangeVerse(true);
                 mService.stop();
+                ChangeVerse(true);
                 if(checkMp3()) {
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
@@ -349,6 +351,8 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public void onPlay(int progress, int duration) {
         mSeekBar.setMax(duration);
         mSeekBar.setProgress(progress);
+        mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
+        mPlay.setText("暂停");
         mPast.setText(String.format("%02d",progress/1000/60) + ":" + String.format("%02d",progress/1000%60));
         mTotal.setText(String.format("%02d",duration/1000/60) + ":" + String.format("%02d",duration/1000%60));
     }
@@ -356,6 +360,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     @Override
     public void onPlayChanged(boolean isPlay) {
         if(isPlay) {
+            reloadChapter();
             mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
             mPlay.setText("暂停");
         } else {
@@ -389,6 +394,12 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     public void SetButtonName() {
+        if(Para.currentBook < 1 || Para.currentBook > 73) {
+            Para.currentBook = 1;
+        }
+        if(Para.currentChapter < 1 || Para.currentChapter > VerseInfo.CHAPTER_COUNT[Para.currentBook]) {
+            Para.currentChapter = 1;
+        }
         mMusicTitle.setText(VerseInfo.CHN_NAME[Para.currentBook]+" 第"+Para.currentChapter+"章");
         mActivity.supportInvalidateOptionsMenu();
     }

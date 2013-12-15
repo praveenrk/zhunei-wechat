@@ -143,11 +143,11 @@ public class Func {
             } else {
                 if (Para.currentBook > 1) {
                     Para.currentBook--;
-                    Para.currentChapter = Para.previousCount;
+                    Para.currentChapter = VerseInfo.CHAPTER_COUNT[Para.currentBook];
                 }
             }
         } else {
-            if (Para.currentChapter < Para.currentCount) {
+            if (Para.currentChapter < VerseInfo.CHAPTER_COUNT[Para.currentBook]) {
                 Para.currentChapter++;
             } else {
                 if (Para.currentBook < 73) {
@@ -155,10 +155,6 @@ public class Func {
                     Para.currentChapter = 1;
                 }
             }
-        }
-        Para.currentCount = VerseInfo.CHAPTER_COUNT[Para.currentBook];
-        if (Para.currentBook != 1) {
-            Para.previousCount = VerseInfo.CHAPTER_COUNT[Para.currentBook - 1];
         }
         Para.currentSection = 0;
     }
@@ -199,6 +195,11 @@ public class Func {
             request.setDestinationUri(Uri.fromFile(file));
             request.setTitle(VerseInfo.CHN_NAME[book]+"第"+chapter+"章");
             request.setDescription("下载中");
+            if(isWifi(context) || Para.allow_gprs) {
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+            } else {
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+            }
 
             try {
                 reference = mDownloadManager.enqueue(request);
