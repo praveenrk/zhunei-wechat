@@ -53,7 +53,7 @@
 			break;
 		}
 		
-		$table = $content2->parentNode;
+		$table = $content2->parentNode->parentNode;
 		$aTopic = $table->childNodes->item(2);
 		$topicName = trim($aTopic->childNodes->item(0)->textContent);
 		$topicLocal = "other";
@@ -82,6 +82,7 @@
 	
 //	getArticle("http://zh.radiovaticana.va/articolo.asp?c=727740","title",'articles/123.html');
 //	return;
+	libxml_use_internal_errors(true);
 	$rssurl = "http://zh.radiovaticana.va/rssarticoli.asp";
 	$rsscontent = file_get_contents($rssurl);
 	$rss = simplexml_load_string($rsscontent);
