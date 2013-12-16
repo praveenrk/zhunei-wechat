@@ -338,25 +338,27 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
     private final class CyclePhoneListener extends PhoneStateListener {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
-            switch (state) {
-                case TelephonyManager.CALL_STATE_RINGING:
-                case TelephonyManager.CALL_STATE_OFFHOOK:
-                    mCallPlay = mPlayer.isPlaying();
-                    if(mCallPlay){
-                        pause();
-                    }
-                    break;
-                case TelephonyManager.CALL_STATE_IDLE:
-                    if(mCallPlay){
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                start();
-                                mCallPlay = false;
-                            }
-                        }, 1000);
-                    }
-                    break;
+            if(mPlayer != null) {
+                switch (state) {
+                    case TelephonyManager.CALL_STATE_RINGING:
+                    case TelephonyManager.CALL_STATE_OFFHOOK:
+                        mCallPlay = mPlayer.isPlaying();
+                        if(mCallPlay){
+                            pause();
+                        }
+                        break;
+                    case TelephonyManager.CALL_STATE_IDLE:
+                        if(mCallPlay){
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    start();
+                                    mCallPlay = false;
+                                }
+                            }, 1000);
+                        }
+                        break;
+                }
             }
             super.onCallStateChanged(state, incomingNumber);
         }
