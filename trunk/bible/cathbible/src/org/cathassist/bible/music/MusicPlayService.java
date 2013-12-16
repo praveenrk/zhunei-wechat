@@ -55,9 +55,13 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public boolean onUnbind(Intent intent) {
-        stop();
-        mPlayer.release();
-        mPlayer = null;
+        if(mPlayer != null) {
+            stop();
+            mPlayer.release();
+            mPlayer = null;
+        }
+        stopForeground(true);
+        stopSelf();
         return super.onUnbind(intent);
     }
 
@@ -165,9 +169,13 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-
+        if(mPlayer != null) {
+            stop();
+            mPlayer.release();
+            mPlayer = null;
+        }
         stopForeground(true);
+        super.onDestroy();
     }
 
     public void playNet(String path, int book, int chapter) {
