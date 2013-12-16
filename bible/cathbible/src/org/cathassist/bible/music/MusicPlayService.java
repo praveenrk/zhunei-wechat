@@ -1,6 +1,7 @@
 package org.cathassist.bible.music;
 
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -75,41 +76,49 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             public void run() {
                 if (mPlayer.isPlaying()) {
                     for(OnPlayListener listener : mOnPlayListener) {
-                        listener.onPlay(getProgress(), getDuration());
+                        if(listener != null) {
+                            listener.onPlay(getProgress(), getDuration());
+                        }
                     }
                 }
                 mPlayHandler.postDelayed(this, 1000);
             }
         };
 
-        TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        manager.listen(new CyclePhoneListener(), PhoneStateListener.LISTEN_CALL_STATE);
+        TelephonyManager teleManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        teleManager.listen(new CyclePhoneListener(), PhoneStateListener.LISTEN_CALL_STATE);
 
         setNotification();
-        startForeground("MusicPlayService".hashCode(), mNotification);
+        NotificationManager notiManager =  (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notiManager.cancel(this.getClass().getName().hashCode());
+        startForeground(this.getClass().getName().hashCode(), mNotification);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        int cmd = intent.getIntExtra("CMD",-1);
-        switch (cmd) {
-            case CMD_PREV:
-                Func.ChangeChapter(false);
-                break;
-            case CMD_PLAY:
-                break;
-            case CMD_NEXT:
-                Func.ChangeChapter(true);
-                break;
-        }
-        if(cmd != -1) {
-            final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
-            if (file.exists()) {
-                play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-            } else {
-                reset();
-                playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
+        if(mPlayer == null) {
+            stopSelf();
+        } else {
+            int cmd = intent.getIntExtra("CMD",-1);
+            switch (cmd) {
+                case CMD_PREV:
+                    Func.ChangeChapter(false);
+                    break;
+                case CMD_PLAY:
+                    break;
+                case CMD_NEXT:
+                    Func.ChangeChapter(true);
+                    break;
+            }
+            if(cmd != -1) {
+                final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+                if (file.exists()) {
+                    play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                } else {
+                    reset();
+                    playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                    Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                }
             }
         }
         return super.onStartCommand(intent, flags, startId);
@@ -217,7 +226,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_pause);
         startForeground("MusicPlayService".hashCode(), mNotification);
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
-            listener.onPlayChanged(true);
+            if(listener != null) {
+                listener.onPlayChanged(true);
+            }
         }
     }
 
@@ -229,7 +240,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
         startForeground("MusicPlayService".hashCode(), mNotification);
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
-            listener.onPlayChanged(false);
+            if(listener != null) {
+                listener.onPlayChanged(false);
+            }
         }
     }
 
@@ -240,7 +253,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
         startForeground("MusicPlayService".hashCode(), mNotification);
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
-            listener.onPlayChanged(false);
+            if(listener != null) {
+                listener.onPlayChanged(false);
+            }
         }
     }
 
@@ -279,7 +294,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             }
         }
         for(OnCompletionListener listener : mOnCompletionListener) {
-            listener.onCompletion();
+            if(listener != null) {
+                listener.onCompletion();
+            }
         }
     }
 
