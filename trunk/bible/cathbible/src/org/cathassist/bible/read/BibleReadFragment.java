@@ -343,41 +343,51 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
         if (fromUser) {
-            mService.setProgress(progress);
+            if(mService != null) {
+                mService.setProgress(progress);
+            }
         }
     }
 
     @Override
     public void onPlay(int progress, int duration) {
-        mSeekBar.setMax(duration);
-        mSeekBar.setProgress(progress);
-        mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
-        mPlay.setText("暂停");
-        mPast.setText(String.format("%02d",progress/1000/60) + ":" + String.format("%02d",progress/1000%60));
-        mTotal.setText(String.format("%02d",duration/1000/60) + ":" + String.format("%02d",duration/1000%60));
+        if(isAdded()) {
+            mSeekBar.setMax(duration);
+            mSeekBar.setProgress(progress);
+            mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
+            mPlay.setText("暂停");
+            mPast.setText(String.format("%02d",progress/1000/60) + ":" + String.format("%02d",progress/1000%60));
+            mTotal.setText(String.format("%02d",duration/1000/60) + ":" + String.format("%02d",duration/1000%60));
+        }
     }
 
     @Override
     public void onPlayChanged(boolean isPlay) {
-        if(isPlay) {
-            reloadChapter();
-            mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
-            mPlay.setText("暂停");
-        } else {
-            mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_play, 0, 0);
-            mPlay.setText("播放");
+        if(isAdded()) {
+            if(isPlay) {
+                reloadChapter();
+                mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_pause, 0, 0);
+                mPlay.setText("暂停");
+            } else {
+                mPlay.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.music_play, 0, 0);
+                mPlay.setText("播放");
+            }
         }
     }
 
     @Override
     public void onCompletion() {
-        reloadChapter();
+        if(isAdded()) {
+            reloadChapter();
+        }
     }
 
     private void reloadChapter() {
-        SetButtonName();
-        GetVerse();
-        ChangePosition();
+        if(isAdded()) {
+            SetButtonName();
+            GetVerse();
+            ChangePosition();
+        }
     }
 
     private void GetVerse() {

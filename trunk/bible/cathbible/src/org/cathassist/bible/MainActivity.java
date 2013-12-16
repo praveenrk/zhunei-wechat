@@ -1,5 +1,6 @@
 package org.cathassist.bible;
 
+import android.app.Fragment;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.MenuItem;
 
 import org.cathassist.bible.lib.FragmentManager;
@@ -54,11 +56,19 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         FeedbackAgent agent = new FeedbackAgent(this);
         agent.sync();
 
+        Intent intent = getIntent();
+        SherlockFragment fragment;
+        if("BIBLE_READ_FRAGMENT".equals(intent.getAction())) {
+            fragment = FragmentManager.bibleReadFragment;
+        } else {
+            fragment = FragmentManager.homeFragment;
+        }
+
         mActionBar = getSupportActionBar();
         setBehindContentView(R.layout.nav);
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
         fragTrans.replace(R.id.nav_frame, new NavFragment());
-        fragTrans.replace(R.id.content_frame, FragmentManager.homeFragment);
+        fragTrans.replace(R.id.content_frame, fragment);
         fragTrans.commit();
 
         initSlidingMenu();
