@@ -1,4 +1,4 @@
-package daily.cathassist.org.provider;
+package org.cathassist.daily.provider;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,15 +9,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
+import org.cathassist.daily.PrayInEveryday;
+import org.cathassist.daily.R;
+import org.cathassist.daily.activity.MainActivity;
+import org.cathassist.daily.activity.Preferences;
+import org.cathassist.daily.util.NetworkTool;
+import org.cathassist.daily.util.PublicFunction;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import daily.cathassist.org.PrayInEveryday;
-import daily.cathassist.org.R;
-import daily.cathassist.org.activity.MainActivity;
-import daily.cathassist.org.activity.Preferences;
-import daily.cathassist.org.util.NetworkTool;
-import daily.cathassist.org.util.PublicFunction;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

@@ -1,4 +1,4 @@
-package daily.cathassist.org.database;
+package org.cathassist.daily.database;
 
 import android.content.Context;
 import android.database.SQLException;

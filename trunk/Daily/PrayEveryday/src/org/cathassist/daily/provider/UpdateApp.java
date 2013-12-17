@@ -1,8 +1,13 @@
-package daily.cathassist.org.provider;
+package org.cathassist.daily.provider;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.cathassist.daily.PrayInEveryday;
+import org.cathassist.daily.R;
+import org.cathassist.daily.activity.Preferences;
+import org.cathassist.daily.util.NetworkTool;
+import org.cathassist.daily.util.PublicFunction;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,11 +19,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
 
-import daily.cathassist.org.PrayInEveryday;
-import daily.cathassist.org.R;
-import daily.cathassist.org.activity.Preferences;
-import daily.cathassist.org.util.NetworkTool;
-import daily.cathassist.org.util.PublicFunction;
 
 public class UpdateApp extends AsyncTask<String, Integer, String> {
 	private int newVerCode;

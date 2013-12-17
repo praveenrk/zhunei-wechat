@@ -1,4 +1,4 @@
-package daily.cathassist.org.download;
+package org.cathassist.daily.download;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -9,11 +9,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.cathassist.daily.PrayInEveryday;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import daily.cathassist.org.PrayInEveryday;
 
 import android.net.ParseException;
 import android.os.AsyncTask;

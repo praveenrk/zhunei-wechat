@@ -1,4 +1,4 @@
-package daily.cathassist.org.bean;
+package org.cathassist.daily.bean;
 
 public class DayContent {
 	private long id;

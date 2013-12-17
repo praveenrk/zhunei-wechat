@@ -1,10 +1,22 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.cathassist.daily.PrayInEveryday;
+import org.cathassist.daily.R;
+import org.cathassist.daily.bean.CalendarDay;
+import org.cathassist.daily.bean.DayContent;
+import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.MainActivityFragmentPagerAdapter;
+import org.cathassist.daily.provider.UpdateApp;
+import org.cathassist.daily.provider.EnumManager.ContentType;
+import org.cathassist.daily.util.GetSharedPreference;
+import org.cathassist.daily.util.NetworkTool;
+import org.cathassist.daily.util.PublicFunction;
+import org.cathassist.daily.util.PublicFunction.OnClickCancelListener;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,18 +26,6 @@ import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.viewpagerindicator.TabPageIndicator;
 
-import daily.cathassist.org.PrayInEveryday;
-import daily.cathassist.org.R;
-import daily.cathassist.org.bean.CalendarDay;
-import daily.cathassist.org.bean.DayContent;
-import daily.cathassist.org.database.TodoDbAdapter;
-import daily.cathassist.org.provider.MainActivityFragmentPagerAdapter;
-import daily.cathassist.org.provider.UpdateApp;
-import daily.cathassist.org.provider.EnumManager.ContentType;
-import daily.cathassist.org.util.GetSharedPreference;
-import daily.cathassist.org.util.NetworkTool;
-import daily.cathassist.org.util.PublicFunction;
-import daily.cathassist.org.util.PublicFunction.OnClickCancelListener;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

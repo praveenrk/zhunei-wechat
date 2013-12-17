@@ -1,6 +1,6 @@
-package daily.cathassist.org;
+package org.cathassist.daily;
 
-import daily.cathassist.org.database.TodoDbAdapter;
+import org.cathassist.daily.database.TodoDbAdapter;
 
 import android.app.Application;
 import android.content.Intent;

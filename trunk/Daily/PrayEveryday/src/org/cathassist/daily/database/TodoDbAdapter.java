@@ -1,4 +1,4 @@
-package daily.cathassist.org.database;
+package org.cathassist.daily.database;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +7,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import daily.cathassist.org.bean.CalendarDay;
-import daily.cathassist.org.bean.DateBean;
-import daily.cathassist.org.bean.DayContent;
+import org.cathassist.daily.bean.CalendarDay;
+import org.cathassist.daily.bean.DateBean;
+import org.cathassist.daily.bean.DayContent;
+
 
 import android.content.ContentValues;
 import android.content.Context;

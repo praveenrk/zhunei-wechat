@@ -1,11 +1,12 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
+
+import org.cathassist.daily.R;
+import org.cathassist.daily.bean.CalendarDay;
+import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.util.PublicFunction;
 
 import com.spreada.utils.chinese.ZHConverter;
 
-import daily.cathassist.org.R;
-import daily.cathassist.org.bean.CalendarDay;
-import daily.cathassist.org.database.TodoDbAdapter;
-import daily.cathassist.org.util.PublicFunction;
 
 import android.content.Intent;
 import android.graphics.Color;

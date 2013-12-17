@@ -1,4 +1,4 @@
-package daily.cathassist.org.provider;
+package org.cathassist.daily.provider;
 
 public class EnumManager {
 	public enum ContentType {

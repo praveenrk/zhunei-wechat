@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Application -->
-    <string name="app_name">PrayEveryday</string>
+    <string name="app_name">DailyAssist</string>
     <!-- MainActivity -->
     <string name="no_web">设备没有联网，请联网后重试</string>
     <string name="update_timeout">更新数据超时</string>
