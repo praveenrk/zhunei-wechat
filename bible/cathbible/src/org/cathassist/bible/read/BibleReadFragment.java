@@ -284,10 +284,11 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                         Map<String, String> map = mContent.get(pos);
 
                         String bookName = VerseInfo.CHN_NAME[Integer.parseInt(map.get("book"))];
-                        String content = map.get("verse") + "\n\n"
+                        String content = map.get("verse")
                                 + "(" + bookName + " "
                                 + map.get("chapter") + ":"
-                                + map.get("section") + ")";
+                                + map.get("section") + ")" + "\n"
+                                + "来自圣经小助手";
 
                         switch (which) {
                             case Para.VERSE_CHOISE_MARK:

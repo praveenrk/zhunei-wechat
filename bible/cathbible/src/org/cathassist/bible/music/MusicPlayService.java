@@ -95,6 +95,10 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         setNotification();
         NotificationManager notiManager =  (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notiManager.cancel(this.getClass().getName().hashCode());
+        refreshNotification();
+    }
+
+    private void refreshNotification() {
         startForeground(this.getClass().getName().hashCode(), mNotification);
     }
 
@@ -191,6 +195,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             reset();
             if (Func.isWifi(this) || Para.allow_gprs) {
                 mRemote.setTextViewText(R.id.noti_name, "正在加载中");
+                refreshNotification();
                 try {
                     mPlayer.setDataSource(file);
                     mPlayer.prepareAsync();
@@ -232,7 +237,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayHandler.postDelayed(mPlayRunnable, 1000);
         mRemote.setTextViewText(R.id.noti_name, mName);
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_pause);
-        startForeground("MusicPlayService".hashCode(), mNotification);
+        refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {
                 listener.onPlayChanged(true);
@@ -244,9 +249,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayer.reset();
         mLast = "";
         mPlayHandler.removeCallbacks(mPlayRunnable);
-        mRemote.setTextViewText(R.id.noti_name, "停止播放");
+        mRemote.setTextViewText(R.id.noti_name, mName);
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
-        startForeground("MusicPlayService".hashCode(), mNotification);
+        refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {
                 listener.onPlayChanged(false);
@@ -257,9 +262,9 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
     private void pause() {
         mPlayer.pause();
         mPlayHandler.removeCallbacks(mPlayRunnable);
-        mRemote.setTextViewText(R.id.noti_name, "暂停播放");
+        mRemote.setTextViewText(R.id.noti_name, mName);
         mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
-        startForeground("MusicPlayService".hashCode(), mNotification);
+        refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {
                 listener.onPlayChanged(false);

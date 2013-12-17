@@ -170,7 +170,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
                 break;
             case R.id.button_share:
                 if (mVerseBook * mVerseChapter * mVerseSection != 0) {
-                    String content = mVerse.getText().toString().trim();
+                    String content = mVerse.getText().toString().trim() + "\n" + "来自圣经小助手";
                     final UMSocialService mController = UMServiceFactory.getUMSocialService("cathbible",
                             RequestType.SOCIAL);
                     mController.setShareContent(content);
