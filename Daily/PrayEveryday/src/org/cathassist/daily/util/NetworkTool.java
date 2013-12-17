@@ -1,4 +1,4 @@
-package daily.cathassist.org.util;
+package org.cathassist.daily.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

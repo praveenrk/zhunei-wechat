@@ -1,11 +1,12 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
+
+import org.cathassist.daily.R;
+import org.cathassist.daily.bean.DayContent;
+import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.util.CreateHtmlFile;
 
 import com.spreada.utils.chinese.ZHConverter;
 
-import daily.cathassist.org.R;
-import daily.cathassist.org.bean.DayContent;
-import daily.cathassist.org.database.TodoDbAdapter;
-import daily.cathassist.org.util.CreateHtmlFile;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;

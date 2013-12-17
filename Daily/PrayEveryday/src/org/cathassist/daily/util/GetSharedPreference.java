@@ -1,4 +1,4 @@
-package daily.cathassist.org.util;
+package org.cathassist.daily.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;

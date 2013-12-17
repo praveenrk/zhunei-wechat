@@ -1,14 +1,15 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import daily.cathassist.org.R;
-import daily.cathassist.org.bean.DateBean;
-import daily.cathassist.org.database.TodoDbAdapter;
-import daily.cathassist.org.util.PublicFunction;
+import org.cathassist.daily.R;
+import org.cathassist.daily.bean.DateBean;
+import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.util.PublicFunction;
+
 
 import android.content.Context;
 import android.os.Bundle;

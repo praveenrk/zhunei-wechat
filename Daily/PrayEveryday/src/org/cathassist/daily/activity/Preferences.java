@@ -1,4 +1,9 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
+
+import org.cathassist.daily.R;
+import org.cathassist.daily.provider.UpdateApp;
+import org.cathassist.daily.util.PublicFunction;
+import org.cathassist.daily.util.PublicFunction.OnClickCancelListener;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -12,10 +17,6 @@ import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.umeng.analytics.MobclickAgent;
 
-import daily.cathassist.org.R;
-import daily.cathassist.org.provider.UpdateApp;
-import daily.cathassist.org.util.PublicFunction;
-import daily.cathassist.org.util.PublicFunction.OnClickCancelListener;
 
 public class Preferences extends SherlockPreferenceActivity implements
 		OnPreferenceClickListener,OnClickCancelListener {

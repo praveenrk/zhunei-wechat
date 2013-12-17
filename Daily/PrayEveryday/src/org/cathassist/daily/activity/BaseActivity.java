@@ -1,4 +1,4 @@
-package daily.cathassist.org.activity;
+package org.cathassist.daily.activity;
 
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;

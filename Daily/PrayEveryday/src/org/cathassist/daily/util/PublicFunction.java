@@ -1,9 +1,10 @@
-package daily.cathassist.org.util;
+package org.cathassist.daily.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import daily.cathassist.org.R;
+import org.cathassist.daily.R;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -145,7 +146,7 @@ public class PublicFunction {
 		int verCode = -1;
 		try {
 			verCode = context.getPackageManager().getPackageInfo(
-					"daily.cathassist.org", 0).versionCode;
+					"org.cathassist.daily", 0).versionCode;
 		} catch (NameNotFoundException e) {
 		}
 		return verCode;
@@ -155,7 +156,7 @@ public class PublicFunction {
 		String verName = "";
 		try {
 			verName = context.getPackageManager().getPackageInfo(
-					"daily.cathassist.org", 0).versionName;
+					"org.cathassist.daily", 0).versionName;
 		} catch (NameNotFoundException e) {
 		}
 		return verName;

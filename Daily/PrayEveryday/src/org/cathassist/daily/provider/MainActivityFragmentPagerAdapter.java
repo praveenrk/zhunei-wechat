@@ -1,10 +1,11 @@
-package daily.cathassist.org.provider;
+package org.cathassist.daily.provider;
 
 import java.util.ArrayList;
 
+import org.cathassist.daily.R;
+
 import com.viewpagerindicator.IconPagerAdapter;
 
-import daily.cathassist.org.R;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
