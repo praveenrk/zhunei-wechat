@@ -10,9 +10,9 @@
 
 #afui.android {
 	font:14px  'Roboto',sans-serif;
- 	background:#000;
+ 	background:#222;
  	color:#fff;
-    border-color:#fff;
+    border-color:#444;
 }
 
 #afui.android.light {
@@ -22,7 +22,7 @@
 #afui.android > #header {
     background:inherit;
     color:inherit;
-    border-color:#33B5E5;
+    border-bottom:#037DA7 2px solid;
 }
 #afui.android #backButton
 {
@@ -136,11 +136,11 @@
 
 #afui.android #menu .list li {
     box-shadow:none;
-    border-color:#ccc;
+    border-color:#444;
 }
 
 #afui.android #menu .list .divider {
-	background:inherit;
+	background:#333;
 	color:inherit;
 	font-size: 1em;
 }
@@ -220,7 +220,7 @@
 
 #afui.android .afPopup>HEADER{
     font-weight:bold;
-    font-size:20px;    
+    font-size:20px;
     text-align:center;
     margin:0;
     padding:5px;
@@ -273,4 +273,8 @@
 }
 #afui.android #af_actionsheet a.cancel{
     margin-bottom: 0px;
+}
+
+#afui.android .list li:first-child, #afui.android .list li{
+    border-color: #444;
 }

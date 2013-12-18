@@ -30,11 +30,37 @@ li.artitem{
 li.artitem:hover {
 	cursor: pointer;
 }
-
+#stuff_detail, .main-content{
+	padding: 20px 10px 10px;
+	line-height: 1.5em;
+}
 #stuff_detail p{
     font-size:1em;
 }
 
+#stuff_detail img{
+    margin: 0 10px 10px 0;
+}
 audio{
 	width:100%;
+}
+
+.afScrollbar{
+	opacity: .4;
+}
+.gap {
+	margin: 10px 0;
+}
+
+.clearfix:before
+,.clearfix:after{
+	display:table;
+	content:" "
+}
+.clearfix:after{
+	clear:both
+}
+.music-info {
+	text-align: center;
+	line-height: 2em;
 }

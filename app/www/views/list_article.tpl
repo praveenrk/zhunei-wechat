@@ -3,8 +3,10 @@
 	$("#backButton")[0].style.visibility = 'hidden';
 	$("#menubadge")[0].style.float = 'left';
 }}
-<div class="button-grouped flex">
-	<a class="button icon refresh" href="{{=it.list}}9999999/update">更新</a>
+<div class="gap">
+	<div class="button-grouped flex">
+		<a class="button icon refresh" href="{{=it.list}}9999999/update">更新</a>
+	</div>
 </div>
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.items){

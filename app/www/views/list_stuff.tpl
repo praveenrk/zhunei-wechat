@@ -7,12 +7,13 @@
 	nextDate = dtNext.Format("yyyy-MM-dd");
 	prevDate = dtPrev.Format("yyyy-MM-dd");
 }}
-<div class="button-grouped flex">
-	<a class="button icon left" href="/stuff/getstuff/{{=prevDate}}"></a>
-	<a class="button icon refresh" href="/stuff/update/{{=it.date.Format("yyyy-MM-dd")}}">{{=it.date.Format("yyyy年MM月dd日")}}</a>
-	<a class="button icon right" href="/stuff/getstuff/{{=nextDate}}"></a>
+<div class="gap clearfix">
+	<div class="button-grouped flex">
+		<a class="button icon left" href="/stuff/getstuff/{{=prevDate}}"></a>
+		<a class="button icon refresh" href="/stuff/update/{{=it.date.Format("yyyy-MM-dd")}}">{{=it.date.Format("yyyy年MM月dd日")}}</a>
+		<a class="button icon right" href="/stuff/getstuff/{{=nextDate}}"></a>
+	</div>
 </div>
-<div style="clear:both"></div>
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.stuff){
 	}}
