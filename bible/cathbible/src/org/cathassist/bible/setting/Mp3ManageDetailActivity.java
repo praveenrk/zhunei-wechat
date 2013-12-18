@@ -80,13 +80,13 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                                     new Handler().postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            Func.downChapter(Mp3ManageDetailActivity.this, mPath, book, chapter);
+                                            Func.downChapter(mPath, book, chapter);
                                         }
                                     }, 500);
                                 }
                             }).setNegativeButton(R.string.cancel, null).show();
                 } else {
-                    Func.downChapter(Mp3ManageDetailActivity.this, mPath, book, chapter);
+                    Func.downChapter(mPath, book, chapter);
                 }
                 return false;
             }
@@ -119,7 +119,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Func.downBook(Mp3ManageDetailActivity.this, mPath, book);
+                                        Func.downBook(mPath, book);
                                     }
                                 }).setNegativeButton(R.string.cancel, null).show();
                         return true;

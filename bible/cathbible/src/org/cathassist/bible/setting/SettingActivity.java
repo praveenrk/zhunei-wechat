@@ -13,6 +13,7 @@ import android.view.View;
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.MenuItem;
 
+import org.cathassist.bible.App;
 import org.cathassist.bible.MainActivity;
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;
@@ -72,7 +73,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
         theme = Para.theme_black;
 
-        click_version.setSummary("软件版本" + "  " + Func.GetVerName(this));
+        click_version.setSummary("软件版本" + "  " + App.get().getVersionName());
     }
 
     @Override
@@ -131,7 +132,7 @@ public class SettingActivity extends SherlockPreferenceActivity implements OnPre
 
         editor.commit();
 
-        Func.InitCommonPara(this);
+        Func.InitCommonPara();
 
         if (theme != Para.theme_black) {
             setResult(Para.NEED_RESTART, intent);

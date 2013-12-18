@@ -20,6 +20,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.cathassist.bible.App;
 import org.cathassist.bible.R;
 
 import java.io.File;
@@ -31,15 +32,8 @@ public class Func {
         mDownloadManager = manager;
     }
 
-    public static boolean isWifi(Context mContext) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        return (activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI);
-    }
-
-    public static void InitCommonPara(Context context) {
-        SharedPreferences settings = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+    public static void InitCommonPara() {
+        SharedPreferences settings = App.get().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
 
         Para.font_size = settings.getFloat("font_size", 18);
@@ -64,19 +58,19 @@ public class Func {
         Para.BACKGROUND = Para.theme_black ? R.drawable.dark_bg : R.drawable.default_bg;
     }
 
-    public static void InitTheme(Context context) {
+    public static void InitTheme() {
         Para.DEFAULT_TEXT_COLOR
-                = context.getTheme().obtainStyledAttributes(Para.THEME, new int[]{android.R.attr.textColorSecondary})
+                = App.get().getTheme().obtainStyledAttributes(Para.THEME, new int[]{android.R.attr.textColorSecondary})
                 .getColor(0, Para.theme_black ? Color.WHITE : Color.BLACK);
         Para.HIGHLIGHT_TEXT_COLOR = Para.theme_black ? Color.YELLOW : Color.BLUE;
     }
 
-    public static void InitOncePara(Context context) {
-        Para.DB_CONTENT_PATH = context.getDatabasePath(Para.DB_CONTENT_NAME).getParent() + "/";
-        Para.DB_DATA_PATH = context.getDatabasePath(Para.DB_DATA_NAME).getParent() + "/";
+    public static void InitOncePara() {
+        Para.DB_CONTENT_PATH = App.get().getDatabasePath(Para.DB_CONTENT_NAME).getParent() + "/";
+        Para.DB_DATA_PATH = App.get().getDatabasePath(Para.DB_DATA_NAME).getParent() + "/";
         Para.BIBLE_MP3_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cathbible/bible/mp3/";
 
-        SharedPreferences settings = context.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences settings = App.get().getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         Para.currentBook = settings.getInt("currentBook", 1);
         Para.currentChapter = settings.getInt("currentChapter", 1);
@@ -96,16 +90,6 @@ public class Func {
         } catch (Exception e) {
 
         }
-    }
-
-    public static String GetVerName(Context context) {
-        String verName = "";
-        try {
-            verName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-        } catch (NameNotFoundException e) {
-
-        }
-        return verName;
     }
 
     public static File getFilePath(String name) {
@@ -159,32 +143,32 @@ public class Func {
         Para.currentSection = 0;
     }
 
-    public static void downChapter(Context context, String version, int book, int chapter) {
+    public static void downChapter(String version, int book, int chapter) {
         final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
-            if (Func.isWifi(context) || Para.allow_gprs) {
-                download(context, version, book, chapter);
-                Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
+            if (App.get().isWifi() || Para.allow_gprs) {
+                download(version, book, chapter);
+                Toast.makeText(App.get(), "下载已添加", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(context, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
+                Toast.makeText(App.get(), "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    public static void downBook(Context context, String version, int book) {
-        if (Func.isWifi(context) || Para.allow_gprs) {
+    public static void downBook(String version, int book) {
+        if (App.get().isWifi() || Para.allow_gprs) {
             for (int i = 1; i <= VerseInfo.CHAPTER_COUNT[book]; i++) {
-                download(context, version, book, i);
+                download(version, book, i);
             }
-            Toast.makeText(context, "下载已添加", Toast.LENGTH_SHORT).show();
+            Toast.makeText(App.get(), "下载已添加", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
+            Toast.makeText(App.get(), "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
         }
     }
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static long download(Context context, String version, int book, int chapter) {
+    public static long download(String version, int book, int chapter) {
         long reference = -1;
         final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
         if (!file.exists()) {
@@ -195,7 +179,7 @@ public class Func {
             request.setDestinationUri(Uri.fromFile(file));
             request.setTitle(VerseInfo.CHN_NAME[book]+"第"+chapter+"章");
             request.setDescription("下载中");
-            if(isWifi(context) || Para.allow_gprs) {
+            if(App.get().isWifi() || Para.allow_gprs) {
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
             } else {
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
@@ -204,7 +188,7 @@ public class Func {
             try {
                 reference = mDownloadManager.enqueue(request);
             } catch (Exception e) {
-                Toast.makeText(context, "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_SHORT).show();
+                Toast.makeText(App.get(), "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_SHORT).show();
             }
         }
         return reference;

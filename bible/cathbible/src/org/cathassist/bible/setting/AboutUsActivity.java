@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 
+import org.cathassist.bible.App;
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
@@ -48,7 +49,7 @@ public class AboutUsActivity extends SherlockActivity {
 
         String url = "http://www.cathassist.org/3rd/aboutus.html";
 
-        if (Func.isWifi(this) || Para.allow_gprs) {
+        if (App.get().isWifi() || Para.allow_gprs) {
             mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
             mWebView.setWebViewClient(new InsideWebViewClient());
             mWebView.setWebChromeClient(new WebChromeClient() {

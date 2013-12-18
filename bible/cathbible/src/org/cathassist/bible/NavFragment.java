@@ -160,7 +160,7 @@ public class NavFragment extends SherlockFragment implements OnItemClickListener
     }
 
     protected void Reload() {
-        Intent intent = mActivity.getIntent();
+        Intent intent = new Intent(mActivity, MainActivity.class);
         mActivity.overridePendingTransition(0, 0);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         mActivity.finish();

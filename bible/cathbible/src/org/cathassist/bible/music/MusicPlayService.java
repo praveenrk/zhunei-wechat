@@ -15,6 +15,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.widget.RemoteViews;
 
+import org.cathassist.bible.App;
 import org.cathassist.bible.MainActivity;
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;
@@ -125,7 +126,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                 } else {
                     reset();
                     playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-                    Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                    Func.downChapter(Para.mp3Ver, Para.currentBook, Para.currentChapter);
                 }
             }
         }
@@ -193,7 +194,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             }
         } else {                            //不同首
             reset();
-            if (Func.isWifi(this) || Para.allow_gprs) {
+            if (App.get().isWifi() || Para.allow_gprs) {
                 mRemote.setTextViewText(R.id.noti_name, "正在加载中");
                 refreshNotification();
                 try {
@@ -303,7 +304,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                 play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
             } else {
                 playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-                Func.downChapter(this, Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                Func.downChapter(Para.mp3Ver, Para.currentBook, Para.currentChapter);
             }
         }
         for(OnCompletionListener listener : mOnCompletionListener) {

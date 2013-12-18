@@ -199,7 +199,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_prev:
@@ -209,7 +209,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_next:
@@ -219,7 +219,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     mService.play(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 } else {
                     mService.playNet(Para.mp3Ver,Para.currentBook,Para.currentChapter);
-                    Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                    Func.downChapter(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 }
                 break;
             case R.id.music_mode:
@@ -251,14 +251,14 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                 mMusicPanel.setVisibility(View.GONE);
                 break;
             case R.id.btn_music_down:
-                Func.downChapter(mActivity,Para.mp3Ver,Para.currentBook,Para.currentChapter);
+                Func.downChapter(Para.mp3Ver,Para.currentBook,Para.currentChapter);
                 break;
             case R.id.btn_music_down_book:
                 new AlertDialog.Builder(mActivity).setTitle("确定下载整卷" + VerseInfo.CHN_NAME[Para.currentBook] + "？")
                         .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Func.downBook(mActivity, Para.mp3Ver, Para.currentBook);
+                                Func.downBook(Para.mp3Ver, Para.currentBook);
                             }
                         }).setNegativeButton(R.string.cancel, null).show();
                 break;
