@@ -76,6 +76,13 @@ public class Func {
         Para.currentChapter = settings.getInt("currentChapter", 1);
         Para.currentSection = settings.getInt("currentSection", 0);
         Para.mp3Mode = settings.getInt("mp3Mode", 0);
+
+        if(Para.currentBook < 1 || Para.currentBook > 73) {
+            Para.currentBook = 1;
+        }
+        if(Para.currentChapter < 1 || Para.currentChapter > VerseInfo.CHAPTER_COUNT[Para.currentBook]) {
+            Para.currentChapter = 1;
+        }
     }
 
     public static void getMp3RootUrl() {

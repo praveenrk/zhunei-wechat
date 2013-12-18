@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.mozillaonline.providers.downloads.ui.DownloadList;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Para;
@@ -50,11 +52,24 @@ public class Mp3ManageActivity  extends SherlockActivity implements AdapterView.
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getSupportMenuInflater().inflate(R.menu.mp3_manage_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.manage:
+                Intent intent = new Intent();
+                intent.setClass(this, DownloadList.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
