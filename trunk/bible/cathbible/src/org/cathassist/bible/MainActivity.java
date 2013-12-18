@@ -38,11 +38,11 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Func.InitCommonPara(this);
-        Func.InitOncePara(this);
+        Func.InitCommonPara();
+        Func.InitOncePara();
         Func.LoadTheme();
         setTheme(Para.THEME);
-        Func.InitTheme(this);
+        Func.InitTheme();
         loadLast();
         FragmentManager.initFragments();
         super.onCreate(savedInstanceState);
@@ -78,7 +78,7 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         startDownloadService();
         Func.setDownloadManager(mDownloadManager);
 
-        if(Func.isWifi(this) || Para.allow_gprs) {
+        if(App.get().isWifi() || Para.allow_gprs) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
