@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -149,20 +150,31 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         Intent appIntent = new Intent();
         appIntent.setClass(this, MainActivity.class);
 
-        mRemote = new Remote(this.getPackageName(),R.layout.mp3_notification);
-        mRemote.setOnClickPendingIntent(R.id.noti_prev, PendingIntent
-                .getService(this, 0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-        mRemote.setOnClickPendingIntent(R.id.noti_play, PendingIntent
-                .getService(this, 1, playIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-        mRemote.setOnClickPendingIntent(R.id.noti_next, PendingIntent
-                .getService(this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT));
-        mRemote.setOnClickPendingIntent(R.id.root, PendingIntent
-                .getActivity(this, 3, appIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+        final int sdkVersion = Build.VERSION.SDK_INT;
+        if (sdkVersion >= Build.VERSION_CODES.HONEYCOMB) {
+            mRemote = new Remote(this.getPackageName(),R.layout.mp3_notification);
+            mRemote.setOnClickPendingIntent(R.id.noti_prev, PendingIntent
+                    .getService(this, 0, prevIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+            mRemote.setOnClickPendingIntent(R.id.noti_play, PendingIntent
+                    .getService(this, 1, playIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+            mRemote.setOnClickPendingIntent(R.id.noti_next, PendingIntent
+                    .getService(this, 2, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+            mRemote.setOnClickPendingIntent(R.id.root, PendingIntent
+                    .getActivity(this, 3, appIntent, PendingIntent.FLAG_UPDATE_CURRENT));
 
-        mNotification = new Notification();
-        mNotification.icon = R.drawable.ic_launcher;
-        mNotification.flags |= Notification.FLAG_ONGOING_EVENT;
-        mNotification.contentView = mRemote;
+            mNotification = new Notification();
+            mNotification.icon = R.drawable.ic_launcher;
+            mNotification.flags |= Notification.FLAG_ONGOING_EVENT;
+            mNotification.contentView = mRemote;
+        } else {
+            mRemote = new Remote(this.getPackageName(),R.layout.mp3_notification_old);
+
+            mNotification = new Notification();
+            mNotification.icon = R.drawable.ic_launcher;
+            mNotification.flags |= Notification.FLAG_ONGOING_EVENT;
+            mNotification.contentView = mRemote;
+            mNotification.contentIntent = PendingIntent.getActivity(this, 4, appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        }
     }
 
     private class Remote extends RemoteViews {
