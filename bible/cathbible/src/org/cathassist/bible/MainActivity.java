@@ -92,7 +92,6 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
     protected void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
-
         if (Para.always_bright) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {

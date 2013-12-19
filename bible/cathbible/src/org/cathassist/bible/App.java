@@ -5,6 +5,7 @@ import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,6 +14,10 @@ import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
 import com.umeng.analytics.MobclickAgent;
+
+import org.cathassist.bible.lib.Para;
+
+import java.util.Calendar;
 
 public class App extends Application implements Thread.UncaughtExceptionHandler {
     private static App thiz;
@@ -38,13 +43,26 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
         MobclickAgent.reportError(App.get(), "Uncaught Error:" + ex.getMessage());
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent restartIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager mgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 500,
-                restartIntent); // 500ms后重启应用*/
-        android.os.Process.killProcess(android.os.Process.myPid());
+
+        SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        Calendar nowTime = Calendar.getInstance();
+        Calendar lastTime = Calendar.getInstance();
+        lastTime.setTimeInMillis(settings.getLong("last_crash",0));
+        editor.putLong("last_crash",nowTime.getTimeInMillis());
+        editor.commit();
+
+        if((nowTime.getTimeInMillis() - lastTime.getTimeInMillis()) > 15000) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK);
+            PendingIntent restartIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager mgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 500,
+                    restartIntent); // 500ms后重启应用*/
+            android.os.Process.killProcess(android.os.Process.myPid());
+        } else {
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 
     public String getDeviceId() {

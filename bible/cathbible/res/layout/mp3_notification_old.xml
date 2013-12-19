@@ -39,7 +39,8 @@
 
         <ImageButton
             android:id="@+id/noti_play"
-            style="@android:style/MediaButton.Play"
+            android:src="@drawable/icon_play"
+            android:background="@color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/noti_prev"

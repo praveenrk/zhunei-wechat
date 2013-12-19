@@ -9,9 +9,9 @@
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/nav_top"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="@dimen/abs__action_bar_default_height"
             android:layout_width="match_parent"
-            style="@style/Widget.Sherlock.ActionBar.Solid"
+            android:background="@drawable/abs__ab_solid_dark_holo"
             android:orientation="vertical"/>
         <ListView
             android:id="@+id/list"
