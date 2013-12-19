@@ -249,7 +249,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayer.start();
         mPlayHandler.postDelayed(mPlayRunnable, 1000);
         mRemote.setTextViewText(R.id.noti_name, mName);
-        mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_pause);
+        mRemote.setImageViewResource(R.id.noti_play, R.drawable.icon_pause);
         refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {
@@ -263,7 +263,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mLast = "";
         mPlayHandler.removeCallbacks(mPlayRunnable);
         mRemote.setTextViewText(R.id.noti_name, mName);
-        mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
+        mRemote.setImageViewResource(R.id.noti_play, R.drawable.icon_play);
         refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {
@@ -276,7 +276,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         mPlayer.pause();
         mPlayHandler.removeCallbacks(mPlayRunnable);
         mRemote.setTextViewText(R.id.noti_name, mName);
-        mRemote.setImageViewResource(R.id.noti_play, android.R.drawable.ic_media_play);
+        mRemote.setImageViewResource(R.id.noti_play, R.drawable.icon_play);
         refreshNotification();
         for(OnPlayChangedListener listener : mOnPlayChangedListener) {
             if(listener != null) {

@@ -96,7 +96,7 @@
 		</service>
 
         <!-- ###################添加UmengAppkey###################### -->
-        <meta-data android:name="UMENG_APPKEY" android:value="528f5cf256240b69e0043042" />
+        <meta-data android:name="UMENG_APPKEY" android:value="52b2780756240b7a6a09f295" />
 		<meta-data android:name="UMENG_CHANNEL" android:value="cathbible" />
 
         <!-- ###################DownloadProvider###################### -->
