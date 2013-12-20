@@ -30,7 +30,7 @@ public class VersionActivity extends SherlockActivity {
         setContentView(R.layout.about_us);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("关于我们");
+        getSupportActionBar().setTitle("版本说明");
 
         mProgressBar = (ProgressBar) findViewById(R.id.pb);
 
