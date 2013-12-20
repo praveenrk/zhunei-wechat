@@ -58,6 +58,9 @@
 			<h2><a href="/music/music.php" alt="教会歌曲">随机听歌（放松一下）</a></h2>
 			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
+			<h1>应用下载</h1>
+			<h2><a href="http://bible.cathassist.org/" alt="圣经小助手">圣经小助手</a></h2>
+			</br></br>
 			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>iGospel</b>)，也可以在微信中搜索<b>天主教小助手</b>进行关注</p>
 			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
