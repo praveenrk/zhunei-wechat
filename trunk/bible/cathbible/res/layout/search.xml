@@ -29,7 +29,8 @@
             android:layout_height="35dp"
             android:layout_weight="0"
             android:background="@drawable/blue_button_selector"
-            android:text="@string/search" />            
+            android:text="@string/search"
+            android:textColor="@color/white" />
         
     </LinearLayout>
 
