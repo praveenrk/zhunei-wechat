@@ -17,7 +17,11 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.cathassist.bible.lib.Para;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Calendar;
+import java.util.Map;
 
 public class App extends Application implements Thread.UncaughtExceptionHandler {
     private static App thiz;
@@ -42,7 +46,8 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        MobclickAgent.reportError(App.get(), "Uncaught Error:" + ex.getMessage());
+
+        MobclickAgent.reportError(App.get(), "Uncaught Error:" + getExceptionCause(ex));
 
         SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
@@ -63,6 +68,19 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
         } else {
             android.os.Process.killProcess(android.os.Process.myPid());
         }
+    }
+
+    private String getExceptionCause(Throwable ex) {
+        Writer writer = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(writer);
+        ex.printStackTrace(printWriter);
+        Throwable cause = ex.getCause();
+        while (cause != null) {
+            cause.printStackTrace(printWriter);
+            cause = cause.getCause();
+        }
+        printWriter.close();
+        return writer.toString();
     }
 
     public String getDeviceId() {

@@ -1,17 +1,22 @@
 package org.cathassist.bible;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextPaint;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
@@ -120,10 +125,14 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
                 map.put("chapter", cursor.getString(cursor.getColumnIndex("chapter")));
                 map.put("section", cursor.getString(cursor.getColumnIndex("section")));
                 map.put("title", cursor.getString(cursor.getColumnIndex("title")));
-                map.put("content",
-                        bookName + " " +
-                                cursor.getInt(cursor.getColumnIndex("chapter")) + ":" +
-                                cursor.getInt(cursor.getColumnIndex("section")));
+                if(Integer.valueOf(map.get("section")) > 1000) {
+                    map.put("content", bookName + " " +
+                            cursor.getInt(cursor.getColumnIndex("chapter")));
+                } else {
+                    map.put("content", bookName + " " +
+                            cursor.getInt(cursor.getColumnIndex("chapter")) + ":" +
+                            cursor.getInt(cursor.getColumnIndex("section")));
+                }
                 data.add(map);
             }
         } catch (Exception e) {
@@ -141,4 +150,5 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         }
         return data;
     }
+
 }
