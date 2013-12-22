@@ -109,26 +109,30 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         if(mPlayer == null) {
             stopSelf();
         } else {
-            int cmd = intent.getIntExtra("CMD",-1);
-            switch (cmd) {
-                case CMD_PREV:
-                    Func.ChangeChapter(false);
-                    break;
-                case CMD_PLAY:
-                    break;
-                case CMD_NEXT:
-                    Func.ChangeChapter(true);
-                    break;
-            }
-            if(cmd != -1) {
-                final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
-                if (file.exists()) {
-                    play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-                } else {
-                    reset();
-                    playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
-                    Func.downChapter(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+            try {
+                int cmd = intent.getIntExtra("CMD",-1);
+                switch (cmd) {
+                    case CMD_PREV:
+                        Func.ChangeChapter(false);
+                        break;
+                    case CMD_PLAY:
+                        break;
+                    case CMD_NEXT:
+                        Func.ChangeChapter(true);
+                        break;
                 }
+                if(cmd != -1) {
+                    final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+                    if (file.exists()) {
+                        play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                    } else {
+                        reset();
+                        playNet(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                        Func.downChapter(Para.mp3Ver, Para.currentBook, Para.currentChapter);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
         return super.onStartCommand(intent, flags, startId);
