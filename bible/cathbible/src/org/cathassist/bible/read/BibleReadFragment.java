@@ -148,7 +148,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     @Override
     public void onPause() {
         super.onPause();
-        Para.currentSection = Integer.valueOf(mContent.get(mList.getFirstVisiblePosition()).get("section"));
+        Para.currentSection = mContent == null? 0: Integer.valueOf(mContent.get(mList.getFirstVisiblePosition()).get("section"));
     }
 
     @Override

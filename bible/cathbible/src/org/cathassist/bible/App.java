@@ -80,7 +80,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
             cause = cause.getCause();
         }
         printWriter.close();
-        return writer.toString();
+        return "UnCaught Exception: " + writer.toString();
     }
 
     public String getDeviceId() {
