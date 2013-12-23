@@ -7,24 +7,28 @@ import org.cathassist.daily.util.PublicFunction;
 
 import com.spreada.utils.chinese.ZHConverter;
 
-
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public final class MainFragment extends Fragment {
 	private TextView txtDayTitle, txtDate, txtSolarTerms, txtHoliday,
-			txtFestival, txtDayNature, txtBibleSentence, txtBible,
-			txtPray;
+			txtFestival, txtDayNature, txtBibleSentence, txtBible, txtPray;
 	private TodoDbAdapter dbHelper;
 	private CalendarDay calendarDay;
 	private String dateString;
+
+	private Button button;
 
 	public static MainFragment newInstance(String dateString) {
 		MainFragment fragment = new MainFragment();
@@ -35,7 +39,7 @@ public final class MainFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	//	setRetainInstance(true);
+		// setRetainInstance(true);
 	}
 
 	@Override
@@ -77,13 +81,14 @@ public final class MainFragment extends Fragment {
 
 		dbHelper = new TodoDbAdapter(getActivity());
 		dbHelper.open();
-		if (savedInstanceState!=null&&savedInstanceState.getString("dateString")!=null) {
-			if(dateString==null){
-				Intent intent=new Intent(getActivity(), MainActivity.class);
+		if (savedInstanceState != null
+				&& savedInstanceState.getString("dateString") != null) {
+			if (dateString == null) {
+				Intent intent = new Intent(getActivity(), MainActivity.class);
 				startActivity(intent);
-				
+
 			}
-			dateString=savedInstanceState.getString("dateString");
+			dateString = savedInstanceState.getString("dateString");
 		}
 		txtDate.setText(dateString);
 		Log.e("dateString", dateString);
@@ -109,6 +114,23 @@ public final class MainFragment extends Fragment {
 			setTextColor(calendarDay.getDayType(),
 					calendarDay.getHoliday() != null
 							&& !calendarDay.getHoliday().equals(""));
+			button.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (PublicFunction.isAvilible(getActivity(),
+							"org.cathassist.bible")) {
+						Intent intent = new Intent();
+						intent.setClassName("org.cathassist.bible",
+								"org.cathassist.bible.MainActivity");
+						startActivity(intent);
+					} else {
+						Uri uri = Uri
+								.parse("market://details?id=org.cathassist.bible");
+						Intent it = new Intent(Intent.ACTION_VIEW, uri);
+						startActivity(it);
+					}
+				}
+			});
 		}
 	}
 
@@ -122,6 +144,7 @@ public final class MainFragment extends Fragment {
 		txtBible = (TextView) view.findViewById(R.id.txt_bible);
 		txtPray = (TextView) view.findViewById(R.id.txt_pray);
 		txtBibleSentence = (TextView) view.findViewById(R.id.bible_sentence);
+		button = (Button) view.findViewById(R.id.button_test);
 	}
 
 	private void setListener() {
@@ -167,5 +190,5 @@ public final class MainFragment extends Fragment {
 		super.onSaveInstanceState(outState);
 		outState.putString("dateString", dateString);
 	}
-	
+
 }

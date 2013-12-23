@@ -2,6 +2,7 @@ package org.cathassist.daily.activity;
 
 import org.cathassist.daily.R;
 import org.cathassist.daily.provider.UpdateApp;
+import org.cathassist.daily.util.NetworkTool;
 import org.cathassist.daily.util.PublicFunction;
 import org.cathassist.daily.util.PublicFunction.OnClickCancelListener;
 
@@ -20,8 +21,8 @@ import com.umeng.analytics.MobclickAgent;
 
 public class Preferences extends SherlockPreferenceActivity implements
 		OnPreferenceClickListener,OnClickCancelListener {
-	private Preference aboutPreference, updatePreference;
-
+	private Preference aboutPreference,aboutUsPreference, updatePreference;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,6 +54,7 @@ public class Preferences extends SherlockPreferenceActivity implements
 
 	private void findPreference() {
 		aboutPreference = findPreference("about");
+		aboutUsPreference =findPreference("about_us");
 		updatePreference = findPreference("update");
 	}
 
@@ -61,9 +63,7 @@ public class Preferences extends SherlockPreferenceActivity implements
 		if (preference == aboutPreference) {
 			PublicFunction.getTipsDialog(Preferences.this,false).show();
 		} else if (preference == updatePreference) {
-			ConnectivityManager cwjManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-			NetworkInfo info = cwjManager.getActiveNetworkInfo();
-			if (info != null && info.isAvailable()) {
+			if (NetworkTool.isConnectNet(this)) {
 				UpdateApp updateApp = new UpdateApp(Preferences.this,true);
 				updateApp.execute("");
 			} else {

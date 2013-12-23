@@ -60,9 +60,7 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ConnectivityManager cwjManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = cwjManager.getActiveNetworkInfo();
-		if (info != null && info.isAvailable()) {
+		if (NetworkTool.isConnectNet(this)) {
 			UpdateApp updateApp = new UpdateApp(this,false);
 			updateApp.execute("");
 		}
@@ -489,9 +487,7 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 	}
 
 	private void updateDate() {
-		ConnectivityManager cwjManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = cwjManager.getActiveNetworkInfo();
-		if (info != null && info.isAvailable()) {
+		if (NetworkTool.isConnectNet(this)) {
 			DownloadData downloadData = new DownloadData();
 			downloadData.execute("");
 		} else {
