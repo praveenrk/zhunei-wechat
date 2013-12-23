@@ -7,8 +7,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@drawable/back"
-        android:orientation="vertical" >
+        android:background="@color/white1"
+        android:orientation="vertical" 
+        android:minHeight="50dp">
 
         <TextView
             android:id="@+id/txt_daytitle"
@@ -113,5 +114,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6sp" />
-
-</LinearLayout>
+<Button
+    android:id="@+id/button_test"
+    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"></Button></LinearLayout>

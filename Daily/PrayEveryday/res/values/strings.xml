@@ -46,6 +46,7 @@
     <string name="soft_updating">更新</string>
     <!-- preferences -->
     <string name="about">关于</string>
+    <string name="about_us">关于 天主教小助手</string>
     <string name="update">检查更新</string>
     <string name="version">版本: %s</string>
     <string name="tips_content">特别感谢：&lt;br /&gt;1.天主教小助手（微信号）&lt;br /&gt;（t.liyake.com）&lt;br /&gt;
