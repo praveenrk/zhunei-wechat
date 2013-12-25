@@ -118,6 +118,9 @@ public class VerseFragment extends SherlockFragment implements OnClickListener {
                 int chapter = cursor.getInt(cursor.getColumnIndex("chapter"));
                 int bSection = cursor.getInt(cursor.getColumnIndex("bSection"));
                 int eSection = cursor.getInt(cursor.getColumnIndex("eSection"));
+                if (cursor != null) {
+                    cursor.close();
+                }
 
                 sql = "select chn from cathbible where book = " + book + " and chapter = " + chapter
                         + " and section >= " + bSection + " and section <= " + eSection;

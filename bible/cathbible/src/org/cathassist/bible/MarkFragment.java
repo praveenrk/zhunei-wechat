@@ -104,6 +104,7 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         SQLiteDatabase db;
         SQLiteDatabase dbBook;
         Cursor cursor = null;
+        Cursor bookCursor = null;
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
         db = new Database(mActivity).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
@@ -115,10 +116,9 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
             while (cursor.moveToNext()) {
                 int book = cursor.getInt(cursor.getColumnIndex("book"));
                 String bookSql = "select chn from book where _id = " + book;
-                Cursor bookCursor = dbBook.rawQuery(bookSql, null);
+                bookCursor = dbBook.rawQuery(bookSql, null);
                 bookCursor.moveToNext();
                 String bookName = bookCursor.getString(bookCursor.getColumnIndex("chn"));
-                bookCursor.close();
 
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("book", cursor.getString(cursor.getColumnIndex("book")));
@@ -140,6 +140,9 @@ public class MarkFragment extends SherlockFragment implements OnItemClickListene
         } finally {
             if (cursor != null) {
                 cursor.close();
+            }
+            if (bookCursor != null) {
+                bookCursor.close();
             }
             if (db != null) {
                 db.close();
