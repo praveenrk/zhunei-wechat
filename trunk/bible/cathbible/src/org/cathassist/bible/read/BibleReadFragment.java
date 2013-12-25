@@ -466,6 +466,9 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
                     data.add(map);
                 }
             }
+            if (cursor != null) {
+                cursor.close();
+            }
 
             dbMark = new Database(mActivity).DbConnection(Para.DB_DATA_PATH + Para.DB_DATA_NAME);
             sql = "select * from bookmark where book = " + Para.currentBook
