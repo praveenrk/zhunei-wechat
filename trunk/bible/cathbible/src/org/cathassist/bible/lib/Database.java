@@ -237,7 +237,7 @@ public class Database {
                     }
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             } finally {
                 if (cursor != null) {
                     cursor.close();
