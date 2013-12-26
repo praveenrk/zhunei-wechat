@@ -85,7 +85,7 @@ public class DownloadTask extends AsyncTask<Void, Integer, Long> {
         this.URL = new URL(url);
         this.listener = listener;
         this.file = new File(path);
-        this.tempFile = new File(path, TEMP_SUFFIX);
+        this.tempFile = new File(path + TEMP_SUFFIX);
         this.context = context;
     }
 
