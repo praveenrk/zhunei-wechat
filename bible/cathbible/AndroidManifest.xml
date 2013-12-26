@@ -119,6 +119,19 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+
+
+        <activity android:name="com.yyxu.download.activities.DownloadListActivity" />
+        <activity android:name="com.yyxu.download.activities.TrafficStatActivity" />
+        <service android:name="com.yyxu.download.services.TrafficCounterService" >
+        </service>
+        <service android:name="com.yyxu.download.services.TrafficCounterService" >
+        </service>
+        <service android:name="com.yyxu.download.services.DownloadService" >
+            <intent-filter >
+                <action android:name="com.yyxu.download.services.IDownloadService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
