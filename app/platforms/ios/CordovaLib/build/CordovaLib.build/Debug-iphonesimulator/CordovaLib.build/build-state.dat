@@ -1,0 +1,1184 @@
+TCordovaLib
+v6
+r1
+cCheck dependencies
+cCpHeader Classes/NSDictionary+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h
+cCpHeader Classes/CDVInvokedUrlCommand.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+cCpHeader Classes/NSData+Base64.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h
+cCpHeader Classes/CDVPluginResult.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+cCpHeader Classes/CDVPlugin.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+cCpHeader Classes/CDVDebug.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h
+cCpHeader Classes/NSMutableArray+QueueAdditions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+cCpHeader Classes/CDVWhitelist.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+cCpHeader Classes/CDVURLProtocol.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h
+cCpHeader Classes/CDVViewController.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+cCpHeader Classes/CDVCommandDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+cCpHeader Classes/CDV.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h
+cCpHeader Classes/CDVAvailability.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+cCpHeader Classes/CDVLocalStorage.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h
+cCpHeader Classes/UIDevice+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h
+cCpHeader Classes/NSArray+Comparisons.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h
+cCpHeader Classes/CDVCommandQueue.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+cCpHeader Classes/CDVCommandDelegateImpl.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+cCpHeader Classes/CDVShared.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h
+cCpHeader Classes/CDVScreenOrientationDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+cCpHeader Classes/CDVConfigParser.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h
+cCpHeader Classes/CDVJSON.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h
+cCpHeader Classes/CDVWebViewDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h
+cCpHeader Classes/CDVUserAgentUtil.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h
+cCpHeader Classes/CDVTimer.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h
+cProcessPCH /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
+c00000000525642F10000000000000176
+t1381384945
+s374
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/SDKSettings.plist
+c0000000052C2497B00000000000003B5
+t1388464507
+s949
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/CoreServices/SystemVersion.plist
+c0000000052C2498C00000000000001A0
+t1388464524
+s416
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDV.h
+c0000000052C24F8E0000000000000516
+t1388466062
+s1302
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+c0000000052C24F8E0000000000000CBF
+t1388466062
+s3263
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+c0000000052C24F8E00000000000008BA
+t1388466062
+s2234
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
+c0000000052C24F8E0000000000000473
+t1388466062
+s1139
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
+c0000000052C24F8E000000000000127C
+t1388466062
+s4732
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+c0000000052C24F8E0000000000000501
+t1388466062
+s1281
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
+c0000000052C24F8E00000000000017C5
+t1388466062
+s6085
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
+c0000000052C24F8E00000000000004CB
+t1388466062
+s1227
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
+c0000000052C24F8E0000000000000EB2
+t1388466062
+s3762
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h
+c0000000052C24F8E0000000000000401
+t1388466062
+s1025
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+c0000000052C24F8E00000000000007E6
+t1388466062
+s2022
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
+c0000000052C24F8E0000000000000DDE
+t1388466062
+s3550
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+c0000000052C24F8E00000000000003DA
+t1388466062
+s986
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m
+c0000000052C24F8E000000000000098E
+t1388466062
+s2446
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
+c0000000052C24F8E00000000000006CF
+t1388466062
+s1743
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
+c0000000052C24F8E0000000000004C7E
+t1388466062
+s19582
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+c0000000052C24F8E0000000000000892
+t1388466062
+s2194
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m
+c0000000052C24F8E00000000000016AE
+t1388466062
+s5806
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+c0000000052C24F8E0000000000000C13
+t1388466062
+s3091
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
+c0000000052C24F8E0000000000001B29
+t1388466062
+s6953
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+c0000000052C24F8E0000000000000408
+t1388466062
+s1032
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.h
+c0000000052C24F8E00000000000003E6
+t1388466062
+s998
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m
+c0000000052C24F8E00000000000006B6
+t1388466062
+s1718
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h
+c0000000052C24F8E000000000000038D
+t1388466062
+s909
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m
+c0000000052C24F8E0000000000000AA2
+t1388466062
+s2722
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
+c0000000052C24F8E000000000000041C
+t1388466062
+s1052
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
+c0000000052C24F8E0000000000002514
+t1388466062
+s9492
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
+c0000000052C24F8E0000000000000421
+t1388466062
+s1057
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
+c0000000052C24F8E00000000000012A2
+t1388466062
+s4770
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+c0000000052C24F8E0000000000000ACC
+t1388466062
+s2764
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m
+c0000000052C24F8E000000000000879D
+t1388466062
+s34717
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
+c0000000052C24F8E00000000000005A2
+t1388466062
+s1442
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
+c0000000052C24F8E0000000000003804
+t1388466062
+s14340
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+c0000000052C24F8E00000000000004B4
+t1388466062
+s1204
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
+c0000000052C24F8E00000000000027D3
+t1388466062
+s10195
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+c0000000052C24F8E0000000000000392
+t1388466062
+s914
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
+c0000000052C24F8E00000000000004D8
+t1388466062
+s1240
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+c0000000052C24F8E000000000000037D
+t1388466062
+s893
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m
+c0000000052C24F8E00000000000022CC
+t1388466062
+s8908
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
+c0000000052C24F8E00000000000005DA
+t1388466062
+s1498
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
+c0000000052C24F8E0000000000001059
+t1388466062
+s4185
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+c0000000052C24F8E00000000000003A0
+t1388466062
+s928
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
+c0000000052C24F8E0000000000000584
+t1388466062
+s1412
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
+c0000000052C24F8E0000000000000476
+t1388466062
+s1142
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
+c0000000052C24F8E0000000000000620
+t1388466062
+s1568
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/CordovaLib_Prefix.pch
+c0000000052C24F8E0000000000000346
+t1388466062
+s838
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o
+t1388467632
+s63192
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o
+t1388467632
+s60200
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o
+t1388467632
+s27784
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o
+t1388467630
+s18740
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o
+t1388467632
+s10896
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o
+t1388467631
+s109668
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o
+t1388467631
+s59544
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o
+t1388467630
+s37256
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o
+t1388467632
+s9420
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o
+t1388467632
+s22968
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o
+t1388467631
+s71264
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o
+t1388467632
+s52748
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o
+t1388467632
+s162612
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o
+t1388467632
+s71336
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o
+t1388467630
+s42384
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/Cordova.LinkFileList
+c0000000052C255AD0000000000000D43
+t1388467629
+s3395
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o
+t1388467631
+s7500
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o
+t1388467630
+s11164
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o
+t1388467630
+s17876
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o
+t1388467630
+s7012
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o
+t1388467631
+s9632
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h
+t2
+s0
+
+N/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a
+t2
+s0
+
+N/var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch
+t1388467630
+s3202376
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciesa185f42c8d72b841^9b90462d8d72b841^---0#1#1#--18"Check dependencies36"7A8E2D97-B265-40E5-A3F1-2CB660D12381-
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.058153
+e410160432.268882
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m232"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o [1mClasses/CDVCommandDelegateImpl.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilere8fa0e308d72b841^d5e944308d72b841^---0#0#1#-19%DVTDocumentLocation2@117"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m0000000000000000^3876"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o [1mClasses/CDVCommandDelegateImpl.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandDelegateImpl.o36"FACB165B-4EE8-473D-85BB-5B2590820B35-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160431.842175
+e410160432.055809
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDV.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m218"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o [1mClasses/CDVCommandQueue.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler74b7d72f8d72b841^cf4a0e308d72b841^---0#0#1#-19%DVTDocumentLocation2@110"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m0000000000000000^3834"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o [1mClasses/CDVCommandQueue.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVCommandQueue.o36"DAF78BCA-070B-4F01-8930-94549D8CDECF-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.067251
+e410160432.164868
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m218"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o [1mClasses/CDVConfigParser.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerdf4f11308d72b841^7f4d2a308d72b841^---0#0#1#-19%DVTDocumentLocation2@110"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m0000000000000000^3834"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o [1mClasses/CDVConfigParser.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVConfigParser.o36"A8A4961A-4691-474F-91D1-C2DB79C4DCEA-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.638659
+e410160430.712750
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection107"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m228"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o [1mClasses/CDVInvokedUrlCommand.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerd994a32e8d72b841^6879b62e8d72b841^---0#0#1#-19%DVTDocumentLocation2@115"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m0000000000000000^3864"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o [1mClasses/CDVInvokedUrlCommand.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVInvokedUrlCommand.o36"BD70AC4D-B3E9-42E9-9E5A-F7F90208E4CA-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.167087
+e410160432.264255
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m202"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o [1mClasses/CDVJSON.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerdfdd2a308d72b841^a8a743308d72b841^---0#0#1#-19%DVTDocumentLocation2@102"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m0000000000000000^3786"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o [1mClasses/CDVJSON.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVJSON.o36"27364291-592E-4338-AE1E-C99E4824A6FF-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160431.528990
+e410160431.703446
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDV.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m218"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o [1mClasses/CDVLocalStorage.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilera182872f8d72b841^7b16b42f8d72b841^---0#0#1#-19%DVTDocumentLocation2@110"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m0000000000000000^3834"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o [1mClasses/CDVLocalStorage.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVLocalStorage.o36"A36F828D-7992-433C-AFFD-BC258C03C764-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.742620
+e410160431.508901
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m206"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o [1mClasses/CDVPlugin.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler5035be2e8d72b841^ab75822f8d72b841^---0#0#1#-19%DVTDocumentLocation2@104"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m0000000000000000^3798"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o [1mClasses/CDVPlugin.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPlugin.o36"59B1DFE9-254E-4D76-95C7-A6F0C7B0DAA7-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.714096
+e410160430.758340
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection102"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m218"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o [1mClasses/CDVPluginResult.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler2ee3b62e8d72b841^4129c22e8d72b841^---0#0#1#-19%DVTDocumentLocation2@110"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m0000000000000000^3834"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o [1mClasses/CDVPluginResult.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVPluginResult.o36"410E54D6-40EF-40FC-8B26-779797956331-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.418151
+e410160432.462330
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection96"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m206"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o [1mClasses/CDVShared.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerc8246b308d72b841^a75b76308d72b841^---0#0#1#-19%DVTDocumentLocation2@104"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m0000000000000000^3798"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o [1mClasses/CDVShared.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVShared.o36"08518835-DE83-4E31-A1F8-896FF47B83A2-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.399379
+e410160432.431230
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection95"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m204"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o [1mClasses/CDVTimer.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler505466308d72b841^1c7b6e308d72b841^---0#0#1#-19%DVTDocumentLocation2@103"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m0000000000000000^3792"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o [1mClasses/CDVTimer.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVTimer.o36"DE0BBE6D-9E48-4577-8C09-BB58F7A520DC-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.849910
+e410160431.527584
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m216"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o [1mClasses/CDVURLProtocol.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler60aed92e8d72b841^6328872f8d72b841^---0#0#1#-19%DVTDocumentLocation2@109"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m0000000000000000^3828"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o [1mClasses/CDVURLProtocol.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVURLProtocol.o36"7E133EF2-ECE6-4E1C-9B5B-B69B27367C33-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.266193
+e410160432.397905
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m220"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o [1mClasses/CDVUserAgentUtil.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler293c44308d72b841^d90a66308d72b841^---0#0#1#-19%DVTDocumentLocation2@111"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m0000000000000000^3840"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o [1mClasses/CDVUserAgentUtil.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVUserAgentUtil.o36"1AD04E3E-6F08-4CC7-8EEC-83D4EA2154FC-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160431.511178
+e410160432.065126
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDV.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m222"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o [1mClasses/CDVViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler2ffa822f8d72b841^2fc210308d72b841^---0#0#1#-19%DVTDocumentLocation2@112"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m0000000000000000^3846"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o [1mClasses/CDVViewController.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVViewController.o36"1D8F6C6C-8CAD-475C-B4C8-D65B4C860F64-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160432.270765
+e410160432.416197
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m224"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o [1mClasses/CDVWebViewDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler836c45308d72b841^51a16a308d72b841^---0#0#1#-19%DVTDocumentLocation2@113"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m0000000000000000^3852"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o [1mClasses/CDVWebViewDelegate.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWebViewDelegate.o36"959991FF-D312-4F9B-842C-6D4828D66A13-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.790975
+e410160430.846784
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m212"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o [1mClasses/CDVWhitelist.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler6894ca2e8d72b841^a9f7d82e8d72b841^---0#0#1#-19%DVTDocumentLocation2@107"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m0000000000000000^3816"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o [1mClasses/CDVWhitelist.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/CDVWhitelist.o36"916BB322-2F2C-45D4-AE39-746BB4CBAA18-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160431.816682
+e410160431.840040
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m226"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o [1mClasses/NSArray+Comparisons.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler8c2cd12f8d72b841^1024d72f8d72b841^---0#0#1#-19%DVTDocumentLocation2@114"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m0000000000000000^3858"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o [1mClasses/NSArray+Comparisons.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSArray+Comparisons.o36"8D51E2E6-3AAF-483C-B110-5935094CD53A-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.712127
+e410160430.741163
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m214"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o [1mClasses/NSData+Base64.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilere564b62e8d72b841^51bdbd2e8d72b841^---0#0#1#-19%DVTDocumentLocation2@108"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m0000000000000000^3822"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o [1mClasses/NSData+Base64.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSData+Base64.o36"A64B0C14-1388-4D2E-A32B-E3E58CB38D17-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.638059
+e410160430.710489
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m234"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o [1mClasses/NSDictionary+Extensions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler2a6fa32e8d72b841^0de4b52e8d72b841^---0#0#1#-19%DVTDocumentLocation2@118"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m0000000000000000^3882"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o [1mClasses/NSDictionary+Extensions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSDictionary+Extensions.o36"3317ADDF-5F4C-4404-A76D-6D9BA1833C88-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160430.761033
+e410160430.789581
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m246"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o [1mClasses/NSMutableArray+QueueAdditions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler4febc22e8d72b841^e223ca2e8d72b841^---0#0#1#-19%DVTDocumentLocation2@124"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m0000000000000000^3918"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o [1mClasses/NSMutableArray+QueueAdditions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/NSMutableArray+QueueAdditions.o36"F08F32B4-B92E-456B-B780-D078370D1996-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCompileC build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160431.705045
+e410160431.815325
+r1
+xCompileC
+xbuild/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Compile /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m226"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o [1mClasses/UIDevice+Extensions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compilerd997b42f8d72b841^c4ced02f8d72b841^---0#0#1#-19%DVTDocumentLocation2@114"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m0000000000000000^3858"[1mCompileC[0m build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o [1mClasses/UIDevice+Extensions.m[0m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG -include /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch -MMD -MT dependencies -MF /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.d --serialize-diagnostics /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.dia -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.m -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/UIDevice+Extensions.o36"776DA5F1-1FBD-4AA3-B459-F023ED05C173-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDV.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h
+s410160429.305946
+e410160429.310509
+r1
+xCpHeader
+xClasses/CDV.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h133"[1mCpHeader[0m Classes/CDV.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h[0mee5e4e2d8d72b841^c91f502d8d72b841^---0#0#1#-19%DVTDocumentLocation2@110"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h0038fc05dfffdf42^704"[1mCpHeader[0m Classes/CDV.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDV.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDV.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"41A8B2C7-27A2-4568-95B3-A1A3EF2C55BC-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVAvailability.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+s410160429.313327
+e410160429.316404
+r1
+xCpHeader
+xClasses/CDVAvailability.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h157"[1mCpHeader[0m Classes/CDVAvailability.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h[0m4645502d8d72b841^c101512d8d72b841^---0#0#1#-19%DVTDocumentLocation2@122"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h0038fc05dfffdf42^740"[1mCpHeader[0m Classes/CDVAvailability.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVAvailability.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVAvailability.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"1F4CDB98-52E1-4260-BE15-FF95E2500532-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVCommandDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+s410160429.303928
+e410160429.310311
+r1
+xCpHeader
+xClasses/CDVCommandDelegate.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h163"[1mCpHeader[0m Classes/CDVCommandDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h[0mcede4d2d8d72b841^40a44f2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@125"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h0038fc05dfffdf42^749"[1mCpHeader[0m Classes/CDVCommandDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegate.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"715805C1-2786-41FC-99FC-5E594F0890CF-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVCommandDelegateImpl.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+s410160429.333795
+e410160429.337442
+r1
+xCpHeader
+xClasses/CDVCommandDelegateImpl.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h171"[1mCpHeader[0m Classes/CDVCommandDelegateImpl.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h[0m0a84552d8d72b841^2671562d8d72b841^---0#0#1#-19%DVTDocumentLocation2@129"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h0038fc05dfffdf42^761"[1mCpHeader[0m Classes/CDVCommandDelegateImpl.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandDelegateImpl.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandDelegateImpl.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"0C27F1F9-248B-4DB0-A7F3-C15DB8155BF8-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVCommandQueue.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+s410160429.328203
+e410160429.334262
+r1
+xCpHeader
+xClasses/CDVCommandQueue.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h157"[1mCpHeader[0m Classes/CDVCommandQueue.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h[0mb115542d8d72b841^bb9d552d8d72b841^---0#0#1#-19%DVTDocumentLocation2@122"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h0038fc05dfffdf42^740"[1mCpHeader[0m Classes/CDVCommandQueue.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVCommandQueue.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVCommandQueue.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"9ECD8B2A-D753-4783-926D-75AA3378E7BB-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVConfigParser.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h
+s410160429.339950
+e410160429.342530
+r1
+xCpHeader
+xClasses/CDVConfigParser.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h157"[1mCpHeader[0m Classes/CDVConfigParser.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h[0me412572d8d72b841^03b2572d8d72b841^---0#0#1#-19%DVTDocumentLocation2@122"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h0038fc05dfffdf42^740"[1mCpHeader[0m Classes/CDVConfigParser.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVConfigParser.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVConfigParser.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"7235C66D-2568-485C-9B41-3CE6A5D9A4D2-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVDebug.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h
+s410160429.291894
+e410160429.295673
+r1
+xCpHeader
+xClasses/CDVDebug.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h143"[1mCpHeader[0m Classes/CDVDebug.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h[0macc64a2d8d72b841^31b34b2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@115"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h0038fc05dfffdf42^719"[1mCpHeader[0m Classes/CDVDebug.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVDebug.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVDebug.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"1338CF26-7742-46F9-98C8-697536AE3738-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVInvokedUrlCommand.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+s410160429.280641
+e410160429.285685
+r1
+xCpHeader
+xClasses/CDVInvokedUrlCommand.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection116"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h167"[1mCpHeader[0m Classes/CDVInvokedUrlCommand.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h[0mb8e5472d8d72b841^1425492d8d72b841^---0#0#1#-19%DVTDocumentLocation2@127"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h0038fc05dfffdf42^755"[1mCpHeader[0m Classes/CDVInvokedUrlCommand.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVInvokedUrlCommand.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVInvokedUrlCommand.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"B879FADB-7DB2-4B01-AEEC-5FC38BFDCA2C-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVJSON.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h
+s410160429.342714
+e410160429.350443
+r1
+xCpHeader
+xClasses/CDVJSON.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h141"[1mCpHeader[0m Classes/CDVJSON.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h[0me5d2582d8d72b841^9bc7592d8d72b841^---0#0#1#-19%DVTDocumentLocation2@114"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h0038fc05dfffdf42^716"[1mCpHeader[0m Classes/CDVJSON.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVJSON.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVJSON.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"25A24FF9-3C35-4527-ADFE-2062E747242E-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVLocalStorage.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h
+s410160429.313751
+e410160429.317564
+r1
+xCpHeader
+xClasses/CDVLocalStorage.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h157"[1mCpHeader[0m Classes/CDVLocalStorage.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h[0m4e5e502d8d72b841^054f512d8d72b841^---0#0#1#-19%DVTDocumentLocation2@122"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h0038fc05dfffdf42^740"[1mCpHeader[0m Classes/CDVLocalStorage.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVLocalStorage.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVLocalStorage.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"62CBD380-019F-4AA5-BC42-E16147C0EB7D-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVPlugin.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+s410160429.289752
+e410160429.292923
+r1
+xCpHeader
+xClasses/CDVPlugin.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h145"[1mCpHeader[0m Classes/CDVPlugin.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h[0m2a3a4a2d8d72b841^15004b2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@116"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h0038fc05dfffdf42^722"[1mCpHeader[0m Classes/CDVPlugin.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPlugin.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPlugin.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"6F7FBEA5-5113-46FC-9B06-F4E180D6896C-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVPluginResult.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+s410160429.286986
+e410160429.290249
+r1
+xCpHeader
+xClasses/CDVPluginResult.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h157"[1mCpHeader[0m Classes/CDVPluginResult.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h[0mba86492d8d72b841^db4f4a2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@122"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h0038fc05dfffdf42^740"[1mCpHeader[0m Classes/CDVPluginResult.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVPluginResult.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVPluginResult.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"79ED7276-4430-4C46-9F95-1B287C34F98A-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVScreenOrientationDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+s410160429.338821
+e410160429.341226
+r1
+xCpHeader
+xClasses/CDVScreenOrientationDelegate.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection124"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h183"[1mCpHeader[0m Classes/CDVScreenOrientationDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h[0mbcca562d8d72b841^295c572d8d72b841^---0#0#1#-19%DVTDocumentLocation2@135"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h0038fc05dfffdf42^779"[1mCpHeader[0m Classes/CDVScreenOrientationDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVScreenOrientationDelegate.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVScreenOrientationDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"05CA01CA-6020-4F09-8ABF-F2978F114B02-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVShared.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h
+s410160429.335661
+e410160429.338658
+r1
+xCpHeader
+xClasses/CDVShared.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h145"[1mCpHeader[0m Classes/CDVShared.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h[0mb5fb552d8d72b841^57b3562d8d72b841^---0#0#1#-19%DVTDocumentLocation2@116"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h0038fc05dfffdf42^722"[1mCpHeader[0m Classes/CDVShared.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVShared.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVShared.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"743891CE-243B-43AD-A054-AAC14B2FB8BB-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVTimer.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h
+s410160429.352373
+e410160429.357611
+r1
+xCpHeader
+xClasses/CDVTimer.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h143"[1mCpHeader[0m Classes/CDVTimer.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h[0m70415a2d8d72b841^d28e5b2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@115"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h0038fc05dfffdf42^719"[1mCpHeader[0m Classes/CDVTimer.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVTimer.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVTimer.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"1420CAEB-E72B-4BDE-B419-BF14EB092B70-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVURLProtocol.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h
+s410160429.298973
+e410160429.302675
+r1
+xCpHeader
+xClasses/CDVURLProtocol.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection110"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h155"[1mCpHeader[0m Classes/CDVURLProtocol.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h[0m8e954c2d8d72b841^027e4d2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@121"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h0038fc05dfffdf42^737"[1mCpHeader[0m Classes/CDVURLProtocol.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVURLProtocol.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVURLProtocol.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"787FC289-871D-4DFA-94BC-69D3B8AF9DC9-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVUserAgentUtil.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h
+s410160429.351958
+e410160429.355316
+r1
+xCpHeader
+xClasses/CDVUserAgentUtil.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection112"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h159"[1mCpHeader[0m Classes/CDVUserAgentUtil.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h[0m18275a2d8d72b841^59f85a2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@123"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h0038fc05dfffdf42^743"[1mCpHeader[0m Classes/CDVUserAgentUtil.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVUserAgentUtil.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVUserAgentUtil.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"E2659356-E870-4426-B849-CD4A24F9F1D7-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVViewController.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+s410160429.302207
+e410160429.304736
+r1
+xCpHeader
+xClasses/CDVViewController.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h161"[1mCpHeader[0m Classes/CDVViewController.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h[0m0a694d2d8d72b841^450d4e2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@124"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h0038fc05dfffdf42^746"[1mCpHeader[0m Classes/CDVViewController.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVViewController.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVViewController.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"A4140273-2DCA-4782-8E01-396256652D63-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVWebViewDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h
+s410160429.347306
+e410160429.351136
+r1
+xCpHeader
+xClasses/CDVWebViewDelegate.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h163"[1mCpHeader[0m Classes/CDVWebViewDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h[0m98f7582d8d72b841^d6e4592d8d72b841^---0#0#1#-19%DVTDocumentLocation2@125"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h0038fc05dfffdf42^749"[1mCpHeader[0m Classes/CDVWebViewDelegate.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWebViewDelegate.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWebViewDelegate.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"385BD650-F0C9-4AED-AD4E-8A7334611E03-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/CDVWhitelist.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+s410160429.296950
+e410160429.299721
+r1
+xCpHeader
+xClasses/CDVWhitelist.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection108"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h151"[1mCpHeader[0m Classes/CDVWhitelist.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h[0mf5114c2d8d72b841^01bd4c2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@119"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h0038fc05dfffdf42^731"[1mCpHeader[0m Classes/CDVWhitelist.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/CDVWhitelist.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/CDVWhitelist.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"71E88227-FD74-41FB-8A1C-91F65FE52B01-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/NSArray+Comparisons.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h
+s410160429.319358
+e410160429.328876
+r1
+xCpHeader
+xClasses/NSArray+Comparisons.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h165"[1mCpHeader[0m Classes/NSArray+Comparisons.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h[0m60cd512d8d72b841^c43f542d8d72b841^---0#0#1#-19%DVTDocumentLocation2@126"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h0038fc05dfffdf42^752"[1mCpHeader[0m Classes/NSArray+Comparisons.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSArray+Comparisons.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSArray+Comparisons.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"60469941-33E6-4F9A-B0E7-8E16BCE9E390-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/NSData+Base64.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h
+s410160429.285201
+e410160429.287806
+r1
+xCpHeader
+xClasses/NSData+Base64.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h153"[1mCpHeader[0m Classes/NSData+Base64.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h[0m1b10492d8d72b841^b0af492d8d72b841^---0#0#1#-19%DVTDocumentLocation2@120"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h0038fc05dfffdf42^734"[1mCpHeader[0m Classes/NSData+Base64.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSData+Base64.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSData+Base64.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"1BA1D20C-9845-41E2-AAFE-FE212F0357A3-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/NSDictionary+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h
+s410160429.280009
+e410160429.283588
+r1
+xCpHeader
+xClasses/NSDictionary+Extensions.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h173"[1mCpHeader[0m Classes/NSDictionary+Extensions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h[0m15c5472d8d72b841^359a482d8d72b841^---0#0#1#-19%DVTDocumentLocation2@130"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h0024d08c56fbdf42^764"[1mCpHeader[0m Classes/NSDictionary+Extensions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSDictionary+Extensions.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSDictionary+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"8C3D1920-C6B3-4F97-97BF-AD573E26024B-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/NSMutableArray+QueueAdditions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+s410160429.295167
+e410160429.297701
+r1
+xCpHeader
+xClasses/NSMutableArray+QueueAdditions.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection125"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h185"[1mCpHeader[0m Classes/NSMutableArray+QueueAdditions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h[0m529c4b2d8d72b841^c1384c2d8d72b841^---0#0#1#-19%DVTDocumentLocation2@136"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h0038fc05dfffdf42^782"[1mCpHeader[0m Classes/NSMutableArray+QueueAdditions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/NSMutableArray+QueueAdditions.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/NSMutableArray+QueueAdditions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"BB667996-99C1-4D34-9E3C-FCB0649CD8D9-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CCpHeader Classes/UIDevice+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h
+s410160429.318893
+e410160429.322327
+r1
+xCpHeader
+xClasses/UIDevice+Extensions.h
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Copy /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h165"[1mCpHeader[0m Classes/UIDevice+Extensions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h[0mb0af512d8d72b841^0e86522d8d72b841^---0#0#1#-19%DVTDocumentLocation2@126"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h0038fc05dfffdf42^752"[1mCpHeader[0m Classes/UIDevice+Extensions.h [1m/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova/UIDevice+Extensions.h[0m    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/Classes/UIDevice+Extensions.h /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include/Cordova36"23A9BC13-A694-4569-9624-D2C595611653-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CLibtool /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a normal i386
+s410160432.473219
+e410160432.523977
+r1
+xLibtool
+x/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a
+xnormal
+xi386
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"[1mLibtool[0m /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a normal i386113"[1mLibtool[0m /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a normal i386583879308d72b841^f22786308d72b841^---0#0#1#--1039"[1mLibtool[0m /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a normal i386    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -filelist /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Objects-normal/i386/Cordova.LinkFileList -o /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/libCordova.a36"82CAEA3D-DD59-4EF6-BABE-615CB47AAA65-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
+CProcessPCH /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s410160429.369072
+e410160430.628786
+r1
+xProcessPCH
+x/var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch
+xCordovaLib_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+d/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/CordovaLib_Prefix.pch
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection32"Precompile CordovaLib_Prefix.pch299"[1mProcessPCH[0m /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler0aa25e2d8d72b841^c2f9a02e8d72b841^---0#0#1#-19%DVTDocumentLocation2@106"file://localhost/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/CordovaLib_Prefix.pch0000000000000000^3784"[1mProcessPCH[0m /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch CordovaLib_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=80 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fcolor-diagnostics -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-generated-files.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-own-target-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-all-target-headers.hmap -iquote /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/Cordova-project-headers.hmap -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources/i386 -I/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/build/CordovaLib.build/Debug-iphonesimulator/CordovaLib.build/DerivedSources -F/Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/build/emulator -DDEBUG --serialize-diagnostics /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.dia -MMD -MT dependencies -MF /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.d -c /Users/yakeli/Projects/CathAssist/trunk/app/platforms/ios/CordovaLib/CordovaLib_Prefix.pch -o /var/folders/l_/ygttxky54b3gcbx5ftf55gqw0000gn/C/com.apple.DeveloperTools/5.0.2-5A3005/Xcode/SharedPrecompiledHeaders/CordovaLib_Prefix-hdbopyphbwfujcaqqbdzvuxcojbm/CordovaLib_Prefix.pch.pch36"504DEDDC-8DAC-4F12-8478-DA0CA785AC77-
+bB4EC45B8-05AA-4735-B306-55BDD7778568
+
