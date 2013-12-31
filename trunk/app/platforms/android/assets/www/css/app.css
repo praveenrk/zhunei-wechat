@@ -1,0 +1,40 @@
+ul.artlist{
+	list-style-type: none;
+	width:100%;
+}
+
+ul.artlist a{
+	text-decoration: none;
+	color: rgb(137,137,137);
+}
+
+h3.arttitle{
+	font-size: 1.2em;
+}
+
+img.artimg{
+	float: left;
+	margin: 0 15px 0 0;
+	max-width: 80px;
+}
+
+p.artcontent{
+	font-size: 1em;
+}
+
+li.artitem{
+	padding: 0.8em;
+	overflow: auto;
+}
+
+li.artitem:hover {
+	cursor: pointer;
+}
+
+#stuff_detail p{
+    font-size:1em;
+}
+
+audio{
+	width:100%;
+}
