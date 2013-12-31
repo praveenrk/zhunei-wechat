@@ -1,0 +1,66 @@
+ul.artlist{
+	list-style-type: none;
+	width:100%;
+}
+
+ul.artlist a{
+	text-decoration: none;
+	color: rgb(137,137,137);
+}
+
+h3.arttitle{
+	font-size: 1.2em;
+}
+
+img.artimg{
+	float: left;
+	margin: 0 15px 0 0;
+	max-width: 80px;
+}
+
+p.artcontent{
+	font-size: 1em;
+}
+
+li.artitem{
+	padding: 0.8em;
+	overflow: auto;
+}
+
+li.artitem:hover {
+	cursor: pointer;
+}
+#stuff_detail, .main-content{
+	padding: 20px 10px 10px;
+	line-height: 1.5em;
+}
+#stuff_detail p{
+    font-size:1em;
+}
+
+#stuff_detail img{
+    margin: 0 10px 10px 0;
+}
+audio{
+	width:100%;
+}
+
+.afScrollbar{
+	opacity: .4;
+}
+.gap {
+	margin: 10px 0;
+}
+
+.clearfix:before
+,.clearfix:after{
+	display:table;
+	content:" "
+}
+.clearfix:after{
+	clear:both
+}
+.music-info {
+	text-align: center;
+	line-height: 2em;
+}
