@@ -6,9 +6,9 @@
 <h2>首页</h2>
 <ul class="list">
 	 <li>
-		<a href="/stuff/detail/{{=it.date.Format("yyyy-MM-dd")}}/thought" data-ignore="true">今日读经及反省</a>
+		<a href="/stuff/detail/{{=it.date.Format("yyyy-MM-dd")}}/thought" data-ignore="true">今日福音</a>
 	</li>
 	 <li>
-		<a href="{{=(window.localStorage.lastbible ? window.localStorage.lastbible : '/bible/')}}" data-ignore="true">最近读经位置</a>
+		<a href="{{=(window.localStorage.lastbible ? window.localStorage.lastbible : '/bible/')}}" data-ignore="true">最近读经</a>
 	</li>
 </ul>
