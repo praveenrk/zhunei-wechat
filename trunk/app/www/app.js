@@ -33,6 +33,6 @@ window.addEventListener("popstate", function(){
 	}
 	else
 	{
-		$.mvc.route("/stuff");//Load the default todo route
+		$.mvc.route("/home");//Load the default todo route
 	}
 });
