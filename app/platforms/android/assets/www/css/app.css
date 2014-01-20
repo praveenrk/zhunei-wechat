@@ -31,10 +31,55 @@ li.artitem:hover {
 	cursor: pointer;
 }
 
+#stuff_title h2{
+	text-align: center;
+}
+
+#stuff_detail, .main-content{
+	padding: 20px 10px 10px;
+	line-height: 1.5em;
+}
 #stuff_detail p{
     font-size:1em;
 }
 
+#stuff_detail img{
+	width: 99%;
+	margin-left: 0%;
+	margin-right: 1%;
+	margin-bottom: 20px;
+}
+
+
 audio{
 	width:100%;
+}
+
+.afScrollbar{
+	opacity: .4;
+}
+.gap {
+	margin: 10px 0;
+}
+
+.clearfix:before
+,.clearfix:after{
+	display:table;
+	content:" "
+}
+.clearfix:after{
+	clear:both
+}
+.music-info {
+	text-align: center;
+	line-height: 2em;
+}
+
+#pageTitle {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.t3 {
+	font-weight: bold;
 }

@@ -4,5 +4,7 @@
 	$("#menubadge")[0].style.float = 'left';
 	dtRadio = new Date(it.item.desc);
 }}
-<h2>梵蒂冈中文广播({{=it.item.desc}})</h2>
-<audio src="{{=it.item.mp3}}" controls></audio>
+<div class="main-content music-info">
+	<h2>梵蒂冈中文广播({{=it.item.desc}})</h2>
+	<audio src="{{=it.item.mp3}}" controls></audio>
+</div>
