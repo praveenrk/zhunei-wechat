@@ -79,3 +79,7 @@ audio{
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+.t3 {
+	font-weight: bold;
+}
