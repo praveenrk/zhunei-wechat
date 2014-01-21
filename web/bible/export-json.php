@@ -138,7 +138,8 @@ foreach ($body->childNodes AS $item)
 	}
 	else if($class=='s')
 	{
-		$ctext = $ctext.$doc->saveHTML($item);
+		$stext = '<p class="s">'.$item->getAttribute('value').'&nbsp;&nbsp;'.$item->textContent.'</p>';
+		$ctext = $ctext.$stext;
 	}
 }
 $jsonC['text'] = $ctext;
