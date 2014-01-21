@@ -17,6 +17,17 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+//在自带浏览器中打开链接
+function openLinkInExternal(_l)
+{
+	if (navigator.app)
+	{
+		alert('test for link');
+		navigator.app.loadUrl(_l,{ openExternal:true });
+		return;
+	}
+	window.open(_l,"_blank");
+}
 
 var app = new $.mvc.app();
 

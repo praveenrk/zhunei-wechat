@@ -52,7 +52,6 @@
 	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
-	<script type="text/javascript" charset="utf-8" src="./cordova.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./app.js"></script>
 	<script>
 		var webRoot = "/app/";
@@ -76,6 +75,14 @@
 			if(_t && _t!='')
 			{
 				$("#afui").get(0).className=_t;
+			}
+			
+			//加载cordova.js
+			if ($.os.android || $.os.ios || $.os.ios7)
+			{
+				var script = document.createElement("script");
+				script.src = "./cordova.js";
+				var tag = $("head").append(script);
 			}
 		});
 		
