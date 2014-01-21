@@ -64,7 +64,7 @@ function mergecitem($item,$t1,$c,$sc)
 			else
 			{
 				$sitem = $lastsitem->parentNode->insertBefore(new DOMElement('p'),$lastsitem->nextSibling->nextSibling);
-				$sitem->setAttribute('class','c');
+				$sitem->setAttribute('class','s');
 				$sitem->setAttribute('value',$i+1);
 				$sitem->appendChild(new DOMText(zhconversion_hans($contents)));
 			}
