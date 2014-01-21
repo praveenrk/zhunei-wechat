@@ -36,3 +36,15 @@ window.addEventListener("popstate", function(){
 		$.mvc.route("/stuff");//Load the default todo route
 	}
 });
+
+document.addEventListener("backbutton", function(e){
+	if(window.location.href.substr(window.location.href.length-5)=="stuff")
+	{
+		e.preventDefault();
+		navigator.app.exitApp();
+	}
+	else
+	{
+		navigator.app.backHistory()
+	}
+}, false);

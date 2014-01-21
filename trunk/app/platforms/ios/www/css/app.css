@@ -30,6 +30,11 @@ li.artitem{
 li.artitem:hover {
 	cursor: pointer;
 }
+
+#stuff_title h2{
+	text-align: center;
+}
+
 #stuff_detail, .main-content{
 	padding: 20px 10px 10px;
 	line-height: 1.5em;
@@ -39,8 +44,13 @@ li.artitem:hover {
 }
 
 #stuff_detail img{
-    margin: 0 10px 10px 0;
+	width: 99%;
+	margin-left: 0%;
+	margin-right: 1%;
+	margin-bottom: 20px;
 }
+
+
 audio{
 	width:100%;
 }
@@ -63,4 +73,13 @@ audio{
 .music-info {
 	text-align: center;
 	line-height: 2em;
+}
+
+#pageTitle {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.t3 {
+	font-weight: bold;
 }
