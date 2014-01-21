@@ -22,16 +22,28 @@ package org.cathassist.app;
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class CathAssist extends CordovaActivity 
-{
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        super.init();
-        // Set by <content src="index.html" /> in config.xml
-        super.loadUrl(Config.getStartUrl());
-        //super.loadUrl("file:///android_asset/www/index.html")
-    }
-}
+import com.umeng.analytics.MobclickAgent;
 
+public class CathAssist extends CordovaActivity {
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		super.init();
+		// Set by <content src="index.html" /> in config.xml
+		super.loadUrl(Config.getStartUrl());
+		// super.loadUrl("file:///android_asset/www/index.html")
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+}
