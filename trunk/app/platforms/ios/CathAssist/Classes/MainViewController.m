@@ -90,6 +90,20 @@
     return [super shouldAutorotateToInterfaceOrientation:interfaceOrientation];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL* url = [request URL];
+    
+    if(([url fragment] != NULL) && ([[url fragment] rangeOfString:@"cordova=external"].location != NSNotFound))
+    {
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+            return NO;
+        }
+    }
+    
+    return [super webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
+}
 /* Comment out the block below to over-ride */
 
 /*

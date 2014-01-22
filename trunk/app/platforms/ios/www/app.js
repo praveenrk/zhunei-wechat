@@ -17,6 +17,21 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+//在自带浏览器中打开链接
+function openLinkInExternal(_l)
+{
+	if (navigator.app)
+	{
+		navigator.app.loadUrl(_l,{ openExternal:true });
+		return;
+	}
+    else if($.os.ios || $.os.ios7)
+    {
+        window.open(_l+'#cordova=external',"_blank");
+        return;
+    }
+	window.open(_l,"_blank");
+}
 
 var app = new $.mvc.app();
 
