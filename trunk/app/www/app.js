@@ -22,10 +22,14 @@ function openLinkInExternal(_l)
 {
 	if (navigator.app)
 	{
-		alert('test for link');
 		navigator.app.loadUrl(_l,{ openExternal:true });
 		return;
 	}
+    else if($.os.ios || $.os.ios7)
+    {
+        window.open(_l+'#cordova=external',"_blank");
+        return;
+    }
 	window.open(_l,"_blank");
 }
 
