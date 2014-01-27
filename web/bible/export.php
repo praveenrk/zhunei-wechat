@@ -102,7 +102,8 @@ foreach ($body->childNodes AS $item)
 	}
 	else if($class=='s')
 	{
-		fwrite($fc,$doc->saveHTML($item));
+		$stext = '<p class="s">'.$item->getAttribute('value').'&nbsp;&nbsp;'.$item->textContent.'</p>';
+		fwrite($fc,$stext);
 	}
 }
 fwrite($fc,'</body>');
