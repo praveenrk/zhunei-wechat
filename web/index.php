@@ -58,7 +58,7 @@
 			<h2><a href="/music/music.php" alt="教会歌曲">随机听歌（放松一下）</a></h2>
 			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
-			<h1>应用下载</h1>
+			<h1><a href="app.html">应用下载</a></h1>
 			<h2><a href="http://bible.cathassist.org/" alt="圣经小助手">圣经小助手</a></h2>
 			<h2><a href="http://app.cathassist.org/desc.html" alt="天主教小助手">天主教小助手</a></h2>
 			</br></br>
