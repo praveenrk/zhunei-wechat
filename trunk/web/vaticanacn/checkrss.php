@@ -94,7 +94,8 @@
 		$result = mysql_query('select id from vaticanacn where local="'.$filestr.'";');
 		if(mysql_num_rows($result)<1)
 		{
-			getArticle($item->link,$item->title,$filestr);
+			$ititle = trim($item->title);
+			getArticle($item->link,$ititle,$filestr);
 			echo('<a href="'.ROOT_WEB_URL.'vaticanacn/'.$filestr.'">'.$item->title.'</a></br><br/>');
 		}
 	}
