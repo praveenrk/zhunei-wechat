@@ -9,9 +9,26 @@
 		<link href="http://cathassist.org/css/grouplist.css" type="text/css" rel="stylesheet">
 		<style type="text/css">
 		img{width:90%;max-width:500px;}
+		#popweixin
+		{
+			display:none;
+		}
 		</style>
+		<script type="text/javascript">
+		window.onload=function()
+		{
+			var ua = navigator.userAgent.toLowerCase();
+			if(/micromessenger/.test(ua))
+			{
+				document.getElementById("popweixin").style.display="block";
+			}
+		}
+		</script>
 	</head>
 	<body>
+		<div id='popweixin'>
+			<p><font color="#FF0000">微信用户若不能安装，请点击右上角的跳转按钮，选择『在Safari中打开』（iOS）或『在浏览器中打开』（Android），即可正常跳转并下载。</font></p>
+		</div>
 		<center><h2>圣经小助手（思高版圣经）</h2></center>
 		<p>　　凡受天主默感所写的圣经，为教训、为督责、为矫正、为教导人学正义，都是有益的，好使天主的人成全，适於行各种善工。（弟茂德后书3：16-17）</p><p>　　读经、祈祷，是我们基督徒与天主交谈的重要方式。读经，即是我们聆听天主的话语，默想天主对我们的教导。天主的圣言是我们步履前的灵灯，是我们路途上的光明，通过阅读圣经来明白天主在我们身上的旨意，倚靠天主来走我们人生的道路。</p><p>
 　　虽然现代人生活节奏很快，但在我们繁忙的生活中，也不可远离天主、离弃天主的道路。感谢天主所赐下的智慧与恩宠。《圣经小助手》作为新时代的读经、灵修、福传工具，成为了我们基督徒的好帮手。本软件选用了大公教会最常用的<b>思高版圣经</b>，包含了以下功能：</p><p>
