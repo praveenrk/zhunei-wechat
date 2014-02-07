@@ -37,7 +37,7 @@ function shareTimeline() {
 }
 function shareWeibo() {
     WeixinJSBridge.invoke(\'shareWeibo\',{
-                            "content": descContent,
+                            "content": "#天主教小助手# " + descContent + lineLink,
                             "url": lineLink,
                             }, function(res) {
                             _report(\'weibo\', res.err_msg);
