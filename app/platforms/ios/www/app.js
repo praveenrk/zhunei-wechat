@@ -17,6 +17,28 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+function onDeviceReady()
+{
+	// waiting for button
+	document.addEventListener("backbutton", function(e){
+		if(window.location.href.substr(window.location.href.length-5)=="stuff")
+		{
+			e.preventDefault();
+			navigator.app.exitApp();
+		}
+		else
+		{
+			navigator.app.backHistory();
+		}
+	}, false);
+}
+
+//初始化cordova函数
+function initCordovaFunc()
+{
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
 //在自带浏览器中打开链接
 function openLinkInExternal(_l)
 {
@@ -51,15 +73,3 @@ window.addEventListener("popstate", function(){
 		$.mvc.route("/stuff");//Load the default todo route
 	}
 });
-
-document.addEventListener("backbutton", function(e){
-	if(window.location.href.substr(window.location.href.length-5)=="stuff")
-	{
-		e.preventDefault();
-		navigator.app.exitApp();
-	}
-	else
-	{
-		navigator.app.backHistory()
-	}
-}, false);

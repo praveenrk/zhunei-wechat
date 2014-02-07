@@ -200,6 +200,20 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.media/www/MediaError.js",
+        "id": "org.apache.cordova.media.MediaError",
+        "clobbers": [
+            "window.MediaError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.media/www/Media.js",
+        "id": "org.apache.cordova.media.Media",
+        "clobbers": [
+            "window.Media"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.network-information/www/network.js",
         "id": "org.apache.cordova.network-information.network",
         "clobbers": [
@@ -213,20 +227,6 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.media/www/MediaError.js",
-        "id": "org.apache.cordova.media.MediaError",
-        "clobbers": [
-            "window.MediaError"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.media/www/Media.js",
-        "id": "org.apache.cordova.media.Media",
-        "clobbers": [
-            "window.Media"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -238,8 +238,8 @@ module.exports.metadata =
     "org.apache.cordova.file-transfer": "0.4.0",
     "org.apache.cordova.geolocation": "0.3.5",
     "org.apache.cordova.inappbrowser": "0.3.0",
-    "org.apache.cordova.network-information": "0.2.6",
-    "org.apache.cordova.media": "0.2.7"
+    "org.apache.cordova.media": "0.2.7",
+    "org.apache.cordova.network-information": "0.2.6"
 }
 // BOTTOM OF METADATA
 });
