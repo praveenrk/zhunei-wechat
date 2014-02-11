@@ -49,6 +49,7 @@ if(User::isLogin())
 {
 	echo "欢迎你，".User::getName();
 	echo '<input type="button" name="btnLogin" value=" 注 销 " onclick="onlogout()"/>';
+	echo '<h2><a href="/articles/publish.php">发表『主内分享』文章</a></h2>';
 }
 else
 {
