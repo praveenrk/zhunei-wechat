@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0B4D3D01BF504DBE9A5B3250 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6B987FB486436C8089E716 /* CDVFileTransfer.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -47,6 +48,7 @@
 		92D4F56018A4D2BA00A7C7F8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D4F54E18A4D2BA00A7C7F8 /* Icon@2x.png */; };
 		92D4F56118A4D2BA00A7C7F8 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D4F54F18A4D2BA00A7C7F8 /* iTunesArtwork.png */; };
 		92D4F56218A4D2BA00A7C7F8 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92D4F55018A4D2BA00A7C7F8 /* iTunesArtwork@2x.png */; };
+		92F70BF118ABAD7C00A56D45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F70BF018ABAD7C00A56D45 /* Images.xcassets */; };
 		99A29CC55D9B418C877845BA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22741956B7394F80B9CBA570 /* CoreMotion.framework */; };
 		AE8FD3F6721542B3BE178A30 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 780C384A31504082A98E4072 /* CDVFile.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
@@ -131,6 +133,7 @@
 		92D4F54E18A4D2BA00A7C7F8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		92D4F54F18A4D2BA00A7C7F8 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		92D4F55018A4D2BA00A7C7F8 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		92F70BF018ABAD7C00A56D45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CathAssist/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		C7B3CBBD46AD400087571D93 /* SystemConfiguration.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D142E2D1B0344D9D84736869 /* CDVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = org.apache.cordova.geolocation/CDVLocation.h; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				92F70BF018ABAD7C00A56D45 /* Images.xcassets */,
 				92D4F51818A4D14200A7C7F8 /* icons */,
 				30A0434214DC770100060A13 /* de.lproj */,
 				30A0434514DC770100060A13 /* se.lproj */,
@@ -434,6 +438,7 @@
 				92D4F55518A4D2BA00A7C7F8 /* Icon-60.png in Resources */,
 				92D4F56218A4D2BA00A7C7F8 /* iTunesArtwork@2x.png in Resources */,
 				92D4F55818A4D2BA00A7C7F8 /* Icon-72@2x.png in Resources */,
+				92F70BF118ABAD7C00A56D45 /* Images.xcassets in Resources */,
 				92D4F55118A4D2BA00A7C7F8 /* Icon-40.png in Resources */,
 				92D4F55218A4D2BA00A7C7F8 /* Icon-40@2x.png in Resources */,
 				92D4F55F18A4D2BA00A7C7F8 /* Icon.png in Resources */,
@@ -534,7 +539,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -567,7 +574,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CathAssist/CathAssist-Prefix.pch";
