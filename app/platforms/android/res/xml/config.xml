@@ -33,7 +33,7 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
-    <name>CathAssist</name>
+    <name>天主教小助手</name>
     <description>
         天主教小助手官方应用
     </description>
