@@ -27,7 +27,6 @@
 	<link rel="stylesheet" type="text/css" href="./css/src/bb.css" />
 	<link rel="stylesheet" type="text/css" href="./css/src/ios7.css" />
 	<link rel="stylesheet" type="text/css" href="./css/src/ios.css" />
-	<link rel="stylesheet" type="text/css" href="./css/social.umeng.css" />
 	<link rel="stylesheet" type="text/css" href="./css/app.css" />
 	<link rel="shortcut icon" href="favicon.ico" />
 	<link href="http://app.cathassist.org/res/icon/ios/icon-72.png" rel="apple-touch-icon-precomposed" />
@@ -55,7 +54,6 @@
 	<script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
 	<script type="text/javascript" charset="utf-8" src="./app.js"></script>
 	<script>
-		window.umappkey = '52efa14d56240b99c3286166';
 		var webRoot = "/app/";
 		$.ui.autoLaunch = false;
 		$.ui.openLinksNewTab = false;
@@ -86,6 +84,10 @@
 				script.src = "./cordova.js";
 				var tag = $("head").append(script);
 				initCordovaFunc();
+				
+				var script = document.createElement("script");
+				script.src = "./js/player.js";
+				var tag = $("head").append(script);
 			}
 		});
 		
@@ -97,10 +99,19 @@
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
 	</div>
 	<div id="content">
-		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='none'>
+		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='audioPlayer'>
 			<div id='main'></div>
 		</div>
 	</div>
+	<footer id='audioPlayer'>
+		<div style="float:left;width:54px;height:48px;">
+			<input id="playBtn" type="button" class="play" onclick="onClickPlayBtn()" />
+		</div>
+		<div style="width:auto;height:48px;margin-left:54px;position: relative">
+			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
+			<div style="width:100%;position:absolute;bottom:0;"><input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input></div>
+		</div>
+	</footer>
 	<nav>
 		<ul class="list">
 			<li><a href="/home">首页</a></li>
@@ -122,8 +133,5 @@
 		</ul>
 	</nav>
 </div>
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/html2canvas.js"></script>
-<script type="text/javascript" src="./js/social.umeng.js"></script>
 </body>
 </html>
