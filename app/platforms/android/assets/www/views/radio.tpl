@@ -7,6 +7,6 @@
 <div class="main-content music-info">
 	<h2>{{=it.item.title}}</h2>
 	<div class="button-grouped flex">
-		<a class="button" href="#" onclick="audioPlayer.setAudio('{{=it.item.title}}','{{=it.item.url}}',true);">播放广播</a>
+		<a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio('{{=it.item.title}}','{{=it.item.url}}',true);">播放广播</a>
 	</div>
 </div>

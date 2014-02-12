@@ -173,7 +173,10 @@
 		$ret["lod"] =  ($stuff_lod);
 		if($isjson==2)
 		{
-			$ret["thought"] =  ($stuff_thought);
+			$ret["thought"] =  '
+	<div class="button-grouped flex">
+		<a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio(\'反省（'.$date->format('Y-m-d').'）\',\'http://bcs.duapp.com/cathassist/thought/mp3/'.$date->format('Y-m-d').'.mp3\',true);">音频播放</a>
+	</div>'.($stuff_thought);
 		}
 		else
 		{
