@@ -24,6 +24,7 @@ function onDeviceReady()
 		if(window.location.href.substr(window.location.href.length-5)=="stuff")
 		{
 			e.preventDefault();
+			audioPlayer.release();
 			navigator.app.exitApp();
 		}
 		else
@@ -31,6 +32,11 @@ function onDeviceReady()
 			navigator.app.backHistory();
 		}
 	}, false);
+		
+	var dtNow = new Date();
+	var title = "今日读经("+dtNow.Format("yyyy-MM-dd")+")";
+	var link = "http://bcs.duapp.com/cathassist/thought/mp3/"+dtNow.Format("yyyy-MM-dd")+".mp3";
+	audioPlayer.setAudio(title,link);
 }
 
 //初始化cordova函数

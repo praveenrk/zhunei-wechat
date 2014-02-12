@@ -84,6 +84,10 @@
 				script.src = "./cordova.js";
 				var tag = $("head").append(script);
 				initCordovaFunc();
+				
+				var script = document.createElement("script");
+				script.src = "./js/player.js";
+				var tag = $("head").append(script);
 			}
 		});
 		
@@ -95,10 +99,19 @@
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
 	</div>
 	<div id="content">
-		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='none'>
+		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='audioPlayer'>
 			<div id='main'></div>
 		</div>
 	</div>
+	<footer id='audioPlayer'>
+		<div style="float:left;width:54px;height:48px;">
+			<input id="playBtn" type="button" class="play" onclick="onClickPlayBtn()" />
+		</div>
+		<div style="width:auto;height:48px;margin-left:54px;position: relative">
+			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
+			<div style="width:100%;position:absolute;bottom:0;"><input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input></div>
+		</div>
+	</footer>
 	<nav>
 		<ul class="list">
 			<li><a href="/home">首页</a></li>
