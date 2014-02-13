@@ -124,7 +124,7 @@ var audioPlayer = {
 				console.log("create new media...");
 				caAudioPlayer = new Media(audioPlayer.src,onPlayerSuccess,onPlayerError);
 			}
-			caAudioPlayer.play();
+			caAudioPlayer.play({ playAudioWhenScreenIsLocked : true });
 			console.log("play audio file "+audioPlayer.src);
 		}
 		
