@@ -21,6 +21,9 @@ var playButton = document.getElementById('playbutton');
 var stopButton = document.getElementById('stopbutton');
 var activityIndicator = document.getElementById('activityindicator');
 var playRange = document.getElementById('playRange');
+stopButton.style.display = 'none';
+activityIndicator.style.display = 'none';
+playButton.style.display = 'block';
 
 
 
@@ -39,6 +42,11 @@ function pad2(number) {
 	return (number < 10 ? '0' : '') + number
 }
 
+function onPlayRangeChange(v)
+{
+	audioPlayer.seekTo(v);
+}
+
 var myaudio = new Audio();
 var isPlaying = false;
 var readyStateInterval = null;
@@ -50,6 +58,7 @@ var audioPlayer = {
 		if(_l!=myaudio.src)
 		{
 			myaudio.src = _l;
+			playRange.value = 0;
 		}
 		$("#playTitle").get(0).textContent=_t;
 		console.log("set audio to new "+myaudio.src);
@@ -65,17 +74,16 @@ var audioPlayer = {
 	
 		readyStateInterval = setInterval(function(){
 			 if (myaudio.readyState <= 2) {
-				 playButton.style.display = 'none';
-				 activityIndicator.style.display = 'block';
-				 textPosition.innerHTML = 'loading...';
+				playButton.style.display = 'none';
+				activityIndicator.style.display = 'block';
+				playRange.value = 0;
 			 }
 		},1000);
 		myaudio.addEventListener("timeupdate", function() {
-			 var s = parseInt(myaudio.currentTime % 60);
-			 var m = parseInt((myaudio.currentTime / 60) % 60);
-			 var h = parseInt(((myaudio.currentTime / 60) / 60) % 60);
-			 if (isPlaying && myaudio.currentTime > 0) {
-				 textPosition.innerHTML = pad2(h) + ':' + pad2(m) + ':' + pad2(s);
+			 if (isPlaying && myaudio.currentTime > 0)
+			 {
+				playRange.value = myaudio.currentTime;
+				playRange.max = myaudio.duration;
 			 }
 		}, false);
 		myaudio.addEventListener("error", function() {
@@ -98,18 +106,7 @@ var audioPlayer = {
 			 stopButton.style.display = 'block';
 		}, false);
 		myaudio.addEventListener("ended", function() {
-			 //console.log('myaudio ENDED');
 			 audioPlayer.stop();
-			 // navigator.notification.alert('Streaming failed. Possibly due to a network error.', null, 'Stream error', 'OK');
-			 // navigator.notification.confirm(
-			 //	'Streaming failed. Possibly due to a network error.', // message
-			 //	onConfirmRetry,	// callback to invoke with index of button pressed
-			 //	'Stream error',	// title
-			 //	'Retry,OK'		// buttonLabels
-			 // );
-			 if (window.confirm('Streaming failed. Possibly due to a network error. Retry?')) {
-			 	onConfirmRetry();
-			 }
 		}, false);
 	},
 	pause: function() {
@@ -127,8 +124,22 @@ var audioPlayer = {
 		stopButton.style.display = 'none';
 		activityIndicator.style.display = 'none';
 		playButton.style.display = 'block';
+		_s = myaudio.src;
 		myaudio = null;
-		myaudio = new Audio(myaudioURL);
-		textPosition.innerHTML = '';
+		myaudio = new Audio(_s);
+		playRange.value = 0;
+	},
+	seekTo: function(v){
+		if(myaudio.duration)
+		{
+			myaudio.currentTime = v;
+		}
 	}
 };
+
+{
+	var dtNow = new Date();
+	var title = "今日读经("+dtNow.Format("yyyy-MM-dd")+")";
+	var link = "http://bcs.duapp.com/cathassist/thought/mp3/"+dtNow.Format("yyyy-MM-dd")+".mp3";
+	audioPlayer.setAudio(title,link,false);
+}

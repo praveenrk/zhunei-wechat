@@ -8,8 +8,8 @@
 	<h3>专辑：{{=it.item.alume}}</h3>
 	<h3>歌手：{{=it.item.singer}}</h3>
 	<img src="{{=it.item.pic}}"></img>
-	<audio src="{{=it.item.mp3}}" controls></audio>
 </div>
 <div class="button-grouped flex">
+	<a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio('{{=it.item.name}}','{{=it.item.mp3}}',true);">播放歌曲</a>
 	<a class="button icon right" href="/music">下一首</a>
 </div>
