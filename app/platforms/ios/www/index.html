@@ -77,6 +77,13 @@
 				$("#afui").get(0).className=_t;
 			}
 			
+			{
+				//初始化播放器
+				var script = document.createElement("script");
+				script.src = "./js/player.js";
+				var tag = $("head").append(script);
+			}
+			
 			//加载cordova.js
 			if ($.os.android || $.os.ios || $.os.ios7)
 			{
@@ -84,10 +91,6 @@
 				script.src = "./cordova.js";
 				var tag = $("head").append(script);
 				initCordovaFunc();
-				
-				var script = document.createElement("script");
-				script.src = "./js/player.js";
-				var tag = $("head").append(script);
 			}
 		});
 		
@@ -105,7 +108,9 @@
 	</div>
 	<footer id='audioPlayer'>
 		<div style="float:left;width:54px;height:48px;">
-			<input id="playBtn" type="button" class="play" onclick="onClickPlayBtn()" />
+			<input id="playbutton" type="button" class="play" onclick="audioPlayer.play();return false;" />
+			<input id="activityindicator" type="button" class="activityindicator" onclick="audioPlayer.stop();return false;" />
+			<input id="stopbutton" type="button" class="pause" onclick="audioPlayer.pause();return false;" />
 		</div>
 		<div style="width:auto;height:48px;margin-left:54px;position: relative">
 			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
@@ -128,6 +133,14 @@
 			<li><a href="/bible">思高版圣经</a></li>
 			<li><a href="/prayer">常用祈祷文</a></li>
 			<li><a href="/catechism">天主教教理</a></li>
+			<li><a href="/codex">天主教法典</a></li>
+			<li><a href="/settings">设置</a></li>
+		</ul>
+	</nav>
+</div>
+</body>
+</html>
+i>
 			<li><a href="/codex">天主教法典</a></li>
 			<li><a href="/settings">设置</a></li>
 		</ul>
