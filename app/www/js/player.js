@@ -24,6 +24,7 @@ var playRange = document.getElementById('playRange');
 stopButton.style.display = 'none';
 activityIndicator.style.display = 'none';
 playButton.style.display = 'block';
+var audioSrcLink = "";
 
 
 
@@ -55,9 +56,9 @@ var audioPlayer = {
 	setAudio: function(_t,_l,_p)
 	{
 		myaudio.title = _t;
-		if(_l!=myaudio.src)
+		if(_l!=audioSrcLink)
 		{
-			myaudio.src = _l;
+			audioSrcLink = _l;
 			playRange.value = 0;
 		}
 		$("#playTitle").get(0).textContent=_t;
@@ -70,6 +71,7 @@ var audioPlayer = {
 	play: function()
 	{
 		isPlaying = true;
+		myaudio.src = audioSrcLink;
 		myaudio.play();
 	
 		readyStateInterval = setInterval(function(){
@@ -124,9 +126,8 @@ var audioPlayer = {
 		stopButton.style.display = 'none';
 		activityIndicator.style.display = 'none';
 		playButton.style.display = 'block';
-		_s = myaudio.src;
 		myaudio = null;
-		myaudio = new Audio(_s);
+		myaudio = new Audio(audioSrcLink);
 		playRange.value = 0;
 	},
 	seekTo: function(v){
