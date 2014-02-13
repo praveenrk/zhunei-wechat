@@ -29,6 +29,7 @@
 #import "MainViewController.h"
 
 #import <Cordova/CDVPlugin.h>
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AppDelegate
 
@@ -63,6 +64,11 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
+    BOOL ok;
+    NSError* setCategoryError = nil;
+    ok = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&setCategoryError];
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
 #if __has_feature(objc_arc)
