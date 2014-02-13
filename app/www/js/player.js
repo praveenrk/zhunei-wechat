@@ -71,7 +71,10 @@ var audioPlayer = {
 	play: function()
 	{
 		isPlaying = true;
-		myaudio.src = audioSrcLink;
+		if(myaudio.src!=audioSrcLink)
+		{
+			myaudio.src = audioSrcLink;
+		}
 		myaudio.play();
 	
 		readyStateInterval = setInterval(function(){
