@@ -89,7 +89,21 @@ function setAudioPosition(c)
 var audioPlayer = {
 	setAudio: function(_t,_l,_p)
 	{
+		var player = $("#playAudio").get(0);
 		audioPlayer.title = _t;
+		if(_l!=audioPlayer.src)
+		{
+			audioPlayer.src = _l;
+			player.src = _l;
+		}
+		$("#playTitle").get(0).textContent=_t;
+		console.log("set audio to new "+audioPlayer.src);
+		if(_p)
+		{
+			player.play();
+		}
+		
+		/*
 		if(_l!=audioPlayer.src)
 		{
 			audioPlayer.release();
@@ -103,7 +117,7 @@ var audioPlayer = {
 		{
 			$("#playBtn").get(0).className = 'pause';
 			audioPlayer.play();
-		}
+		}*/
 	},
     play: function()
 	{
