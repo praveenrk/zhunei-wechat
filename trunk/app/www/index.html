@@ -104,8 +104,16 @@
 		</div>
 	</div>
 	<footer id='audioPlayer'>
-		<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
-		<div style="width:100%;position:absolute;bottom:0;"><audio id="playAudio"></audio></div>
+		<div style="float:left;width:54px;height:48px;">
+			<input id="playBtn" type="button" class="play" onclick="onClickPlayBtn()" />
+			<a href="javascript:void(0)" id="playbutton" onClick="html5audio.play();return false;"><img src="./img/buttons/play.png" /></a>
+			<a href="javascript:void(0)" id="activityindicator" onClick="html5audio.stop();return false;"><img src="images/activityindicator.gif" /></a>
+			<a href="javascript:void(0)" id="stopbutton" onClick="html5audio.stop();return false;"><img src="./img/buttons/pause.png" /></a>
+		</div>
+		<div style="width:auto;height:48px;margin-left:54px;position: relative">
+			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
+			<div style="width:100%;position:absolute;bottom:0;"><input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input></div>
+		</div>
 	</footer>
 	<nav>
 		<ul class="list">
