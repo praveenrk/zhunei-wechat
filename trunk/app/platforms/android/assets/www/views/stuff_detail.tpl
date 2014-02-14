@@ -7,5 +7,5 @@
 	$("#menubadge")[0].style.float = 'right';
 }}
 <div id="stuff_detail">
-{{=it.stuff}}
+{{=replackAudioTag(it.stuff)}}
 </div>

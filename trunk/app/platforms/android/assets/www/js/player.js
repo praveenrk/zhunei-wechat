@@ -16,170 +16,139 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var caAudioPlayer = null;
-var caAudioTimer = null;
 
-function onClickPlayBtn()
+var playButton = document.getElementById('playbutton');
+var stopButton = document.getElementById('stopbutton');
+var activityIndicator = document.getElementById('activityindicator');
+var playRange = document.getElementById('playRange');
+var playDuration = document.getElementById('playDuration');
+stopButton.style.display = 'none';
+activityIndicator.style.display = 'none';
+playButton.style.display = 'block';
+var audioSrcLink = "";
+
+
+
+function onError(error) 
 {
-	var b = $("#playBtn").get(0);
-	if(b.className.indexOf('pause')>-1)
-	{
-		console.log("clicked pause button");
-		audioPlayer.pause();
-		b.className = 'play';
-	}
-	else
-	{
-		console.log("clicked play button");
+	console.log(error.message);
+}
+
+function onConfirmRetry(button) {
+	if (button == 1) {
 		audioPlayer.play();
-		b.className = 'pause';
 	}
+}
+
+function pad2(number) {
+	return (number < 10 ? '0' : '') + number
 }
 
 function onPlayRangeChange(v)
 {
-	audioPlayer.seekTo(v*1000);
+	audioPlayer.seekTo(v);
 }
 
-function onPlayerSuccess()
-{
-	audioPlayer.stop();
-	console.log("Audio had played success!");
-}
-
-function onPlayerError()
-{
-	audioPlayer.release();
-	console.log("Audio played error!");
-}
-
-function onUpdateAudioPosition()
-{
-	audioPlayer.getPosition(
-		function(pos) {
-			if (pos > -1) {
-				setAudioPosition(pos);
-			}
-		},
-		function(e) {
-			console.log("Error getting pos=" + e);
-		}
-	);
-}
-
-function setAudioPosition(c)
-{
-	var t = audioPlayer.getDuration();
-	var _r = $("#playRange").get(0);
-	if(t>0)
-	{
-		if(_r.max!=t)
-		{
-			_r.max = t;
-		}
-	}
-	else
-	{
-		_r.max = 10;
-	}
-	_r.value = c;
-	console.log("duration:"+t+" position:"+c);
-}
+var myaudio = new Audio();
+var isPlaying = false;
+var readyStateInterval = null;
 
 var audioPlayer = {
 	setAudio: function(_t,_l,_p)
 	{
-		audioPlayer.title = _t;
-		if(_l!=audioPlayer.src)
+		myaudio.title = _t;
+		if(_l!=audioSrcLink)
 		{
-			audioPlayer.release();
-			audioPlayer.src = _l;
-			$("#playBtn").get(0).className="play";
-			setAudioPosition(0);
+			audioSrcLink = _l;
+			playRange.value = 0;
 		}
 		$("#playTitle").get(0).textContent=_t;
-		console.log("set audio to new "+audioPlayer.src);
+		playDuration.innerText = '--:--';
+		console.log("set audio to new "+myaudio.src);
 		if(_p)
 		{
-			$("#playBtn").get(0).className = 'pause';
 			audioPlayer.play();
 		}
 	},
-    play: function()
+	play: function()
 	{
-		if($.os.android)
+		isPlaying = true;
+		if(myaudio.src!=audioSrcLink)
 		{
-			if(caAudioPlayer==null)
-			{
-				console.log("create new media...");
-				caAudioPlayer = new Media(audioPlayer.src,onPlayerSuccess,onPlayerError);
-			}
-			caAudioPlayer.play();
-			console.log("play audio file "+audioPlayer.src);
+			myaudio.src = audioSrcLink;
 		}
-		else if($.os.ios || $.os.ios7)
-		{
-			if(caAudioPlayer==null)
-			{
-				console.log("create new media...");
-				caAudioPlayer = new Media(audioPlayer.src,onPlayerSuccess,onPlayerError);
-			}
-			caAudioPlayer.play();
-			console.log("play audio file "+audioPlayer.src);
-		}
-		
-		clearInterval(caAudioTimer);
-		caAudioTimer = setInterval("onUpdateAudioPosition()",1000);
-		return;
-    },
-	pause: function()
-	{
-		if(caAudioPlayer!=null)
-		{
-			caAudioPlayer.pause();
-		}
-		clearInterval(caAudioTimer);
-		console.log("play audio pause");
+		myaudio.play();
+	
+		readyStateInterval = setInterval(function(){
+			 if (myaudio.readyState <= 2) {
+				playButton.style.display = 'none';
+				activityIndicator.style.display = 'block';
+				playRange.value = 0;
+			 }
+		},1000);
+		myaudio.addEventListener("timeupdate", function() {
+			 var s = parseInt(myaudio.duration % 60);
+			 var m = parseInt(myaudio.duration / 60);
+			 if (isPlaying && myaudio.currentTime > 0)
+			 {
+				playRange.value = myaudio.currentTime;
+				playRange.max = myaudio.duration;
+				playDuration.innerText = pad2(m) + ':' + pad2(s);
+			 }
+		}, false);
+		myaudio.addEventListener("error", function() {
+			 console.log('myaudio ERROR');
+		}, false);
+		myaudio.addEventListener("canplay", function() {
+			 console.log('myaudio CAN PLAY');
+		}, false);
+		myaudio.addEventListener("waiting", function() {
+			 //console.log('myaudio WAITING');
+			 isPlaying = false;
+			 playButton.style.display = 'none';
+			 stopButton.style.display = 'none';
+			 activityIndicator.style.display = 'block';
+		}, false);
+		myaudio.addEventListener("playing", function() {
+			 isPlaying = true;
+			 playButton.style.display = 'none';
+			 activityIndicator.style.display = 'none';
+			 stopButton.style.display = 'block';
+		}, false);
+		myaudio.addEventListener("ended", function() {
+			 audioPlayer.stop();
+		}, false);
 	},
-	stop: function()
-	{
-		if(caAudioPlayer!=null)
-		{
-			caAudioPlayer.stop();
-		}
-		clearInterval(caAudioTimer);
-		$("#playBtn").get(0).className = 'play';
-		console.log("play audio stop");
+	pause: function() {
+		isPlaying = false;
+		clearInterval(readyStateInterval);
+		myaudio.pause();
+		stopButton.style.display = 'none';
+		activityIndicator.style.display = 'none';
+		playButton.style.display = 'block';
 	},
-	release: function()
-	{
-		if(caAudioPlayer!=null)
-		{
-			caAudioPlayer.release();
-			caAudioPlayer = null;
-		}
-		clearInterval(caAudioTimer);
-		$("#playBtn").get(0).className = 'play';
-		console.log("play audio release");
+	stop: function() {
+		isPlaying = false;
+		clearInterval(readyStateInterval);
+		myaudio.pause();
+		stopButton.style.display = 'none';
+		activityIndicator.style.display = 'none';
+		playButton.style.display = 'block';
+		myaudio = null;
+		myaudio = new Audio(audioSrcLink);
+		playRange.value = 0;
 	},
-	seekTo: function(ms)
-	{
-		caAudioPlayer.seekTo(ms);
-		console.log("play audio seek to "+ms+"ms");
-	},
-	getDuration: function()
-	{
-		try
+	seekTo: function(v){
+		if(myaudio.duration)
 		{
-			return caAudioPlayer.getDuration();
+			myaudio.currentTime = v;
 		}
-		catch(err)
-		{
-			return -1;
-		}
-	},
-	getPosition: function(f1,f2)
-	{
-		return caAudioPlayer.getCurrentPosition(f1,f2);
 	}
 };
+
+{
+	var dtNow = new Date();
+	var title = "今日读经("+dtNow.Format("yyyy-MM-dd")+")";
+	var link = "http://bcs.duapp.com/cathassist/thought/mp3/"+dtNow.Format("yyyy-MM-dd")+".mp3";
+	audioPlayer.setAudio(title,link,false);
+}
