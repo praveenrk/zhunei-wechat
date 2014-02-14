@@ -16,11 +16,12 @@
 </div>
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.stuff){
+		it.stuff[c] = replackAudioTag(it.stuff[c]);
 	}}
 	<li class="artitem"><a href="/stuff/detail/{{=it.date.Format("yyyy-MM-dd")}}/{{=c}}">
 		<img src="./pics/{{=c}}.jpg" class="artimg" />
 		<h3 class="arttitle">{{=stuffconfig[c]}}</h3>
-		<p class="artcontent">{{=htmlencode(htmldecode(it.stuff[c]).substr(0,30))}}</p>
+		<p class="artcontent">{{=htmldecode(it.stuff[c]).substr(0,30)}}</p>
 	</a></li>
 	{{}}}
 </ul>

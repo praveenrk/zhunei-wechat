@@ -114,7 +114,14 @@
 		</div>
 		<div style="width:auto;height:48px;margin-left:54px;position: relative">
 			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
-			<div style="width:100%;position:absolute;bottom:0;"><input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input></div>
+			<div style="width:100%;position:absolute;bottom:0;">
+				<div style="float:right;width:54px;">
+					<h5 id="playDuration">--:--</h5>
+				</div>
+				<div style="width:auto;margin-right:54px;position: relative">
+					<input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input>
+				</div>
+			</div>
 		</div>
 	</footer>
 	<nav>

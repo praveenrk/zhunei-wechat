@@ -21,6 +21,7 @@ var playButton = document.getElementById('playbutton');
 var stopButton = document.getElementById('stopbutton');
 var activityIndicator = document.getElementById('activityindicator');
 var playRange = document.getElementById('playRange');
+var playDuration = document.getElementById('playDuration');
 stopButton.style.display = 'none';
 activityIndicator.style.display = 'none';
 playButton.style.display = 'block';
@@ -62,6 +63,7 @@ var audioPlayer = {
 			playRange.value = 0;
 		}
 		$("#playTitle").get(0).textContent=_t;
+		playDuration.innerText = '--:--';
 		console.log("set audio to new "+myaudio.src);
 		if(_p)
 		{
@@ -85,10 +87,13 @@ var audioPlayer = {
 			 }
 		},1000);
 		myaudio.addEventListener("timeupdate", function() {
+			 var s = parseInt(myaudio.duration % 60);
+			 var m = parseInt(myaudio.duration / 60);
 			 if (isPlaying && myaudio.currentTime > 0)
 			 {
 				playRange.value = myaudio.currentTime;
 				playRange.max = myaudio.duration;
+				playDuration.innerText = pad2(m) + ':' + pad2(s);
 			 }
 		}, false);
 		myaudio.addEventListener("error", function() {
