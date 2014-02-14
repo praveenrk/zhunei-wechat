@@ -14,6 +14,27 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
+function replackAudioTag(_html)
+{
+	var e = $( '<div></div>' );
+	e.html(_html);
+	$('audio',e).each(
+		function()
+		{
+			var _title = this.innerHTML;
+			var _src = this.src;
+			if(_title=="")
+			{
+				var pos = _src.lastIndexOf("/")*1;
+				_title = _src.substring(pos+1);
+			}
+			var _btn = $('<div class="button-grouped flex"><a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio(\''+_title+'\',\''+_src+'\',true);">播放音频</a></div>');
+			this.parentElement.replaceChild(_btn.get(0),this);
+		}
+	);
+	return e.get(0).innerHTML;
+}
+
 function htmlencode(s){
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(s));
@@ -56,7 +77,7 @@ function onDeviceReady()
 		if(window.location.href.substr(window.location.href.length-5)=="stuff")
 		{
 			e.preventDefault();
-			audioPlayer.release();
+			audioPlayer.stop();
 			navigator.app.exitApp();
 		}
 		else
