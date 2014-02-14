@@ -75,21 +75,39 @@ function checkAutoPlayNext()
 {
 	try
 	{
-		if(window.localStorage.autoPlayNext=="false")
-			$('#autoPlayNext').get(0).checked = false;
+		if(window.localStorage.autoPlayNextMusic=="false")
+			$('#autoPlayNextMusic').get(0).checked = false;
 		else
-			$('#autoPlayNext').get(0).checked = true;
+			$('#autoPlayNextMusic').get(0).checked = true;
 	}
 	catch(err)
 	{
-		$('#autoPlayNext').get(0).checked = false;
+		$('#autoPlayNextMusic').get(0).checked = false;
+	}
+	
+	try
+	{
+		if(window.localStorage.autoPlayNextBible=="false")
+			$('#autoPlayNextBible').get(0).checked = false;
+		else
+			$('#autoPlayNextBible').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNextBible').get(0).checked = false;
 	}
 }
 
-//设置自动播放下一首的数据
-function setAutoPlayNext()
+//设置自动播放下一首歌曲的数据
+function setAutoPlayNextMusic()
 {
-	window.localStorage.autoPlayNext = $('#autoPlayNext').get(0).checked;
+	window.localStorage.autoPlayNextMusic = $('#autoPlayNextMusic').get(0).checked;
+}
+
+//设置自动播放下一章圣经的数据
+function setAutoPlayNextBible()
+{
+	window.localStorage.autoPlayNextBible = $('#autoPlayNextBible').get(0).checked;
 }
 
 function onDeviceReady()

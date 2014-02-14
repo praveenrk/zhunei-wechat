@@ -20,6 +20,12 @@
 //获取圣经自动播放的下一章
 function getAudioBibleNext(_d)
 {
+	try
+	{
+		if(window.localStorage.autoPlayNextBible!="true")
+			return {};
+	}catch(err){ return {};}
+	
 	var t = parseInt(_d.substr(1,3));
 	var c = parseInt(_d.substr(5,3))+1;
 	var item = null;
@@ -56,6 +62,12 @@ function getAudioBibleNext(_d)
 //获取下一首歌曲
 function getAudioMusicNext(_d)
 {
+	try
+	{
+		if(window.localStorage.autoPlayNextMusic!="true")
+			return {};
+	}catch(err){ return {};}
+	
 	localDB.getMusic(function(j) {
 		audioPlayer.setAudio(j.name,j.mp3,true,getAudioMusicNext,null);
 	});
@@ -207,20 +219,11 @@ var audioPlayer = {
 	},
 	playNext: function(){
 		audioPlayer.stop();
-		try
+		if(audioPlayNextFunc)
 		{
-			if(window.localStorage.autoPlayNext=="true")
-			{
-				if(audioPlayNextFunc)
-				{
-					var a = audioPlayNextFunc(audioPlayNextData);
-					audioPlayer.setAudio(a.title,a.src,true,a.func,a.data);
-					return;
-				}
-			}
-		}
-		catch(err)
-		{
+			var a = audioPlayNextFunc(audioPlayNextData);
+			audioPlayer.setAudio(a.title,a.src,true,a.func,a.data);
+			return;
 		}
 	}
 };
