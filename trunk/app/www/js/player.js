@@ -17,6 +17,52 @@
  * under the License.
  */
 
+//获取圣经自动播放的下一章
+function getAudioBibleNext(_d)
+{
+	var t = parseInt(_d.substr(1,3));
+	var c = parseInt(_d.substr(5,3))+1;
+	var item = null;
+	
+	$.ajax({
+		type : "get",
+		url : "./res/bible/"+pad3(t)+"/"+pad3(c),
+		async : false,
+		success : function(j)
+		{
+			item = JSON.parse(j);
+		},
+		error : function(d)
+		{
+			$.ajax({
+				type : "get",
+				url : "./res/bible/"+pad3(t+1)+"/"+pad3(1),
+				async : false,
+				success : function(j)
+				{
+					item = JSON.parse(j);
+				}
+			});
+		}
+	});
+	
+	if(item)
+	{
+		return {title:item.title,src:'http://bcs.duapp.com/cathassist/bible/mp3'+item.mp3,func:getAudioBibleNext,data:item.mp3};
+	}
+	return {};
+}
+
+//获取下一首歌曲
+function getAudioMusicNext(_d)
+{
+	localDB.getMusic(function(j) {
+		audioPlayer.setAudio(j.name,j.mp3,true,getAudioMusicNext,null);
+	});
+	return {};
+}
+
+
 var playButton = document.getElementById('playbutton');
 var stopButton = document.getElementById('stopbutton');
 var activityIndicator = document.getElementById('activityindicator');
@@ -26,7 +72,8 @@ stopButton.style.display = 'none';
 activityIndicator.style.display = 'none';
 playButton.style.display = 'block';
 var audioSrcLink = "";
-
+var audioPlayNextFunc = function(){ return {title:"oec2003",src:"http://bcs.duapp.com/cathassist/music/3rd/wobuzaihu.mp3"};};
+var audioPlayNextData = null;
 
 
 function onError(error) 
@@ -44,6 +91,14 @@ function pad2(number) {
 	return (number < 10 ? '0' : '') + number
 }
 
+function pad3(number) {
+	if(number<10)
+		return '00'+number;
+	else if(number<100)
+		return '0'+number;
+	return number;
+}
+
 function onPlayRangeChange(v)
 {
 	audioPlayer.seekTo(v);
@@ -54,8 +109,12 @@ var isPlaying = false;
 var readyStateInterval = null;
 
 var audioPlayer = {
-	setAudio: function(_t,_l,_p)
+	setAudio: function(_t,_l,_p,_f,_d)
 	{
+		if(typeof(_t)=='undefined')
+			return;
+		audioPlayNextFunc = _f;
+		audioPlayNextData = _d;
 		myaudio.title = _t;
 		if(_l!=audioSrcLink)
 		{
@@ -97,7 +156,8 @@ var audioPlayer = {
 			 }
 		}, false);
 		myaudio.addEventListener("error", function() {
-			 console.log('myaudio ERROR');
+			console.log('myaudio ERROR');
+			audioPlayer.playNext();
 		}, false);
 		myaudio.addEventListener("canplay", function() {
 			 console.log('myaudio CAN PLAY');
@@ -116,7 +176,8 @@ var audioPlayer = {
 			 stopButton.style.display = 'block';
 		}, false);
 		myaudio.addEventListener("ended", function() {
-			 audioPlayer.stop();
+			console.log('myaudio ended');
+			audioPlayer.playNext();
 		}, false);
 	},
 	pause: function() {
@@ -142,6 +203,24 @@ var audioPlayer = {
 		if(myaudio.duration)
 		{
 			myaudio.currentTime = v;
+		}
+	},
+	playNext: function(){
+		audioPlayer.stop();
+		try
+		{
+			if(window.localStorage.autoPlayNext=="true")
+			{
+				if(audioPlayNextFunc)
+				{
+					var a = audioPlayNextFunc(audioPlayNextData);
+					audioPlayer.setAudio(a.title,a.src,true,a.func,a.data);
+					return;
+				}
+			}
+		}
+		catch(err)
+		{
 		}
 	}
 };

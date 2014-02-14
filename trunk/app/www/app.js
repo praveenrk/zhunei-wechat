@@ -70,6 +70,28 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+//同步“自动播放下一首”按钮的状态
+function checkAutoPlayNext()
+{
+	try
+	{
+		if(window.localStorage.autoPlayNext=="false")
+			$('#autoPlayNext').get(0).checked = false;
+		else
+			$('#autoPlayNext').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNext').get(0).checked = false;
+	}
+}
+
+//设置自动播放下一首的数据
+function setAutoPlayNext()
+{
+	window.localStorage.autoPlayNext = $('#autoPlayNext').get(0).checked;
+}
+
 function onDeviceReady()
 {
 	// waiting for button

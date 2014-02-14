@@ -425,6 +425,7 @@ $.mvc.controller.create('settings', {
 		$.ui.showMask("加载设置...");
 		$.get("./res/settings.html",function(j){
 			$("#main").html(j);
+			checkAutoPlayNext();	//设置按钮状态
 			
 			$.ui.titleBar.textContent = '设置';
 			$("#backButton")[0].style.visibility = 'hidden';
