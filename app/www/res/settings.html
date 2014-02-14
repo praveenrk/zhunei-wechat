@@ -1,4 +1,4 @@
-<h2>主题设置</h2>
+<div class="formGroupHead">主题设置</div>
 <ul class="list">
 	 <li>
 		<a href="javascript:setTheme('ios')" data-ignore="true">iOS theme</a>
@@ -10,7 +10,15 @@
 		<a href="javascript:setTheme('ios7')" data-ignore="true">ios7</a>
 	</li>
 </ul>
-<h2>其它</h2>
+
+<div class="formGroupHead">播放设置</div>
+<div class="input-group">
+	<label>播放方式：</label>
+	<input id="autoPlayNext" type="checkbox" onclick="setAutoPlayNext()"><label for="autoPlayNext">自动切换下一首</label>
+	<br style="clear:both">
+</div>
+
+<div class="formGroupHead">其它设置</div>
 <ul class="list">
    <li>
 		<a href="javascript:openLinkInExternal('http://www.cathassist.org/3rd/aboutus.html');" data-ignore="true" target="_blank">关于我们</a>
