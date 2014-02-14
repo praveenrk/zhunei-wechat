@@ -9,5 +9,5 @@
 }}
 <div id="stuff_title"><h2>{{=it.item.title}}</h2></div>
 <div id="stuff_detail">
-{{=it.item.content}}
+{{=replackAudioTag(it.item.content)}}
 </div>
