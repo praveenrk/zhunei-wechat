@@ -85,12 +85,15 @@
 			}
 			
 			//加载cordova.js
-			if ($.os.android || $.os.ios || $.os.ios7)
+			if(window.location.hostname.length>9)
 			{
-				var script = document.createElement("script");
-				script.src = "./cordova.js";
-				var tag = $("head").append(script);
-				initCordovaFunc();
+				if ($.os.android || $.os.ios || $.os.ios7)
+				{
+					var script = document.createElement("script");
+					script.src = "./cordova.js";
+					var tag = $("head").append(script);
+					initCordovaFunc();
+				}
 			}
 		});
 		
