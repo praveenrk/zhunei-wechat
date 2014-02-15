@@ -114,7 +114,14 @@
 		</div>
 		<div style="width:auto;height:48px;margin-left:54px;position: relative">
 			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>
-			<div style="width:100%;position:absolute;bottom:0;"><input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input></div>
+			<div style="width:100%;position:absolute;bottom:0;">
+				<div style="float:right;width:54px;">
+					<h5 id="playDuration">--:--</h5>
+				</div>
+				<div style="width:auto;margin-right:54px;position: relative">
+					<input id="playRange" type="range" style="width:100%;" onchange="onPlayRangeChange(this.value)"></input>
+				</div>
+			</div>
 		</div>
 	</footer>
 	<nav>
@@ -133,14 +140,6 @@
 			<li><a href="/bible">思高版圣经</a></li>
 			<li><a href="/prayer">常用祈祷文</a></li>
 			<li><a href="/catechism">天主教教理</a></li>
-			<li><a href="/codex">天主教法典</a></li>
-			<li><a href="/settings">设置</a></li>
-		</ul>
-	</nav>
-</div>
-</body>
-</html>
-i>
 			<li><a href="/codex">天主教法典</a></li>
 			<li><a href="/settings">设置</a></li>
 		</ul>
