@@ -32,7 +32,7 @@ function getAudioBibleNext(_d)
 	
 	$.ajax({
 		type : "get",
-		url : "./res/bible/"+pad3(t)+"/"+pad3(c),
+		url : "./res/bible/"+pad3(t)+"/"+pad3(c)+".json",
 		async : false,
 		success : function(j)
 		{
@@ -42,7 +42,7 @@ function getAudioBibleNext(_d)
 		{
 			$.ajax({
 				type : "get",
-				url : "./res/bible/"+pad3(t+1)+"/"+pad3(1),
+				url : "./res/bible/"+pad3(t+1)+"/"+pad3(1)+".json",
 				async : false,
 				success : function(j)
 				{
