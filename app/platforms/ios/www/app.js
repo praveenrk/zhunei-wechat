@@ -14,6 +14,27 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
+function replackAudioTag(_html)
+{
+	var e = $( '<div></div>' );
+	e.html(_html);
+	$('audio',e).each(
+		function()
+		{
+			var _title = this.innerHTML;
+			var _src = this.src;
+			if(_title=="")
+			{
+				var pos = _src.lastIndexOf("/")*1;
+				_title = _src.substring(pos+1);
+			}
+			var _btn = $('<div class="button-grouped flex"><a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio(\''+_title+'\',\''+_src+'\',true);">播放音频</a></div>');
+			this.parentElement.replaceChild(_btn.get(0),this);
+		}
+	);
+	return e.get(0).innerHTML;
+}
+
 function htmlencode(s){
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(s));
@@ -49,6 +70,46 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+//同步“自动播放下一首”按钮的状态
+function checkAutoPlayNext()
+{
+	try
+	{
+		if(window.localStorage.autoPlayNextMusic=="false")
+			$('#autoPlayNextMusic').get(0).checked = false;
+		else
+			$('#autoPlayNextMusic').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNextMusic').get(0).checked = false;
+	}
+	
+	try
+	{
+		if(window.localStorage.autoPlayNextBible=="false")
+			$('#autoPlayNextBible').get(0).checked = false;
+		else
+			$('#autoPlayNextBible').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNextBible').get(0).checked = false;
+	}
+}
+
+//设置自动播放下一首歌曲的数据
+function setAutoPlayNextMusic()
+{
+	window.localStorage.autoPlayNextMusic = $('#autoPlayNextMusic').get(0).checked;
+}
+
+//设置自动播放下一章圣经的数据
+function setAutoPlayNextBible()
+{
+	window.localStorage.autoPlayNextBible = $('#autoPlayNextBible').get(0).checked;
+}
+
 function onDeviceReady()
 {
 	// waiting for button
@@ -56,7 +117,7 @@ function onDeviceReady()
 		if(window.location.href.substr(window.location.href.length-5)=="stuff")
 		{
 			e.preventDefault();
-			audioPlayer.release();
+			audioPlayer.stop();
 			navigator.app.exitApp();
 		}
 		else
