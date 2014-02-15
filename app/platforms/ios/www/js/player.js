@@ -125,8 +125,12 @@ var audioPlayer = {
 	{
 		if(typeof(_t)=='undefined')
 			return;
-		audioPlayNextFunc = _f;
-		audioPlayNextData = _d;
+        audioPlayNextFunc = null;
+		audioPlayNextData = null;
+        if(typeof(_f)!='undefined')
+            audioPlayNextFunc = _f;
+        if(typeof(_d)!='undefined')
+            audioPlayNextData = _d;
 		myaudio.title = _t;
 		if(_l!=audioSrcLink)
 		{
