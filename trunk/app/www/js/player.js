@@ -20,11 +20,15 @@
 //获取圣经自动播放的下一章
 function getAudioBibleNext(_d)
 {
+	if(typeof(window.localStorage.autoPlayNextBible)=='undefined')
+	{
+		window.localStorage.autoPlayNextBible = true;
+	}
 	try
 	{
 		if(window.localStorage.autoPlayNextBible!="true")
 			return {};
-	}catch(err){ return {};}
+	}catch(err){return {};}
 	
 	var t = parseInt(_d.substr(1,3));
 	var c = parseInt(_d.substr(5,3))+1;
@@ -62,11 +66,15 @@ function getAudioBibleNext(_d)
 //获取下一首歌曲
 function getAudioMusicNext(_d)
 {
+	if(typeof(window.localStorage.autoPlayNextMusic)=='undefined')
+	{
+		window.localStorage.autoPlayNextMusic = true;
+	}
 	try
 	{
 		if(window.localStorage.autoPlayNextMusic!="true")
 			return {};
-	}catch(err){ return {};}
+	}catch(err){return {};}
 	
 	localDB.getMusic(function(j) {
 		audioPlayer.setAudio(j.name,j.mp3,true,getAudioMusicNext,null);
@@ -84,6 +92,7 @@ stopButton.style.display = 'none';
 activityIndicator.style.display = 'none';
 playButton.style.display = 'block';
 var audioSrcLink = "";
+var audioAutoPlay = false;
 var audioPlayNextFunc = function(){ return {title:"oec2003",src:"http://bcs.duapp.com/cathassist/music/3rd/wobuzaihu.mp3"};};
 var audioPlayNextData = null;
 
@@ -127,20 +136,24 @@ var audioPlayer = {
 			return;
         audioPlayNextFunc = null;
 		audioPlayNextData = null;
+		audioAutoPlay = false;
         if(typeof(_f)!='undefined')
             audioPlayNextFunc = _f;
         if(typeof(_d)!='undefined')
             audioPlayNextData = _d;
+        if(typeof(_p)!='undefined')
+            audioAutoPlay = _p;
 		myaudio.title = _t;
 		if(_l!=audioSrcLink)
 		{
+			audioPlayer.stop();
 			audioSrcLink = _l;
 			playRange.value = 0;
 		}
 		$("#playTitle").get(0).textContent=_t;
 		playDuration.innerText = '--:--';
 		console.log("set audio to new "+myaudio.src);
-		if(_p)
+		if(audioAutoPlay)
 		{
 			audioPlayer.play();
 		}
@@ -153,6 +166,7 @@ var audioPlayer = {
 			myaudio.src = audioSrcLink;
 		}
 		myaudio.play();
+		console.log('set myaudio to play...');
 	
 		readyStateInterval = setInterval(function(){
 			 if (myaudio.readyState <= 2) {
@@ -177,6 +191,10 @@ var audioPlayer = {
 		}, false);
 		myaudio.addEventListener("canplay", function() {
 			 console.log('myaudio CAN PLAY');
+			 if(audioAutoPlay)
+			 {
+			 	myaudio.play();
+			 }
 		}, false);
 		myaudio.addEventListener("waiting", function() {
 			 //console.log('myaudio WAITING');
