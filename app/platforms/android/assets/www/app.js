@@ -70,6 +70,46 @@ function setTheme(_t)
 	window.localStorage.theme=_t;
 }
 
+//同步“自动播放下一首”按钮的状态
+function checkAutoPlayNext()
+{
+	try
+	{
+		if(window.localStorage.autoPlayNextMusic=="false")
+			$('#autoPlayNextMusic').get(0).checked = false;
+		else
+			$('#autoPlayNextMusic').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNextMusic').get(0).checked = false;
+	}
+	
+	try
+	{
+		if(window.localStorage.autoPlayNextBible=="false")
+			$('#autoPlayNextBible').get(0).checked = false;
+		else
+			$('#autoPlayNextBible').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#autoPlayNextBible').get(0).checked = false;
+	}
+}
+
+//设置自动播放下一首歌曲的数据
+function setAutoPlayNextMusic()
+{
+	window.localStorage.autoPlayNextMusic = $('#autoPlayNextMusic').get(0).checked;
+}
+
+//设置自动播放下一章圣经的数据
+function setAutoPlayNextBible()
+{
+	window.localStorage.autoPlayNextBible = $('#autoPlayNextBible').get(0).checked;
+}
+
 function onDeviceReady()
 {
 	// waiting for button
