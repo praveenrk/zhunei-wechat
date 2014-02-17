@@ -65,7 +65,7 @@
 			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>iGospel</b>)，也可以在微信中搜索<b>天主教小助手</b>进行关注</p>
 			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
-			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/" target="_blank">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/" target="_blank">信德网</a><a href="http://www.chinacath.org/" target="_blank">天主教在线</a><a href="http://blog.sina.com.cn/along999" target="_blank">光与爱之家（博客）</a></div>
+			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/" target="_blank">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/" target="_blank">信德网</a><a href="http://www.chinacath.org/" target="_blank">天主教在线</a><a href="http://blog.sina.com.cn/along999" target="_blank">光与爱之家（博客）</a><a href="http://www.tianzhujiao.org/" target="_blank">长青家园</a></div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
