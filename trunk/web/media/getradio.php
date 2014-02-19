@@ -8,7 +8,8 @@
 	$ret['mp3'] = '';
 	$ret['url'] = $root->getElementsByTagName('MusicUrl')->item(0)->textContent;
 	$ret['title'] = '中文广播('.$root->getElementsByTagName('Description')->item(0)->textContent.')';
-	$ret['desc'] = '<br/><br/><br/><br/><br/>因软件有bug，会造成后台消耗流量，所以暂停梵蒂冈广播的收听。我们会尽快更新的，造成不便，深表遗憾！愿天主降幅你！';
+	$ret['desc'] = '<br/><br/><br/><br/><br/>因软件有bug，你所使用的版本不再支持，强烈建议你更新至最新版本，下载地址:
+		<a href="javascript:openLinkInExternal(\'http://app.cathassist.org/desc.html\');" data-ignore="true" target="_blank">http://app.cathassist.org/desc.html</a>';
 	
 	echo $_GET['callback'].'('.json_encode($ret).')';
 ?>
