@@ -102,7 +102,7 @@ function initMedia()
 }
 $(document).ready(function(){
 	initMedia();
-	SetWechatShare("晨星生命之音网络电台","http://www.cathassist.org/media/cxradio.php","http://www.cxsm.org/Image/home/logo.png","天主教小助手整理");
+	SetWechatShare("晨星生命之音网络电台('.$strDate.')——天主教小助手","http://www.cathassist.org/media/cxradio.php","http://www.cxsm.org/Image/home/logo.png","天主教小助手整理");
 });
 </script>
 </head>
@@ -151,8 +151,10 @@ $(document).ready(function(){
 	</div>
 </div>
 <span class="pages"><a href="cxradio.php?date='.gmdate('Y-m-d',$date-3600*24).'">上一日</a><a href="cxradio.php?date='.gmdate('Y-m-d',$date+3600*24).'">下一日</a></span>
-<br/><center>提示：播放音频会损耗较多流量</center>
-<br/><center>版权归<a href="http://www.cxsm.org/">晨星生命之音网络广播</a>所有</center>
+
+<br/><center>版权归<a href="http://www.cxsm.org/" target="_blank">晨星生命之音网络广播</a>所有</center>
+<center>
+<a href="http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000002&itemidx=1&sign=e5eb309ec3013bbc30d7d3b5d339d499#wechat_redirect" target="_blank">关注天主教小助手微信</a></center>
 </body>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 <script type="text/javascript" language="javascript" src="/include/common.js"></script>
