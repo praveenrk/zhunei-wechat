@@ -43,6 +43,11 @@
 			"type" : "view",
 			"name" : "色辣芬电台",
 			"url" : "http://www.cathassist.org/music/music.php"
+		},
+		{
+			"type" : "view",
+			"name" : "晨星生命之音",
+			"url" : "http://www.cathassist.org/media/cxradio.php"
 		}]
 	},
 	{
