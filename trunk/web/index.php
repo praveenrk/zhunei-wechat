@@ -56,6 +56,7 @@
 			<h2><a href="/faithlife/index.php" alt="信仰生活（来源信德网）">信仰生活（来源信德网）</a></h2>
 			<h2><a href="/articles/index.php" alt="主内分享">主内分享（小助手推荐）</a></h2>
 			<h2><a href="/music/music.php" alt="教会歌曲">随机听歌（放松一下）</a></h2>
+			<h2><a href="/media/cxradio.php" alt="晨星生命之音">晨星生命之音（电台广播）</a></h2>
 			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
 			<h1><a href="app.html">应用下载</a></h1>
