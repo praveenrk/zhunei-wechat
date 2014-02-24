@@ -2,7 +2,6 @@ package org.cathassist.bible.lib;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
@@ -14,8 +13,6 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import com.mozillaonline.providers.DownloadManager;
-import com.yyxu.download.utils.MyIntents;
-import com.yyxu.download.utils.Utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -181,13 +178,26 @@ public class Func {
     public static long download(String version, int book, int chapter) {
         long reference = -1;
         final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
-        String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
+        if (!file.exists()) {
+            new File(file.getParent()).mkdirs();
+            String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
+            Uri uri = Uri.parse(url);
+            DownloadManager.Request request = new DownloadManager.Request(uri);
+            request.setDestinationUri(Uri.fromFile(file));
+            request.setTitle(VerseInfo.CHN_NAME[book]+"第"+chapter+"章");
+            request.setDescription("下载中");
+            if(App.get().isWifi() || Para.allow_gprs) {
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+            } else {
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+            }
 
-        Intent downloadIntent = new Intent("com.yyxu.download.services.IDownloadService");
-        downloadIntent.putExtra(MyIntents.TYPE, MyIntents.Types.ADD);
-        downloadIntent.putExtra(MyIntents.URL, url);
-        downloadIntent.putExtra(MyIntents.PATH, file.getAbsolutePath());
-        App.get().startService(downloadIntent);
+            try {
+                reference = mDownloadManager.enqueue(request);
+            } catch (Exception e) {
+                Toast.makeText(App.get(), "无法下载，请稍候重试（可能是同时进行的下载任务太多了）", Toast.LENGTH_SHORT).show();
+            }
+        }
         return reference;
     }
 

@@ -102,7 +102,7 @@ public class Database {
                         is.close();
 
                         if (dialog.GetProgress() < ProgressShow.DIALOG_DEFAULT_MAX - 1) {
-                            dialog.AddProgress(ProgressShow.DIALOG_DEFAULT_INCREASE);
+                            dialog.AddProgress(ProgressShow.DIALOG_DEFAULT_INCREASE * ProgressShow.DIALOG_DEFAULT_MAX / count);
                         }
                     }
                     os.close();
