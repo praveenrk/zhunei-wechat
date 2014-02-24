@@ -8,12 +8,12 @@ import org.cathassist.bible.music.MusicPlayService;
 public class Para {
     public static final String DB_CONTENT_ASSET = "cathbible";
     public static final String DB_CONTENT_NAME = "cathbible.db";
-    public static final int DB_CONTENT_VER = 2;
+    public static final int DB_CONTENT_VER = 3;
     public static final String DB_DATA_NAME = "data.db";
     public static final int DB_DATA_VER = 1;
     public static final int VERSE_NUMBER = 473;
     public static final String STORE_NAME = "Settings";
-    public static final int DB_CONTENT_COUNT = 100;
+    public static final int DB_CONTENT_COUNT = 10;
     public static final String[] MENU_NAME =
             {"主页", "圣经", "书签", "金句", "搜索", "设置"};
     public static final int[] MENU_IMAGE =
@@ -31,7 +31,7 @@ public class Para {
     public static final int VERSE_CHOISE_MARK = 0;
     public static final int VERSE_CHOISE_COPY = 1;
     public static final int VERSE_CHOISE_SHARE = 2;
-    public static String BIBLE_MP3_URL = "http://bcs.duapp.com/cathassist/bible/mp3/";
+    public static String BIBLE_MP3_URL = "http://media.cathassist.org/bible/mp3/";
     public static String DB_CONTENT_PATH = "";
     public static String DB_DATA_PATH = "";
     public static String BIBLE_MP3_PATH = "";

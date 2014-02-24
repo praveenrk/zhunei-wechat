@@ -17,7 +17,6 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.mozillaonline.providers.downloads.ui.DownloadList;
-import com.yyxu.download.activities.DownloadListActivity;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Para;
@@ -68,7 +67,7 @@ public class Mp3ManageActivity  extends SherlockActivity implements AdapterView.
                 return true;
             case R.id.manage:
                 Intent intent = new Intent();
-                intent.setClass(this, DownloadListActivity.class);
+                intent.setClass(this, DownloadList.class);
                 startActivity(intent);
                 break;
         }
