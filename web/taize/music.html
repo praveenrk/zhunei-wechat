@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>泰泽祈祷选用歌曲——天主教小助手</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width" />
+<link rel="stylesheet" type="text/css" href="taize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.cathassist.org/js/jPlayer/skin/pink.flag/jplayer.pink.flag.css"/>
+<script type="text/javascript" src="http://www.cathassist.org/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
+<script type="text/javascript">
+function initMedia()
+{
+	//cn
+	var cnList = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_cn",
+		cssSelectorAncestor: "#jp_container_cn"
+	}, [{title:"上主袮当受赞美",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/01.mp3"},{title:"耶稣基督",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/02.mp3"},{title:"我们敬拜袮，主耶稣",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/06.mp3"},{title:"耶稣，请纪念我",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/13.mp3"},{title:"阿爸，托付我灵在袮手中",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/14.mp3"},{title:"我心灵平静安息在主内",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/15.mp3"}],
+	{
+		playlistOptions:
+		{
+			autoPlay: true,
+			enableRemoveControls: true
+		},
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+}
+$(document).ready(function(){
+	initMedia();
+	SetWechatShare("泰泽祈祷选用歌曲（天主教小助手整理）","http://www.cathassist.org/media/cxradio.php","http://www.cxsm.org/Image/home/logo.png","泰泽祈祷选用歌曲（天主教小助手整理）");
+});
+</script>
+</head>
+<body>
+<center><h2>泰泽祈祷选用歌曲</h2></center>
+<div class="player">
+	<div id="jquery_jplayer_cn" class="jp-jplayer"></div>
+	<div id="jp_container_cn" class="jp-audio">
+		<div class="jp-type-playlist">
+			<div class="jp-gui jp-interface">
+				<ul class="jp-controls">
+					<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+					<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+				</div>
+				<ul class="jp-toggles">
+					<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+					<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+					<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+				</ul>
+			</div>
+			<div class="jp-playlist">
+				<ul>
+					<li>泰泽祈祷选用歌曲</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<br/>
+<br/>
+<center>
+<a href="http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000002&itemidx=1&sign=e5eb309ec3013bbc30d7d3b5d339d499#wechat_redirect" target="_blank">关注我们</a></center>
+</body>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/googleanalysis.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js"></script>
+</html>
