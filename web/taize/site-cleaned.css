@@ -8,24 +8,6 @@ pre code {
     background: #f8f8ff
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*@import "variables.less";*/
-/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article,
 aside,
 details,
@@ -1139,7 +1121,7 @@ h3 {
   background-color: #1d365d;
   background-image:url(bg.jpg);
   background-repeat: no-repeat;
-  background-position: center 0;
+  background-position: center center;
   background-size: cover;
 }
 .docs-header h1 {
