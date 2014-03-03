@@ -9,7 +9,7 @@ ul.artlist a{
 }
 
 h3.arttitle{
-	font-size: 1.2em;
+	font-size: 25px;
 }
 
 img.artimg{
@@ -18,12 +18,19 @@ img.artimg{
 	max-width: 80px;
 }
 
+#main h2{
+	font-size:25px;
+}
+#main *{
+	-webkit-user-select:text;
+}
+
 p.artcontent{
-	font-size: 1em;
+	font-size: 20px;
 }
 
 li.artitem{
-	padding: 0.8em;
+	padding: 20px;
 	overflow: auto;
 }
 
@@ -33,14 +40,18 @@ li.artitem:hover {
 
 #stuff_title h2{
 	text-align: center;
+    font-size:25px;
+	-webkit-user-select:text;
 }
 
 #stuff_detail, .main-content{
 	padding: 20px 10px 10px;
-	line-height: 1.5em;
+	line-height: 25px;
+    font-size:20px;
 }
+
 #stuff_detail p{
-    font-size:1em;
+    font-size:20px;
 }
 
 #stuff_detail img{
@@ -50,6 +61,12 @@ li.artitem:hover {
 	margin-bottom: 20px;
 }
 
+.praytitle{
+	font-size:25px;
+}
+.praytext{
+	font-size:20px;
+}
 
 audio{
 	width:100%;
@@ -72,7 +89,7 @@ audio{
 }
 .music-info {
 	text-align: center;
-	line-height: 2em;
+	line-height: 35px;
 }
 
 #pageTitle {
