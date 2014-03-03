@@ -34,7 +34,7 @@
 			{
 				fwrite($fp,'<br/><a class="src" href="'.$src.'">>>>原始文章</a>');
 			}
-			fwrite($fp,'</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript($link,$title,"http://cathassist.org/logo.jpg").'</html>');
+			fwrite($fp,'</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script><script type="text/javascript">document.addEventListener("DOMContentLoaded", function(){SetWechatShare("'.$title.'","'.$link.'","http://cathassist.org/logo.jpg","'.$title.'");})</script></html>');
 		}
 		fclose($fp);
 		return true;
