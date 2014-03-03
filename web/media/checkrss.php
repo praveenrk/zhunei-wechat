@@ -54,7 +54,7 @@
 	<h3>'.$cnmasstitle.'</h3>
 	<audio src="'.$cnmass.'" controls></audio>
 	<br/><h3><b>提示：播放音频会损耗较多流量</b></h3></div></center></body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>');
-	fwrite($fp,getWechatShareScript(ROOT_WEB_URL.'media/vaticanradiowebcast_cn.html','梵蒂冈广播电台',ROOT_WEB_URL.'media/icon.jpg'));
+	fwrite($fp,'<script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script><script type="text/javascript">document.addEventListener("DOMContentLoaded", function(){SetWechatShare("梵蒂冈广播电台","'.ROOT_WEB_URL.'media/vaticanradiowebcast_cn.html'.'","'.ROOT_WEB_URL.'media/icon.jpg'.'","梵蒂冈广播电台");});</script>');
 	fwrite($fp,'</html>');
 	fclose($fp);
 	

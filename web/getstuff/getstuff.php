@@ -235,7 +235,7 @@
 			
 			$imgurl = ROOT_WEB_URL."wechat/pics/".$mode."1.jpg";
 			$link = ROOT_WEB_URL.'getstuff/stuff/'.$_GET["date"].'_'.$mode.'.html';
-			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>'.getWechatShareScript($link,$title,$imgurl).'</html>';
+			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script><script type="text/javascript">document.addEventListener("DOMContentLoaded", function(){SetWechatShare("'.$title.'","'.$link.'","'.$imgurl.'","'.$title.'");});</script></html>';
 		}
 		else
 		{

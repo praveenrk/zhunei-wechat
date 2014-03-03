@@ -18,5 +18,8 @@
 <br/><br/><a class="src" href="<?=$v['url']?>">>>>原始文章</a>
 </body>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
-<?=getWechatShareScript(ROOT_WEB_URL.$file,$v['title'],'http://cathassist.org/logo.jpg')?>
+<script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(){SetWechatShare("<?=$v['title']?>","<?=ROOT_WEB_URL.$file?>","http://cathassist.org/logo.jpg","<?=$v['title']?>");});
+</script>
 </html>
