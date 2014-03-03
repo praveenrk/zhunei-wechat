@@ -1,0 +1,4 @@
+﻿接口
+http://cathassist.org/radio/getradio.php?channel=cx&date=2014-03-03
+channel 使用固定的 cx
+date 为需要获取的日期
