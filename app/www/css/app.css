@@ -22,7 +22,7 @@ img.artimg{
 	font-size:25px;
 }
 #main *{
-	-webkit-user-select:text;
+	/*-webkit-user-select:text;*/
 }
 
 p.artcontent{
@@ -41,7 +41,7 @@ li.artitem:hover {
 #stuff_title h2{
 	text-align: center;
     font-size:25px;
-	-webkit-user-select:text;
+	height:auto;
 }
 
 #stuff_detail, .main-content{
