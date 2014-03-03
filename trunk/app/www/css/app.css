@@ -21,6 +21,13 @@ img.artimg{
 #main h2{
 	font-size:25px;
 }
+#main p{
+	font-size:20px;
+}
+#main div{
+	font-size:20px;
+}
+
 #main *{
 	/*-webkit-user-select:text;*/
 }
