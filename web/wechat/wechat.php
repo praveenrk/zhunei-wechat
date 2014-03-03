@@ -6,10 +6,7 @@ require_once("html2text.php");
 define("TOKEN", "wechat");
 
 $wechatObj = new wechatCallbackapiTest();
-if($wechatObj->checkSignature())
-{
-	$wechatObj->responseMsg();
-}
+$wechatObj->responseMsg();
 
 class wechatCallbackapiTest
 {
