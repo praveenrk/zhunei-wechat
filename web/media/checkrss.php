@@ -1,11 +1,18 @@
 <?php
 	require_once("../include/define.php");
-	require_once("../include/bcs/bcs.class.php");
-	$bcs = new BaiduBCS ();
 
+	function url_exists($urlpath)
+	{
+		$h = get_headers($urlpath);
+		if(strpos($h[0],'OK')>-1)
+		{
+			return true;
+		}
+		return false;
+	}
+	
 	function getAudio($rss,&$link,$abstime=0)
 	{
-		global $bcs;
 		$rsscontent = file_get_contents($rss);
 		$rss = simplexml_load_string($rsscontent);
 		$channel = $rss->channel;
@@ -17,10 +24,10 @@
 			if($abstime>0)
 			{
 				$strDate = date("Y-m-d",strtotime($item->pubDate)+$abstime);
-				$remote = '/vaticanradio/cn/mp3/'.$strDate.'.mp3';
-				if($bcs->is_object_exist(BCS_BUCKET,$remote))
+				$remote = 'http://media.cathassist.org/vaticanradio/cn/mp3/'.$strDate.'.mp3';
+				if(url_exists($remote))
 				{
-					$link = 'http://bcs.duapp.com/cathassist/vaticanradio/cn/mp3/'.$strDate.'.mp3';
+					$link = $remote;
 				}
 			}
 			return date("Y-m-d", strtotime($item->pubDate)+$abstime);
