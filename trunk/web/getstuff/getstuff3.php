@@ -171,7 +171,7 @@
 		$ret["comp"] = ($stuff_comp);
 		$ret["let"] =  ($stuff_let);
 		$ret["lod"] =  ($stuff_lod);
-		$ret["thought"] =  '<audio id="audio" src="'.'http://bcs.duapp.com/cathassist/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls>反省('.$date->format('Y-m-d').')</audio>'.($stuff_thought);
+		$ret["thought"] =  '<audio id="audio" src="'.'http://media.cathassist.org/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls>反省('.$date->format('Y-m-d').')</audio>'.($stuff_thought);
 		$ret["ordo"] =  ($stuff_ordo);
 		$ret["ves"] =  ($stuff_ves);
 		$ret["saint"] =  ($stuff_saint);
