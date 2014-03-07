@@ -175,12 +175,12 @@
 		{
 			$ret["thought"] =  '
 	<div class="button-grouped flex">
-		<a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio(\'反省（'.$date->format('Y-m-d').'）\',\'http://bcs.duapp.com/cathassist/thought/mp3/'.$date->format('Y-m-d').'.mp3\',true);">音频播放</a>
+		<a class="button" href="javascript:void(0)" onclick="audioPlayer.setAudio(\'反省（'.$date->format('Y-m-d').'）\',\'http://media.cathassist.org/thought/mp3/'.$date->format('Y-m-d').'.mp3\',true);">音频播放</a>
 	</div>'.($stuff_thought);
 		}
 		else
 		{
-			$ret["thought"] =  '<audio id="audio" src="'.'http://bcs.duapp.com/cathassist/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls></audio>'.($stuff_thought);
+			$ret["thought"] =  '<audio id="audio" src="'.'http://media.cathassist.org/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls></audio>'.($stuff_thought);
 		}
 		$ret["ordo"] =  ($stuff_ordo);
 		$ret["ves"] =  ($stuff_ves);

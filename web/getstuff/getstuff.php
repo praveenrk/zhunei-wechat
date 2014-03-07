@@ -177,7 +177,7 @@
 		}
 		else
 		{
-			$ret["thought"] =  '<audio id="audio" src="'.'http://bcs.duapp.com/cathassist/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls></audio>'.($stuff_thought);
+			$ret["thought"] =  '<audio id="audio" src="'.'http://media.cathassist.org/thought/mp3/'.$date->format('Y-m-d').'.mp3" controls></audio>'.($stuff_thought);
 		}
 		$ret["ordo"] =  ($stuff_ordo);
 		$ret["ves"] =  ($stuff_ves);
