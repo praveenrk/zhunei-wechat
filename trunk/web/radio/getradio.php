@@ -16,6 +16,151 @@
 		return $url;
 	}
 	
+	//查询url是否存在
+	function url_exists($urlpath)
+	{
+		$h = get_headers($urlpath);
+		if(strpos($h[0],'OK')>-1 || strpos($h[0],'302')>-1)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	
+	//基础频道类
+	class BaseChannel
+	{
+		public static function append2All($c,$j)
+		{
+			$ja = json_decode(file_get_contents("list"),true);
+			$ja[$c] = $j;
+			file_put_contents("list",json_encode($ja));
+		}
+		
+		public static function createChannel($c)
+		{
+			if($c=="cx")
+			{
+				return new CxChannel();
+			}
+			else if($c=="vacn")
+			{
+				return new VacnChannel();
+			}
+			else if($c=="gos")
+			{
+				return new GosChannel();
+			}
+			else
+			{
+				return new BaseChannel();
+			}
+		}
+		public function getRadio($date)
+		{
+			return json_decode(file_get_contents("list"),true);
+		}
+	}
+	
+	//晨星生命之音
+	class CxChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			$strDate = gmdate('Y-m-d',$date);
+			$cxfile = './cx/'.$strDate;
+			$cxjson = null;
+			if(!file_exists($cxfile))
+			{
+				$cxdate = gmdate("Y-n-j", $date);
+				$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
+				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
+				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
+				$cxjson["title"] = "晨星生命之音";
+				$cxjson["date"] = $strDate;
+				$cxjson["logo"] = "http://cathassist.org/radio/logos/cx.png";
+				$i = 0;
+				foreach($cxlist as $v)
+				{
+					$v = iconv("GB2312", "UTF-8//IGNORE",trim($v));
+					$title = "";
+					preg_match_all($cnpreg, substr($v,strrpos($v,'/')), $title);
+					$title=implode("", $title[0]);
+					$cxjson['items'][$i] = array('title'=>$title,'src'=>cn_urlencode($v));
+					++$i;
+				}
+				file_put_contents($cxfile,json_encode($cxjson));
+				BaseChannel::append2All("cx",$cxjson);
+			}
+			else
+			{
+				$cxjson = json_decode(file_get_contents($cxfile),true);
+			}
+			return $cxjson;
+		}
+	}
+	
+	//梵蒂冈中文广播
+	class VacnChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			$strDate = gmdate('Y-m-d',$date);
+			$vafile = './vacn/'.$strDate;
+			$vajson = null;
+			if(!file_exists($vafile))
+			{
+				$vajson["title"] = "梵蒂冈中文广播";
+				$vajson["date"] = $strDate;
+				$vajson["logo"] = "http://cathassist.org/radio/logos/vacn.jpg";
+				$itemsrc = "http://media.cathassist.org/vaticanradio/cn/mp3/".$strDate.".mp3";
+				if(url_exists($itemsrc))
+				{
+					$title = "梵蒂冈中文广播";
+					$vajson['items'][0] = array('title'=>$title,'src'=>$itemsrc);
+					file_put_contents($vafile,json_encode($vajson));
+					BaseChannel::append2All("vacn",$vajson);
+				}
+			}
+			else
+			{
+				$vajson = json_decode(file_get_contents($vafile),true);
+			}
+			return $vajson;
+		}
+	}
+	
+	//每日福音
+	class GosChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			$strDate = gmdate('Y-m-d',$date);
+			$gosfile = './gos/'.$strDate;
+			$gosjson = null;
+			if(!file_exists($gosfile))
+			{
+				$gosjson["title"] = "每日福音";
+				$gosjson["date"] = $strDate;
+				$gosjson["logo"] = "http://cathassist.org/radio/logos/gos.jpg";
+				$itemsrc = "http://media.cathassist.org/thought/mp3/".$strDate.".mp3";
+				if(url_exists($itemsrc))
+				{
+					$title = "每日福音";
+					$gosjson['items'][0] = array('title'=>$title,'src'=>$itemsrc);
+					file_put_contents($gosfile,json_encode($gosjson));
+					BaseChannel::append2All("gos",$gosjson);
+				}
+			}
+			else
+			{
+				$gosjson = json_decode(file_get_contents($gosfile),true);
+			}
+			return $gosjson;
+		}
+	}
+	
 	
 	$channel = "";
 	if(array_key_exists("channel",$_GET))
@@ -31,37 +176,6 @@
 			$date=(time()+3600*8);
 	}
 	
-	if($channel=="cx")
-	{
-		//晨星广播
-		$strDate = gmdate('Y-m-d',$date);
-		$cxfile = './cx/'.$strDate;
-		$cxjson = null;
-		if(!file_exists($cxfile))
-		{
-			$cxdate = gmdate("Y-n-j", $date);
-			$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
-			$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
-			$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
-			$cxjson["title"] = "晨星生命之音";
-			$cxjson["date"] = $strDate;
-			$cxjson["logo"] = "http://cathassist.org/radio/logos/cx.png";
-			$i = 0;
-			foreach($cxlist as $v)
-			{
-				$v = iconv("GB2312", "UTF-8//IGNORE",trim($v));
-				$title = "";
-				preg_match_all($cnpreg, substr($v,strrpos($v,'/')), $title);
-				$title=implode("", $title[0]);
-				$cxjson['items'][$i] = array('title'=>$title,'src'=>cn_urlencode($v));
-				++$i;
-			}
-			file_put_contents($cxfile,json_encode($cxjson));
-		}
-		else
-		{
-			$cxjson = json_decode(file_get_contents($cxfile),true);
-		}
-		echo(json_encode($cxjson));
-	}
+	$cc = BaseChannel::createChannel($channel);
+	echo(json_encode($cc->getRadio($date)));
 ?>
