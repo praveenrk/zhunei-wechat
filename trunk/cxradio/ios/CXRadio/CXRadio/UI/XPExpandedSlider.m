@@ -19,12 +19,12 @@
     return self;
 }
 
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event {
-    
-    CGRect bounds = self.bounds;
-    bounds = CGRectInset(bounds, -40, -20);
-    LogDebug(@"slider event is  %@ slider point is %@", event, [NSValue valueWithCGPoint:point]);
-    return CGRectContainsPoint(bounds, point);
-}
+//- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event {
+//    
+//    CGRect bounds = self.bounds;
+//    bounds = CGRectInset(bounds, -40, -20);
+//    LogDebug(@"slider event is  %@ slider point is %@", event, [NSValue valueWithCGPoint:point]);
+//    return CGRectContainsPoint(bounds, point);
+//}
 
 @end

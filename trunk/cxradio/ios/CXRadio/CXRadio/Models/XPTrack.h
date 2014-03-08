@@ -12,6 +12,6 @@
 @interface XPTrack : XPModel<DOUAudioFile>
 
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSString * src;
+@property (nonatomic, strong) NSString * audioFileURL;
 
 @end
