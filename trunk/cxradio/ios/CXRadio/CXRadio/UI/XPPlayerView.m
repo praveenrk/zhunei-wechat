@@ -13,7 +13,7 @@ static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
 static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
-@interface XPPlayerView()
+@interface XPPlayerView()<UIActionSheetDelegate>
 {
     DOUAudioStreamer *_streamer;
     NSUInteger _currentIndex;
@@ -23,6 +23,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @property (nonatomic, strong) UIButton *buttonPlayPause;
 @property (nonatomic, strong) UIButton *buttonNext;
 @property (nonatomic, strong) UIButton *buttonLast;
+
+@property (nonatomic, strong) UIButton *buttonNextDay;
+@property (nonatomic, strong) UIButton *buttonLastDay;
+@property (nonatomic, strong) UIButton *dayButton;
 
 @property (nonatomic, strong) UILabel *labelTitle;
 @property (nonatomic, strong) UILabel *labelInfo;
@@ -58,8 +62,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         
         _buttonPlayPause = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         _buttonPlayPause.center = CGPointMake(screenWidth/2, 190);
-        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
+        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
+        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
         [_buttonPlayPause addTarget:self action:@selector(actionPlayPause:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonPlayPause];
         
@@ -114,9 +118,62 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 //        UITapGestureRecognizer *volumeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
 //        [_sliderVolume addGestureRecognizer:volumeGesture];
 
+        
+        
+        _buttonLastDay = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 35)];
+        _buttonLastDay.center = CGPointMake(106/2, 430);
+        [_buttonLastDay setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        _buttonLastDay.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_buttonLastDay setTitle:@"上一天" forState:UIControlStateNormal];
+        [_buttonLastDay addTarget:self action:@selector(actionLast:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_buttonLastDay];
+        
+        _buttonNextDay = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 35)];
+        _buttonNextDay.center = CGPointMake(530/2, 430);
+        [_buttonNextDay setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_buttonNextDay setTitle:@"下一天" forState:UIControlStateNormal];
+        _buttonNextDay.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_buttonNextDay addTarget:self action:@selector(actionNext:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_buttonNextDay];
+        
+        _dayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 35)];
+        _dayButton.center = CGPointMake(320/2, 430);
+        [_dayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_dayButton setTitle:@"下一天" forState:UIControlStateNormal];
+        _dayButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_dayButton addTarget:self action:@selector(dateButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_dayButton];
+        
+        
+        
     }
     
     return self;
+}
+
+
+-(void) dateButtonAction:(UIButton *) sender;
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n" delegate:self
+                                              cancelButtonTitle:nil
+                                         destructiveButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+    
+    [sheet showInView:self];
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    datePicker.center = CGPointMake(screenWidth/2, 100);
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.tag = 10000+1;
+    [sheet addSubview:datePicker];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+{
+    UIDatePicker *datePicker = (UIDatePicker *) [actionSheet viewWithTag:10000 + 1];
+    
+    
 }
 
 - (void)sliderTapped:(UITapGestureRecognizer *) gesture {
@@ -246,17 +303,17 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     switch ([_streamer status]) {
         case DOUAudioStreamerPlaying:
             [_labelInfo setText:@"playing"];
-            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
             break;
             
         case DOUAudioStreamerPaused:
             [_labelInfo setText:@"paused"];
-            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
             break;
             
         case DOUAudioStreamerIdle:
             [_labelInfo setText:@"idle"];
-            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
             break;
             
         case DOUAudioStreamerFinished:
