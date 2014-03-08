@@ -102,6 +102,12 @@
 		817BB39E18CA059C007435F1 /* NSObject+iOS7Compatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39918CA059C007435F1 /* NSObject+iOS7Compatibility.m */; };
 		817BB39F18CA059C007435F1 /* NSString+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39B18CA059C007435F1 /* NSString+Unicode.m */; };
 		817BB3A018CA059C007435F1 /* UIView+Additons.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39D18CA059C007435F1 /* UIView+Additons.m */; };
+		817BB3A818CA0C9D007435F1 /* cd_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A218CA0C9D007435F1 /* cd_bg.png */; };
+		817BB3A918CA0C9D007435F1 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A318CA0C9D007435F1 /* icon_menu.png */; };
+		817BB3AA18CA0C9D007435F1 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A418CA0C9D007435F1 /* next.png */; };
+		817BB3AB18CA0C9D007435F1 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A518CA0C9D007435F1 /* pause.png */; };
+		817BB3AC18CA0C9D007435F1 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A618CA0C9D007435F1 /* play.png */; };
+		817BB3AD18CA0C9D007435F1 /* turntable_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 817BB3A718CA0C9D007435F1 /* turntable_pointer.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +295,12 @@
 		817BB39B18CA059C007435F1 /* NSString+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Unicode.m"; sourceTree = "<group>"; };
 		817BB39C18CA059C007435F1 /* UIView+Additons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additons.h"; sourceTree = "<group>"; };
 		817BB39D18CA059C007435F1 /* UIView+Additons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additons.m"; sourceTree = "<group>"; };
+		817BB3A218CA0C9D007435F1 /* cd_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cd_bg.png; sourceTree = "<group>"; };
+		817BB3A318CA0C9D007435F1 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
+		817BB3A418CA0C9D007435F1 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		817BB3A518CA0C9D007435F1 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		817BB3A618CA0C9D007435F1 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		817BB3A718CA0C9D007435F1 /* turntable_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turntable_pointer.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +348,7 @@
 				817BB22018C9F366007435F1 /* CXRadioTests */,
 				817BB1FA18C9F366007435F1 /* Frameworks */,
 				817BB1F918C9F366007435F1 /* Products */,
+				817BB3A118CA0C9D007435F1 /* Resource */,
 			);
 			sourceTree = "<group>";
 		};
@@ -677,6 +690,20 @@
 			path = Additons;
 			sourceTree = "<group>";
 		};
+		817BB3A118CA0C9D007435F1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				817BB3A218CA0C9D007435F1 /* cd_bg.png */,
+				817BB3A318CA0C9D007435F1 /* icon_menu.png */,
+				817BB3A418CA0C9D007435F1 /* next.png */,
+				817BB3A518CA0C9D007435F1 /* pause.png */,
+				817BB3A618CA0C9D007435F1 /* play.png */,
+				817BB3A718CA0C9D007435F1 /* turntable_pointer.png */,
+			);
+			name = Resource;
+			path = CXRadio/Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -755,8 +782,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				817BB21418C9F366007435F1 /* Images.xcassets in Resources */,
+				817BB3AC18CA0C9D007435F1 /* play.png in Resources */,
 				817BB20618C9F366007435F1 /* InfoPlist.strings in Resources */,
+				817BB3AA18CA0C9D007435F1 /* next.png in Resources */,
+				817BB3AB18CA0C9D007435F1 /* pause.png in Resources */,
+				817BB3A918CA0C9D007435F1 /* icon_menu.png in Resources */,
+				817BB3AD18CA0C9D007435F1 /* turntable_pointer.png in Resources */,
 				817BB32518C9FAE1007435F1 /* README.txt in Resources */,
+				817BB3A818CA0C9D007435F1 /* cd_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
