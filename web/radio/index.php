@@ -52,8 +52,9 @@
 	function getRadio(_d)
 	{
 		ppl.pause();
-		$.getJSON("getradio.php?channel="+channel+"&date="+_d.Format("yyyy-MM-dd"), function(data)
+		$.get("getradio.php?channel="+channel+"&date="+_d.Format("yyyy-MM-dd"), function(data)
 		{
+			data = jQuery.parseJSON(data);
 			var list = new Object();
 			$.each( data['items'], function( key, val )
 			{
