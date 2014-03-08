@@ -11,6 +11,36 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import<MobileCoreServices/MobileCoreServices.h>
+#import<SystemConfiguration/SystemConfiguration.h>
+#import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDFileLogger.h"
+#import "DDTTYLogger.h"
+#import "XPHttpClient.h"
+#import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
+
 #endif
+
+
+
+#undef LOG_LEVEL_DEF
+#define LOG_LEVEL_DEF LOG_LEVEL_DEBUG
+
+#define LogError(fmt, ...) DDLogError((@"%s [Line %d] \n ## " fmt), __func__, __LINE__, ##__VA_ARGS__)
+#define LogWarn(fmt, ...) DDLogWarn((@"%s [Line %d] \n ## " fmt), __func__, __LINE__, ##__VA_ARGS__)
+#define LogInfo(fmt, ...) DDLogInfo((@"%s [Line %d] \n ## " fmt), __func__, __LINE__, ##__VA_ARGS__)
+#define LogDebug(fmt, ...) DDLogDebug((@"%s [Line %d] \n ## " fmt), __func__, __LINE__, ##__VA_ARGS__)
+#define LogVerbose(fmt, ...) DDLogVerbose((@"%s [Line %d] \n ## " fmt), __func__, __LINE__, ##__VA_ARGS__)
+
+#define screenWidth [UIScreen mainScreen].bounds.size.width
+#define screenHeight [UIScreen mainScreen].bounds.size.height
+#define themeBgColor [UIColor colorWithWhite:245/255.0 alpha:1]
+#define themeFont [UIFont systemFontOfSize:14.0]
+#define iOS7 7.0
+#define iOS6 6.0
+#define iOS5 5.0
+
