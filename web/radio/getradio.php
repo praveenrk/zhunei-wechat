@@ -34,8 +34,22 @@
 		public static function append2All($c,$j)
 		{
 			$ja = json_decode(file_get_contents("list"),true);
-			$ja[$c] = $j;
-			file_put_contents("list",json_encode($ja));
+			
+			if(array_key_exists($c,$ja))
+			{
+				$curDate = DateTime::createFromFormat('Y-m-d',$ja[$c]['date'])->getTimestamp();
+				$newDate = DateTime::createFromFormat('Y-m-d',$j['date'])->getTimestamp();
+				if($curDate<$newDate)
+				{
+					$ja[$c] = $j;
+					file_put_contents("list",json_encode($ja));
+				}
+			}
+			else
+			{
+				$ja[$c] = $j;
+				file_put_contents("list",json_encode($ja));
+			}
 		}
 		
 		public static function createChannel($c)
