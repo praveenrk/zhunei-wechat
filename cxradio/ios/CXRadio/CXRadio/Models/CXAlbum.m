@@ -1,50 +1,30 @@
 //
-//  XPShow.m
-//  XPBroadcast
+//  CXAlbum.m
+//  CXRadio
 //
-//  Created by tashigaofei on 13-11-21.
-//  Copyright (c) 2013年 ZhaoYanJun. All rights reserved.
+//  Created by tashigaofei on 14-3-7.
+//  Copyright (c) 2014年 zhaoyanjun. All rights reserved.
 //
 
-#import "XPTrack.h"
+#import "CXAlbum.h"
 
-@implementation XPTrack
+@implementation CXAlbum
 
-//- (void)setValue:(id)value forKey:(NSString *)key
-//{
-//    if ([key isEqualToString:@"description"]) {
-//        self.showDescription = value;
-//        return;
-//    }
-//    
-//    if ([key isEqualToString:@"photo"]) {
-//        self.photoUrl = value;
-//        return;
-//    }
-//    
-//    [super setValue:value forKey:key];
-//    
-//}
-
-- (BOOL)isEqual:(XPTrack *) anObject
+- (void)setValue:(id)value forKey:(NSString *)key
 {
-	if (self == anObject)
-		return YES;
-	
-	if ([anObject isKindOfClass:[XPTrack class]]) {
-        return [self.src isEqualToString:anObject.src];
+    if ([key isEqualToString:@"items"]) {
+        self.items = [NSMutableArray array];
+        dispatch_apply([value count], dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(size_t i) {
+            XPTrack *track = [[XPTrack alloc] initWithDictionary:value[i]];
+            [self.items addObject:track];
+        });
+        return;
     }
     
-    return NO;
+    [super setValue:value forKey:key];
+    
 }
 
-- (NSURL *)audioFileURL
-{
-    return [NSURL URLWithString: [self src]];
-}
-
-
-#pragma  mark  Default
 
 //===========================================================
 //  Keyed Archiving
@@ -53,7 +33,9 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.title forKey:@"title"];
-    [encoder encodeObject:self.src forKey:@"src"];
+    [encoder encodeObject:self.date forKey:@"date"];
+    [encoder encodeObject:self.logo forKey:@"logo"];
+    [encoder encodeObject:self.items forKey:@"items"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -61,11 +43,12 @@
     self = [super init];
     if (self) {
         self.title = [decoder decodeObjectForKey:@"title"];
-        self.src = [decoder decodeObjectForKey:@"src"];
+        self.date = [decoder decodeObjectForKey:@"date"];
+        self.logo = [decoder decodeObjectForKey:@"logo"];
+        self.items = [decoder decodeObjectForKey:@"items"];
     }
     return self;
 }
-
 //===========================================================
 // - (NSArray *)keyPaths
 //
@@ -74,7 +57,9 @@
 {
     NSArray *result = [NSArray arrayWithObjects:
                        @"title",
-                       @"src",
+                       @"date",
+                       @"logo",
+                       @"items",
                        nil];
     
     return result;
@@ -97,11 +82,10 @@
     
     return [NSString stringWithString:desc];
 }
-- (NSString *)description
+- (NSString *)description 
 {
     return [self descriptionForKeyPaths]; 
 }
-
 
 
 @end

@@ -8,6 +8,8 @@
 
 #import "CXViewController.h"
 
+#import "XPHttpClient+Album.h"
+
 @interface CXViewController ()
 
 @end
@@ -17,7 +19,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = themeBgColor;
+    
+    [[XPHttpClient sharedInstance] getAudioListWithDateString:nil CompletionBlock:^(CXAlbum *album, NSError *error) {
+        
+        NSLog(@"%@", album);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

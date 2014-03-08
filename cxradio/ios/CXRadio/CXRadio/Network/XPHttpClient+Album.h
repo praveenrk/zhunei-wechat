@@ -8,7 +8,7 @@
 
 #import "XPHttpClient.h"
 
-@interface XPHttpClient (AudioList)
+@interface XPHttpClient (Album)
 
--(void) getAudioListWithPage:(int) page CompletionBlock:(void (^)(NSArray *audioArray, NSError* error)) block;
+-(void) getAudioListWithDateString:(NSString *) dateString CompletionBlock:(void (^)(CXAlbum *album, NSError* error)) block;
 @end

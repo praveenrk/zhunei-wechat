@@ -8,12 +8,38 @@
 
 #import "CXAppDelegate.h"
 
+#import "CXViewController.h"
+
 @implementation CXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [self configLumberjack];
+    
+    [DOUAudioStreamer setOptions:[DOUAudioStreamer options] | DOUAudioStreamerRequireSHA256];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    CXViewController *rootVC = [[CXViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    self.window.rootViewController = navController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+-(void) configLumberjack;
+{
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    NSString *logFilePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    DDLogFileManagerDefault *logFileManager = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:logFilePath];
+    DDFileLogger *fileLoger = [[DDFileLogger alloc] initWithLogFileManager:logFileManager];
+    fileLoger.maximumFileSize = 1024;
+    fileLoger.rollingFrequency = 60 * 60;
+    fileLoger.logFileManager.maximumNumberOfLogFiles = 1;
+    [DDLog addLogger:fileLoger];
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

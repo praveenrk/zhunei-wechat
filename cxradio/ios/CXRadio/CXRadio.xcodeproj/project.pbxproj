@@ -22,7 +22,7 @@
 		817BB22718C9F366007435F1 /* CXRadioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB22618C9F366007435F1 /* CXRadioTests.m */; };
 		817BB2E518C9FAE1007435F1 /* XPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23218C9FAE0007435F1 /* XPModel.m */; };
 		817BB2E618C9FAE1007435F1 /* XPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23418C9FAE0007435F1 /* XPTrack.m */; };
-		817BB2E718C9FAE1007435F1 /* XPHttpClient+AudioList.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23718C9FAE1007435F1 /* XPHttpClient+AudioList.m */; };
+		817BB2E718C9FAE1007435F1 /* XPHttpClient+Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23718C9FAE1007435F1 /* XPHttpClient+Album.m */; };
 		817BB2E818C9FAE1007435F1 /* XPHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23918C9FAE1007435F1 /* XPHttpClient.m */; };
 		817BB2E918C9FAE1007435F1 /* XPStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23C18C9FAE1007435F1 /* XPStorageManager.m */; };
 		817BB2EA18C9FAE1007435F1 /* XPAudioListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB23F18C9FAE1007435F1 /* XPAudioListCell.m */; };
@@ -98,6 +98,10 @@
 		817BB39118C9FC53007435F1 /* DOUMPMediaLibraryAssetLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB37C18C9FC53007435F1 /* DOUMPMediaLibraryAssetLoader.m */; };
 		817BB39218C9FC53007435F1 /* DOUSimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB37E18C9FC53007435F1 /* DOUSimpleHTTPRequest.m */; };
 		817BB39318C9FC53007435F1 /* NSData+DOUMappedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB38018C9FC53007435F1 /* NSData+DOUMappedFile.m */; };
+		817BB39618CA0133007435F1 /* CXAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39518CA0133007435F1 /* CXAlbum.m */; };
+		817BB39E18CA059C007435F1 /* NSObject+iOS7Compatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39918CA059C007435F1 /* NSObject+iOS7Compatibility.m */; };
+		817BB39F18CA059C007435F1 /* NSString+Unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39B18CA059C007435F1 /* NSString+Unicode.m */; };
+		817BB3A018CA059C007435F1 /* UIView+Additons.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BB39D18CA059C007435F1 /* UIView+Additons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,8 +137,8 @@
 		817BB23218C9FAE0007435F1 /* XPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPModel.m; sourceTree = "<group>"; };
 		817BB23318C9FAE0007435F1 /* XPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPTrack.h; sourceTree = "<group>"; };
 		817BB23418C9FAE0007435F1 /* XPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPTrack.m; sourceTree = "<group>"; };
-		817BB23618C9FAE1007435F1 /* XPHttpClient+AudioList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPHttpClient+AudioList.h"; sourceTree = "<group>"; };
-		817BB23718C9FAE1007435F1 /* XPHttpClient+AudioList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPHttpClient+AudioList.m"; sourceTree = "<group>"; };
+		817BB23618C9FAE1007435F1 /* XPHttpClient+Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XPHttpClient+Album.h"; sourceTree = "<group>"; };
+		817BB23718C9FAE1007435F1 /* XPHttpClient+Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XPHttpClient+Album.m"; sourceTree = "<group>"; };
 		817BB23818C9FAE1007435F1 /* XPHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPHttpClient.h; sourceTree = "<group>"; };
 		817BB23918C9FAE1007435F1 /* XPHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPHttpClient.m; sourceTree = "<group>"; };
 		817BB23B18C9FAE1007435F1 /* XPStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPStorageManager.h; sourceTree = "<group>"; };
@@ -277,6 +281,14 @@
 		817BB37E18C9FC53007435F1 /* DOUSimpleHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSimpleHTTPRequest.m; sourceTree = "<group>"; };
 		817BB37F18C9FC53007435F1 /* NSData+DOUMappedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DOUMappedFile.h"; sourceTree = "<group>"; };
 		817BB38018C9FC53007435F1 /* NSData+DOUMappedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DOUMappedFile.m"; sourceTree = "<group>"; };
+		817BB39418CA0133007435F1 /* CXAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXAlbum.h; sourceTree = "<group>"; };
+		817BB39518CA0133007435F1 /* CXAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXAlbum.m; sourceTree = "<group>"; };
+		817BB39818CA059C007435F1 /* NSObject+iOS7Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+iOS7Compatibility.h"; sourceTree = "<group>"; };
+		817BB39918CA059C007435F1 /* NSObject+iOS7Compatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+iOS7Compatibility.m"; sourceTree = "<group>"; };
+		817BB39A18CA059C007435F1 /* NSString+Unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Unicode.h"; sourceTree = "<group>"; };
+		817BB39B18CA059C007435F1 /* NSString+Unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Unicode.m"; sourceTree = "<group>"; };
+		817BB39C18CA059C007435F1 /* UIView+Additons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additons.h"; sourceTree = "<group>"; };
+		817BB39D18CA059C007435F1 /* UIView+Additons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additons.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,17 +376,18 @@
 		817BB20118C9F366007435F1 /* CXRadio */ = {
 			isa = PBXGroup;
 			children = (
-				817BB23018C9FAE0007435F1 /* Models */,
-				817BB23518C9FAE1007435F1 /* Network */,
-				817BB23A18C9FAE1007435F1 /* Storage */,
-				817BB23D18C9FAE1007435F1 /* UI */,
-				817BB24618C9FAE1007435F1 /* Vendor */,
+				817BB39718CA059C007435F1 /* Additons */,
 				817BB20A18C9F366007435F1 /* CXAppDelegate.h */,
 				817BB20B18C9F366007435F1 /* CXAppDelegate.m */,
 				817BB21018C9F366007435F1 /* CXViewController.h */,
 				817BB21118C9F366007435F1 /* CXViewController.m */,
 				817BB21318C9F366007435F1 /* Images.xcassets */,
+				817BB23018C9FAE0007435F1 /* Models */,
+				817BB23518C9FAE1007435F1 /* Network */,
+				817BB23A18C9FAE1007435F1 /* Storage */,
 				817BB20218C9F366007435F1 /* Supporting Files */,
+				817BB23D18C9FAE1007435F1 /* UI */,
+				817BB24618C9FAE1007435F1 /* Vendor */,
 			);
 			path = CXRadio;
 			sourceTree = "<group>";
@@ -415,6 +428,8 @@
 				817BB23218C9FAE0007435F1 /* XPModel.m */,
 				817BB23318C9FAE0007435F1 /* XPTrack.h */,
 				817BB23418C9FAE0007435F1 /* XPTrack.m */,
+				817BB39418CA0133007435F1 /* CXAlbum.h */,
+				817BB39518CA0133007435F1 /* CXAlbum.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -422,8 +437,8 @@
 		817BB23518C9FAE1007435F1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				817BB23618C9FAE1007435F1 /* XPHttpClient+AudioList.h */,
-				817BB23718C9FAE1007435F1 /* XPHttpClient+AudioList.m */,
+				817BB23618C9FAE1007435F1 /* XPHttpClient+Album.h */,
+				817BB23718C9FAE1007435F1 /* XPHttpClient+Album.m */,
 				817BB23818C9FAE1007435F1 /* XPHttpClient.h */,
 				817BB23918C9FAE1007435F1 /* XPHttpClient.m */,
 			);
@@ -649,6 +664,19 @@
 			path = DOUAudioStreamer;
 			sourceTree = "<group>";
 		};
+		817BB39718CA059C007435F1 /* Additons */ = {
+			isa = PBXGroup;
+			children = (
+				817BB39818CA059C007435F1 /* NSObject+iOS7Compatibility.h */,
+				817BB39918CA059C007435F1 /* NSObject+iOS7Compatibility.m */,
+				817BB39A18CA059C007435F1 /* NSString+Unicode.h */,
+				817BB39B18CA059C007435F1 /* NSString+Unicode.m */,
+				817BB39C18CA059C007435F1 /* UIView+Additons.h */,
+				817BB39D18CA059C007435F1 /* UIView+Additons.m */,
+			);
+			path = Additons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -769,10 +797,11 @@
 				817BB32C18C9FAE1007435F1 /* SDWebImageDownloader.m in Sources */,
 				817BB31E18C9FAE1007435F1 /* DDAbstractDatabaseLogger.m in Sources */,
 				817BB38318C9FC53007435F1 /* DOUAudioDecoder.m in Sources */,
-				817BB2E718C9FAE1007435F1 /* XPHttpClient+AudioList.m in Sources */,
+				817BB2E718C9FAE1007435F1 /* XPHttpClient+Album.m in Sources */,
 				817BB32918C9FAE1007435F1 /* SDImageCache.m in Sources */,
 				817BB39318C9FC53007435F1 /* NSData+DOUMappedFile.m in Sources */,
 				817BB32718C9FAE1007435F1 /* MKAnnotationView+WebCache.m in Sources */,
+				817BB39E18CA059C007435F1 /* NSObject+iOS7Compatibility.m in Sources */,
 				817BB2F518C9FAE1007435F1 /* AFURLConnectionOperation.m in Sources */,
 				817BB33418C9FAE1007435F1 /* UIImageView+WebCache.m in Sources */,
 				817BB33018C9FAE1007435F1 /* UIButton+WebCache.m in Sources */,
@@ -785,8 +814,11 @@
 				817BB38C18C9FC53007435F1 /* DOUAudioStreamer+Options.m in Sources */,
 				817BB2EE18C9FAE1007435F1 /* AFDownloadRequestOperation.m in Sources */,
 				817BB2F718C9FAE1007435F1 /* UIImageView+AFNetworking.m in Sources */,
+				817BB39F18CA059C007435F1 /* NSString+Unicode.m in Sources */,
+				817BB3A018CA059C007435F1 /* UIView+Additons.m in Sources */,
 				817BB32318C9FAE1007435F1 /* ContextFilterLogFormatter.m in Sources */,
 				817BB2E518C9FAE1007435F1 /* XPModel.m in Sources */,
+				817BB39618CA0133007435F1 /* CXAlbum.m in Sources */,
 				817BB32818C9FAE1007435F1 /* NSData+GIF.m in Sources */,
 				817BB2F318C9FAE1007435F1 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				817BB2F118C9FAE1007435F1 /* AFImageRequestOperation.m in Sources */,
