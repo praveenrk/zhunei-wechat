@@ -5,6 +5,10 @@ var lineLink = link;
 var descContent = desc;
 var shareTitle = title;
 var appid = "wxe95ac80cef656f14";
+if (imgUrl == null || imgUrl == '' || imgUrl == 'undefined')
+{
+	imgUrl = "http://cathassist.org/logo.jpg";
+}
 
 function shareFriend() {
     WeixinJSBridge.invoke('sendAppMessage',{
