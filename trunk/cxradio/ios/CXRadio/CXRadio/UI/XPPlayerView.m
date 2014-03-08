@@ -60,6 +60,18 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         _albumCoverImageView.center = CGPointMake(screenWidth/2, 190);
         [self addSubview:_albumCoverImageView];
         
+        CABasicAnimation *rotationAnimation;
+        rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
+        rotationAnimation.duration = 2.0;
+        rotationAnimation.cumulative = NO;
+        rotationAnimation.repeatCount = MAXFLOAT;
+        rotationAnimation.removedOnCompletion = NO;
+        rotationAnimation.fillMode = kCAFillModeBackwards;
+        rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+        [_albumCoverImageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        self.layer.speed = 0;
+        
         _buttonPlayPause = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         _buttonPlayPause.center = CGPointMake(screenWidth/2, 190);
         [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
@@ -139,11 +151,9 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         _dayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 35)];
         _dayButton.center = CGPointMake(320/2, 430);
         [_dayButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [_dayButton setTitle:@"下一天" forState:UIControlStateNormal];
         _dayButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [_dayButton addTarget:self action:@selector(dateButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_dayButton];
-        
         
         
     }
@@ -207,6 +217,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 {
     
     self.album = album;
+    
+    [_dayButton setTitle:self.album.date forState:UIControlStateNormal];
     
     [_albumCoverImageView setImageWithURL:[NSURL URLWithString:self.album.logo]];
     
@@ -310,14 +322,24 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 - (void)_updateStatus
 {
     switch ([_streamer status]) {
-        case DOUAudioStreamerPlaying:
+        case DOUAudioStreamerPlaying:{
             [_labelInfo setText:@"playing"];
 //            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
+            self.layer.speed = 1.0;
+            self.layer.beginTime = 0.0;
+            CFTimeInterval pausedTime = [self.layer timeOffset];
+            CFTimeInterval timeSincePause = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+            self.layer.beginTime = timeSincePause;
+            
             break;
+        }
             
         case DOUAudioStreamerPaused:
             [_labelInfo setText:@"paused"];
 //            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+            CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+            self.layer.speed = 0.0;
+            self.layer.timeOffset = pausedTime;
             break;
             
         case DOUAudioStreamerIdle:
