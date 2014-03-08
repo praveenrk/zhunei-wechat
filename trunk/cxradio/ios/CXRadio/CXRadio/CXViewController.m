@@ -91,10 +91,12 @@
     
     __weak typeof(self) wSelf = self;
     [_albumTable addPullToRefreshWithActionHandler:^{
-        [wSelf loadDataWithDate:wSelf.albumDate];
+        [wSelf loadDataWithDate:wSelf.albumDate completionBlock:nil];
     }];
-    
-    [_albumTable triggerPullToRefresh];
+
+    [self loadDataWithDate:_albumDate completionBlock:^{
+        [_playerView playWithAlbum:_album beginIndex:0];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDateChangeNotificationAction:)
                                                  name:changeAlbumDateNotification
@@ -105,7 +107,9 @@
 -(void) albumDateChangeNotificationAction:(NSNotification *) notification;
 {
     _albumDate = notification.userInfo[@"date"];
-    [self loadDataWithDate:_albumDate];
+    [self loadDataWithDate:_albumDate completionBlock:^{
+        [_playerView playWithAlbum:_album beginIndex:0];
+    }];
 }
 
 -(void) rightButtonAction:(UIButton *) sender;
@@ -125,7 +129,7 @@
  
 }
 
--(void) loadDataWithDate:(NSDate *) date;
+-(void) loadDataWithDate:(NSDate *) date completionBlock:(void (^)(void)) block;
 {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -140,13 +144,11 @@
         _naviationTitleLabel.text = self.album.title;
         [_albumTable reloadData];
     
-        
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [_playerView playWithAlbum:_album beginIndex:0];
-        });
-        
         [_albumTable.pullToRefreshView stopAnimating];
+        
+        if (block) {
+            block();
+        }
     }];
     
 }
