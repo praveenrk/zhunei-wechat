@@ -252,7 +252,6 @@ html, body {
     transform: rotate(-30deg);
 }
 .jp-audio .title {
-    margin-top: 6px;
     position: relative;
     font-size: 17px;
     display: inline-block;
@@ -272,6 +271,7 @@ html, body {
     position: relative;
     font-size: 18px;
     line-height: 36px;
+    height: 36px;
 }
 .jp-audio .title .album-songs {
     width: 38px;
@@ -485,6 +485,9 @@ html, body {
     background: #007AFF;
     opacity: .8;
 }
+.control {
+    margin: 10px 0 0;
+}
 .next, .prev {
     width: 36px;
     height: 36px;
@@ -492,11 +495,11 @@ html, body {
     background-size: 80px 40px;
     cursor: pointer;
     display: inline-block;
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 10px;
 }
 .prev {
     background-position: -40px 0;
-    margin: 10px 10px 0 0;
+    margin: 0 10px 0 0;
 }
 .jp-interface {
     background: #fff;
@@ -607,7 +610,7 @@ span.jp-artist {
     font-size: 16px;
 }
 .date-control input {
-    width: 140px;
+    width: 120px;
 }
 @-webkit-keyframes cd-playing2 {
   0%   { -webkit-transform: rotate(0deg);}
