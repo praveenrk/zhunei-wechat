@@ -39,14 +39,14 @@
     self.view.backgroundColor = themeBgColor;
     
     CGRect frame = self.view.bounds;
+    frame.origin.y = 20;
     frame.size.height = screenHeight - 20;
     
-    
-    _albumTable = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth-314/2, 0, 314/2, frame.size.height)
+    _albumTable = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth-314/2, 20, 314/2, frame.size.height)
                                                style:UITableViewStylePlain];
     _albumTable.delegate = self;
     _albumTable.dataSource = self;
-    _albumTable.backgroundColor = [UIColor lightGrayColor];
+    _albumTable.backgroundColor = [UIColor colorWithWhite:0xea/255.0 alpha:1.0];
    [self.view addSubview:_albumTable];
    
     _playerView = [[XPPlayerView alloc] initWithFrame:frame];
