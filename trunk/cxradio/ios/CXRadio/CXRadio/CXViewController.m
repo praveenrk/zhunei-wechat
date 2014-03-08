@@ -26,6 +26,7 @@
 }
 
 @property (nonatomic, strong) CXAlbum *album;
+@property (nonatomic, strong) NSDate *albumDate;
 
 @end
 
@@ -86,16 +87,26 @@
 {
     [super viewDidLoad];
     
-    __weak typeof(self) wSelf = self;
+    _albumDate = [NSDate date];
     
+    __weak typeof(self) wSelf = self;
     [_albumTable addPullToRefreshWithActionHandler:^{
-        [wSelf loadData];
+        [wSelf loadDataWithDate:wSelf.albumDate];
     }];
     
     [_albumTable triggerPullToRefresh];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(albumDateChangeNotificationAction:)
+                                                 name:changeAlbumDateNotification
+                                               object:nil];
 
 }
 
+-(void) albumDateChangeNotificationAction:(NSNotification *) notification;
+{
+    _albumDate = notification.userInfo[@"date"];
+    [self loadDataWithDate:_albumDate];
+}
 
 -(void) rightButtonAction:(UIButton *) sender;
 {
@@ -114,9 +125,15 @@
  
 }
 
--(void) loadData;
+-(void) loadDataWithDate:(NSDate *) date;
 {
-    [[XPHttpClient sharedInstance] getAudioListWithDateString:nil CompletionBlock:^(CXAlbum *album, NSError *error) {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    
+    NSString *dateString = [formatter stringFromDate:date == nil ? [NSDate date] : date];
+    
+    [[XPHttpClient sharedInstance] getAudioListWithDateString:dateString CompletionBlock:^(CXAlbum *album, NSError *error) {
         LogDebug(@"%@", album);
         
         self.album = album;
