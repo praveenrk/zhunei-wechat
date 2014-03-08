@@ -26,7 +26,11 @@ static const NSString * const url = @"http://cathassist.org/radio/getradio.php?c
         
         LogDebug(@"%@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         
-        block([[CXAlbum alloc] initWithDictionary:[responseObject objectFromJSONData]], nil);
+        CXAlbum *album = [[CXAlbum alloc] initWithDictionary:[responseObject objectFromJSONData]];
+        
+        if(block){
+            block(album, nil);
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSAssert(error != nil, @"error");

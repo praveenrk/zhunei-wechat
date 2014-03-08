@@ -14,10 +14,11 @@
 {
     if ([key isEqualToString:@"items"]) {
         self.items = [NSMutableArray array];
-        dispatch_apply([value count], dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(size_t i) {
-            XPTrack *track = [[XPTrack alloc] initWithDictionary:value[i]];
+        for (NSDictionary *dict in value){
+            XPTrack *track = [[XPTrack alloc] initWithDictionary:dict];
             [self.items addObject:track];
-        });
+        }
+        
         return;
     }
     
