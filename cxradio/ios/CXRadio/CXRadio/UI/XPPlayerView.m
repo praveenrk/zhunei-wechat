@@ -162,17 +162,26 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [sheet showInView:self];
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    datePicker.date = [formatter dateFromString:self.album.date];
     datePicker.center = CGPointMake(screenWidth/2, 100);
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.tag = 10000+1;
     [sheet addSubview:datePicker];
     
+    
 }
+
+#define Sheet_OK 1
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
     UIDatePicker *datePicker = (UIDatePicker *) [actionSheet viewWithTag:10000 + 1];
-    
+    if (buttonIndex == Sheet_OK) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:changeAlbumDateNotification
+                                                            object:nil userInfo:@{@"date": datePicker.date}];
+    }
     
 }
 

@@ -14,7 +14,7 @@ static const NSString * const url = @"http://cathassist.org/radio/getradio.php?c
 
 -(void) getAudioListWithDateString:(NSString *) dateString CompletionBlock:(void (^)(CXAlbum *album, NSError* error)) block;
 {
-    NSString *apiUrl = [NSString stringWithFormat:@"%@&date=%@",url,@"2014-03-03"];
+    NSString *apiUrl = [NSString stringWithFormat:@"%@&date=%@",url, dateString];
     
     LogDebug(@"get Api : %@", apiUrl);
     

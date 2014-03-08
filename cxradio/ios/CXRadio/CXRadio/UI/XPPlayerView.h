@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "DOUAudioStreamer.h"
 
+#define changeAlbumDateNotification @"changeAlbumDateNotification"
+
 @interface XPPlayerView : UIView
 
 -(void) playWithAlbum:(CXAlbum *) album beginIndex:(NSUInteger) index;
