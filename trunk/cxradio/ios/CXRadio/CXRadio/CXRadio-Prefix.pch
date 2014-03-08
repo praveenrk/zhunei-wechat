@@ -22,6 +22,12 @@
 #import "XPHttpClient.h"
 #import "UIImageView+WebCache.h"
 #import "UIButton+WebCache.h"
+#import "DOUAudioStreamer.h"
+#import "DOUAudioStreamer+Options.h"
+#import "XPTrack.h"
+#import "CXAlbum.h"
+
+
 
 #endif
 
