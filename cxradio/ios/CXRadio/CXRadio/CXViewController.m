@@ -10,11 +10,18 @@
 
 #import "XPHttpClient+Album.h"
 #import "SVPullToRefresh.h"
+#import "XPPlayerView.h"
 
 @interface CXViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
-    UIView *_contentView;
     UITableView *_albumTable;
+    XPPlayerView  *_playerView;
+    UILabel *_naviationTitleLabel;
+    
+    CGFloat _leftSpot;
+    CGFloat _rightSpot;
+    
+    UIButton *_natigationBarRightButton;
     
 }
 
@@ -28,31 +35,56 @@
 -(void) loadView;
 {
     [super loadView];
+    self.view.backgroundColor = themeBgColor;
     
     CGRect frame = self.view.bounds;
-    frame.size.height = screenHeight - 20-44;
+    frame.size.height = screenHeight - 20;
     
-    _contentView = [[UIView alloc] initWithFrame:frame];
-    _contentView.backgroundColor = themeBgColor;
-    [self.view addSubview:_contentView];
     
-    _albumTable = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth-314/2, 0, 314/2, _contentView.bounds.size.height)
+    _albumTable = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth-314/2, 0, 314/2, frame.size.height)
                                                style:UITableViewStylePlain];
     _albumTable.delegate = self;
     _albumTable.dataSource = self;
     _albumTable.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:_albumTable];
+   [self.view addSubview:_albumTable];
+   
+    _playerView = [[XPPlayerView alloc] initWithFrame:frame];
+    _playerView.backgroundColor = themeBgColor;
+    [self.view addSubview:_playerView];
+
+    _naviationTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    _naviationTitleLabel.backgroundColor = [UIColor colorWithWhite:0xf7/255.0 alpha:1.0];
+    _naviationTitleLabel.textColor = [UIColor blackColor];
+    _naviationTitleLabel.textAlignment = NSTextAlignmentCenter;
+    _naviationTitleLabel.font = [UIFont systemFontOfSize:17.0];
+    _naviationTitleLabel.userInteractionEnabled = YES;
+    [_playerView addSubview:_naviationTitleLabel];
     
+    _natigationBarRightButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [_natigationBarRightButton setBackgroundImage:[UIImage imageNamed:@"icon_menu"] forState:UIControlStateNormal];
+    _natigationBarRightButton.center = CGPointMake(320-32, 44/2);
+    [_natigationBarRightButton addTarget:self action:@selector(rightButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [_playerView addSubview:_natigationBarRightButton];
+    
+    _leftSpot = 320/2 - 314/2;
+    _rightSpot = 320/2;
+    
+    UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(swipeGestureAction:)];
+    gesture.direction = UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight;
+    [_playerView addGestureRecognizer:gesture];
     
 }
 
 
+-(void) swipeGestureAction:(UISwipeGestureRecognizer *) gesture;
+{
+    [self expandOrShrinkListTable];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = themeBgColor;
-    
     
     __weak typeof(self) wSelf = self;
     
@@ -60,9 +92,26 @@
         [wSelf loadData];
     }];
     
-//    [_albumTable triggerPullToRefresh];
-    
+    [_albumTable triggerPullToRefresh];
 
+}
+
+
+-(void) rightButtonAction:(UIButton *) sender;
+{
+    [self expandOrShrinkListTable];
+}
+
+-(void) expandOrShrinkListTable;
+{
+    [UIView animateWithDuration:0.2 delay:0 options:0 animations:^{
+        _playerView.center = CGPointMake(_playerView.center.x == _leftSpot ? _rightSpot : _leftSpot,
+                                         _playerView.center.y);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+ 
 }
 
 -(void) loadData;
@@ -71,7 +120,14 @@
         LogDebug(@"%@", album);
         
         self.album = album;
+        _naviationTitleLabel.text = self.album.title;
         [_albumTable reloadData];
+    
+        
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [_playerView playWithAlbum:_album beginIndex:0];
+        });
         
         [_albumTable.pullToRefreshView stopAnimating];
     }];
@@ -84,7 +140,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 #pragma mark UITableViewDelegate Methods
@@ -119,10 +174,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-//    [self deselectRowAtIndexPath:indexPath animated:YES];
-//    if ([_tableDelegate respondsToSelector:@selector(audioListTable:didSelectAudio:)]) {
-//        [_tableDelegate audioListTable:self didSelectAudio:_tableDataSource[indexPath.row]];
-//    }
+    [_albumTable deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [_playerView playWithAlbum:self.album beginIndex:indexPath.row];
+    
+    [self expandOrShrinkListTable];
 }
 
 

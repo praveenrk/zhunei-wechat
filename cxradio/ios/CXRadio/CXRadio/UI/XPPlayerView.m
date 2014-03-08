@@ -16,7 +16,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @interface XPPlayerView()
 {
     DOUAudioStreamer *_streamer;
-    int _currentIndex;
+    NSUInteger _currentIndex;
     double _downloadProgress;
 }
 
@@ -31,6 +31,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @property (nonatomic, strong) XPExpandedSlider *sliderProgress;
 @property (nonatomic, strong) XPExpandedSlider *sliderVolume;
 
+@property (nonatomic, strong) CXAlbum *album;
+
+@property (nonatomic, strong) UIImageView *albumCoverImageView;
+
+
 @end
 
 @implementation XPPlayerView
@@ -39,39 +44,50 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _buttonPlayPause = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-        _buttonPlayPause.center = CGPointMake(screenWidth/2, 300);
-        [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
-        [_buttonPlayPause setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        _buttonPlayPause.titleLabel.font = themeFont;
+        
+        UIImageView *bgCDImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 256, 256)];
+        bgCDImageView.image = [UIImage imageNamed:@"cd_bg"];
+        bgCDImageView.center = CGPointMake(screenWidth/2, 190);
+        [self addSubview:bgCDImageView];
+       
+        _albumCoverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 256/2, 256/2)];
+        _albumCoverImageView.layer.masksToBounds = YES;
+        _albumCoverImageView.layer.cornerRadius = 256/2/2;
+        _albumCoverImageView.center = CGPointMake(screenWidth/2, 190);
+        [self addSubview:_albumCoverImageView];
+        
+        _buttonPlayPause = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        _buttonPlayPause.center = CGPointMake(screenWidth/2, 190);
+        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        [_buttonPlayPause setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
         [_buttonPlayPause addTarget:self action:@selector(actionPlayPause:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonPlayPause];
         
-        _buttonLast = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 40)];
-        _buttonLast.center = CGPointMake(screenWidth/4, 300);
-        [_buttonLast setTitle:@"Last" forState:UIControlStateNormal];
-        [_buttonLast setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        _buttonLast.titleLabel.font = themeFont;
+        _buttonLast = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+        _buttonLast.center = CGPointMake(25, 355);
+        [_buttonLast setBackgroundImage:[UIImage imageNamed:@"last"] forState:UIControlStateNormal];
         [_buttonLast addTarget:self action:@selector(actionLast:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonLast];
         
-        _buttonNext = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 40)];
-        _buttonNext.center = CGPointMake(screenWidth/4*3, 300);
-        [_buttonNext setTitle:@"Next" forState:UIControlStateNormal];
-        [_buttonNext setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        _buttonNext.titleLabel.font = themeFont;
+        _buttonNext = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+        _buttonNext.center = CGPointMake(295, 355);
+        [_buttonNext setBackgroundImage:[UIImage imageNamed:@"next"] forState:UIControlStateNormal];
         [_buttonNext addTarget:self action:@selector(actionNext:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonNext];
         
         _labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-        _labelTitle.center = CGPointMake(screenWidth/2, 30);
+        _labelTitle.center = CGPointMake(screenWidth/2, 355);
         _labelTitle.backgroundColor = [UIColor clearColor];
-        _labelTitle.font = themeFont;
+        _labelTitle.textColor = [UIColor blackColor];
+        _labelTitle.textAlignment = NSTextAlignmentCenter;
+        _labelTitle.font = [UIFont systemFontOfSize:18.0];
         [self addSubview:_labelTitle];
         
         _labelInfo = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-        _labelInfo.center = CGPointMake(screenWidth/2, 80);
+        _labelInfo.center = CGPointMake(screenWidth/2, 375);
+        _labelInfo.textAlignment = NSTextAlignmentCenter;
         _labelInfo.backgroundColor = [UIColor clearColor];
+        _labelInfo.textColor = [UIColor colorWithWhite:0.1 alpha:0.8];
         _labelInfo.font = themeFont;
         [self addSubview:_labelInfo];
         
@@ -80,23 +96,23 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         _labelMisc.backgroundColor = [UIColor clearColor];
         _labelMisc.font = themeFont;
         _labelMisc.adjustsFontSizeToFitWidth = YES;
-        [self addSubview:_labelMisc];
+//        [self addSubview:_labelMisc];
         
-        _sliderProgress = [[XPExpandedSlider alloc ] initWithFrame:CGRectMake(0, 0, 280, 30)];
-        _sliderProgress.center = CGPointMake(screenWidth/2, 150);
+        _sliderProgress = [[XPExpandedSlider alloc ] initWithFrame:CGRectMake(0, 0, 300, 30)];
+        _sliderProgress.center = CGPointMake(screenWidth/2, 400);
         _sliderProgress.backgroundColor = [UIColor clearColor];
         [self addSubview:_sliderProgress];
         [_sliderProgress addTarget:self action:@selector(actionSliderProgress:) forControlEvents:UIControlEventValueChanged];
         UITapGestureRecognizer *progressGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
         [_sliderProgress addGestureRecognizer:progressGesture];
         
-        _sliderVolume = [[XPExpandedSlider alloc ] initWithFrame:CGRectMake(0, 0, 120, 30)];
-        _sliderVolume.center = CGPointMake(screenWidth/2, 200);
-        _sliderVolume.backgroundColor = [UIColor clearColor];
-        [self addSubview:_sliderVolume];
-        [_sliderVolume addTarget:self action:@selector(actionSliderVolume:) forControlEvents:UIControlEventValueChanged];
-        UITapGestureRecognizer *volumeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
-        [_sliderVolume addGestureRecognizer:volumeGesture];
+//        _sliderVolume = [[XPExpandedSlider alloc ] initWithFrame:CGRectMake(0, 0, 120, 30)];
+//        _sliderVolume.center = CGPointMake(screenWidth/2, 200);
+//        _sliderVolume.backgroundColor = [UIColor clearColor];
+//        [self addSubview:_sliderVolume];
+//        [_sliderVolume addTarget:self action:@selector(actionSliderVolume:) forControlEvents:UIControlEventValueChanged];
+//        UITapGestureRecognizer *volumeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
+//        [_sliderVolume addGestureRecognizer:volumeGesture];
 
     }
     
@@ -121,9 +137,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
 }
 
--(void) playWithTracks:(NSArray *) tracks;
+-(void) playWithAlbum:(CXAlbum *) album beginIndex:(NSUInteger) index;
 {
-    self.tracks = tracks;
+    
+    self.album = album;
+    
+    [_albumCoverImageView setImageWithURL:[NSURL URLWithString:self.album.logo]];
+    
+    _currentIndex = index < [self.album.items count] ? index : 0;
     [self _resetStreamer];
     
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(_timerAction:) userInfo:nil repeats:YES];
@@ -140,7 +161,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         _streamer = nil;
     }
     
-    XPTrack *track = [_tracks objectAtIndex:_currentIndex];
+    XPTrack *track = [self.album.items objectAtIndex:_currentIndex];
     NSString *title = [NSString stringWithFormat:@"%@", track.title];
     [_labelTitle setText:title];
     
@@ -159,11 +180,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 {
     
     NSUInteger nextIndex = _currentIndex + 1;
-    if (nextIndex >= [_tracks count]) {
+    if (nextIndex >= [self.album.items count]) {
         nextIndex = 0;
     }
     
-    [DOUAudioStreamer setHintWithAudioFile:[_tracks objectAtIndex:nextIndex]];
+    [DOUAudioStreamer setHintWithAudioFile:[self.album.items objectAtIndex:nextIndex]];
 }
 
 
@@ -254,8 +275,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 
-- (void) actionPlayPause:(id)sender
+- (void) actionPlayPause:(UIButton *)sender
 {
+
+    sender.selected = !sender.isSelected;
+    
     if ([_streamer status] == DOUAudioStreamerPaused ||
         [_streamer status] == DOUAudioStreamerIdle) {
         [_streamer play];
@@ -267,7 +291,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void) actionNext:(id)sender
 {
-    if (++_currentIndex >= [_tracks count]) {
+    if (++_currentIndex >= [self.album.items count]) {
         _currentIndex = 0;
     }
     
@@ -276,7 +300,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void) actionLast:(id)sender
 {
-    if (--_currentIndex >= [_tracks count]) {
+    if (--_currentIndex >= [self.album.items count]) {
         _currentIndex = 0;
     }
     

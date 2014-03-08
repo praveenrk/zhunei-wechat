@@ -44,7 +44,7 @@
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
-#define themeBgColor [UIColor colorWithWhite:245/255.0 alpha:1]
+#define themeBgColor [UIColor colorWithWhite:255/255.0 alpha:1]
 #define themeFont [UIFont systemFontOfSize:14.0]
 #define iOS7 7.0
 #define iOS6 6.0

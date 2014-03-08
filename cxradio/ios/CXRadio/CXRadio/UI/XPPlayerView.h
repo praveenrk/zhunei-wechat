@@ -10,8 +10,7 @@
 #import "DOUAudioStreamer.h"
 
 @interface XPPlayerView : UIView
-@property (nonatomic, strong) NSArray *tracks;
 
--(void) playWithTracks:(NSArray *) tracks;
+-(void) playWithAlbum:(CXAlbum *) album beginIndex:(NSUInteger) index;
 
 @end

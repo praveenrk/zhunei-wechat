@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8148424918CB50490065ACA8 /* last.png in Resources */ = {isa = PBXBuildFile; fileRef = 8148424818CB50490065ACA8 /* last.png */; };
 		817BB1FC18C9F366007435F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817BB1FB18C9F366007435F1 /* Foundation.framework */; };
 		817BB1FE18C9F366007435F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817BB1FD18C9F366007435F1 /* CoreGraphics.framework */; };
 		817BB20018C9F366007435F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817BB1FF18C9F366007435F1 /* UIKit.framework */; };
@@ -121,6 +122,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8148424818CB50490065ACA8 /* last.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = last.png; sourceTree = "<group>"; };
 		817BB1F818C9F366007435F1 /* CXRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		817BB1FB18C9F366007435F1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		817BB1FD18C9F366007435F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -693,6 +695,7 @@
 		817BB3A118CA0C9D007435F1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8148424818CB50490065ACA8 /* last.png */,
 				817BB3A218CA0C9D007435F1 /* cd_bg.png */,
 				817BB3A318CA0C9D007435F1 /* icon_menu.png */,
 				817BB3A418CA0C9D007435F1 /* next.png */,
@@ -782,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				817BB21418C9F366007435F1 /* Images.xcassets in Resources */,
+				8148424918CB50490065ACA8 /* last.png in Resources */,
 				817BB3AC18CA0C9D007435F1 /* play.png in Resources */,
 				817BB20618C9F366007435F1 /* InfoPlist.strings in Resources */,
 				817BB3AA18CA0C9D007435F1 /* next.png in Resources */,
@@ -1082,6 +1086,7 @@
 				817BB22C18C9F366007435F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		817BB22D18C9F366007435F1 /* Build configuration list for PBXNativeTarget "CXRadioTests" */ = {
 			isa = XCConfigurationList;
@@ -1090,6 +1095,7 @@
 				817BB22F18C9F366007435F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
