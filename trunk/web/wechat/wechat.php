@@ -127,7 +127,7 @@ class wechatCallbackapiTest
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
 				$picurl = $row['picurl'];
-				if($picurl==""&&ArtCount==0)
+				if($picurl=="" and $ArtCount==0)
 				{
 					$picurl = "http://cathassist.org/logo_l.jpg";
 				}
