@@ -138,8 +138,6 @@
     NSString *dateString = [formatter stringFromDate:date == nil ? [NSDate date] : date];
     
     [[XPHttpClient sharedInstance] getAudioListWithDateString:dateString CompletionBlock:^(CXAlbum *album, NSError *error) {
-        LogDebug(@"%@", album);
-        
         self.album = album;
         _naviationTitleLabel.text = self.album.title;
         [_albumTable reloadData];

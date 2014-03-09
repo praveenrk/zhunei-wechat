@@ -63,7 +63,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         CABasicAnimation *rotationAnimation;
         rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
         rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI * 2.0];
-        rotationAnimation.duration = 2.0;
+        rotationAnimation.duration = 8.0;
         rotationAnimation.cumulative = NO;
         rotationAnimation.repeatCount = MAXFLOAT;
         rotationAnimation.removedOnCompletion = NO;
@@ -137,7 +137,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         [_buttonLastDay setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         _buttonLastDay.titleLabel.font = [UIFont systemFontOfSize:15];
         [_buttonLastDay setTitle:@"上一天" forState:UIControlStateNormal];
-        [_buttonLastDay addTarget:self action:@selector(actionLast:) forControlEvents:UIControlEventTouchUpInside];
+        [_buttonLastDay addTarget:self action:@selector(actionLastDay:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonLastDay];
         
         _buttonNextDay = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 35)];
@@ -145,7 +145,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         [_buttonNextDay setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_buttonNextDay setTitle:@"下一天" forState:UIControlStateNormal];
         _buttonNextDay.titleLabel.font = [UIFont systemFontOfSize:15];
-        [_buttonNextDay addTarget:self action:@selector(actionNext:) forControlEvents:UIControlEventTouchUpInside];
+        [_buttonNextDay addTarget:self action:@selector(actionNextDay:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_buttonNextDay];
         
         _dayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 35)];
@@ -160,6 +160,30 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
     return self;
 }
+
+
+-(void) actionLastDay:(UIButton *) sender;
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *lastDate = [NSDate dateWithTimeInterval:-60*60*24 sinceDate:[formatter dateFromString:self.album.date]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:changeAlbumDateNotification
+                                                        object:nil userInfo:@{@"date": lastDate}];
+    
+}
+
+
+-(void) actionNextDay:(UIButton *) sender;
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *nextDate = [NSDate dateWithTimeInterval:60*60*24 sinceDate:[formatter dateFromString:self.album.date]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:changeAlbumDateNotification
+                                                        object:nil userInfo:@{@"date": nextDate}];
+    
+}
+
+
 
 
 -(void) dateButtonAction:(UIButton *) sender;
