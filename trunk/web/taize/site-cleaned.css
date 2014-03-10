@@ -1118,11 +1118,11 @@ h3 {
 /* Page headers */
 .docs-header {
   color: #b9c8e0;
-  background-color: #1d365d;
+  background-color: #030207;
   background-image:url(bg.jpg);
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-position: center right;
+  background-size:contain;
 }
 .docs-header h1 {
   color: #fff;
