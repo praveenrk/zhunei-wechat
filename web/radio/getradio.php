@@ -82,12 +82,12 @@
 	{
 		function getRadio($date)
 		{
-			$strDate = gmdate('Y-m-d',$date);
+			$strDate = date('Y-m-d',$date);
 			$cxfile = './cx/'.$strDate;
 			$cxjson = null;
 			if(!file_exists($cxfile))
 			{
-				$cxdate = gmdate("Y-n-j", $date);
+				$cxdate = date("Y-n-j", $date);
 				$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
 				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
@@ -103,6 +103,10 @@
 					$title=implode("", $title[0]);
 					$cxjson['items'][$i] = array('title'=>$title,'src'=>cn_urlencode($v));
 					++$i;
+				}
+				if($i<1)
+				{
+					return null;
 				}
 				file_put_contents($cxfile,json_encode($cxjson));
 				BaseChannel::append2All("cx",$cxjson);
@@ -120,7 +124,7 @@
 	{
 		function getRadio($date)
 		{
-			$strDate = gmdate('Y-m-d',$date);
+			$strDate = date('Y-m-d',$date);
 			$vafile = './vacn/'.$strDate;
 			$vajson = null;
 			if(!file_exists($vafile))
@@ -136,6 +140,10 @@
 					file_put_contents($vafile,json_encode($vajson));
 					BaseChannel::append2All("vacn",$vajson);
 				}
+				else
+				{
+					return null;
+				}
 			}
 			else
 			{
@@ -150,7 +158,7 @@
 	{
 		function getRadio($date)
 		{
-			$strDate = gmdate('Y-m-d',$date);
+			$strDate = date('Y-m-d',$date);
 			$gosfile = './gos/'.$strDate;
 			$gosjson = null;
 			if(!file_exists($gosfile))
@@ -165,6 +173,10 @@
 					$gosjson['items'][0] = array('title'=>$title,'src'=>$itemsrc);
 					file_put_contents($gosfile,json_encode($gosjson));
 					BaseChannel::append2All("gos",$gosjson);
+				}
+				else
+				{
+					return null;
 				}
 			}
 			else
@@ -186,10 +198,25 @@
 	if(array_key_exists("date",$_GET))
 	{
 		$date = DateTime::createFromFormat('Y-m-d',$_GET["date"])->getTimestamp();
-		if($date>(time()+3600*8))
+		if($date>time()+3600*8)
+		{
 			$date=(time()+3600*8);
+		}
 	}
 	
 	$cc = BaseChannel::createChannel($channel);
-	echo(json_encode($cc->getRadio($date)));
+	$ret = $cc->getRadio($date);
+	$count = 0;
+	while($ret==null && $count<10)
+	{
+		//查询历史十天内的数据
+		$date = $date-3600*24;
+		$ret = $cc->getRadio($date);
+		$count++;
+	}
+	if($ret==null)
+	{
+		die("Something is wrong about this channel.");
+	}
+	echo(json_encode($ret));
 ?>
