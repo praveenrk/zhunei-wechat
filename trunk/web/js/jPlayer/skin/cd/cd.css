@@ -612,6 +612,33 @@ span.jp-artist {
 .date-control input {
     width: 120px;
 }
+.title-bar select{
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 5px;
+    font-size: 20px;
+    height: 100%;
+    -webkit-appearance: none;
+    border: 0 none;
+    background: transparent;
+    text-align: right;
+    opacity: 0;
+}
+.title-bar .wrap {
+    position: relative;
+    display: inline-block;
+    padding: 14px 0;
+}
+.title-bar .wrap b:after{
+    content: ' ';
+    display: inline-block;
+    width: 1px;
+    border: 4px #000 solid;
+    border-width: 7px 4px 0;
+    margin: 5px 4px 2px;
+    border-color: #000 transparent transparent;
+}
 @-webkit-keyframes cd-playing2 {
   0%   { -webkit-transform: rotate(0deg);}
   50%  { -webkit-transform: rotate(180deg); }

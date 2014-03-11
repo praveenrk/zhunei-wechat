@@ -1,30 +1,19 @@
-<?php
-	if(!array_key_exists("channel",$_GET))
-	{
-		echo('
-<html>
-<head>
-	<title>天主教小助手网络电台</title>
-	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
-	<meta name="viewport" content="user-scalable=no, width=device-width" />
-</head>
-<body>
-	<h2><a href="index.php?channel=cx">晨星生命之音</a></h2>
-	<h2><a href="index.php?channel=vacn">梵蒂冈广播</a></h2>
-	<h2><a href="index.php?channel=gos">每日福音</a></h2>
-</body>
-</html>
-		');
-		die();
-	}
-?>
-
 <html>
 <head>
 	<title>天主教小助手网络电台</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width" />
 	<link rel="stylesheet" type="text/css" href="http://cathassist.org/js/jPlayer/skin/cd/cd.css"/>
+	<style type="text/css">
+		.title-bar select{
+			padding: 5px;
+			font-size: 20px;
+			height: 100%;
+			-webkit-appearance: none;
+			border: 0 none;
+			background: transparent;
+		}
+	</style>
 	<script type="text/javascript" src="http://cathassist.org/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
 	<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
@@ -49,6 +38,12 @@
 		return fmt;
 	}
 
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return unescape(r[2]); return null;
+    }
+	
 	function getRadio(_d)
 	{
 		ppl.pause();
@@ -64,13 +59,13 @@
 			});
 			
 			ppl.setPlaylist(list);
-			$("#jptitle").html(data['title']+"("+data['date']+")");
+			$("#jptitle").html(data['title']);
 			$("#jpimg").attr("src",data["logo"]);
 			curDate = new Date(data['date']);
 			$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
 			document.title = data['title'];
 			
-			SetWechatShare(data['title']+"——天主教小助手",window.location.href,data['logo'],data['title']);
+			SetWechatShare(data['title'],window.location.href,data['logo'],data['title']);
 		});
 	}
 	
@@ -114,6 +109,13 @@
             snapper.open('right')
         });
 		
+		//channel changed
+		$("#jpchannel").change(function()
+		{
+			channel = $("#jpchannel").val();
+			getRadio(curDate);
+		});
+		
 		//prev day
 		$("#prevBtn").click(function()
 		{
@@ -134,14 +136,15 @@
 			getRadio(curDate);
 		});
 		
+		var argC = getQueryString("channel");
+		$("#jpchannel").val(argC);
+		channel = $("#jpchannel").val();
 		getRadio(curDate);
     });
 	
 	var ppl = null;
 	var curDate = new Date();
-	<?php
-		echo('var channel = "'.$_GET['channel'].'";'."\n");
-	?>
+	var channel = "cx";
     //]]>
     </script>
 </head>
@@ -153,7 +156,15 @@
             <div class="jp-gui jp-interface">
                 <div class="title-bar">
                     <a href="#" class="open-right"></a>
-                    <h2 id="jptitle">泰泽祈祷选用歌曲</h2>
+                    <span class="wrap">
+                        <select id="jpchannel">
+                            <option value="cx">晨星生命之音</option>
+                            <option value="vacn">梵蒂冈广播</option>
+                            <option value="gos">每日福音</option>
+                        </select>
+                        <b>晨星生命之音</b>
+                    </span>
+					<!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
                 </div>
                 <div class="cp-buffer-holder">
                     <!-- .cp-gt50 only needed when buffer is > than 50% -->
