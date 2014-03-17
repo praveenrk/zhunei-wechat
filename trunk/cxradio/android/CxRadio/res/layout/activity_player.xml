@@ -20,13 +20,11 @@
         android:layout_marginTop="28dp"
         android:src="@drawable/turntable_ctrl" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignLeft="@+id/imageView2"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView2" />
 
 </RelativeLayout>
