@@ -6,7 +6,10 @@ import java.text.*;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.text.Html;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -43,6 +46,8 @@ public class MainActivity extends Activity
 	private ImageView prevButton = null;
 	private ImageView nextButton = null;
 	private TextView musicText = null;
+	private SeekBar seekProgress = null;
+	private TextView curDateText = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -120,9 +125,14 @@ public class MainActivity extends Activity
 	
 	private boolean refreshPlayList()
 	{
-		new LoadPlayListTask().execute("cx",fmDate.format(new Date()));
+		setPlayDate(new Date());
 		return true;
     }
+	
+	private void setPlayDate(Date d)
+	{
+		new LoadPlayListTask().execute("cx",fmDate.format(d));
+	}
 	
 	private void initPlayer()
 	{
@@ -197,14 +207,123 @@ public class MainActivity extends Activity
 			nextButton = new ImageView(this);
 			prevButton.setImageResource(R.drawable.prev_ctrl);
 			nextButton.setImageResource(R.drawable.next_ctrl);
-			int iH = (int)(fDegree*9);
+			musicText = (TextView)findViewById(R.id.cur_music_name);
+			musicText.setText("晨星生命之音-因爱而相聚");
+			
+			int iH = (int)(fDegree*9.5);
 			int iW = (int)fDegree;
 			
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins(0, iH, (int)(iWidth-iW), (int)(iHeight-iH-iW));
-			prevButton.setLayoutParams(params);
+			{
+				//上一首的显示位置
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.setMargins((int)(fDegree*0.2), iH, (int)(iWidth-iW), (int)(iHeight-iH-iW-fDegree*0.2));
+				prevButton.setLayoutParams(params);
+			}
+			{
+				//下一首的显示位置
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.setMargins((int)(fDegree*8.8), iH, (int)(iWidth-fDegree*0.2), (int)(iHeight-iH-iW-fDegree*0.2));
+				nextButton.setLayoutParams(params);
+			}
+			{
+				//当前歌曲的显示位置
+				RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)musicText.getLayoutParams();
+				params.topMargin = (int)(iH+iW*0.2);
+			}
 			
 			playerContainer.addView(prevButton);
+			playerContainer.addView(nextButton);
+		}
+		{
+			//初始化进度控制控件
+			seekProgress = new SeekBar(this);
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+			params.topMargin = (int)(fDegree*11);
+			seekProgress.setLayoutParams(params);
+			
+			playerContainer.addView(seekProgress);
+		}
+		
+		{
+			//日期选择
+			//初始化上一日、下一日、当前日期
+			curDateText = new TextView(this);
+			TextView prevDay = new TextView(this);
+			TextView nextDay = new TextView(this);
+			curDateText.setTextAppearance(this, R.style.TextStyle);
+			prevDay.setTextAppearance(this, R.style.TextStyle);
+			nextDay.setTextAppearance(this, R.style.TextStyle);
+			prevDay.setText("上一日");
+			nextDay.setText("下一日");
+			curDateText.setText("2014-03-09");
+			
+			{
+				//上一日的显示位置
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.topMargin = (int)(fDegree*12);
+				params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+				params.leftMargin = (int)(fDegree*0.5);
+				prevDay.setLayoutParams(params);
+				prevDay.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v)
+					{
+						Date d = new Date();
+						d.setTime(player.getChannel().date.getTime()-3600*24000);
+						setPlayDate(d);
+					}
+				});
+			}
+			{
+				//下一日的显示位置
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.topMargin = (int)(fDegree*12);
+				params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+				params.rightMargin = (int)(fDegree*0.5);
+				nextDay.setLayoutParams(params);
+				nextDay.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v)
+					{
+						Date d = new Date();
+						d.setTime(player.getChannel().date.getTime()+3600*24000);
+						setPlayDate(d);
+					}
+				});
+			}
+			{
+				//当前日期的显示位置
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+				params.topMargin= (int)(fDegree*12);
+				curDateText.setLayoutParams(params);
+				curDateText.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v)
+					{
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(player.getChannel().date);
+						DatePickerDialog dlg = new DatePickerDialog(MainActivity.this,
+							new DatePickerDialog.OnDateSetListener(){
+								@Override
+								public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3)
+								{
+									Calendar cal1 = Calendar.getInstance();
+									cal1.set(arg1, arg2, arg3);
+									setPlayDate(cal1.getTime());
+								}
+							},
+							cal.get(Calendar.YEAR),
+							cal.get(Calendar.MONTH),
+							cal.get(Calendar.DAY_OF_MONTH));
+						dlg.show();
+					}
+				});
+			}
+			
+			playerContainer.addView(prevDay);
+			playerContainer.addView(nextDay);
+			playerContainer.addView(curDateText);
 		}
 	}
 	
@@ -212,7 +331,7 @@ public class MainActivity extends Activity
 	private void setPlayerStart()
 	{
 		iconButton.setStart();
-		player.start();
+		player.setPlay();
 		playButton.setVisibility(ImageView.INVISIBLE);
 		pauseButton.setVisibility(ImageView.VISIBLE);
 	}
@@ -221,7 +340,7 @@ public class MainActivity extends Activity
 	private void setPlayerPause()
 	{
 		iconButton.setPause();
-		player.pause();
+		player.setPause();
 		playButton.setVisibility(ImageView.VISIBLE);
 		pauseButton.setVisibility(ImageView.INVISIBLE);
 	}
@@ -289,6 +408,9 @@ public class MainActivity extends Activity
 			playlistView.setAdapter(
 					new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_expandable_list_item_1,l)
 			);
+			
+			//设置当前显示日期
+			curDateText.setText(fmDate.format(c.date));
 			
 			dialog.dismiss();
 		}
