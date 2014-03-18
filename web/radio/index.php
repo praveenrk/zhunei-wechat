@@ -162,7 +162,7 @@
                             <option value="vacn">梵蒂冈广播</option>
                             <option value="gos">每日福音</option>
                         </select>
-                        <b>晨星生命之音</b>
+                        <b id="jptitle">晨星生命之音</b>
                     </span>
 					<!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
                 </div>
