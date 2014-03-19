@@ -529,9 +529,15 @@ public class MainActivity extends Activity implements RadioEvents
 				l.add(c.items.get(i).title);
 			}
 			
+			//初始化界面上的显示
 			playlistView.setAdapter(
 					new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_expandable_list_item_1,l)
 			);
+			maxTime.setText("00:00");
+			curTime.setText("00:00");
+			seekProgress.setMax(100);
+			seekProgress.setProgress(0);
+			musicText.setText(c.items.get(0).title);
 			
 			//设置当前显示日期
 			curDateText.setText(fmDate.format(c.date));
