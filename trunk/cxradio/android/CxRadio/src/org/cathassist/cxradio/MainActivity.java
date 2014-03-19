@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements RadioEvents
 	//CD背景
 	private ImageView cdBackground = null;
 	//CD把手
-	private ImageView cdHandle = null;
+	private PlayHandleView cdHandle = null;
 	//播放、暂停按钮
 	private ImageView playButton = null;
 	private ImageView pauseButton = null;
@@ -64,7 +64,10 @@ public class MainActivity extends Activity implements RadioEvents
 	{
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+		//设置监听电台事件
+		RadioPlayer.setRadioEventsListener(this);
+		
 		//实例化标题栏按钮并设置监听
 		playlistBtn = (ImageButton) findViewById(R.id.playlist_btn);
 //		titleBtn.setOnClickListener(this);
@@ -107,9 +110,6 @@ public class MainActivity extends Activity implements RadioEvents
 				playlistMenu.toggle();
 			}
 		});
-		
-		//设置监听电台事件
-		RadioPlayer.setRadioEventsListener(this);
 	}
 	
 	@Override
@@ -147,29 +147,43 @@ public class MainActivity extends Activity implements RadioEvents
 	@Override
 	public void onRadioPrepared(int max)
 	{
-		seekProgress.setMax(max);
-		int seconds = max/1000;
-		maxTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
+		if(seekProgress !=null )
+		{
+			seekProgress.setMax(max);
+			int seconds = max/1000;
+			maxTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
+			this.setPlayerStart();
+		}
 	}
 	
 	@Override
 	public void onRadioStoped()
 	{
-		
+		this.setPlayerPause();
+	}
+	
+	@Override
+	public void onRadioPaused()
+	{
+		this.setPlayerPause();
 	}
 	
 	@Override
 	public void onRadioBufferedUpdate(int progress)
 	{
-		seekProgress.setSecondaryProgress(progress);
+		if(seekProgress != null)
+			seekProgress.setSecondaryProgress(progress);
 	}
 	
 	@Override
 	public void onRadioUpdateProgress(int progress)
 	{
-		seekProgress.setProgress(progress);
-		int seconds = progress/1000;
-		curTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
+		if(seekProgress != null)
+		{
+			seekProgress.setProgress(progress);
+			int seconds = progress/1000;
+			curTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
+		}
 	}
 	
 	private boolean refreshPlayList()
@@ -209,7 +223,7 @@ public class MainActivity extends Activity implements RadioEvents
 		}
 		{
 			//初始化播放器的handle
-			cdHandle = new ImageView(this);
+			cdHandle = new PlayHandleView(this);
 			cdHandle.setImageResource(R.drawable.turntable_ctrl);
 			int iW = (int)(fDegree*4);
 			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -223,8 +237,8 @@ public class MainActivity extends Activity implements RadioEvents
 			pauseButton = new ImageView(this);
 			playButton.setImageResource(R.drawable.play_ctrl);
 			pauseButton.setImageResource(R.drawable.pause_ctrl);
-			playButton.setVisibility(ImageView.VISIBLE);
-			pauseButton.setVisibility(ImageView.INVISIBLE);
+			playButton.setVisibility(ImageView.INVISIBLE);
+			pauseButton.setVisibility(ImageView.VISIBLE);
 			
 			playButton.setOnClickListener(new OnClickListener(){
 				@Override
@@ -244,7 +258,7 @@ public class MainActivity extends Activity implements RadioEvents
 			
 			int iW = (int)(fDegree*8/6);
 			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins((int)((iWidth-iW)/2), (int)((iWidth-iW)/2), (int)((iWidth-iW)/2), (int)(iHeight-(iWidth-iW)/2-iW));
+			params.setMargins((int)((iWidth-iW)/2), (int)((iWidth-iW)/2)+8, (int)((iWidth-iW)/2), (int)(iHeight-(iWidth-iW)/2-iW-8));
 			playButton.setLayoutParams(params);
 			pauseButton.setLayoutParams(params);
 			playerContainer.addView(playButton);
@@ -427,19 +441,28 @@ public class MainActivity extends Activity implements RadioEvents
 	//开始播放
 	private void setPlayerStart()
 	{
+		if(playButton.getVisibility() == ImageView.INVISIBLE)
+			return;
 		iconButton.setStart();
-		player.setPlay();
+		if(player != null)
+			player.setPlay();
 		playButton.setVisibility(ImageView.INVISIBLE);
 		pauseButton.setVisibility(ImageView.VISIBLE);
+		cdHandle.setOn(1000);
 	}
 	
 	//暂停播放
 	private void setPlayerPause()
 	{
+		if(pauseButton.getVisibility() == ImageView.INVISIBLE)
+			return;
+		
 		iconButton.setPause();
-		player.setPause();
+		if(player != null)
+			player.setPause();
 		playButton.setVisibility(ImageView.VISIBLE);
 		pauseButton.setVisibility(ImageView.INVISIBLE);
+		cdHandle.setOff(1000);
 	}
 	
 	//异步获取电台播放列表的Task

@@ -34,7 +34,7 @@ public class PlayIconView extends ImageView
 		animIcon = AnimationUtils.loadAnimation(this.getContext(), R.anim.playicon);
         LinearInterpolator lin = new LinearInterpolator(); // 设置旋转速度 此处设置为匀速旋转
         animIcon.setInterpolator(lin);//将旋转速度配置给动画。
-//		this.startAnimation(animIcon);
+		animIcon.setFillAfter(true);
 	}
 	
 	public void setStart()
