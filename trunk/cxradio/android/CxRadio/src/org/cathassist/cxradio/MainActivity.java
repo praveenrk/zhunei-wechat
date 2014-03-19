@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.text.Html;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -24,7 +22,7 @@ import org.json.*;
 import com.jeremyfeinstein.slidingmenu.lib.*;
 
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements RadioEvents
 {
 	//定义标题栏上的按钮
 	private ImageButton playlistBtn = null;
@@ -35,18 +33,30 @@ public class MainActivity extends Activity
 	//
 	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
 	//电台播放器
-	private RadioPlayer player = new RadioPlayer();
+	private RadioPlayer player = null;
 	
+	//Layout
 	private RelativeLayout playerContainer = null;
+	//CD背景
 	private ImageView cdBackground = null;
+	//CD把手
 	private ImageView cdHandle = null;
+	//播放、暂停按钮
 	private ImageView playButton = null;
 	private ImageView pauseButton = null;
+	//旋转的ICON
 	private PlayIconView iconButton = null;
+	//上一首、下一首、当前歌曲名称
 	private ImageView prevButton = null;
 	private ImageView nextButton = null;
 	private TextView musicText = null;
+
+	//当前播放的时间、总时间、拖动条
+	private TextView curTime = null;
+	private TextView maxTime = null;
 	private SeekBar seekProgress = null;
+	
+	//当前电台日期
 	private TextView curDateText = null;
 	
 	@Override
@@ -97,6 +107,9 @@ public class MainActivity extends Activity
 				playlistMenu.toggle();
 			}
 		});
+		
+		//设置监听电台事件
+		RadioPlayer.setRadioEventsListener(this);
 	}
 	
 	@Override
@@ -121,6 +134,42 @@ public class MainActivity extends Activity
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	
+	//Radio响应事件
+	@Override
+	public void onRadioItemChanged(Channel.Item item)
+	{
+		musicText.setText(item.title);
+	}
+	
+	@Override
+	public void onRadioPrepared(int max)
+	{
+		seekProgress.setMax(max);
+		int seconds = max/1000;
+		maxTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
+	}
+	
+	@Override
+	public void onRadioStoped()
+	{
+		
+	}
+	
+	@Override
+	public void onRadioBufferedUpdate(int progress)
+	{
+		seekProgress.setSecondaryProgress(progress);
+	}
+	
+	@Override
+	public void onRadioUpdateProgress(int progress)
+	{
+		seekProgress.setProgress(progress);
+		int seconds = progress/1000;
+		curTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
 	}
 	
 	private boolean refreshPlayList()
@@ -210,6 +259,25 @@ public class MainActivity extends Activity
 			musicText = (TextView)findViewById(R.id.cur_music_name);
 			musicText.setText("晨星生命之音-因爱而相聚");
 			
+
+			prevButton.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v)
+				{
+					if(player!=null)
+						player.setPlayPrev();
+				}
+			});
+
+			nextButton.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v)
+				{
+					if(player!=null)
+						player.setPlayNext();
+				}
+			});
+			
 			int iH = (int)(fDegree*9.5);
 			int iW = (int)fDegree;
 			
@@ -237,11 +305,40 @@ public class MainActivity extends Activity
 		{
 			//初始化进度控制控件
 			seekProgress = new SeekBar(this);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.topMargin = (int)(fDegree*11);
-			seekProgress.setLayoutParams(params);
+			curTime = new TextView(this);
+			maxTime = new TextView(this);
+			curTime.setTextAppearance(this, R.style.TimeStyle);
+			maxTime.setTextAppearance(this, R.style.TimeStyle);
+			curTime.setText("00:00");
+			maxTime.setText("00:00");
 			
+			{
+				//
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.topMargin = (int)(fDegree*11)+3;
+				params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+				params.leftMargin = (int)(fDegree*0.1);
+				curTime.setLayoutParams(params);
+			}
+			{
+				//
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.topMargin = (int)(fDegree*11)+3;
+				params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+				params.rightMargin = (int)(fDegree*0.1);
+				maxTime.setLayoutParams(params);
+			}
+			{
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iWidth-160,ViewGroup.LayoutParams.WRAP_CONTENT);
+				params.topMargin = (int)(fDegree*11);
+				params.leftMargin = 80;
+				seekProgress.setLayoutParams(params);
+			}
+			
+
 			playerContainer.addView(seekProgress);
+			playerContainer.addView(curTime);
+			playerContainer.addView(maxTime);
 		}
 		
 		{
@@ -398,7 +495,11 @@ public class MainActivity extends Activity
 		
 		protected void onPostExecute(Channel c)
 		{
-			player.setChannel(c);
+			if(player != null)
+			{
+				player.release();
+			}
+			player = new RadioPlayer(MainActivity.this,c);
 			List<String> l = new ArrayList<String>();
 			for(int i=0;i<c.items.size();++i)
 			{
