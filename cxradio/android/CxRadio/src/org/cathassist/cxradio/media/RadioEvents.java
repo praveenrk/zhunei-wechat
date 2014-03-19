@@ -6,6 +6,7 @@ public interface RadioEvents
 	public void onRadioItemChanged(Channel.Item item);
 	public void onRadioPrepared(int max);
 	public void onRadioStoped();
+	public void onRadioPaused();
 	
 	public void onRadioBufferedUpdate(int progress);
 	public void onRadioUpdateProgress(int progress);

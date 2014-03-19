@@ -25,21 +25,6 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 	private static RadioEvents radioEvents = null;
 
     private Handler handler = new Handler();
-/*    {
-    	public void handleMessage(Message msg)
-		{
-			switch (msg.what)
-			{
-			case 1:
-				if(player!=null)
-				{
-					radioEvents.onRadioUpdateProgress(player.getCurrentPosition());
-				}
-				break;      
-			}
-			super.handleMessage(msg);
-		}
-	};*/
 	
 	private Runnable runnableUpdateProgress = new Runnable()
 	{
@@ -60,6 +45,7 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 	{
 		this.context = context;
 		this.channel = channel;
+		radioEvents.onRadioStoped();
 	}
 	
 
