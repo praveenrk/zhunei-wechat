@@ -8,5 +8,6 @@
     <string name="text_nextday">下一日</string>
     <string name="text_defaultday">XXXX-XX-XX</string>
     <string name="action_settings">设置</string>
+    <string name="action_feedback">用户反馈</string>
     
 </resources>

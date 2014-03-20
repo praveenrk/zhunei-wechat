@@ -21,6 +21,7 @@ import org.cathassist.cxradio.media.*;
 import org.json.*;
 
 import com.jeremyfeinstein.slidingmenu.lib.*;
+import com.umeng.analytics.MobclickAgent;
 
 
 public class MainActivity extends Activity implements RadioEvents, OnSeekBarChangeListener
@@ -113,6 +114,14 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	protected void onResume()
 	{
 		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+	
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 	
 	@Override
@@ -302,6 +311,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 		seekProgress = (SeekBar)findViewById(R.id.seekBar_progress);
 		curTime = (TextView)findViewById(R.id.textView_current);
 		maxTime = (TextView)findViewById(R.id.textView_max);
+		seekProgress.setOnSeekBarChangeListener(this);
 		
 		//日期选择
 		//初始化上一日、下一日、当前日期
