@@ -1,11 +1,8 @@
 package org.cathassist.cxradio.media;
 
-import java.util.*;
-
 import org.cathassist.cxradio.data.*;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.*;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
@@ -18,11 +15,11 @@ import android.util.Log;
 
 public class RadioPlayer extends Service implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnInfoListener, OnErrorListener
 {
-	private Context context = null;
 	private Channel channel = null;
 	private MediaPlayer player = null;
 	private Channel.Item curItem = null;
-	private static RadioEvents radioEvents = null;
+	private RadioEvents radioEvents = null;
+	private static RadioPlayer _self = new RadioPlayer();
 
     private Handler handler = new Handler();
 	
@@ -35,19 +32,70 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 		}
 	};
 		
-	
-	public static void setRadioEventsListener(RadioEvents e)
+	public static RadioPlayer getRadioPlayer()
 	{
-		radioEvents = e;
+		return _self;
 	}
+	
     
-	public RadioPlayer(Context context,Channel channel)
+	private RadioPlayer()
 	{
-		this.context = context;
-		this.channel = channel;
+	}
+	
+	public void setChannel(Channel c)
+	{
+		if(c == channel)
+			return;
+		this.release();
+		channel = c;
+		if(channel.items.size()>0)
+			curItem = channel.items.get(0);
 		radioEvents.onRadioStoped();
 	}
 	
+	public Channel getChannel()
+	{
+		return channel;
+	}
+	
+	public Channel.Item getCurItem()
+	{
+		return curItem;
+	}
+	
+	public boolean isPlaying()
+	{
+		if(player!=null)
+		{
+			return player.isPlaying();
+		}
+		
+		return false;
+	}
+	
+	public int getDuration()
+	{
+		if(player!=null)
+		{
+			return player.getDuration();
+		}
+		
+		return 0;
+	}
+	
+	public int getCurrentPosition()
+	{
+		if(player!=null)
+		{
+			return player.getCurrentPosition();
+		}
+		return 0;
+	}
+
+	public void setRadioEventsListener(RadioEvents e)
+	{
+		radioEvents = e;
+	}
 
 	@Override
 	public void onCreate()
@@ -150,16 +198,6 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 		handler.removeCallbacks(runnableUpdateProgress);
 	}
 	
-	public void setChannel(Channel c)
-	{
-		channel = c;
-	}
-	
-	public Channel getChannel()
-	{
-		return channel;
-	}
-	
 	public void setPlayIndex(int i)
 	{
 		Log.d("Player", "index:"+i);
@@ -240,13 +278,23 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 		setPlayIndex(i);
 	}
 	
+	//seekto
+	public void setSeekTo(int msec)
+	{
+		Log.d("Player", "set seek to "+msec);
+		if(player!=null)
+		{
+			player.seekTo(msec);
+		}
+	}
+	
 	
 	public void release()
 	{
-		setStop();
 		if(player != null)
 		{
 			releasePlayer(player);
+			player = null;
 		}
 	}
 	

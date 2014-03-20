@@ -1,11 +1,6 @@
 package org.cathassist.cxradio;
 
-import org.cathassist.cxradio.R;
-
 import android.content.Context;
-import android.graphics.*;
-import android.graphics.Bitmap.Config;
-import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.view.animation.*;
 import android.widget.*;
