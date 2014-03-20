@@ -55,6 +55,8 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	//当前电台日期
 	private TextView curDateText = null;
 	
+	private PlayListAdapter playlistAdapter = null;
+	
 	private boolean isInit = false;
 	
 	@Override
@@ -90,6 +92,8 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 
 		//播放内容列表
 		playlistView = (ListView) findViewById(R.id.playlistView);
+		playlistAdapter = new PlayListAdapter(playlistMenu.getContext());
+		playlistView.setAdapter(playlistAdapter);
 		playlistView.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View v, int i, long l)
@@ -148,13 +152,13 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 		{
 			if(RadioPlayer.getRadioPlayer().getChannel()!=null)
 			{
-				Log.e("Activity", "Init to play...");
+				Log.d("Activity", "Init to play...");
 				//恢复播放列表
 				setPlayChannel(RadioPlayer.getRadioPlayer().getChannel());
 			}
 			else
 			{
-				Log.e("Activity", "Init to refresh...");
+				Log.d("Activity", "Init to refresh...");
 				//更新播放列表
 				refreshPlayList();
 			}
@@ -200,8 +204,8 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	public void onRadioItemChanged(Channel.Item item)
 	{
 		Log.e("RadioEvent", "onRadioItemChanged");
-		musicText.setText(item.title);
-		RadioNotification.showNotification(this, item.title);
+		musicText.setText(item.getTitle());
+		RadioNotification.showNotification(this, item.getTitle());
 	}
 	
 	@Override
@@ -363,17 +367,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	private void setPlayChannel(Channel c)
 	{
 		RadioPlayer.getRadioPlayer().setChannel(c);
-		
-		List<String> l = new ArrayList<String>();
-		for(int i=0;i<c.items.size();++i)
-		{
-			l.add(c.items.get(i).title);
-		}
-		
-		//初始化界面上的显示
-		playlistView.setAdapter(
-				new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_expandable_list_item_1,l)
-		);
+		playlistAdapter.setChannel(c);
 		
 		if(seekProgress!=null)
 		{
@@ -395,11 +389,11 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 		Channel.Item item = RadioPlayer.getRadioPlayer().getCurItem();
 		if(item!=null)
 		{
-			musicText.setText(item.title);
+			musicText.setText(item.getTitle());
 		}
 		else
 		{
-			musicText.setText(c.items.get(0).title);
+			musicText.setText(c.items.get(0).getTitle());
 		}
 		
 		//设置当前显示日期
@@ -477,9 +471,9 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	        	JSONArray items = j.getJSONArray("items");
 	        	for(int i = 0; i<items.length(); ++i)
 	        	{
-	        		Channel.Item item = new Channel.Item();
-	        		item.title = items.getJSONObject(i).getString("title");
-	        		item.src = items.getJSONObject(i).getString("src");
+	        		Channel.Item item = new Channel.Item(
+	        				items.getJSONObject(i).getString("title"),
+	        				items.getJSONObject(i).getString("src"),"");
 	        		c.items.add(item);
 	        	}
 			}

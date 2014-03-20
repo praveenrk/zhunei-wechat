@@ -27,7 +27,10 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 	{
 		public void run()
 		{
-			radioEvents.onRadioUpdateProgress(player.getCurrentPosition());
+			if(player.isPlaying())
+			{
+				radioEvents.onRadioUpdateProgress(player.getCurrentPosition());
+			}
 			handler.postDelayed(this,1000);
 		}
 	};
@@ -77,7 +80,10 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 	{
 		if(player!=null)
 		{
-			return player.getDuration();
+			if(player.isPlaying())
+			{
+				return player.getDuration();
+			}
 		}
 		
 		return 0;
@@ -161,7 +167,7 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 	public void onBufferingUpdate(MediaPlayer mp, int percent)
 	{
 		//获取缓冲进度
-		radioEvents.onRadioBufferedUpdate(mp.getDuration() * percent / 100);
+		radioEvents.onRadioBufferedUpdate(getDuration() * percent / 100);
 	}
 	
 	private MediaPlayer createPlayer(String src)
@@ -211,7 +217,7 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 					radioEvents.onRadioItemChanged(curItem);
 				}
 				
-				setPlaySrc(curItem.src);
+				setPlaySrc(curItem.getSrc());
 			}
 		}
 	}

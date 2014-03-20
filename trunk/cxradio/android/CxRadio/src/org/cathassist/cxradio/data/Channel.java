@@ -8,9 +8,38 @@ import java.util.*;
 public class Channel {
 	public static class Item
 	{
-		public String title;
-		public String src;
-		public String singer;
+		private String title;
+		private String src;
+		private String singer;
+		private float loading;	// <0未下载  0<=&&>=100正在下载 >100已完成下载
+		
+		public Item(String title,String src,String singer)
+		{
+			this.title = title;
+			this.src = src;
+			this.singer = singer;
+			this.loading = -1;
+		}
+		
+		public String getTitle()
+		{
+			return title;
+		}
+		
+		public String getSrc()
+		{
+			return src;
+		}
+		
+		public String getSinger()
+		{
+			return singer;
+		}
+		
+		public float getLoading()
+		{
+			return loading;
+		}
 	}
 	public Channel()
 	{
