@@ -13,6 +13,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import org.cathassist.cxradio.R;
 import org.cathassist.cxradio.data.*;
@@ -22,7 +23,7 @@ import org.json.*;
 import com.jeremyfeinstein.slidingmenu.lib.*;
 
 
-public class MainActivity extends Activity implements RadioEvents
+public class MainActivity extends Activity implements RadioEvents, OnSeekBarChangeListener
 {
 	//定义标题栏上的按钮
 	private ImageButton playlistBtn = null;
@@ -32,13 +33,7 @@ public class MainActivity extends Activity implements RadioEvents
 	private ListView playlistView = null;
 	//
 	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
-	//电台播放器
-	private RadioPlayer player = null;
 	
-	//Layout
-	private RelativeLayout playerContainer = null;
-	//CD背景
-	private ImageView cdBackground = null;
 	//CD把手
 	private PlayHandleView cdHandle = null;
 	//播放、暂停按钮
@@ -59,6 +54,8 @@ public class MainActivity extends Activity implements RadioEvents
 	//当前电台日期
 	private TextView curDateText = null;
 	
+	private boolean isInit = false;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -66,7 +63,7 @@ public class MainActivity extends Activity implements RadioEvents
         setContentView(R.layout.activity_main);
 
 		//设置监听电台事件
-		RadioPlayer.setRadioEventsListener(this);
+		RadioPlayer.getRadioPlayer().setRadioEventsListener(this);
 		
 		//实例化标题栏按钮并设置监听
 		playlistBtn = (ImageButton) findViewById(R.id.playlist_btn);
@@ -79,8 +76,6 @@ public class MainActivity extends Activity implements RadioEvents
 				playlistMenu.toggle();
 			}
 		});
-		
-		playerContainer = (RelativeLayout)findViewById(R.id.player_container);
 		
 		//播放列表
 		playlistMenu = new SlidingMenu(this);
@@ -100,7 +95,7 @@ public class MainActivity extends Activity implements RadioEvents
 			{
 				try
 				{
-					player.setPlayIndex(i);
+					RadioPlayer.getRadioPlayer().setPlayIndex(i);
 				}
 				catch (Exception e)
 				{
@@ -110,23 +105,54 @@ public class MainActivity extends Activity implements RadioEvents
 				playlistMenu.toggle();
 			}
 		});
+		
+		initPlayer();
+	}
+
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+	}
+	
+	@Override
+	protected void onDestroy()
+	{
+		super.onDestroy();
+		Log.d("Activity", "Destroy...");
+		
+		if(!RadioPlayer.getRadioPlayer().isPlaying())
+		{
+			RadioNotification.clearNotification(this);
+			RadioPlayer.getRadioPlayer().release();
+			RadioPlayer.getRadioPlayer().stopSelf();
+			android.os.Process.killProcess(android.os.Process.myPid());
+		}
 	}
 	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus)
 	{
 		super.onWindowFocusChanged(hasFocus);
-		if(hasFocus)
+
+		if(isInit == false)
 		{
-			if(playButton == null)
+			if(RadioPlayer.getRadioPlayer().getChannel()!=null)
 			{
-				initPlayer();
-	
+				Log.e("Activity", "Init to play...");
+				//恢复播放列表
+				setPlayChannel(RadioPlayer.getRadioPlayer().getChannel());
+			}
+			else
+			{
+				Log.e("Activity", "Init to refresh...");
 				//更新播放列表
 				refreshPlayList();
 			}
+			isInit = true;
 		}
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -136,17 +162,43 @@ public class MainActivity extends Activity implements RadioEvents
 		return true;
 	}
 	
+	//拖动条的监视
+	@Override
+	public void onProgressChanged(SeekBar seekBar, int progress,
+			boolean fromUser)
+	{
+		//拖动seekbar时候，调用这里
+		if (fromUser)
+		{
+			RadioPlayer.getRadioPlayer().setPlay();
+			RadioPlayer.getRadioPlayer().setSeekTo(progress);  //播放跳转到拖动位置
+		}
+	}
+	@Override
+	public void onStartTrackingTouch(SeekBar seekBar)
+	{
+		//开始拖动seekbar
+		RadioPlayer.getRadioPlayer().setPause();
+	}
+	@Override
+	public void onStopTrackingTouch(SeekBar seekBar)
+	{
+		//拖动seekbar结束
+	}
 	
 	//Radio响应事件
 	@Override
 	public void onRadioItemChanged(Channel.Item item)
 	{
+		Log.e("RadioEvent", "onRadioItemChanged");
 		musicText.setText(item.title);
+		RadioNotification.showNotification(this, item.title);
 	}
 	
 	@Override
 	public void onRadioPrepared(int max)
 	{
+	//	Log.e("RadioEvent", "onRadioPrepared");
 		if(seekProgress !=null )
 		{
 			seekProgress.setMax(max);
@@ -159,18 +211,21 @@ public class MainActivity extends Activity implements RadioEvents
 	@Override
 	public void onRadioStoped()
 	{
-		this.setPlayerPause();
+	//	Log.e("RadioEvent", "onRadioStoped");
+		updatePlayState(false);
 	}
 	
 	@Override
 	public void onRadioPaused()
 	{
-		this.setPlayerPause();
+	//	Log.e("RadioEvent", "onRadioPaused");
+		updatePlayState(false);
 	}
 	
 	@Override
 	public void onRadioBufferedUpdate(int progress)
 	{
+	//	Log.e("RadioEvent", "onRadioBufferedUpdate");
 		if(seekProgress != null)
 			seekProgress.setSecondaryProgress(progress);
 	}
@@ -178,6 +233,7 @@ public class MainActivity extends Activity implements RadioEvents
 	@Override
 	public void onRadioUpdateProgress(int progress)
 	{
+	//	Log.e("RadioEvent", "onRadioUpdateProgress");
 		if(seekProgress != null)
 		{
 			seekProgress.setProgress(progress);
@@ -199,243 +255,145 @@ public class MainActivity extends Activity implements RadioEvents
 	
 	private void initPlayer()
 	{
-		int iWidth = playerContainer.getWidth();
-		int iHeight = playerContainer.getHeight();
-		double fDegree = (float)(iWidth)*0.1;
-		{
-			//初始化播放器背景
-			cdBackground = new ImageView(this);
-			cdBackground.setImageResource(R.drawable.cd_ctrl);
-			int iW = (int)(fDegree*8);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins((int)fDegree, (int)fDegree, (int)fDegree, (int)(iHeight-iW-fDegree-10));
-			cdBackground.setLayoutParams(params);
-			playerContainer.addView(cdBackground);
-			
-			//初始化播放器里的旋转icon
-			iconButton = new PlayIconView(this);
-//			iconButton = new ImageView(this);
-			iconButton.setImageResource(R.drawable.cx_icon);
-			RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params2.setMargins((int)(fDegree*2.9), (int)(fDegree*1.1), (int)(fDegree*2.9), (int)(iHeight-iW-fDegree-10));
-			iconButton.setLayoutParams(params2);
-			playerContainer.addView(iconButton);
-		}
-		{
-			//初始化播放器的handle
-			cdHandle = new PlayHandleView(this);
-			cdHandle.setImageResource(R.drawable.turntable_ctrl);
-			int iW = (int)(fDegree*4);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins((int)(fDegree*5.7), (int)(fDegree*1.5), (int)(fDegree*0.3), (int)(iHeight-fDegree*8));
-			cdHandle.setLayoutParams(params);
-			playerContainer.addView(cdHandle);
-		}
-		{
-			//初始化播放/暂停按钮
-			playButton = new ImageView(this);
-			pauseButton = new ImageView(this);
-			playButton.setImageResource(R.drawable.play_ctrl);
-			pauseButton.setImageResource(R.drawable.pause_ctrl);
-			playButton.setVisibility(ImageView.INVISIBLE);
-			pauseButton.setVisibility(ImageView.VISIBLE);
-			
-			playButton.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v)
-				{
-					setPlayerStart();
-				}
-			});
+		//初始化播放器里的旋转icon
+		iconButton = (PlayIconView)findViewById(R.id.imageView_icon);
+		iconButton.initAnimate();
+		//初始化播放器的handle
+		cdHandle = (PlayHandleView)findViewById(R.id.imageView_handle);
+		//初始化播放/暂停按钮
+		playButton = (ImageView)findViewById(R.id.imageView_play);
+		pauseButton = (ImageView)findViewById(R.id.imageView_pause);
+		
+		playButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				setPlayerStart();
+			}
+		});
 
-			pauseButton.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v)
-				{
-					setPlayerPause();
-				}
-			});
-			
-			int iW = (int)(fDegree*8/6);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins((int)((iWidth-iW)/2), (int)((iWidth-iW)/2)+8, (int)((iWidth-iW)/2), (int)(iHeight-(iWidth-iW)/2-iW-8));
-			playButton.setLayoutParams(params);
-			pauseButton.setLayoutParams(params);
-			playerContainer.addView(playButton);
-			playerContainer.addView(pauseButton);
-		}
+		pauseButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				setPlayerPause();
+			}
+		});
+		//初始化上一首、下一首、当前歌曲
+		prevButton = (ImageView)findViewById(R.id.imageView_prev);
+		nextButton = (ImageView)findViewById(R.id.imageView_next);
+		musicText = (TextView)findViewById(R.id.textView_music);
+		prevButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				RadioPlayer.getRadioPlayer().setPlayPrev();
+			}
+		});
+		nextButton.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				RadioPlayer.getRadioPlayer().setPlayNext();
+			}
+		});
+		
+		//初始化进度控制控件
+		seekProgress = (SeekBar)findViewById(R.id.seekBar_progress);
+		curTime = (TextView)findViewById(R.id.textView_current);
+		maxTime = (TextView)findViewById(R.id.textView_max);
+		
+		//日期选择
+		//初始化上一日、下一日、当前日期
+		curDateText = (TextView)findViewById(R.id.textView_day);
+		TextView prevDay = (TextView)findViewById(R.id.textView_prev);
+		TextView nextDay = (TextView)findViewById(R.id.textView_next);
+		prevDay.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				Date d = new Date();
+				d.setTime(RadioPlayer.getRadioPlayer().getChannel().date.getTime()-3600*24000);
+				setPlayDate(d);
+			}
+		});
+		nextDay.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				Date d = new Date();
+				d.setTime(RadioPlayer.getRadioPlayer().getChannel().date.getTime()+3600*24000);
+				setPlayDate(d);
+			}
+		});
+		curDateText.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(RadioPlayer.getRadioPlayer().getChannel().date);
+				DatePickerDialog dlg = new DatePickerDialog(MainActivity.this,
+					new DatePickerDialog.OnDateSetListener(){
+						@Override
+						public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3)
+						{
+							Calendar cal1 = Calendar.getInstance();
+							cal1.set(arg1, arg2, arg3);
+							setPlayDate(cal1.getTime());
+						}
+					},
+					cal.get(Calendar.YEAR),
+					cal.get(Calendar.MONTH),
+					cal.get(Calendar.DAY_OF_MONTH));
+				dlg.show();
+			}
+		});
+	}
+	
+	private void setPlayChannel(Channel c)
+	{
+		RadioPlayer.getRadioPlayer().setChannel(c);
+		
+		List<String> l = new ArrayList<String>();
+		for(int i=0;i<c.items.size();++i)
 		{
-			//初始化上一首、下一首、当前歌曲
-			prevButton = new ImageView(this);
-			nextButton = new ImageView(this);
-			prevButton.setImageResource(R.drawable.prev_ctrl);
-			nextButton.setImageResource(R.drawable.next_ctrl);
-			musicText = (TextView)findViewById(R.id.cur_music_name);
-			musicText.setText("晨星生命之音-因爱而相聚");
-			
-
-			prevButton.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v)
-				{
-					if(player!=null)
-						player.setPlayPrev();
-				}
-			});
-
-			nextButton.setOnClickListener(new OnClickListener(){
-				@Override
-				public void onClick(View v)
-				{
-					if(player!=null)
-						player.setPlayNext();
-				}
-			});
-			
-			int iH = (int)(fDegree*9.5);
-			int iW = (int)fDegree;
-			
-			{
-				//上一首的显示位置
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.setMargins((int)(fDegree*0.2), iH, (int)(iWidth-iW), (int)(iHeight-iH-iW-fDegree*0.2));
-				prevButton.setLayoutParams(params);
-			}
-			{
-				//下一首的显示位置
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iW,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.setMargins((int)(fDegree*8.8), iH, (int)(iWidth-fDegree*0.2), (int)(iHeight-iH-iW-fDegree*0.2));
-				nextButton.setLayoutParams(params);
-			}
-			{
-				//当前歌曲的显示位置
-				RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)musicText.getLayoutParams();
-				params.topMargin = (int)(iH+iW*0.2);
-			}
-			
-			playerContainer.addView(prevButton);
-			playerContainer.addView(nextButton);
-		}
-		{
-			//初始化进度控制控件
-			seekProgress = new SeekBar(this);
-			curTime = new TextView(this);
-			maxTime = new TextView(this);
-			curTime.setTextAppearance(this, R.style.TimeStyle);
-			maxTime.setTextAppearance(this, R.style.TimeStyle);
-			curTime.setText("00:00");
-			maxTime.setText("00:00");
-			
-			{
-				//
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.topMargin = (int)(fDegree*11)+3;
-				params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-				params.leftMargin = (int)(fDegree*0.1);
-				curTime.setLayoutParams(params);
-			}
-			{
-				//
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.topMargin = (int)(fDegree*11)+3;
-				params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-				params.rightMargin = (int)(fDegree*0.1);
-				maxTime.setLayoutParams(params);
-			}
-			{
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(iWidth-160,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.topMargin = (int)(fDegree*11);
-				params.leftMargin = 80;
-				seekProgress.setLayoutParams(params);
-			}
-			
-
-			playerContainer.addView(seekProgress);
-			playerContainer.addView(curTime);
-			playerContainer.addView(maxTime);
+			l.add(c.items.get(i).title);
 		}
 		
+		//初始化界面上的显示
+		playlistView.setAdapter(
+				new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_expandable_list_item_1,l)
+		);
+		
+		if(seekProgress!=null)
 		{
-			//日期选择
-			//初始化上一日、下一日、当前日期
-			curDateText = new TextView(this);
-			TextView prevDay = new TextView(this);
-			TextView nextDay = new TextView(this);
-			curDateText.setTextAppearance(this, R.style.TextStyle);
-			prevDay.setTextAppearance(this, R.style.TextStyle);
-			nextDay.setTextAppearance(this, R.style.TextStyle);
-			prevDay.setText("上一日");
-			nextDay.setText("下一日");
-			curDateText.setText("2014-03-09");
+			//更新进度条
+			int max = RadioPlayer.getRadioPlayer().getDuration();
+			seekProgress.setMax(max);
+			int seconds = max/1000;
+			maxTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
 			
-			{
-				//上一日的显示位置
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.topMargin = (int)(fDegree*12);
-				params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-				params.leftMargin = (int)(fDegree*0.5);
-				prevDay.setLayoutParams(params);
-				prevDay.setOnClickListener(new OnClickListener(){
-					@Override
-					public void onClick(View v)
-					{
-						Date d = new Date();
-						d.setTime(player.getChannel().date.getTime()-3600*24000);
-						setPlayDate(d);
-					}
-				});
-			}
-			{
-				//下一日的显示位置
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.topMargin = (int)(fDegree*12);
-				params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-				params.rightMargin = (int)(fDegree*0.5);
-				nextDay.setLayoutParams(params);
-				nextDay.setOnClickListener(new OnClickListener(){
-					@Override
-					public void onClick(View v)
-					{
-						Date d = new Date();
-						d.setTime(player.getChannel().date.getTime()+3600*24000);
-						setPlayDate(d);
-					}
-				});
-			}
-			{
-				//当前日期的显示位置
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-				params.addRule(RelativeLayout.CENTER_HORIZONTAL);
-				params.topMargin= (int)(fDegree*12);
-				curDateText.setLayoutParams(params);
-				curDateText.setOnClickListener(new OnClickListener(){
-					@Override
-					public void onClick(View v)
-					{
-						Calendar cal = Calendar.getInstance();
-						cal.setTime(player.getChannel().date);
-						DatePickerDialog dlg = new DatePickerDialog(MainActivity.this,
-							new DatePickerDialog.OnDateSetListener(){
-								@Override
-								public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3)
-								{
-									Calendar cal1 = Calendar.getInstance();
-									cal1.set(arg1, arg2, arg3);
-									setPlayDate(cal1.getTime());
-								}
-							},
-							cal.get(Calendar.YEAR),
-							cal.get(Calendar.MONTH),
-							cal.get(Calendar.DAY_OF_MONTH));
-						dlg.show();
-					}
-				});
-			}
-			
-			playerContainer.addView(prevDay);
-			playerContainer.addView(nextDay);
-			playerContainer.addView(curDateText);
+			int progress = RadioPlayer.getRadioPlayer().getCurrentPosition();
+			seekProgress.setProgress(progress);
+			seconds = progress/1000;
+			curTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
 		}
+
+		//更新界面上的播放状态
+		updatePlayState(RadioPlayer.getRadioPlayer().isPlaying());
+		
+		Channel.Item item = RadioPlayer.getRadioPlayer().getCurItem();
+		if(item!=null)
+		{
+			musicText.setText(item.title);
+		}
+		else
+		{
+			musicText.setText(c.items.get(0).title);
+		}
+		
+		//设置当前显示日期
+		curDateText.setText(fmDate.format(c.date));
 	}
 	
 	//开始播放
@@ -443,12 +401,9 @@ public class MainActivity extends Activity implements RadioEvents
 	{
 		if(playButton.getVisibility() == ImageView.INVISIBLE)
 			return;
-		iconButton.setStart();
-		if(player != null)
-			player.setPlay();
-		playButton.setVisibility(ImageView.INVISIBLE);
-		pauseButton.setVisibility(ImageView.VISIBLE);
-		cdHandle.setOn(1000);
+		
+		RadioPlayer.getRadioPlayer().setPlay();
+		updatePlayState(true);
 	}
 	
 	//暂停播放
@@ -457,12 +412,26 @@ public class MainActivity extends Activity implements RadioEvents
 		if(pauseButton.getVisibility() == ImageView.INVISIBLE)
 			return;
 		
-		iconButton.setPause();
-		if(player != null)
-			player.setPause();
-		playButton.setVisibility(ImageView.VISIBLE);
-		pauseButton.setVisibility(ImageView.INVISIBLE);
-		cdHandle.setOff(1000);
+		RadioPlayer.getRadioPlayer().setPause();
+		updatePlayState(false);
+	}
+	
+	private void updatePlayState( boolean isPlaying)
+	{
+		if(isPlaying)
+		{
+			iconButton.setStart();
+			playButton.setVisibility(ImageView.INVISIBLE);
+			pauseButton.setVisibility(ImageView.VISIBLE);
+			cdHandle.setOn(1000);
+		}
+		else
+		{
+			iconButton.setPause();
+			playButton.setVisibility(ImageView.VISIBLE);
+			pauseButton.setVisibility(ImageView.INVISIBLE);
+			cdHandle.setOff(1000);
+		}
 	}
 	
 	//异步获取电台播放列表的Task
@@ -518,30 +487,8 @@ public class MainActivity extends Activity implements RadioEvents
 		
 		protected void onPostExecute(Channel c)
 		{
-			if(player != null)
-			{
-				player.release();
-			}
-			player = new RadioPlayer(MainActivity.this,c);
-			List<String> l = new ArrayList<String>();
-			for(int i=0;i<c.items.size();++i)
-			{
-				l.add(c.items.get(i).title);
-			}
-			
-			//初始化界面上的显示
-			playlistView.setAdapter(
-					new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_expandable_list_item_1,l)
-			);
-			maxTime.setText("00:00");
-			curTime.setText("00:00");
-			seekProgress.setMax(100);
-			seekProgress.setProgress(0);
-			musicText.setText(c.items.get(0).title);
-			
-			//设置当前显示日期
-			curDateText.setText(fmDate.format(c.date));
-			
+			if(c.items.size()>0)
+				setPlayChannel(c);
 			dialog.dismiss();
 		}
 	}

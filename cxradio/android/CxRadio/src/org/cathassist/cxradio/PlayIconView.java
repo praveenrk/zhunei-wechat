@@ -3,9 +3,6 @@ package org.cathassist.cxradio;
 import org.cathassist.cxradio.R;
 
 import android.content.Context;
-import android.graphics.*;
-import android.graphics.Bitmap.Config;
-import android.graphics.PorterDuff.Mode;
 import android.util.AttributeSet;
 import android.view.animation.*;
 import android.widget.*;
@@ -27,10 +24,8 @@ public class PlayIconView extends ImageView
 		super(context, attrs, defStyle);
 	}
 	
-	@Override
-	public void setImageResource(int resId)
+	public void initAnimate()
 	{
-		super.setImageResource(resId);
 		animIcon = AnimationUtils.loadAnimation(this.getContext(), R.anim.playicon);
         LinearInterpolator lin = new LinearInterpolator(); // 设置旋转速度 此处设置为匀速旋转
         animIcon.setInterpolator(lin);//将旋转速度配置给动画。
@@ -47,34 +42,6 @@ public class PlayIconView extends ImageView
 	{
 		animOffset = animIcon.getStartOffset();
 		this.clearAnimation();
-	}
-	
-	
-	
-	public static Bitmap getCroppedBitmap(Bitmap bmp, int radius) {
-		Bitmap sbmp;
-		if (bmp.getWidth() != radius || bmp.getHeight() != radius)
-			sbmp = Bitmap.createScaledBitmap(bmp, radius, radius, false);
-		else
-			sbmp = bmp;
-		Bitmap output = Bitmap.createBitmap(sbmp.getWidth(), sbmp.getHeight(),
-				Config.ARGB_8888);
-		Canvas canvas = new Canvas(output);
-
-		final Paint paint = new Paint();
-		final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
-
-		paint.setAntiAlias(true);
-		paint.setFilterBitmap(true);
-		paint.setDither(true);
-		canvas.drawARGB(0, 0, 0, 0);
-		paint.setColor(Color.parseColor("#BAB399"));
-		canvas.drawCircle(sbmp.getWidth() / 2 + 0.7f,
-				sbmp.getHeight() / 2 + 0.7f, sbmp.getWidth() / 2 + 0.1f, paint);
-		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
-		canvas.drawBitmap(sbmp, rect, rect, paint);
-
-		return output;
 	}
 
 }
