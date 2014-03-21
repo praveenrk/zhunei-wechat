@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
         <service android:name="org.cathassist.cxradio.meida.RadioPlayer" ></service>
+        <activity android:name="com.umeng.fb.ConversationActivity"/>
+        <activity android:name="com.umeng.fb.ContactActivity"/>
 		<meta-data android:value="532a982a56240bb4bf008eb4" android:name="UMENG_APPKEY"></meta-data>
 		<meta-data android:value="HOME" android:name="UMENG_CHANNEL"/>
     </application>
