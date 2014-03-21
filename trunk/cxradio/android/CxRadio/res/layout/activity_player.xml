@@ -1,185 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#fcfcfc"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:id="@+id/title"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/title_bar"
-        android:gravity="center_vertical" >
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/app_name"
-            android:textColor="#000000"
-            android:textSize="20sp" />
+         <RelativeLayout
+             android:id="@+id/title"
+             android:layout_width="fill_parent"
+             android:layout_height="45dp"
+             android:background="@drawable/title_bar"
+             android:gravity="center_vertical" >
 
-        <ImageButton
-            android:id="@+id/playlist_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_menu" />
-        
-    </RelativeLayout>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:text="@string/app_name"
+                 android:textColor="#000000"
+                 android:textSize="20sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+             <ImageButton
+                 android:id="@+id/playlist_btn"
+                 android:layout_width="30dp"
+                 android:layout_height="30dp"
+                 android:layout_alignParentRight="true"
+                 android:layout_centerVertical="true"
+                 android:layout_marginRight="10dp"
+                 android:background="#00000000"
+                 android:scaleType="fitCenter"
+                 android:src="@drawable/icon_menu" />
+         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:layout_marginTop="30dp">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/imageView_bg"
-                android:layout_width="@dimen/cd_interface_size"
-                android:layout_height="@dimen/cd_interface_size"
-                android:layout_centerInParent="true"
-                android:src="@drawable/cd_ctrl" />
-            
-            <org.cathassist.cxradio.PlayIconView
-                android:id="@+id/imageView_icon"
-                android:layout_width="@dimen/cd_icon_size"
-                android:layout_height="@dimen/cd_icon_size"
-                android:layout_centerInParent="true"
-                android:src="@drawable/cx_icon" />
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="30dp" >
 
-            <ImageView
-                android:id="@+id/imageView_play"
-                android:layout_width="@dimen/cd_button_size"
-                android:layout_height="@dimen/cd_button_size"
-                android:layout_centerInParent="true"
-                android:src="@drawable/play_ctrl" />
-            
-            <ImageView
-                android:id="@+id/imageView_pause"
-                android:layout_width="@dimen/cd_button_size"
-                android:layout_height="@dimen/cd_button_size"
-                android:layout_centerInParent="true"
-                android:src="@drawable/pause_ctrl" />
+                 <ImageView
+                     android:id="@+id/imageView_bg"
+                     android:layout_width="@dimen/cd_interface_size"
+                     android:layout_height="@dimen/cd_interface_size"
+                     android:layout_centerInParent="true"
+                     android:src="@drawable/cd_ctrl" />
 
-            <org.cathassist.cxradio.PlayHandleView
-                android:id="@+id/imageView1"
-                android:layout_width="@dimen/cd_handle_width"
-                android:layout_height="@dimen/cd_handle_height"
-                android:layout_alignTop="@+id/imageView_bg"
-                android:layout_alignRight="@+id/imageView_bg"
-                android:layout_marginRight="@dimen/cd_handle_offsetright"
-                android:src="@drawable/turntable_ctrl" />
+                 <org.cathassist.cxradio.PlayIconView
+                     android:id="@+id/imageView_icon"
+                     android:layout_width="@dimen/cd_icon_size"
+                     android:layout_height="@dimen/cd_icon_size"
+                     android:layout_centerInParent="true"
+                     android:src="@drawable/cx_icon" />
 
-        </RelativeLayout>
+                 <ImageView
+                     android:id="@+id/imageView_play"
+                     android:layout_width="@dimen/cd_button_size"
+                     android:layout_height="@dimen/cd_button_size"
+                     android:layout_centerInParent="true"
+                     android:src="@drawable/play_ctrl" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_offset_height" >
+                 <ImageView
+                     android:id="@+id/imageView_pause"
+                     android:layout_width="@dimen/cd_button_size"
+                     android:layout_height="@dimen/cd_button_size"
+                     android:layout_centerInParent="true"
+                     android:src="@drawable/pause_ctrl" />
 
-            <ImageView
-                android:id="@+id/imageView_prev"
-                android:layout_width="@dimen/main_button_size"
-                android:layout_height="@dimen/main_button_size"
-                android:layout_alignLeft="@+id/textView_music"
-                android:layout_marginLeft="@dimen/main_button_margin"
-                android:src="@drawable/prev_ctrl" />
+                 <org.cathassist.cxradio.PlayHandleView
+                     android:id="@+id/imageView1"
+                     android:layout_width="@dimen/cd_handle_width"
+                     android:layout_height="@dimen/cd_handle_height"
+                     android:layout_alignRight="@+id/imageView_bg"
+                     android:layout_alignTop="@+id/imageView_bg"
+                     android:layout_marginRight="@dimen/cd_handle_offsetright"
+                     android:src="@drawable/turntable_ctrl" />
+             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/textView_music"
-                android:layout_width="@dimen/main_music_width"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/text_defaultmusic"
-                android:gravity="center"
-                android:textAppearance="@style/MusicStyle" />
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="@dimen/layout_offset_height" >
 
-            <ImageView
-                android:id="@+id/imageView_next"
-                android:layout_width="@dimen/main_button_size"
-                android:layout_height="@dimen/main_button_size"
-                android:layout_alignRight="@+id/textView_music"
-                android:layout_marginRight="@dimen/main_button_margin"
-                android:src="@drawable/next_ctrl" />
+                 <ImageView
+                     android:id="@+id/imageView_prev"
+                     android:layout_width="@dimen/main_button_size"
+                     android:layout_height="@dimen/main_button_size"
+                     android:layout_alignLeft="@+id/textView_music"
+                     android:layout_marginLeft="@dimen/main_button_margin"
+                     android:src="@drawable/prev_ctrl" />
 
-        </RelativeLayout>
+                 <TextView
+                     android:id="@+id/textView_music"
+                     android:layout_width="@dimen/main_music_width"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:gravity="center"
+                     android:text="@string/text_defaultmusic"
+                     android:textAppearance="@style/MusicStyle" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_offset_height" >
+                 <ImageView
+                     android:id="@+id/imageView_next"
+                     android:layout_width="@dimen/main_button_size"
+                     android:layout_height="@dimen/main_button_size"
+                     android:layout_alignRight="@+id/textView_music"
+                     android:layout_marginRight="@dimen/main_button_margin"
+                     android:src="@drawable/next_ctrl" />
+             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/textView_current"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/seekBar_progress"
-                android:layout_marginLeft="@dimen/time_text_margin"
-                android:layout_centerVertical="true"
-                android:textAppearance="@style/TimeStyle"
-                android:text="@string/text_defaulttime" />
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="@dimen/layout_offset_height" >
 
-            <SeekBar
-                android:id="@+id/seekBar_progress"
-                android:layout_width="@dimen/main_progress_width"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                 <TextView
+                     android:id="@+id/textView_current"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignLeft="@+id/seekBar_progress"
+                     android:layout_centerVertical="true"
+                     android:layout_marginLeft="@dimen/time_text_margin"
+                     android:text="@string/text_defaulttime"
+                     android:textAppearance="@style/TimeStyle" />
 
-            <TextView
-                android:id="@+id/textView_max"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignRight="@+id/seekBar_progress"
-                android:layout_marginRight="@dimen/time_text_margin"
-                android:layout_centerVertical="true"
-                android:textAppearance="@style/TimeStyle"
-                android:text="@string/text_defaulttime" />
+                 <SeekBar
+                     android:id="@+id/seekBar_progress"
+                     android:layout_width="@dimen/main_progress_width"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true" />
 
-        </RelativeLayout>
+                 <TextView
+                     android:id="@+id/textView_max"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignRight="@+id/seekBar_progress"
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="@dimen/time_text_margin"
+                     android:text="@string/text_defaulttime"
+                     android:textAppearance="@style/TimeStyle" />
+             </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_offset_height" >
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="@dimen/layout_offset_height" >
 
-            <TextView
-                android:id="@+id/textView_prev"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:textAppearance="@style/TextStyle"
-                android:text="@string/text_prevday" />
+                 <TextView
+                     android:id="@+id/textView_prev"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentLeft="true"
+                     android:layout_marginLeft="20dp"
+                     android:text="@string/text_prevday"
+                     android:textAppearance="@style/TextStyle" />
 
-            <TextView
-                android:id="@+id/textView_day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textAppearance="@style/TextStyle"
-                android:text="2014-03-20" />
+                 <TextView
+                     android:id="@+id/textView_day"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     android:text="2014-03-20"
+                     android:textAppearance="@style/TextStyle" />
 
-            <TextView
-                android:id="@+id/textView_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:textAppearance="@style/TextStyle"
-                android:text="@string/text_nextday" />
+                 <TextView
+                     android:id="@+id/textView_next"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:layout_marginRight="20dp"
+                     android:text="@string/text_nextday"
+                     android:textAppearance="@style/TextStyle" />
+             </RelativeLayout>
+         </LinearLayout>
 
-        </RelativeLayout>
-
-    </LinearLayout>
+     </LinearLayout>
     
-</LinearLayout>
+</ScrollView>

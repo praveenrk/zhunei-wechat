@@ -7,7 +7,11 @@
     <string name="text_prevday">上一日</string>
     <string name="text_nextday">下一日</string>
     <string name="text_defaultday">XXXX-XX-XX</string>
+    <string name="text_download">下载本日</string>
+    <string name="text_clear">清空下载</string>
+    <string name="text_feedback">反馈意见</string>
     <string name="action_settings">设置</string>
-    <string name="action_feedback">用户反馈</string>
+    <string name="text_cxcopyright">版权归 晨星电台 所有</string>
+    <string name="text_cacopyright">本软件由 天主教小助手 协助开发</string>
     
 </resources>
