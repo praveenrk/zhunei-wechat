@@ -11,7 +11,7 @@ public class Channel {
 		private String title;
 		private String src;
 		private String singer;
-		private float loading;	// <0未下载  0<=&&>=100正在下载 >100已完成下载
+		private long loading;	// <0未下载  0<=&&>=100正在下载 >100已完成下载
 		
 		public Item(String title,String src,String singer)
 		{
@@ -39,6 +39,11 @@ public class Channel {
 		public float getLoading()
 		{
 			return loading;
+		}
+		
+		public void setLoading(long f)
+		{
+			this.loading = f;
 		}
 	}
 	public Channel()

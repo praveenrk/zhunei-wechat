@@ -218,7 +218,13 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 				}
 				
 				setPlaySrc(curItem.getSrc());
+				return;
 			}
+		}
+		
+		if(radioEvents!=null)
+		{
+			radioEvents.onRadioStoped();
 		}
 	}
 	

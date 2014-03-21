@@ -1,7 +1,6 @@
 package org.cathassist.cxradio;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 

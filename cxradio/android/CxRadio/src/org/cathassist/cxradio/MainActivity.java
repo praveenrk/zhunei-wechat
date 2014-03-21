@@ -3,11 +3,13 @@ package org.cathassist.cxradio;
 import java.util.*;
 import java.text.*;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -18,13 +20,15 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import org.cathassist.cxradio.R;
 import org.cathassist.cxradio.data.*;
 import org.cathassist.cxradio.media.*;
+import org.cathassist.download.*;
 import org.json.*;
 
 import com.jeremyfeinstein.slidingmenu.lib.*;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 
 
-public class MainActivity extends Activity implements RadioEvents, OnSeekBarChangeListener
+public class MainActivity extends Activity implements RadioEvents, OnSeekBarChangeListener, RadioDownloadEvents
 {
 	//定义标题栏上的按钮
 	private ImageButton playlistBtn = null;
@@ -32,7 +36,9 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	private SlidingMenu playlistMenu = null;
 	//电台播放列表显示
 	private ListView playlistView = null;
-	//
+	private PlayListAdapter playlistAdapter = null;
+	
+	//时间格式化
 	private SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
 	
 	//CD把手
@@ -55,7 +61,12 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	//当前电台日期
 	private TextView curDateText = null;
 	
-	private PlayListAdapter playlistAdapter = null;
+	private TextView downloadText = null;
+	private TextView clearText = null;
+	
+	//下载管理
+	RadioDownloadManager managerDownload = null;
+	
 	
 	private boolean isInit = false;
 	
@@ -226,6 +237,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	{
 	//	Log.e("RadioEvent", "onRadioStoped");
 		updatePlayState(false);
+	//	RadioNotification.clearNotification(this);
 	}
 	
 	@Override
@@ -362,6 +374,53 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 				dlg.show();
 			}
 		});
+		
+		downloadText = (TextView)findViewById(R.id.textView_download);
+		clearText = (TextView)findViewById(R.id.textView_clear);
+		downloadText.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				setDownloadChannel();
+			}
+		});
+		
+		clearText.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				setClearAll();
+			}
+		});
+		
+		//发送反馈、晨星与小助手的copyright
+		TextView feedback = (TextView)findViewById(R.id.textView_feedback);
+		TextView cxcopyright = (TextView)findViewById(R.id.textView_cxcopyright);
+		TextView cacopyright = (TextView)findViewById(R.id.textView_cacopyright);
+
+		feedback.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
+			    agent.startFeedbackActivity();
+			}
+		});
+		
+		cxcopyright.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				openUrlInBrowser("http://www.cxsm.org/");
+			}
+		});
+		cacopyright.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v)
+			{
+				openUrlInBrowser("http://www.cathassist.org/");
+			}
+		});
 	}
 	
 	private void setPlayChannel(Channel c)
@@ -436,6 +495,44 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			pauseButton.setVisibility(ImageView.INVISIBLE);
 			cdHandle.setOff(1000);
 		}
+	}
+	
+	public void openUrlInBrowser(String url)
+	{
+		Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		it.setClassName("com.android.browser", "com.android.browser.BrowserActivity");
+		this.startActivity(it);
+	}
+	
+	public void setDownloadChannel()
+	{
+		if(managerDownload!=null)
+		{
+			Toast.makeText(this, "正在下载中，请稍候", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		//下载当前音频
+		managerDownload = new RadioDownloadManager(RadioPlayer.getRadioPlayer().getChannel(),this,this);
+		managerDownload.run();
+	}
+	
+	public void setClearAll()
+	{
+		//清空所有音频
+		
+	}
+	
+	@Override
+	public void onRadioDownloadItemChanged(Channel.Item item)
+	{
+		playlistAdapter.notifyDataSetChanged();
+	}
+	
+	@Override
+	public void onRadioDownloadFinished()
+	{
+		Toast.makeText(this, "全部下载完成", Toast.LENGTH_LONG).show();
+		managerDownload=null;
 	}
 	
 	//异步获取电台播放列表的Task
