@@ -114,8 +114,7 @@ public class RadioDownloadManager
 		this.channel = channel;
 		this.context = context;
 		this.events = events;
-    }
-    
+    }    
     
     public void run()
     {

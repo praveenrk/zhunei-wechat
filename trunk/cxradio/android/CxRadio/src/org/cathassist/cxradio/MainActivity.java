@@ -156,7 +156,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			RadioNotification.clearNotification(this);
 			RadioPlayer.getRadioPlayer().release();
 			RadioPlayer.getRadioPlayer().stopSelf();
-//			android.os.Process.killProcess(android.os.Process.myPid());
+			android.os.Process.killProcess(android.os.Process.myPid());
 		}
 	}
 	
