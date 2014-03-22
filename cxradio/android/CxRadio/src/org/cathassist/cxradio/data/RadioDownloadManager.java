@@ -15,6 +15,74 @@ import android.widget.Toast;
 
 public class RadioDownloadManager
 {
+	public static String lastChannelDir = Environment.getExternalStorageDirectory().getAbsolutePath()+"/CathAssist/cxradio/channel.json";	
+    private static String destDir = "";
+    
+    public static void initDestDir()
+    {
+		if(destDir != "")
+			return;
+		
+		String sd = Environment.getExternalStorageDirectory().getAbsolutePath();
+		destDir = sd + "/CathAssist/cxradio/data/";
+    }
+    
+	public static String getHashStr(String str)
+	{	
+		String strHash = str;
+        try
+        {
+			java.security.MessageDigest md5 = java.security.MessageDigest.getInstance("MD5");
+			md5.update(str.getBytes());
+			byte[] m = md5.digest();//加密
+			StringBuffer sb = new StringBuffer();
+			{
+                for(int j = 0; j < m.length; j++)
+                {
+                	sb.append(Integer.toHexString((0x000000ff & m[j]) | 0xffffff00).substring(6));
+                }
+			}
+            strHash = sb.toString();
+		}
+        catch (NoSuchAlgorithmException e)
+        {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return strHash;
+	}
+	
+	public static String getTrackSrc(String src)
+	{
+		initDestDir();
+		String strHash = getHashStr(src);
+        File fDest = new File(destDir,strHash);
+        if(fDest.exists())
+        {
+        	return destDir+strHash;
+        }
+		
+		return src;
+	}
+	
+	public static void clearAllTracks()
+	{
+		initDestDir();
+		
+		File fDir = new File(destDir);
+		if(fDir.isDirectory())
+		{
+			File[] files = fDir.listFiles();
+			for(int i=0;i<files.length;++i)
+			{
+				if(files[i].isFile())
+				{
+					files[i].delete();
+				}
+			}
+		}
+	}
+	
 	public class RadioDownloadItem
 	{
 		public Channel.Item item;
@@ -27,18 +95,17 @@ public class RadioDownloadManager
 		}
 	}
 	
-    private String destDir = "";
     private Channel channel = null;
     private Context context = null;
     private RadioDownloadEvents events = null;
     private Map<String,RadioDownloadItem> tasks = new HashMap<String,RadioDownloadItem>();
+    private long updateLast = 0;
 	
     public RadioDownloadManager(Channel channel,Context context,RadioDownloadEvents events)
     {
-		String sd = Environment.getExternalStorageDirectory().getAbsolutePath();
-		destDir = sd + "/CathAssist/cxradio/";
-
-		java.io.File a=new java.io.File(destDir);
+    	initDestDir();
+    	
+    	java.io.File a=new java.io.File(destDir);
 		if(!a.exists())
 		{
 			a.mkdirs();
@@ -65,39 +132,19 @@ public class RadioDownloadManager
 	    		Channel.Item item = channel.items.get(i);
 				if(!tasks.containsKey(item.getSrc()))
 				{
-			        String fileName = "";
-			        try
-			        {
-						java.security.MessageDigest md5 = java.security.MessageDigest.getInstance("MD5");
-						md5.update(item.getSrc().getBytes());
-						byte[] m = md5.digest();//加密
-						StringBuffer sb = new StringBuffer();
-						{
-			                for(int j = 0; j < m.length; j++)
-			                {
-			                	sb.append(Integer.toHexString((0x000000ff & m[j]) | 0xffffff00).substring(6));
-			                }
-						}
-			            fileName = sb.toString();
-					}
-			        catch (NoSuchAlgorithmException e)
-			        {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			        String fileName = RadioDownloadManager.getHashStr(item.getSrc());
 
 					DownloadTask t = newDownloadTask(item.getSrc(),fileName);
 					RadioDownloadItem downloadItem = new RadioDownloadItem(item,t);
-					tasks.put(item.getSrc(), downloadItem);
 			        File fDest = new File(destDir,fileName);
 			        if(!fDest.exists())
 			        {
+						tasks.put(item.getSrc(), downloadItem);
 						t.execute();
 			        }
 			        else
 			        {
 			        	item.setLoading(101);			//设置已下载完成
-			        	removeDownloadItem(downloadItem);
 			        }
 				}
 			}
@@ -106,8 +153,42 @@ public class RadioDownloadManager
 				e.printStackTrace();
 			}
     	}
+    	if(tasks.size()<1)
+    	{
+    		events.onRadioDownloadFinished();
+    	}
+    	else
+    	{
+//    		runNext();
+    	}
+    }
+    
+    public void cancel()
+    {	
+    	for(int i=0;i<tasks.size();++i)
+    	{
+    		Iterator<Map.Entry<String, RadioDownloadItem>> iter = tasks.entrySet().iterator();
+        	while(iter.hasNext())
+        	{
+        		RadioDownloadItem item = iter.next().getValue();
+	    		item.task.setCancel();
+        	}
+    	}
+    	tasks.clear();
     }
 	
+    /*
+     * 进行下一个下载任务
+    protected void runNext()
+    {
+    	Iterator<Map.Entry<String, RadioDownloadItem>> iter = tasks.entrySet().iterator();
+    	if(iter.hasNext())
+    	{
+    		RadioDownloadItem item = iter.next().getValue();
+    		item.task.execute();
+    	}
+    }
+    */
 	
     private void removeDownloadItem(RadioDownloadItem item)
     {
@@ -128,12 +209,16 @@ public class RadioDownloadManager
             @Override
             public void updateProcess(DownloadTask task)
             {
-            	Log.d("DownloadManager", task.getUrl()+" Percent:"+task.getDownloadPercent());
+//            	Log.d("DownloadManager", task.getUrl()+" Percent:"+task.getDownloadPercent());
             	RadioDownloadItem item = tasks.get(task.getUrl());
             	if(item!=null)
             	{
             		item.item.setLoading(task.getDownloadPercent());
-            		events.onRadioDownloadItemChanged(item.item);
+            		if((System.currentTimeMillis() - updateLast) > 2000)
+            		{
+                		events.onRadioDownloadItemChanged(item.item);
+                		updateLast = System.currentTimeMillis();
+            		}
             	}
             }
 

@@ -222,14 +222,18 @@ public class RadioPlayer extends Service implements OnBufferingUpdateListener, O
 			}
 		}
 		
-		if(radioEvents!=null)
+		if(player==null || !player.isPlaying())
 		{
-			radioEvents.onRadioStoped();
+			if(radioEvents!=null)
+			{
+				radioEvents.onRadioStoped();
+			}
 		}
 	}
 	
 	private void setPlaySrc(String src)
 	{
+		src = RadioDownloadManager.getTrackSrc(src);
 		Log.d("Player", "src:"+src);
 		if(player != null)
 		{

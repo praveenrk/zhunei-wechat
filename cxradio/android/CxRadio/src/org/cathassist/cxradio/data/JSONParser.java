@@ -24,6 +24,21 @@ public class JSONParser
 	public JSONParser()
 	{
 	}
+	
+	public JSONObject getJSONFromStr(String content)
+	{
+		json = content;
+		try
+		{
+			jObj = new JSONObject(json);
+		}
+		catch (JSONException e)
+		{
+			Log.e("JSON Parser", "Error parsing data " + e.toString());
+		}
+		// return JSON String
+		return jObj;
+	}
 
 	public JSONObject getJSONFromUrl(String url)
 	{

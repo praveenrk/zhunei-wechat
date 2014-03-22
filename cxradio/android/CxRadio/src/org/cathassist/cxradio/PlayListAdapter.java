@@ -65,14 +65,18 @@ public class PlayListAdapter extends BaseAdapter
 		TextView t1 = (TextView)convertView.findViewById(R.id.textView_TrackName);
 		t1.setText(item.getTitle());
 		
-		ProgressBar loadingBar = (ProgressBar)convertView.findViewById(R.id.progressBar_loading);
-		if(item.getLoading()<0 || item.getLoading()>100)
+		TextView t2 = (TextView)convertView.findViewById(R.id.textView_Loading);
+		if(item.getLoading()<0)
 		{
-			loadingBar.setVisibility(View.INVISIBLE);
+			t2.setText("未下载");
+		}
+		else if(item.getLoading()>100)
+		{
+			t2.setText("已下载");
 		}
 		else
 		{
-			loadingBar.setVisibility(View.VISIBLE);
+			t2.setText("下载中("+item.getLoading()+"%)");
 		}
 		
 		return convertView;
