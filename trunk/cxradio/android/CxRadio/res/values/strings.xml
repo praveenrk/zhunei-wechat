@@ -12,7 +12,9 @@
     <string name="text_clear">清空下载</string>
     <string name="text_feedback">反馈意见</string>
     <string name="action_settings">设置</string>
-    <string name="text_cxcopyright">版权归 晨星电台 所有</string>
+    <string name="text_cxcopyright">版权归 晨星生命之音网络电台 所有</string>
     <string name="text_cacopyright">本软件由 天主教小助手 协助开发</string>
+    <string name="str_about_cx">http://www.cxsm.org/bbs/</string>
+    <string name="str_about_us">http://www.cathassist.org/3rd/aboutus.html</string>
     
 </resources>

@@ -65,10 +65,12 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	private TextView clearText = null;
 	
 	//下载管理
-	RadioDownloadManager managerDownload = null;
+	private RadioDownloadManager managerDownload = null;
 	
-	
+	//
 	private boolean isInit = false;
+	
+	private FeedbackAgent feedbackAgent = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -123,6 +125,10 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 		});
 		
 		initPlayer();
+		
+		//用户反馈检查
+		feedbackAgent = new FeedbackAgent(this);
+		feedbackAgent.sync();
 	}
 
 	@Override
@@ -150,7 +156,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			RadioNotification.clearNotification(this);
 			RadioPlayer.getRadioPlayer().release();
 			RadioPlayer.getRadioPlayer().stopSelf();
-			android.os.Process.killProcess(android.os.Process.myPid());
+//			android.os.Process.killProcess(android.os.Process.myPid());
 		}
 	}
 	
@@ -423,8 +429,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			@Override
 			public void onClick(View v)
 			{
-				FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
-			    agent.startFeedbackActivity();
+				feedbackAgent.startFeedbackActivity();
 			}
 		});
 		
@@ -432,14 +437,14 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			@Override
 			public void onClick(View v)
 			{
-				openUrlInBrowser("http://www.cxsm.org/");
+				openUrlInBrowser("http://www.cxsm.org/bbs/");
 			}
 		});
 		cacopyright.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v)
 			{
-				openUrlInBrowser("http://www.cathassist.org/");
+				openUrlInBrowser("http://www.cathassist.org/3rd/aboutus.html");
 			}
 		});
 	}
