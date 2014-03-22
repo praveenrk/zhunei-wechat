@@ -17,13 +17,13 @@
 		    android:text="@string/text_defaultmusic"
 		    android:textAppearance="@style/ItemStyle" />
 
-		<ProgressBar
-		    android:id="@+id/progressBar_loading"
+		<TextView
+		    android:id="@+id/textView_Loading"
 		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_centerVertical="true"
-		    android:visibility="invisible"
-		    android:layout_alignParentRight="true" />
+		    android:layout_height="wrap_content" 
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentBottom="true"
+		    android:textAppearance="@style/DescStyle"/>
 
 	</RelativeLayout>
 	

@@ -55,8 +55,13 @@ public class DownloadTask extends AsyncTask<Void, Integer, Long> {
         }
 
         @Override
-        public void write(byte[] buffer, int offset, int count) throws IOException {
-
+        public void write(byte[] buffer, int offset, int count) throws IOException
+        {
+            if(interrupt)
+            {
+                throw new IOException("Write Error, Interrupted!");
+            }
+            
             super.write(buffer, offset, count);
             progress += count;
             publishProgress(progress);
@@ -93,6 +98,12 @@ public class DownloadTask extends AsyncTask<Void, Integer, Long> {
     public boolean isInterrupt() {
 
         return interrupt;
+    }
+    
+    public boolean setCancel()
+    {
+    	interrupt = true;
+    	return super.cancel(true);
     }
 
     public long getDownloadPercent() {
@@ -204,26 +215,32 @@ public class DownloadTask extends AsyncTask<Void, Integer, Long> {
 
     private long download() throws NetworkErrorException, IOException
     {
-        if (DEBUG) {
-            Log.v(TAG, "totalSize: " + totalSize);
-        }
-        
         /*
          * check file length
          */
-        client = AndroidHttpClient.newInstance("DownloadTask");
+        client = AndroidHttpClient.newInstance("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) CxRadioForAndroid/1.0");
         httpGet = new HttpGet(url);
         response = client.execute(httpGet);
         totalSize = response.getEntity().getContentLength();
-
-        if (file.exists() && totalSize == file.length()) {
-            if (DEBUG) {
-                Log.v(null, "Output file already exists. Skipping download.");
+        
+        Log.d(TAG, "totalSize: " + totalSize);
+        if(totalSize==-1)
+        {
+            throw new IOException("Download Error, TotalSize:"+ totalSize);
+        }
+        
+        if (file.exists() && totalSize == file.length())
+        {
+        	if (DEBUG)
+        	{
+        		Log.v(null, "Output file already exists. Skipping download.");
             }
-        } else if (tempFile.exists()) {
-            httpGet.addHeader("Range", "bytes=" + tempFile.length() + "-");
-            previousFileSize = tempFile.length();
-
+        }
+        else if (tempFile.exists())
+        {
+        	httpGet.addHeader("Range", "bytes=" + tempFile.length() + "-");
+        	previousFileSize = tempFile.length();
+        	
             client.close();
             client = AndroidHttpClient.newInstance("DownloadTask");
             response = client.execute(httpGet);

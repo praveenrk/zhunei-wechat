@@ -1,11 +1,45 @@
 package org.cathassist.cxradio.data;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
-public class Channel {
+
+public class Channel
+{
+	public static Channel getChannelFormJson(JSONObject j)
+	{
+		SimpleDateFormat fmDate = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
+		Channel c = new Channel();
+		
+		try {
+			c.title = j.getString("title");
+			c.date = fmDate.parse(j.getString("date"));
+        	c.logo = j.getString("logo");
+        	JSONArray items = j.getJSONArray("items");
+        	for(int i = 0; i<items.length(); ++i)
+        	{
+        		Channel.Item item = new Channel.Item(
+        				items.getJSONObject(i).getString("title"),
+        				items.getJSONObject(i).getString("src"),"");
+        		c.items.add(item);
+        	}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return c;
+	}
+	
 	public static class Item
 	{
 		private String title;
@@ -18,7 +52,8 @@ public class Channel {
 			this.title = title;
 			this.src = src;
 			this.singer = singer;
-			this.loading = -1;
+			
+			updateLoading();
 		}
 		
 		public String getTitle()
@@ -45,10 +80,31 @@ public class Channel {
 		{
 			this.loading = f;
 		}
+		
+		public void updateLoading()
+		{
+			String local = RadioDownloadManager.getTrackSrc(src);
+			if(local != src)
+			{
+				this.loading = 101;
+			}
+			else
+			{
+				this.loading = -1;
+			}
+		}
 	}
 	public Channel()
 	{
 		items = new ArrayList<Item>();
+	}
+	
+	public void updateLoadings()
+	{
+		for(int i=0;i<items.size();++i)
+		{
+			items.get(i).updateLoading();
+		}
 	}
 	
 	public String title;

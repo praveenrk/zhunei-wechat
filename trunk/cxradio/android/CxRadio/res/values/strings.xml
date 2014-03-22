@@ -8,6 +8,7 @@
     <string name="text_nextday">下一日</string>
     <string name="text_defaultday">XXXX-XX-XX</string>
     <string name="text_download">下载本日</string>
+    <string name="text_cancel">取消下载</string>
     <string name="text_clear">清空下载</string>
     <string name="text_feedback">反馈意见</string>
     <string name="action_settings">设置</string>

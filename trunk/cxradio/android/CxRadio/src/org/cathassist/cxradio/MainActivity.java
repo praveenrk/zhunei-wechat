@@ -20,7 +20,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import org.cathassist.cxradio.R;
 import org.cathassist.cxradio.data.*;
 import org.cathassist.cxradio.media.*;
-import org.cathassist.download.*;
+import org.cathassist.utils.Common;
 import org.json.*;
 
 import com.jeremyfeinstein.slidingmenu.lib.*;
@@ -170,6 +170,26 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 			else
 			{
 				Log.d("Activity", "Init to refresh...");
+				//尝试加载缓存json文件
+
+		        JSONParser jParser = new JSONParser();
+		        // Getting JSON from URL
+		        JSONObject j = jParser.getJSONFromStr(Common.readContentFromFile(RadioDownloadManager.lastChannelDir));
+
+	        	try
+	        	{
+					Date dtFile = fmDate.parse(j.getString("date"));
+					if(Common.isDateSame(dtFile, new Date()))
+					{
+						setPlayChannel(Channel.getChannelFormJson(j));
+						isInit = true;
+						return;
+					}
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				//更新播放列表
 				refreshPlayList();
 			}
@@ -226,6 +246,7 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 		if(seekProgress !=null )
 		{
 			seekProgress.setMax(max);
+			seekProgress.setProgress(0);
 			int seconds = max/1000;
 			maxTime.setText(String.format("%02d:%02d", seconds/60,seconds%60));
 			this.setPlayerStart();
@@ -508,31 +529,49 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 	{
 		if(managerDownload!=null)
 		{
-			Toast.makeText(this, "正在下载中，请稍候", Toast.LENGTH_SHORT).show();
+			managerDownload.cancel();
+			managerDownload=null;
+			downloadText.setText(R.string.text_download);
+			RadioPlayer.getRadioPlayer().getChannel().updateLoadings();
+			playlistAdapter.notifyDataSetChanged();
+			Toast.makeText(this, "已取消下载", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		//下载当前音频
+		downloadText.setText(R.string.text_cancel);
 		managerDownload = new RadioDownloadManager(RadioPlayer.getRadioPlayer().getChannel(),this,this);
 		managerDownload.run();
+		Toast.makeText(this, "开始下载", Toast.LENGTH_SHORT).show();
 	}
 	
 	public void setClearAll()
 	{
 		//清空所有音频
-		
+		clearText.setEnabled(false);
+		RadioDownloadManager.clearAllTracks();
+		clearText.setEnabled(true);
+		RadioPlayer.getRadioPlayer().getChannel().updateLoadings();
+		playlistAdapter.notifyDataSetChanged();
+		Toast.makeText(this, "已清空下载", Toast.LENGTH_SHORT).show();
 	}
 	
 	@Override
 	public void onRadioDownloadItemChanged(Channel.Item item)
 	{
+		if(managerDownload==null)
+			return;
+		Log.d("MainActivity", "UpdateItem...");
 		playlistAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
 	public void onRadioDownloadFinished()
 	{
-		Toast.makeText(this, "全部下载完成", Toast.LENGTH_LONG).show();
 		managerDownload=null;
+		downloadText.setText(R.string.text_download);
+		RadioPlayer.getRadioPlayer().getChannel().updateLoadings();
+		playlistAdapter.notifyDataSetChanged();
+		Toast.makeText(this, "全部下载完成", Toast.LENGTH_SHORT).show();
 	}
 	
 	//异步获取电台播放列表的Task
@@ -554,35 +593,17 @@ public class MainActivity extends Activity implements RadioEvents, OnSeekBarChan
 				strDate = params[1];
 			}
 
-			Channel c = new Channel();
 			String strUrl = "http://www.cathassist.org/radio/getradio.php?channel="+strChannel+"&date="+strDate;
 	        
 	        JSONParser jParser = new JSONParser();
 	        // Getting JSON from URL
 	        JSONObject j = jParser.getJSONFromUrl(strUrl);
-	        try
+	        Channel c = Channel.getChannelFormJson(j);
+	        if(Common.isDateSame(c.date, new Date()))
 	        {
-	        	c.title = j.getString("title");
-	        	c.date = fmDate.parse(j.getString("date"));
-	        	c.logo = j.getString("logo");
-	        	JSONArray items = j.getJSONArray("items");
-	        	for(int i = 0; i<items.length(); ++i)
-	        	{
-	        		Channel.Item item = new Channel.Item(
-	        				items.getJSONObject(i).getString("title"),
-	        				items.getJSONObject(i).getString("src"),"");
-	        		c.items.add(item);
-	        	}
-			}
-	        catch (JSONException e)
-	        {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        catch(Exception e)
-	        {
-	        	e.printStackTrace();
+	        	Common.writeContentToFile(RadioDownloadManager.lastChannelDir, j.toString());
 	        }
+	        
 			return c;
 		}
 		
