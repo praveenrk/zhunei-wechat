@@ -51,7 +51,7 @@ public class PlayListAdapter extends BaseAdapter
 		return arg0;
 	}
 	
-	@Override  
+	@Override
     public View getView(int position, View convertView, ViewGroup parent)
 	{
 		//根据布局文件实例化view
