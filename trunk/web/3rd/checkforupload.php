@@ -49,7 +49,7 @@
 			$item = $channel->item[$i];
 			$enclosure = $item->enclosure;
 			$link = $enclosure['url'];
-			$name = date("Y-m-d", strtotime($item->pubDate)+3600*24);
+			$name = date("Y-m-d", strtotime($item->pubDate)+3600*5);
 			$remote = '/vaticanradio/cn/mp3/'.$name.'.mp3';
 			if(!$bcs->is_object_exist(BCS_BUCKET,$remote)){
 				upload2bcsbyurl($remote,$link);
