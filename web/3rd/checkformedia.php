@@ -54,7 +54,7 @@
 			$link = $enclosure['url'];
 			
 			echo("check link:".$link."<br/>");
-			$name = date("Y-m-d", strtotime($item->pubDate)+3600*24);
+			$name = date("Y-m-d", strtotime($item->pubDate)+3600*5);
 			$lmp3 = './vaticanradio/cn/mp3/'.$name.'.mp3';
 			if(!file_exists($lmp3))
 			{
