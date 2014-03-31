@@ -93,7 +93,7 @@ foreach ($body->childNodes AS $item)
 		fwrite($ft,'<div class="url"><a href="'.sprintf("%03d.html",$c).'" class="btn">'.$item->textContent.'</a></div>');
 		echo($doc->saveHTML($item));
 		fwrite($fc,'<h3>'.$t1content.' '.$item->textContent.'</h3>');
-		fwrite($fc,'<audio src="../../mp3/'.sprintf("%03d",$t1).'/'.sprintf("%03d",$c).'.mp3" controls></audio>');
+		fwrite($fc,'<audio src="http://media.cathassist.org/bible/mp3/'.sprintf("%03d",$t1).'/'.sprintf("%03d",$c).'.mp3" controls></audio>');
 	}
 	else if($class=='t3')
 	{
