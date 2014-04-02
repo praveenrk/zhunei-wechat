@@ -27,6 +27,8 @@ foreach ($body->childNodes AS $item)
 		$volIndex++;
 		$vol->setAttribute('value',$volIndex);
 		$vol->setAttribute('title',$item->textContent);
+		$vol->setAttribute('name',$item->getAttribute("name"));
+		$vol->setAttribute('sname',$item->getAttribute("sname"));
 		$root->appendChild($vol);
 		$cIndex = 0;
 	}
