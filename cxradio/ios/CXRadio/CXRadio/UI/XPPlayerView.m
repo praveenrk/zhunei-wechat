@@ -37,7 +37,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @property (nonatomic, strong) CXAlbum *album;
 
+//CD封面显示
 @property (nonatomic, strong) UIImageView *albumCoverImageView;
+
+
+//CD上的手柄显示
+@property (nonatomic, strong) UIImageView* albumHandleImageView;
 
 
 @end
@@ -348,7 +353,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     switch ([_streamer status]) {
         case DOUAudioStreamerPlaying:{
             [_labelInfo setText:@"playing"];
-//            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
             self.layer.speed = 1.0;
             self.layer.beginTime = 0.0;
             CFTimeInterval pausedTime = [self.layer timeOffset];
@@ -360,7 +365,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
         case DOUAudioStreamerPaused:
             [_labelInfo setText:@"paused"];
-//            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
             CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
             self.layer.speed = 0.0;
             self.layer.timeOffset = pausedTime;
@@ -368,7 +373,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
         case DOUAudioStreamerIdle:
             [_labelInfo setText:@"idle"];
-//            [_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+//            [_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
             break;
             
         case DOUAudioStreamerFinished:
