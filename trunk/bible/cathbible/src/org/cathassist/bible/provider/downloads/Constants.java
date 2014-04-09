@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers.downloads;
+package org.cathassist.bible.provider.downloads;
 
 import android.util.Config;
 import android.util.Log;

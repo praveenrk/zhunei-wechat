@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers;
+package org.cathassist.bible.provider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ import android.os.ParcelFileDescriptor;
 import android.provider.BaseColumns;
 import android.util.Pair;
 
-import com.mozillaonline.providers.downloads.Downloads;
+import org.cathassist.bible.provider.downloads.Downloads;
 
 /**
  * The download manager is a system service that handles long-running HTTP
@@ -485,7 +485,7 @@ public class DownloadManager {
 	 * Control whether a system notification is posted by the download
 	 * manager while this download is running. If enabled, the download
 	 * manager posts notifications about downloads through the system
-	 * {@link com.mozillaonline.providers.NotificationManager}. By default,
+	 * {@link org.cathassist.bible.provider.NotificationManager}. By default,
 	 * a notification is shown.
 	 * 
 	 * If set to false, this requires the permission

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers.downloads;
+package org.cathassist.bible.provider.downloads;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.mozillaonline.providers.downloads.ui.DownloadList;
+import org.cathassist.bible.provider.downloads.ui.DownloadList;
 
 import org.cathassist.bible.MainActivity;
 import org.cathassist.bible.R;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers.downloads.ui;
+package org.cathassist.bible.provider.downloads.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -3,16 +3,13 @@ package org.cathassist.bible.lib;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.mozillaonline.providers.DownloadManager;
+import org.cathassist.bible.provider.DownloadManager;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;

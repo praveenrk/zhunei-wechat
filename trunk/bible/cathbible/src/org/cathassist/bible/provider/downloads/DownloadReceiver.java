@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers.downloads;
+package org.cathassist.bible.provider.downloads;
 
 import java.io.File;
 
-import com.mozillaonline.providers.DownloadManager;
+import org.cathassist.bible.provider.DownloadManager;
 
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;

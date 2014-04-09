@@ -1,6 +1,5 @@
 package org.cathassist.bible;
 
-import android.app.Fragment;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -22,8 +21,8 @@ import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.music.MusicPlayService;
 
-import com.mozillaonline.providers.DownloadManager;
-import com.mozillaonline.providers.downloads.DownloadService;
+import org.cathassist.bible.provider.DownloadManager;
+import org.cathassist.bible.provider.downloads.DownloadService;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;
