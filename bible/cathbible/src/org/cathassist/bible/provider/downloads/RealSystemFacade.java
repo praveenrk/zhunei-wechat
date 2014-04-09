@@ -1,4 +1,4 @@
-package com.mozillaonline.providers.downloads;
+package org.cathassist.bible.provider.downloads;
 
 import android.app.Notification;
 import android.app.NotificationManager;

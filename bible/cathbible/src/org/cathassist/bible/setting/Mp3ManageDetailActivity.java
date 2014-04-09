@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.mozillaonline.providers.DownloadManager;
+import org.cathassist.bible.provider.DownloadManager;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Func;

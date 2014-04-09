@@ -47,6 +47,6 @@
     <string name="keep_queued_download" msgid="5144882786014818569">"保留"</string>
     <string name="cancel_running_download" msgid="5232704030969221112">"取消"</string>
     <string name="retry_download" msgid="7617100787922717912">"重试"</string>
-    <string name="deselect_all" msgid="5638030443515705047">"清除所选项"</string>
+    <string name="deselect_all" msgid="5638030443515705047">"清除选择"</string>
 
 </resources>

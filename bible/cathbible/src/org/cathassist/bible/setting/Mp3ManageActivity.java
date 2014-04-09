@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.mozillaonline.providers.downloads.ui.DownloadList;
+import org.cathassist.bible.provider.downloads.ui.DownloadList;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.lib.Para;
@@ -43,8 +43,12 @@ public class Mp3ManageActivity  extends SherlockActivity implements AdapterView.
         mListView = (ListView) findViewById(R.id.list);
 
         Map<String,String> map = new HashMap<String, String>();
-        map.put("name","思高中文版");
+        map.put("name","思高中文版女声");
         map.put("path","chn");
+
+        map = new HashMap<String, String>();
+        map.put("name","思高中文版男声");
+        map.put("path","chn_male");
         mMp3List.add(map);
         mAdapter = new Mp3ManageAdapter(this,mMp3List);
         mListView.setAdapter(mAdapter);

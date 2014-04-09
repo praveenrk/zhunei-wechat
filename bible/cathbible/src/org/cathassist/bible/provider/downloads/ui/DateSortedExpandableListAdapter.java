@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mozillaonline.providers.downloads.ui;
+package org.cathassist.bible.provider.downloads.ui;
 
 import java.util.Vector;
 
@@ -32,7 +32,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import org.cathassist.bible.R;
-import com.mozillaonline.providers.DownloadManager;
+import org.cathassist.bible.provider.DownloadManager;
 
 /**
  * ExpandableListAdapter which separates data into categories based on date.  Copied from

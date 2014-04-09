@@ -15,10 +15,10 @@
  */
 
 
-package com.mozillaonline.providers.downloads.ui;
+package org.cathassist.bible.provider.downloads.ui;
 
-import com.mozillaonline.providers.DownloadManager;
-import com.mozillaonline.providers.downloads.ui.DownloadItem.DownloadSelectListener;
+import org.cathassist.bible.provider.DownloadManager;
+import org.cathassist.bible.provider.downloads.ui.DownloadItem.DownloadSelectListener;
 
 import android.content.Context;
 import android.database.Cursor;

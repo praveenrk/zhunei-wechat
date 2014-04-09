@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.cathassist.bible"
-    android:versionCode="105"
-    android:versionName="1.0.5" >
+    android:versionCode="108"
+    android:versionName="1.0.8" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
-
-    <!-- Allows access to the Download Manager -->
-    <permission
-        android:name="com.mozillaonline.permission.ACCESS_DOWNLOAD_MANAGER"
-        android:description="@string/permdesc_downloadManager"
-        android:label="@string/permlab_downloadManager"
-        android:protectionLevel="normal" />
-    <!-- Allows advanced access to the Download Manager -->
-    <permission
-        android:name="com.mozillaonline.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED"
-        android:description="@string/permdesc_downloadManagerAdvanced"
-        android:label="@string/permlab_downloadManagerAdvanced"
-        android:protectionLevel="normal" />
-    <!-- Allows to send broadcasts on download completion -->
-    <permission
-        android:name="com.mozillaonline.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"
-        android:description="@string/permdesc_downloadCompletedIntent"
-        android:label="@string/permlab_downloadCompletedIntent"
-        android:protectionLevel="normal" />
 
     <uses-permission android:name="com.mozillaonline.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="com.mozillaonline.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED" />
@@ -100,19 +81,19 @@
 		<meta-data android:name="UMENG_CHANNEL" android:value="home" />
 
         <!-- ###################DownloadProvider###################### -->
-        <activity android:name="com.mozillaonline.providers.downloads.ui.DownloadList"
+        <activity android:name=".provider.downloads.ui.DownloadList"
             android:launchMode="singleTask"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
 
         <provider
-            android:name="com.mozillaonline.providers.downloads.DownloadProvider"
+            android:name=".provider.downloads.DownloadProvider"
             android:authorities="org.cathassist.bible.downloads" />
 
-        <service android:name="com.mozillaonline.providers.downloads.DownloadService" />
+        <service android:name=".provider.downloads.DownloadService" />
 
         <receiver
-            android:name="com.mozillaonline.providers.downloads.DownloadReceiver"
+            android:name=".provider.downloads.DownloadReceiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
