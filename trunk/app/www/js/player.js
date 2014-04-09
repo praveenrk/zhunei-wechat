@@ -58,7 +58,7 @@ function getAudioBibleNext(_d)
 	
 	if(item)
 	{
-		return {title:item.title,src:'http://bcs.duapp.com/cathassist/bible/mp3'+item.mp3,func:getAudioBibleNext,data:item.mp3};
+		return {title:item.title,src:'http://media.cathassist.org/bible/mp3/cn/male/'+item.mp3,func:getAudioBibleNext,data:item.mp3};
 	}
 	return {};
 }
@@ -253,6 +253,6 @@ var audioPlayer = {
 {
 	var dtNow = new Date();
 	var title = "今日读经("+dtNow.Format("yyyy-MM-dd")+")";
-	var link = "http://bcs.duapp.com/cathassist/thought/mp3/"+dtNow.Format("yyyy-MM-dd")+".mp3";
+	var link = "http://media.cathassist.org/thought/mp3/"+dtNow.Format("yyyy-MM-dd")+".mp3";
 	audioPlayer.setAudio(title,link,false);
 }
