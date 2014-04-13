@@ -11,7 +11,15 @@
             backward-compatibility can go here.
         -->
     </style>
-
+  <style name="titlebar" parent="android:Theme">
+        <item name="android:windowTitleSize">40dp</item>   
+            <!-- Window attributes -->  
+        <item name="android:windowTitleBackgroundStyle">@style/StatusBarBackground</item>       
+        <item name="android:windowContentOverlay">@null</item>  
+    </style>
+    <style name="StatusBarBackground">  
+        <item name="android:background">@color/black</item>  
+    </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
         <item name="android:background">#00000000</item>

@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
+import org.cathassist.daily.activity.MainFragment.OnArticleSelectedListener;
 import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.bean.DayContent;
 import org.cathassist.daily.database.TodoDbAdapter;
@@ -24,12 +25,13 @@ import org.json.JSONObject;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.umeng.analytics.MobclickAgent;
 import com.viewpagerindicator.TabPageIndicator;
-
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.ParseException;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,10 +49,12 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 
-public class MainActivity extends BaseActivity implements OnClickCancelListener {
+public class MainActivity extends BaseActivity implements
+		OnClickCancelListener, OnArticleSelectedListener {
+	
+	
 	private ViewPager mPager;
 	private TabPageIndicator mIndicator;
-	private TodoDbAdapter dbHelper;
 	ProgressDialog progressDialog;
 	// private SatelliteMenu mMenu;
 	protected ListFragment mFrag;
@@ -61,11 +65,10 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (NetworkTool.isConnectNet(this)) {
-			UpdateApp updateApp = new UpdateApp(this,false);
+			UpdateApp updateApp = new UpdateApp(this, false);
 			updateApp.execute("");
 		}
 		setContentView(R.layout.activity_main);
-		dbHelper = new TodoDbAdapter(MainActivity.this);
 		// mMenu = (SatelliteMenu) findViewById(R.id.menu);
 		initViewPager(10, 0xFFFFFFFF, 0xFF000000,
 				fragments(PublicFunction.getYearMonthDayForSql(calendar
@@ -168,6 +171,10 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 		case android.R.id.home:
 			toggle();
 			return true;
+		case R.id.main_actionbar_calendar:
+			Intent intentCalendar=new Intent(MainActivity.this, CalendarListActivity.class);
+			startActivity(intentCalendar);
+			break;
 		case R.id.main_actionbar_update:
 			updateDate();
 			break;
@@ -199,12 +206,12 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 				String endTime = PublicFunction.getYearMonthDayForSql(calendar
 						.getTime());
 				calendar.add(Calendar.DATE, -15);
-				String deleteTime = PublicFunction.getYearMonthDayForSql(calendar
-						.getTime());
+				String deleteTime = PublicFunction
+						.getYearMonthDayForSql(calendar.getTime());
 				String httpUrl1 = PrayInEveryday.SERVER_URL
 						+ "everyday1.php?startdate=" + startTime + "&enddate="
 						+ endTime;
-				
+
 				dbHelper.open();
 				dbHelper.deleteOldData(deleteTime);
 				String[] updateTime = dbHelper.getDaysUpdateTimeByDate(
@@ -243,14 +250,15 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 						calendarDay.setUpdateTime(json_data
 								.getString("updatetime"));
 						dbHelper.insertCalendarDay(calendarDay);
-												
-						String httpUrl2 = PrayInEveryday.SERVER_URL2+json_data.getString("date");
-						String result2= NetworkTool.getContent(httpUrl2);
+
+						String httpUrl2 = PrayInEveryday.SERVER_URL2
+								+ json_data.getString("date");
+						String result2 = NetworkTool.getContent(httpUrl2);
 						dayContent = new DayContent();
 						dayContent.setDate(json_data.getString("date"));
 						dayContent.setUpdateTime(json_data
 								.getString("updatetime"));
-						jsonObject =new JSONObject(result2);
+						jsonObject = new JSONObject(result2);
 						for (int j = 0; j < ContentType.values().length; j++) {
 							dayContent.setContentType(j);
 							dayContent
@@ -260,11 +268,11 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 						}
 					}
 				} catch (JSONException e1) {
-					// Toast.makeText(getBaseContext(), "No City Found"
-					// ,Toast.LENGTH_LONG).show();
+					MobclickAgent.reportError(MainActivity.this, e1);
 					e1.printStackTrace();
 					return "fail";
 				} catch (ParseException e1) {
+					MobclickAgent.reportError(MainActivity.this, e1);
 					e1.printStackTrace();
 					return "fail";
 				} finally {
@@ -297,7 +305,6 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 		}
 
 		Handler handler = new Handler() {
-
 			public void handleMessage(Message msg) {
 				switch (msg.what) {
 				case 1:
@@ -342,7 +349,6 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 		 */
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			if (result.equals("fail"))
 				PublicFunction.showToast(MainActivity.this,
@@ -372,7 +378,10 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-			dialog();
+			if (mPager.getCurrentItem() == 0)
+				dialog();
+			else
+				mPager.setCurrentItem(0);
 		}
 		return false;
 	}
@@ -500,6 +509,12 @@ public class MainActivity extends BaseActivity implements OnClickCancelListener 
 	protected void onSaveInstanceState(Bundle outState) {
 
 		super.onSaveInstanceState(outState);
+	}
+
+	@Override
+	public void onArticleSelected(int page) {
+		mPager.setCurrentItem(page);
+
 	}
 
 }

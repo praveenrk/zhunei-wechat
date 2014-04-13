@@ -60,5 +60,18 @@
         				如果你有任何建议或疑问请联系我 &lt;br /&gt;
         				Email to: fly.workspace@gmail.com&lt;br /&gt;
         				QQ群：165780776</string>
-
+   <string name="sun">周日</string>
+    <string name="mon">周一</string>
+    <string name="tue">周二</string>
+    <string name="wed">周三</string>
+    <string name="thu">周四</string>
+    <string name="fri">周五</string>
+    <string name="sat">周六</string>
+    
+    <string name="this_week">本周</string>
+    <string name="first_week">第一周</string>
+    <string name="second_week">第二周</string>
+    <string name="third_week">第三周</string>
+    <string name="fourth_week">第四周</string>
+    <string name="fifth_week">第五周</string>
 </resources>

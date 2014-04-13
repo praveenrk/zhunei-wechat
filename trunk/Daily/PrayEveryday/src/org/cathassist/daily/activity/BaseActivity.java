@@ -1,5 +1,9 @@
 package org.cathassist.daily.activity;
 
+import org.cathassist.daily.PrayInEveryday;
+import org.cathassist.daily.database.TodoDbAdapter;
+
+import com.actionbarsherlock.app.ActionBar;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.umeng.analytics.MobclickAgent;
 
@@ -11,10 +15,16 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class BaseActivity extends SlidingFragmentActivity {
+	ActionBar actionBar;
+	TodoDbAdapter dbHelper;
+	PrayInEveryday prayEveryday;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 MobclickAgent.setDebugMode(true);
+		MobclickAgent.setDebugMode(true);
+		actionBar = getSupportActionBar();
+		dbHelper = new TodoDbAdapter(this);
+		prayEveryday = (PrayInEveryday) getApplicationContext();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction("finish");
 		registerReceiver(mFinishReceiver, filter);
@@ -30,7 +40,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		MobclickAgent.onResume(this);
 	}
 
@@ -56,5 +66,5 @@ public class BaseActivity extends SlidingFragmentActivity {
 		super.onStop();
 		Log.e("stop", "stop");
 	}
-	
+
 }
