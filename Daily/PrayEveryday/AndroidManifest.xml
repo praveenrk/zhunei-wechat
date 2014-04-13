@@ -5,8 +5,8 @@
     android:versionName="1.1" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="5"
+        android:targetSdkVersion="19" />
 
     <application
         android:name=".PrayInEveryday"
@@ -37,6 +37,14 @@
             android:configChanges="orientation|keyboardHidden"
             android:excludeFromRecents="true"
             android:launchMode="singleTask" >
+        </activity>
+        
+        <activity
+            android:name=".activity.CalendarListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask" >
+     <!--        android:theme="@style/titlebar"  -->
         </activity>
         <!-- Umeng Start -->
         <meta-data

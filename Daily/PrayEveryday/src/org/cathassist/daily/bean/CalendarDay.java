@@ -1,5 +1,7 @@
 package org.cathassist.daily.bean;
 
+import android.database.Cursor;
+
 public class CalendarDay {
 	private long id;
 	private String date;
@@ -32,6 +34,20 @@ public class CalendarDay {
 		this.bible = bible;
 		this.pray = pray;
 		this.updateTime = updateTime;
+	}
+	
+	public CalendarDay(Cursor cursor) {
+		this.id = cursor.getLong(0);
+		this.date = cursor.getString(1);
+		this.dayType =  cursor.getInt(2);
+		this.summary = cursor.getString(3);
+		this.festival = cursor.getString(4);
+		this.memorableDay = cursor.getInt(5);
+		this.solarTerms = cursor.getString(6);
+		this.holiday = cursor.getString(7);
+		this.bible = cursor.getString(8);
+		this.pray = cursor.getString(9);
+		this.updateTime = cursor.getString(10);
 	}
 
 	public long getId() {

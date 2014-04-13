@@ -1,7 +1,9 @@
 package org.cathassist.daily.database;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,7 +12,6 @@ import java.util.Map;
 import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.bean.DateBean;
 import org.cathassist.daily.bean.DayContent;
-
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -27,7 +28,7 @@ public class TodoDbAdapter {
 	// public static final String KEY_DESCRIPTION = "description";
 	// private static final String DATABASE_TABLE = "todo";
 	private Context context;
-	private SQLiteDatabase database;
+	private SQLiteDatabase database,readDatebase;
 	private DataBaseOpenHelper dbHelper;
 
 	public TodoDbAdapter(Context context) {
@@ -37,6 +38,7 @@ public class TodoDbAdapter {
 	public TodoDbAdapter open() throws SQLException {
 		dbHelper = new DataBaseOpenHelper(context);
 		database = dbHelper.getWritableDatabase();
+		readDatebase = dbHelper.getReadableDatabase();
 		return this;
 	}
 
@@ -109,12 +111,7 @@ public class TodoDbAdapter {
 								+ " DESC");
 				CalendarDay calendarDay = null;
 				if (cursor != null && cursor.moveToFirst()) {
-					calendarDay = new CalendarDay(cursor.getLong(0),
-							cursor.getString(1), cursor.getInt(2),
-							cursor.getString(3), cursor.getString(4),
-							cursor.getInt(5), cursor.getString(6),
-							cursor.getString(7), cursor.getString(8),
-							cursor.getString(9), cursor.getString(10));
+					calendarDay = new CalendarDay(cursor);
 				}
 				return calendarDay;
 			}
@@ -196,6 +193,49 @@ public class TodoDbAdapter {
 		}
 	}
 
+	public Map<String, Object> getDiaryListBetweenTime(long begin, long end) {
+		Cursor cursor = null;
+		List<Integer> groupData = new ArrayList<Integer>();
+		List<List<CalendarDay>> childData = new ArrayList<List<CalendarDay>>();
+		try {
+			synchronized (DBLOCK) {
+				String[] args = { String.valueOf(begin), String.valueOf(end) };
+				cursor = readDatebase.query(TABLE_CALENDAR, CALENDAR_QUERY_COLUMNS, 
+						//CALENDAR_DATA + ">=? and " + CALENDAR_DATA + "<=?"
+						null, null, null, null,
+						CALENDAR_DATA + " DESC");
+			}
+			if (cursor != null && cursor.moveToFirst()) {
+				int weekOfMonth = -1;
+				List<CalendarDay> diaryList = new ArrayList<CalendarDay>();
+				do {
+					long date = cursor.getLong(3);
+					Calendar c = Calendar.getInstance();
+					c.setTimeInMillis(date);
+					if (weekOfMonth != c.get(Calendar.WEEK_OF_MONTH)) {
+						weekOfMonth = c.get(Calendar.WEEK_OF_MONTH);
+						groupData.add(weekOfMonth);
+						if (diaryList.size() > 0)
+							childData.add(diaryList);
+						diaryList = new ArrayList<CalendarDay>();
+					}
+					CalendarDay day = new CalendarDay(cursor);
+					diaryList.add(day);
+				} while (cursor.moveToNext());
+				childData.add(diaryList);
+			}
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			returnMap.put("groupData", groupData);
+			returnMap.put("childData", childData);
+			return returnMap;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (cursor != null)
+				cursor.close();
+		}
+	}
 	// // public void deleteEvents(int eventid){
 	// // synchronized (DBLOCK) {
 	// // SQLiteDatabase db = this.getWritableDatabase();

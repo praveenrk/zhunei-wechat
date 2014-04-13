@@ -2,11 +2,11 @@ package org.cathassist.daily.util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.cathassist.daily.R;
-
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -42,6 +42,12 @@ import android.widget.Toast;
  * 
  */
 public class PublicFunction {
+
+	public static String formatDateYYYYMM(long millisecond) {
+		return (String) android.text.format.DateFormat.format("yyyy-MMM",
+				millisecond);
+	}
+
 	/**
 	 * 得到年的格式化输出
 	 * 
@@ -204,18 +210,34 @@ public class PublicFunction {
 	public interface OnClickCancelListener {
 		public void onClickCancelDo();// 接口中定义一个方法
 	}
-	
-	public static boolean isAvilible(Context context, String packageName){ 
-        final PackageManager packageManager = context.getPackageManager();//获取packagemanager 
-        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);//获取所有已安装程序的包信息 
-        List<String> pName = new ArrayList<String>();//用于存储所有已安装程序的包名 
-       //从pinfo中将包名字逐一取出，压入pName list中 
-            if(pinfo != null){ 
-            for(int i = 0; i < pinfo.size(); i++){ 
-                String pn = pinfo.get(i).packageName; 
-                pName.add(pn); 
-            } 
-        } 
-        return pName.contains(packageName);//判断pName中是否有目标程序的包名，有TRUE，没有FALSE 
-  } 
+
+	public static boolean isAvilible(Context context, String packageName) {
+		final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+		List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+		List<String> pName = new ArrayList<String>();// 用于存储所有已安装程序的包名
+		// 从pinfo中将包名字逐一取出，压入pName list中
+		if (pinfo != null) {
+			for (int i = 0; i < pinfo.size(); i++) {
+				String pn = pinfo.get(i).packageName;
+				pName.add(pn);
+			}
+		}
+		return pName.contains(packageName);// 判断pName中是否有目标程序的包名，有TRUE，没有FALSE
+	}
+
+	public static long getMinTimeOfMonth(long time) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(time);
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+				1, 0, 0, 0);
+		return calendar.getTimeInMillis();
+	}
+
+	public static long getMaxTimeOfMonth(long time) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(time);
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+				calendar.getActualMaximum(Calendar.DAY_OF_MONTH), 23, 59, 59);
+		return calendar.getTimeInMillis();
+	}
 }
