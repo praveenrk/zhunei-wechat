@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		<meta http-equiv="keywords" content="天主教小助手、天主教微信、天主教、微信、微信公众号、服务号"/>
-		<meta http-equiv="description" content="天主教小助手微信公众服务号、提供每日日课及读经、圣人传记、梵蒂冈广播、信仰分享、思高圣经、天主教教理等内容"/>
+		<meta http-equiv="description" content="为大家提供微信公众服务号服务；各种信仰生活中的App（天主教小助手、圣经小助手、电台小助手、圣乐小助手等）；提供每日日课及读经、圣人传记、梵蒂冈广播、信仰分享、思高圣经、天主教教理等内容"/>
 		<link href="/css/index.css" type="text/css" rel="stylesheet">
 	</head>
 	<body>
