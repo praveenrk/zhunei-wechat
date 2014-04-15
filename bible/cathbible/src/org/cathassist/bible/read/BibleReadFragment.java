@@ -273,7 +273,7 @@ public class BibleReadFragment extends SherlockFragment implements OnClickListen
     }
 
     private boolean checkMp3() {
-        final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+        final File file = Func.getFilePath(Para.mp3Ver, Func.getFileName(Para.currentBook, Para.currentChapter));
         return file.exists();
     }
 

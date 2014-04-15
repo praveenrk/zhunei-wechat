@@ -76,15 +76,6 @@ public class MainActivity extends SlidingFragmentActivity implements ServiceConn
         mDownloadManager = new DownloadManager(getContentResolver(), getPackageName());
         startDownloadService();
         Func.setDownloadManager(mDownloadManager);
-
-        if(App.get().isWifi() || Para.allow_gprs) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Func.getMp3RootUrl();
-                }
-            }).start();
-        }
     }
 
     @Override

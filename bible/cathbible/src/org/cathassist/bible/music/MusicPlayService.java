@@ -122,7 +122,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                         break;
                 }
                 if(cmd != -1) {
-                    final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+                    final File file = Func.getFilePath(Para.mp3Ver, Func.getFileName(Para.currentBook, Para.currentChapter));
                     if (file.exists()) {
                         play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
                     } else {
@@ -199,10 +199,10 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         super.onDestroy();
     }
 
-    public void playNet(String path, int book, int chapter) {
+    public void playNet(int type, int book, int chapter) {
         mName = VerseInfo.CHN_NAME[book]+"第"+chapter+"章";
-        String file = Func.getUrlPath(Func.getUrlName(path, book, chapter));
-        if (mLast.equals(path + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
+        String file = Func.getUrlPath(type, Func.getUrlName(book, chapter));
+        if (mLast.equals(type + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
             if (mPlayer.isPlaying()) {           //在播放
                 pause();
             } else {
@@ -216,7 +216,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
                 try {
                     mPlayer.setDataSource(file);
                     mPlayer.prepareAsync();
-                    mLast = path + "/" + book + "/" + chapter;
+                    mLast = type + "/" + book + "/" + chapter;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -224,10 +224,10 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
         }
     }
 
-    public void play(String path, int book, int chapter) {
+    public void play(int type, int book, int chapter) {
         mName = VerseInfo.CHN_NAME[book]+"第"+chapter+"章";
-        String file = Func.getFilePath(Func.getFileName(path, book, chapter)).getAbsolutePath();
-        if (mLast.equals(path + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
+        String file = Func.getFilePath(type, Func.getFileName(book, chapter)).getAbsolutePath();
+        if (mLast.equals(type + "/" + book + "/" + chapter) && getProgress() < getDuration()) {            //同一首
             if (mPlayer.isPlaying()) {           //在播放
                 pause();
             } else {
@@ -238,7 +238,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             try {
                 mPlayer.setDataSource(file);
                 mPlayer.prepareAsync();
-                mLast = path + "/" + book + "/" + chapter;
+                mLast = type + "/" + book + "/" + chapter;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -315,7 +315,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnCompletio
             play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
         } else if (mPlayMode == MODE_ORDER) {
             Func.ChangeChapter(true);
-            final File file = Func.getFilePath(Func.getFileName(Para.mp3Ver, Para.currentBook, Para.currentChapter));
+            final File file = Func.getFilePath(Para.mp3Ver, Func.getFileName(Para.currentBook, Para.currentChapter));
             if (file.exists()) {
                 play(Para.mp3Ver, Para.currentBook, Para.currentChapter);
             } else {

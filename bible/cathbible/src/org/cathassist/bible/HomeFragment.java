@@ -3,6 +3,7 @@ package org.cathassist.bible;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -25,10 +26,11 @@ import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 
 import org.cathassist.bible.lib.Database;
+import org.cathassist.bible.lib.Func;
 import org.cathassist.bible.lib.Para;
 import org.cathassist.bible.lib.VerseInfo;
-import org.cathassist.bible.read.BibleReadFragment;
 
+import java.io.File;
 import java.util.Random;
 
 public class HomeFragment extends SherlockFragment implements OnClickListener {
@@ -87,6 +89,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
             mStatus.setVisibility(View.GONE);
             mShare.setVisibility(View.GONE);
             mSlide.setVisibility(View.VISIBLE);
+        }
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/cathbible/bible/mp3/chn");
+        if(file.exists()) {
+            File newFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/cathbible/bible/mp3/chn_female");
+            file.renameTo(newFile);
         }
         return view;
     }
