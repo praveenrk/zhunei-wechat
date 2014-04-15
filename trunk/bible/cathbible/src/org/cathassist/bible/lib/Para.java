@@ -1,6 +1,7 @@
 package org.cathassist.bible.lib;
 
 import android.graphics.Color;
+import android.os.Environment;
 
 import org.cathassist.bible.R;
 import org.cathassist.bible.music.MusicPlayService;
@@ -8,7 +9,7 @@ import org.cathassist.bible.music.MusicPlayService;
 public class Para {
     public static final String DB_CONTENT_ASSET = "cathbible";
     public static final String DB_CONTENT_NAME = "cathbible.db";
-    public static final int DB_CONTENT_VER = 3;
+    public static final int DB_CONTENT_VER = 4;
     public static final String DB_DATA_NAME = "data.db";
     public static final int DB_DATA_VER = 1;
     public static final int VERSE_NUMBER = 473;
@@ -18,7 +19,7 @@ public class Para {
             {"主页", "圣经", "书签", "金句", "搜索", "设置"};
     public static final int[] MENU_IMAGE =
             {R.drawable.nav_home, R.drawable.nav_bible, R.drawable.nav_mark,
-             R.drawable.nav_verse, R.drawable.nav_search, R.drawable.nav_setting};
+                    R.drawable.nav_verse, R.drawable.nav_search, R.drawable.nav_setting};
     public static final int MENU_HOME = 0;
     public static final int MENU_BIBLE = 1;
     public static final int MENU_MARK = 2;
@@ -31,10 +32,19 @@ public class Para {
     public static final int VERSE_CHOISE_MARK = 0;
     public static final int VERSE_CHOISE_COPY = 1;
     public static final int VERSE_CHOISE_SHARE = 2;
-    public static String BIBLE_MP3_URL = "http://media.cathassist.org/bible/mp3/";
+    public static final String[] BIBLE_MP3_URL = {
+            "http://media.cathassist.org/bible/mp3/cn/female/",
+            "http://media.cathassist.org/bible/mp3/cn/male/"};
+    public static final String[] BIBLE_MP3_PATH = {
+            "/cathbible/bible/mp3/chn_female/",
+            "/cathbible/bible/mp3/chn_male/"};
+    public static final String[] BIBLE_MP3_VERSION = {
+            "思高版女声",
+            "思高版男声"};
+    public static final String STORAGE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
     public static String DB_CONTENT_PATH = "";
     public static String DB_DATA_PATH = "";
-    public static String BIBLE_MP3_PATH = "";
+    //public static String BIBLE_MP3_PATH = "";
     public static int DEFAULT_TEXT_COLOR = Color.BLACK;
     public static int HIGHLIGHT_TEXT_COLOR = Color.BLUE;
     public static int THEME = R.style.LightTheme;
@@ -45,7 +55,6 @@ public class Para {
     public static boolean auto_update;
     public static boolean show_color;
     public static boolean allow_gprs;
-    public static int mp3_ver;
     public static int currentBook;
     public static int currentChapter;
     public static int currentSection;
@@ -56,5 +65,5 @@ public class Para {
     public static int bookmarkPos = 0;
     public static int mp3Mode = MusicPlayService.MODE_SINGLE;
     public static int menuIndex = 0;
-    public static String mp3Ver = "chn";
+    public static int mp3Ver = 0;
 }

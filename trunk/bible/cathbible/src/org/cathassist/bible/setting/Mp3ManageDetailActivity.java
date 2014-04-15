@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import org.cathassist.bible.provider.DownloadManager;
 
@@ -47,7 +49,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         }
     };
     private String mName;
-    private String mPath;
+    private int mType;
     private ExpandableListView mExpandableListView;
     private MusicManagementAdapter mMusicAdapter;
     private List<String> mGroup = new ArrayList<String>();
@@ -59,17 +61,17 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
         setContentView(R.layout.mp3_manage_detail);
 
         mName = getIntent().getStringExtra("name");
-        mPath = getIntent().getStringExtra("path");
+        mType = getIntent().getIntExtra("type", 0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(mName);
 
-        mExpandableListView = (ExpandableListView) findViewById(R.id.list);
+        mExpandableListView = (ExpandableListView) findViewById(R.id.exp_list);
         mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 final int book = groupPosition + 1;
                 final int chapter = childPosition + 1;
-                final File file = Func.getFilePath(Func.getFileName(mPath, book, chapter));
+                final File file = Func.getFilePath(mType, Func.getFileName(book, chapter));
                 if (file.exists()) {
                     new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("是否重新下载此音频？")
                             .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
@@ -80,13 +82,13 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                                     new Handler().postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            Func.downChapter(mPath, book, chapter);
+                                            Func.downChapter(mType, book, chapter);
                                         }
                                     }, 500);
                                 }
                             }).setNegativeButton(R.string.cancel, null).show();
                 } else {
-                    Func.downChapter(mPath, book, chapter);
+                    Func.downChapter(mType, book, chapter);
                 }
                 return false;
             }
@@ -100,7 +102,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                     case ExpandableListView.PACKED_POSITION_TYPE_CHILD:
                         int bookChild = ExpandableListView.getPackedPositionGroup(id) + 1;
                         int chapterChild = ExpandableListView.getPackedPositionChild(id) + 1;
-                        final File file = Func.getFilePath(Func.getFileName(mPath, bookChild, chapterChild));
+                        final File file = Func.getFilePath(mType, Func.getFileName(bookChild, chapterChild));
                         if (file.exists()) {
                             new AlertDialog.Builder(Mp3ManageDetailActivity.this).setTitle("确定删除此音频文件？")
                                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
@@ -119,7 +121,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
                                 .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Func.downBook(mPath, book);
+                                        Func.downBook(mType, book);
                                     }
                                 }).setNegativeButton(R.string.cancel, null).show();
                         return true;
@@ -140,7 +142,8 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
             case android.R.id.home:
                 finish();
                 return true;
@@ -204,7 +207,7 @@ public class Mp3ManageDetailActivity extends SherlockActivity {
             } else {
                 vh = (ViewHolder) convertView.getTag();
             }
-            File file = Func.getFilePath(Func.getFileName(mPath, groupPosition + 1, childPosition + 1));
+            File file = Func.getFilePath(mType, Func.getFileName(groupPosition + 1, childPosition + 1));
             String state = file.exists() ? " (已下载)" : "";
 
             String title = getGroup(groupPosition) + getChild(groupPosition, childPosition) + state;

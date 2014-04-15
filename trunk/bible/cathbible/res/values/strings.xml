@@ -44,6 +44,7 @@
     <string name="refresh">刷新</string>
     <string name="next">下一条</string>
     <string name="download_manage">下载管理</string>
+    <string name="choose_current">选择当前</string>
     <string name="search_count">搜索到0条</string>
     <string name="music_prev">上章</string>
     <string name="music_play">播放</string>

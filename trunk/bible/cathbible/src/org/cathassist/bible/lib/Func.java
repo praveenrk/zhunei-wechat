@@ -1,26 +1,21 @@
 package org.cathassist.bible.lib;
 
-import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
 import org.cathassist.bible.provider.DownloadManager;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.cathassist.bible.App;
 import org.cathassist.bible.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 public class Func {
     private static DownloadManager mDownloadManager;
@@ -45,8 +40,6 @@ public class Func {
         editor.putBoolean("show_color", Para.show_color);
         Para.allow_gprs = settings.getBoolean("allow_gprs", false);
         editor.putBoolean("allow_gprs", Para.allow_gprs);
-        Para.mp3_ver = settings.getInt("mp3_ver", 1);
-        editor.putInt("mp3_ver", Para.mp3_ver);
         editor.commit();
     }
 
@@ -65,7 +58,6 @@ public class Func {
     public static void InitOncePara() {
         Para.DB_CONTENT_PATH = App.get().getDatabasePath(Para.DB_CONTENT_NAME).getParent() + "/";
         Para.DB_DATA_PATH = App.get().getDatabasePath(Para.DB_DATA_NAME).getParent() + "/";
-        Para.BIBLE_MP3_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cathbible/bible/mp3/";
 
         SharedPreferences settings = App.get().getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
@@ -73,6 +65,7 @@ public class Func {
         Para.currentChapter = settings.getInt("currentChapter", 1);
         Para.currentSection = settings.getInt("currentSection", 0);
         Para.mp3Mode = settings.getInt("mp3Mode", 0);
+        Para.mp3Ver = settings.getInt("mp3Ver", 0);
 
         if(Para.currentBook < 1 || Para.currentBook > 73) {
             Para.currentBook = 1;
@@ -82,43 +75,28 @@ public class Func {
         }
     }
 
-    public static void getMp3RootUrl() {
-        String httpUrl = "http://cathassist.org/bible/getbiblemp3root.php";
-        HttpGet httpRequest = new HttpGet(httpUrl);
-        try {
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpResponse httpResponse = httpclient.execute(httpRequest);
-            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                Para.BIBLE_MP3_URL = EntityUtils.toString(httpResponse.getEntity());
-            }
-        } catch (Exception e) {
-
-        }
-    }
-
-    public static File getFilePath(String name) {
+    public static File getFilePath(int type, String name) {
         File file;
-        file = new File(Para.BIBLE_MP3_PATH + name);
+        file = new File(Para.STORAGE_PATH + Para.BIBLE_MP3_PATH[type] + name);
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
         return file;
     }
 
-    public static String getUrlPath(String name) {
-        String url = Para.BIBLE_MP3_URL + name;
+    public static String getUrlPath(int type, String name) {
+        String url = Para.BIBLE_MP3_URL[type] + name;
 
         return url;
     }
 
-    public static String getFileName(String version, int book, int chapter) {
-        String name = version + "/"
-                + String.format("%03d", book) + "_"
+    public static String getFileName(int book, int chapter) {
+        String name = String.format("%03d", book) + "_"
                 + String.format("%03d", chapter) + ".mp3";
         return name;
     }
 
-    public static String getUrlName(String version, int book, int chapter) {
+    public static String getUrlName(int book, int chapter) {
         String name = String.format("%03d", book) + "/"
                 + String.format("%03d", chapter) + ".mp3";
         return name;
@@ -147,12 +125,12 @@ public class Func {
         Para.currentSection = 0;
     }
 
-    public static void downChapter(String version, int book, int chapter) {
-        final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
+    public static void downChapter(int type, int book, int chapter) {
+        final File file = Func.getFilePath(type, Func.getFileName(book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
             if (App.get().isWifi() || Para.allow_gprs) {
-                download(version, book, chapter);
+                download(type, book, chapter);
                 Toast.makeText(App.get(), "下载已添加", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(App.get(), "下载失败\n请在WIFI环境下再下载\n或在设置中打开使用数据流量选项", Toast.LENGTH_LONG).show();
@@ -160,10 +138,10 @@ public class Func {
         }
     }
 
-    public static void downBook(String version, int book) {
+    public static void downBook(int type, int book) {
         if (App.get().isWifi() || Para.allow_gprs) {
             for (int i = 1; i <= VerseInfo.CHAPTER_COUNT[book]; i++) {
-                download(version, book, i);
+                download(type, book, i);
             }
             Toast.makeText(App.get(), "下载已添加", Toast.LENGTH_SHORT).show();
         } else {
@@ -171,13 +149,12 @@ public class Func {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static long download(String version, int book, int chapter) {
+    public static long download(int type, int book, int chapter) {
         long reference = -1;
-        final File file = Func.getFilePath(Func.getFileName(version, book, chapter));
+        final File file = Func.getFilePath(type, Func.getFileName(book, chapter));
         if (!file.exists()) {
             new File(file.getParent()).mkdirs();
-            String url = Func.getUrlPath(Func.getUrlName(version, book, chapter));
+            String url = Func.getUrlPath(type, Func.getUrlName(book, chapter));
             Uri uri = Uri.parse(url);
             DownloadManager.Request request = new DownloadManager.Request(uri);
             request.setDestinationUri(Uri.fromFile(file));
@@ -198,4 +175,155 @@ public class Func {
         return reference;
     }
 
+    public static class CopyFolderTask extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(App.get());
+            dialog.setMessage("正在迁移数据，请不要关闭软件");
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if(dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            if(copyFolder(params[0],params[1])) {
+                deleteFolder(params[0]);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public static class CopyFilesTask extends AsyncTask<String, Void, Boolean> {
+        ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(App.get());
+            dialog.setMessage("正在迁移数据，请不要关闭软件");
+            dialog.setCancelable(false);
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            super.onPostExecute(result);
+            if(dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            boolean isSuccess = true;
+            for(int i=1;i<params.length;i++) {
+                isSuccess &= copyFile(params[i], params[0]);
+            }
+            if(isSuccess) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    private static boolean copyFile(String oldFile, String newPath) {
+        boolean isOk = true;
+        try {
+            (new File(newPath)).mkdirs(); //如果文件夹不存在 则建立新文件夹
+            File temp = new File(oldFile);
+            if(temp.isFile()){
+                FileInputStream input = new FileInputStream(temp);
+                FileOutputStream output = new FileOutputStream(newPath + "/" + temp.getName());
+                byte[] b = new byte[1024 * 5];
+                int len;
+                while ( (len = input.read(b)) != -1) {
+                    output.write(b, 0, len);
+                }
+                output.flush();
+                output.close();
+                input.close();
+                temp.delete();
+            }
+        }
+        catch (Exception e) {
+            isOk = false;
+        }
+        return isOk;
+    }
+
+    private static void deleteFolder(String oldPath){
+        File file = new File(oldPath);
+        try{
+            if(file.exists()){
+                if(file.listFiles().length>0){
+                    for(File f :file.listFiles()){
+                        if(f.isDirectory()){
+                            deleteFolder(f.getAbsolutePath());
+                        }else{
+                            f.delete();
+                        }
+                    }
+                }
+                file.delete();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean copyFolder(String oldPath, String newPath) {
+        boolean isOk = true;
+        try {
+            (new File(oldPath)).mkdirs();
+            (new File(newPath)).mkdirs(); //如果文件夹不存在 则建立新文件夹
+            String[] files=new File(oldPath).list();
+            File temp;
+            for (String name:files) {
+                if(oldPath.endsWith(File.separator)){
+                    temp=new File(oldPath+name);
+                }
+                else
+                {
+                    temp=new File(oldPath+File.separator+name);
+                }
+
+                if(temp.isFile()){
+                    FileInputStream input = new FileInputStream(temp);
+                    FileOutputStream output = new FileOutputStream(newPath + "/" + temp.getName());
+                    byte[] b = new byte[1024 * 5];
+                    int len;
+                    while ( (len = input.read(b)) != -1) {
+                        output.write(b, 0, len);
+                    }
+                    output.flush();
+                    output.close();
+                    input.close();
+                }
+                if(temp.isDirectory()){//如果是子文件夹
+                    if(!copyFolder(oldPath+"/"+name,newPath+"/"+name)) {
+                        isOk = false;
+                        return isOk;
+                    }
+                }
+            }
+        }
+        catch (Exception e) {
+            isOk = false;
+        }
+        return isOk;
+    }
 }
