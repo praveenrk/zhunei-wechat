@@ -32,6 +32,9 @@ body{
 	margin-left: 0%;
 	margin-right: 1%;
 	margin-bottom: 20px;
+	margin: 0 auto;
+	display: block;
+	max-width: 500px;
 }
 
 a.src{
