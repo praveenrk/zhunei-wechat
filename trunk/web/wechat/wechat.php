@@ -299,7 +299,56 @@ class wechatCallbackapiTest
 		$ArtCount = 0;
 		$Articles = "";
 		$keyword = trim($postObj->Content);
-		if( (strpos($keyword,"经")!==false) or (strpos($keyword,"欢喜")!==false) or (strpos($keyword,"痛苦")!==false) or (strpos($keyword,"荣福")!==false) or (strpos($keyword,"光明")!==false) or (strpos($keyword,"玫瑰")!==false) or (strpos($keyword,"颂")!==false) or (strpos($keyword,"诵")!==false) )
+		
+		if( (strpos($keyword,"圣经")!==false) or (strpos($keyword,"思高")!==false) )
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[圣经小助手（圣经思高版）]]></Title><Url><![CDATA[http://bible.cathassist.org/]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'bible/icon.png]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "由天主教小助手团队开发的专业圣经（思高版）阅读软件");
+			return $resultStr;
+		}
+		else if( (strpos($keyword,"泰泽")!==false ) )
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[泰泽祈祷详情介绍]]></Title><Url><![CDATA[http://www.cathassist.org/taize/]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'taize/logo_l.jpg]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "详细介绍泰泽祈祷的流程以及选用歌曲");
+			return $resultStr;
+		}
+		else if( (strpos($keyword,"十字架")!==false) or  (strpos($keyword,"周五")!==false) or  (strpos($keyword,"苦难")!==false) or  (strpos($keyword,"苦路")!==false) )
+		{
+			$textTpl = '<xml>
+				<ToUserName><![CDATA[%s]]></ToUserName>
+				<FromUserName><![CDATA[%s]]></FromUserName>
+				<CreateTime>%s</CreateTime>
+				<MsgType><![CDATA[news]]></MsgType>
+				<ArticleCount>1</ArticleCount>
+				<Articles>
+				<item><Title><![CDATA[朝拜十字架详情介绍]]></Title><Url><![CDATA[http://www.cathassist.org/zone/crossway/]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA['.ROOT_WEB_URL.'zone/crossway/bg2.jpg]]></PicUrl></item>
+				</Articles>
+				<FuncFlag>1</FuncFlag>
+				</xml>';
+			$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, "详细介绍朝拜十字架的流程以及选用歌曲");
+			return $resultStr;			
+		}
+		else if( (strpos($keyword,"经")!==false) or (strpos($keyword,"欢喜")!==false) or (strpos($keyword,"痛苦")!==false) or (strpos($keyword,"荣福")!==false) or (strpos($keyword,"光明")!==false) or (strpos($keyword,"玫瑰")!==false) or (strpos($keyword,"颂")!==false) or (strpos($keyword,"诵")!==false) )
 			$keyword = "12";
 		
 		if($keyword=="0")
