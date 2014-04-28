@@ -28,10 +28,12 @@
 	line-height: 20px;
 }
 .content img{
-	width:99%;
-	margin-left: 0%;
+	width:98%;
+	margin-left: 1%;
 	margin-right: 1%;
 	margin-bottom: 20px;
+	display: block;
+	max-width: 500px;
 }
 
 a.src{
