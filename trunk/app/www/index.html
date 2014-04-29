@@ -70,12 +70,21 @@
 		});
 		
 		$.ui.ready(function(){
+			//设置默认主题
 			$.os.useOSThemes=true;
 			var _t = window.localStorage.theme;
 			if(_t && _t!='')
 			{
 				$("#afui").get(0).className=_t;
 			}
+
+			//设置默认字体
+			var _s = window.localStorage.fontsize;
+			if(!_s)
+			{
+				_s = "normal";
+			}
+			setFontSize(_s);
 			
 			{
 				//初始化播放器
@@ -95,12 +104,11 @@
 					initCordovaFunc();
 				}
 			}
-		});
-		
+		});			
 	</script>
 </head>
 <body>
-<div id="afui" class="">
+<div id="afui" class="ios7">
 	<div id="header">
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
 	</div>

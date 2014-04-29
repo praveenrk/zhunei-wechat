@@ -426,6 +426,7 @@ $.mvc.controller.create('settings', {
 		$.get("./res/settings.html",function(j){
 			$("#main").html(j);
 			checkAutoPlayNext();	//设置按钮状态
+			checkFontSize();		//设置字体大小状态
 			
 			$.ui.titleBar.textContent = '设置';
 			$("#backButton")[0].style.visibility = 'hidden';
@@ -600,3 +601,13 @@ $.mvc.controller.create('codex', {
 		var self = this;
 	}
 });
+
+
+
+//初始化当前页面
+var _u = getQueryString('route');
+if(!_u)
+{
+	$_u = "/stuff";
+}
+$.mvc.route(_u);

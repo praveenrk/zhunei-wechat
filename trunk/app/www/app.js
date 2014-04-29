@@ -98,6 +98,32 @@ function checkAutoPlayNext()
 	}
 }
 
+
+//设置字体大小
+function setFontSize(_s)
+{
+	$("#main").get(0).className=_s;
+	window.localStorage.fontsize=_s;
+}
+
+//同步“自动播放下一首”按钮的状态
+function checkFontSize()
+{
+	try
+	{
+		if(window.localStorage.fontsize=="small")
+			$('#fontsmall').get(0).checked = true;
+		else if(window.localStorage.fontsize=="large")
+			$('#fontlarge').get(0).checked = true;
+		else
+			$('#fontnormal').get(0).checked = true;
+	}
+	catch(err)
+	{
+		$('#fontnormal').get(0).checked = true;
+	}
+}
+
 //设置自动播放下一首歌曲的数据
 function setAutoPlayNextMusic()
 {
@@ -155,7 +181,6 @@ app.loadModels(["stuff"]);
 app.loadControllers(["stuff"]);
 //Routing by hash change
 //app.listenHashChange();
-
 window.addEventListener("popstate", function(){
 	var _u = getQueryString('route');
 	if(_u)
