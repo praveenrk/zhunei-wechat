@@ -169,7 +169,7 @@ function openLinkInExternal(_l)
 	}
     else if($.os.ios || $.os.ios7)
     {
-        window.open(_l+'#cordova=external',"_blank");
+        window.open(_l+'#cordova=external',"_system");
         return;
     }
 	window.open(_l,"_blank");

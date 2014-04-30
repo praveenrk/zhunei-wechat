@@ -252,42 +252,18 @@ audio{
 	overflow: hidden;
 }
 
-#audioPlayer .play{
-	background-image: url(../img/buttons/play.png); /* 16px x 16px */
-	background-color: transparent; /* make the button transparent */
-	background-repeat: no-repeat;  /* make the background image appear only once */
-	background-position: 0px 0px;  /* equivalent to 'top left' */
-	border: none;           /* assuming we don't want any borders */
-	cursor: pointer;        /* make the cursor like hovering over an <a> element */
-	height: 48px;           /* make this the size of your image */
-	padding-left: 48px;     /* make text start to the right of the image */
-	vertical-align: middle; /* align the text vertically centered */
-	outline: none;
+#afui #navbar .icon:before {
+	position: relative;
+	font-size: 48px;
+	cursor: pointer;
+	display: block;
+	text-align: center;
 }
-#audioPlayer .pause{
-	background-image: url(../img/buttons/pause.png); /* 16px x 16px */
-	background-color: transparent; /* make the button transparent */
-	background-repeat: no-repeat;  /* make the background image appear only once */
-	background-position: 0px 0px;  /* equivalent to 'top left' */
-	border: none;           /* assuming we don't want any borders */
-	cursor: pointer;        /* make the cursor like hovering over an <a> element */
-	height: 48px;           /* make this the size of your image */
-	padding-left: 48px;     /* make text start to the right of the image */
-	vertical-align: middle; /* align the text vertically centered */
-	outline: none;
+
+#afui.ios #navbar{
+	color: #fff;
 }
-#audioPlayer .activityindicator{
-	background-image: url(../img/buttons/activityindicator.gif); /* 16px x 16px */
-	background-color: transparent; /* make the button transparent */
-	background-repeat: no-repeat;  /* make the background image appear only once */
-	background-position: 0px 0px;  /* equivalent to 'top left' */
-	border: none;           /* assuming we don't want any borders */
-	cursor: pointer;        /* make the cursor like hovering over an <a> element */
-	height: 48px;           /* make this the size of your image */
-	padding-left: 48px;     /* make text start to the right of the image */
-	vertical-align: middle; /* align the text vertically centered */
-	outline: none;
-}
+
 #audioPlayer h4{
 	padding-top: 2px;
 	text-align: center;

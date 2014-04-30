@@ -5,45 +5,39 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>F619802F-AC07-484F-8FDC-B95F263CDA18</string>
+	<string>2BB7544B-1578-490B-AD85-0BBD76C54EA4</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CathAssist</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0D14C990-714B-4F48-AA13-5E78ADD7C77C</key>
-		<string>https://zhunei-wechat.googlecode.com/svn</string>
+		<key>EC79F89F-8175-4581-89D2-02744979A854</key>
+		<string>https://zhunei-wechat.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>trunk/app/platforms/ios/CathAssist.xcodeproj/project.xcworkspace</string>
+	<string>app/platforms/ios/CathAssist.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0D14C990-714B-4F48-AA13-5E78ADD7C77C</key>
-		<string>../../../../../..</string>
+		<key>EC79F89F-8175-4581-89D2-02744979A854</key>
+		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>0D14C990-714B-4F48-AA13-5E78ADD7C77C</key>
-		<string>https://zhunei-wechat.googlecode.com/svn</string>
+		<key>EC79F89F-8175-4581-89D2-02744979A854</key>
+		<string>https://gmail.com@zhunei-wechat.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://zhunei-wechat.googlecode.com/svn/trunk/app/platforms/ios/CathAssist.xcodeproj</string>
+	<string>https://gmail.com@zhunei-wechat.googlecode.com/svn/trunk/app/platforms/ios/CathAssist.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0D14C990-714B-4F48-AA13-5E78ADD7C77C</string>
+	<string>EC79F89F-8175-4581-89D2-02744979A854</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0D14C990-714B-4F48-AA13-5E78ADD7C77C</string>
+			<string>EC79F89F-8175-4581-89D2-02744979A854</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CathAssist</string>
 		</dict>
