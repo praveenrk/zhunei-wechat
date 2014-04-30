@@ -608,6 +608,6 @@ $.mvc.controller.create('codex', {
 var _u = getQueryString('route');
 if(!_u)
 {
-	$_u = "/stuff";
+	_u = "/stuff";
 }
 $.mvc.route(_u);

@@ -16,7 +16,7 @@
 <div class="input-group">
 	<input id="name" type="text" placeholder="输入你的昵称" value="{{=window.localStorage.getItem('nick') ? window.localStorage.getItem('nick') : ''}}">
 	<textarea id="text" rows="6" placeholder="输入你的代祷意向"></textarea>
-	<a class="button icon upload" style="float:right;" href="javascript:submitpray()">提交</a>
+	<a class="button icon ion-upload" style="float:right;" href="javascript:submitpray()">提交</a>
 </div>
 
 <script>

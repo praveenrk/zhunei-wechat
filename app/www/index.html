@@ -8,7 +8,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" type="text/css" href="./css/icons.css" />
+	<link rel="stylesheet" type="text/css" href="./css/ionicons.css" media="screen"  />
 	<link rel="stylesheet" type="text/css" href="./css/src/main.css" />
 	<link rel="stylesheet" type="text/css" href="./css/src/appframework.css"  />
 
@@ -119,9 +119,9 @@
 	</div>
 	<footer id='audioPlayer'>
 		<div style="float:left;width:54px;height:48px;">
-			<input id="playbutton" type="button" class="play" onclick="audioPlayer.play();return false;" />
-			<input id="activityindicator" type="button" class="activityindicator" onclick="audioPlayer.stop();return false;" />
-			<input id="stopbutton" type="button" class="pause" onclick="audioPlayer.pause();return false;" />
+			<i id="playbutton" class="icon ion-play" onclick="audioPlayer.play();return false;"></i>
+			<i id="activityindicator" class="icon ion-loading-a" onclick="audioPlayer.stop();return false;"></i>
+			<i id="stopbutton" class="icon ion-pause" onclick="audioPlayer.pause();return false;"></i>
 		</div>
 		<div style="width:auto;height:48px;margin-left:54px;position: relative">
 			<div style="width:100%;height:auto;"><h4 id="playTitle" style="width:100%;">普世教会</h4></div>

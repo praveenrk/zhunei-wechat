@@ -5,7 +5,7 @@
 }}
 <div class="gap">
 	<div class="button-grouped flex">
-		<a class="button icon refresh" href="{{=it.list}}9999999/update">更新</a>
+		<a class="button icon ion-refresh" href="{{=it.list}}9999999/update">更新</a>
 	</div>
 </div>
 <ul id="stuff-list" class="list">
@@ -21,6 +21,6 @@
 	{{}}}
 </ul>
 <div class="button-grouped flex">
-	<a class="button icon left" href="{{=it.back}}{{=art_next_to}}">上一页</a>
-	<a class="button icon right" href="{{=it.list}}{{=art_next_from}}/update">下一页</a>
+	<a class="button icon ion-arrow-left-b" href="{{=it.back}}{{=art_next_to}}">上一页</a>
+	<a class="button icon ion-arrow-right-b" href="{{=it.list}}{{=art_next_from}}/update">下一页</a>
 </div>
