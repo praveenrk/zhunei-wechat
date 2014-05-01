@@ -17,12 +17,17 @@
  under the License.
  */
 
-
 // controller title for Videos
 "Videos title" = "Videos";
 // accessibility label for recording button
-"toggle audio recording" = "starten/beenden der Tonaufnahme";
+"toggle audio recording" = "toggle audio recording";
 // notification spoken by VoiceOver when timed recording finishes
-"timed recording complete" = "programmierte Aufnahme beendet";
+"timed recording complete" = "timed recording complete";
 // accessibility hint for display of recorded elapsed time
-"recorded time in minutes and seconds" = "aufgenommene Zeit in Minuten und Sekunden";
+"recorded time in minutes and seconds" = "recorded time in minutes and seconds";
+
+"Message" = "信息";
+"Mail" = "邮件";
+"Sina Weibo" = "新浪微博";
+"Tencent Weibo" = "腾讯微博";
+"Copy" = "复制";
