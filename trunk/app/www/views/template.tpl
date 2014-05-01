@@ -6,6 +6,8 @@
 	bb.innerHTML= it.title;
 	bb.style.visibility = 'visible';
 	$("#menubadge")[0].style.float = 'right';
+
+	$("#shareButton")[0].style.visibility = 'hidden';
 }}
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.items.items){

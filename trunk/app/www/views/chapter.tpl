@@ -6,6 +6,16 @@
 	bb.innerHTML= it.items.ptitle;
 	bb.style.visibility = 'visible';
 	$("#menubadge")[0].style.float = 'right';
+
+	if(it.furl)
+	{
+		$("#shareButton")[0].style.visibility = 'visible';
+		sharedMsg = it.items.title+" http://cathassist.org/"+it.furl.replace(/json/, "html")+ " 来自：天主教小助手";
+	}
+	else
+	{
+		$("#shareButton")[0].style.visibility = 'hidden';
+	}
 }}
 <div class="main-content">
 	{{ if(it.items.mp3){}}

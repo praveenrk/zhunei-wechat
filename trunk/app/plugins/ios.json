@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialMessage\"><param name=\"ios-package\" value=\"SocialMessage\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -74,6 +78,12 @@
                             "xml": "true",
                             "count": 1
                         }
+                    ],
+                    "Social.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
                     ]
                 }
             }
@@ -102,6 +112,9 @@
             "PACKAGE_NAME": "org.cathassist.app"
         },
         "org.apache.cordova.media": {
+            "PACKAGE_NAME": "org.cathassist.app"
+        },
+        "uk.co.ilee.socialmessage": {
             "PACKAGE_NAME": "org.cathassist.app"
         }
     },

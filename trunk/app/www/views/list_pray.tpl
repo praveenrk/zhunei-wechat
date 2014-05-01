@@ -2,6 +2,9 @@
 	$.ui.titleBar.textContent = it.title;
 	$("#backButton")[0].style.visibility = 'hidden';
 	$("#menubadge")[0].style.float = 'left';
+
+	$("#shareButton")[0].style.visibility = 'visible';
+	sharedMsg = "代祷本（天主教小助手） http://cathassist.org/pray/";
 }}
 <ul id="pray-list" class="list">
 	{{ for (var c in it.items){
