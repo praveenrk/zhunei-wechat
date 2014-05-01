@@ -175,6 +175,19 @@ function openLinkInExternal(_l)
 	window.open(_l,"_blank");
 }
 
+//分享内容
+function shareMessage(_msg)
+{
+    var message =
+    {
+        text: _msg
+    };
+    
+    window.socialmessage.send(message);
+}
+
+var sharedMsg = "test";
+
 var app = new $.mvc.app();
 
 app.loadModels(["stuff"]);

@@ -1,5 +1,6 @@
 {{
 	$.ui.titleBar.textContent = it.title;
+	$("#shareButton")[0].style.visibility = 'hidden';
 	$("#backButton")[0].style.visibility = 'hidden';
 	$("#menubadge")[0].style.float = 'left';
 	dtPrev = new Date(it.date.toDateString()); dtPrev.setDate(dtPrev.getDate()-1);

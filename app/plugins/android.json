@@ -48,7 +48,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 9
+                            "count": 10
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
@@ -72,6 +72,16 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"SocialMessage\"><param name=\"android-package\" value=\"uk.co.ilee.socialmessage.SocialMessage\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -102,6 +112,9 @@
             "PACKAGE_NAME": "org.cathassist.app"
         },
         "org.apache.cordova.media": {
+            "PACKAGE_NAME": "org.cathassist.app"
+        },
+        "uk.co.ilee.socialmessage": {
             "PACKAGE_NAME": "org.cathassist.app"
         }
     },

@@ -264,6 +264,11 @@ audio{
 	color: #fff;
 }
 
+#afui.ios7 #shareButton
+{
+	color:rgba(82,155,234,255);
+}
+
 #audioPlayer h4{
 	padding-top: 2px;
 	text-align: center;

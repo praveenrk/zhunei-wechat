@@ -2,6 +2,9 @@
 	$.ui.titleBar.textContent = it.title;
 	$("#backButton")[0].style.visibility = 'hidden';
 	$("#menubadge")[0].style.float = 'left';
+
+	$("#shareButton")[0].style.visibility = 'visible';
+	sharedMsg = it.item.singer+":"+it.item.name+" http://cathassist.org/music/music.php?id="+it.item.id+" 来自：天主教小助手";
 }}
 <div class="main-content music-info">
 	<h3>歌名：{{=it.item.name}}</h3>

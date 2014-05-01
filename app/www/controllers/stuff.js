@@ -118,7 +118,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/vaticanacn/',
 				item: '/article/vaticanacn_item/',
-				back: '/article/vaticanacn_back/'
+				back: '/article/vaticanacn_back/',
+				sub: 'vaticanacn'
             }));
 			
 			$.ui.hideMask();
@@ -151,7 +152,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/vaticanacn/',
 				item: '/article/vaticanacn_item/',
-				back: '/article/vaticanacn_back/'
+				back: '/article/vaticanacn_back/',
+				sub: 'vaticanacn'
             }));
 			
 			$.ui.hideMask();
@@ -167,7 +169,8 @@ $.mvc.controller.create('article', {
 			$("#main").html($.template('article_detail_tpl', {
                 item: all,
 				list: '/article/vaticanacn/',
-				text: '普世教会'
+				text: '普世教会',
+				sub: 'vaticanacn'
             }));
 			$.ui.hideMask();
 		});
@@ -197,7 +200,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/faithlife/',
 				item: '/article/faithlife_item/',
-				back: '/article/faithlife_back/'
+				back: '/article/faithlife_back/',
+				sub: 'faithlife'
             }));
 			
 			$.ui.hideMask();
@@ -230,7 +234,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/faithlife/',
 				item: '/article/faithlife_item/',
-				back: '/article/faithlife_back/'
+				back: '/article/faithlife_back/',
+				sub: 'faithlife'
             }));
 			
 			$.ui.hideMask();
@@ -246,7 +251,8 @@ $.mvc.controller.create('article', {
 			$("#main").html($.template('article_detail_tpl', {
                 item: all,
 				list: '/article/faithlife/',
-				text: '信仰生活'
+				text: '信仰生活',
+				sub: 'faithlife'
             }));
 			$.ui.hideMask();
 		});
@@ -277,7 +283,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/articles/',
 				item: '/article/articles_item/',
-				back: '/article/articles_back/'
+				back: '/article/articles_back/',
+				sub: 'articles'
             }));
 			
 			$.ui.hideMask();
@@ -310,7 +317,8 @@ $.mvc.controller.create('article', {
                 items: all,
 				list: '/article/articles/',
 				item: '/article/articles_item/',
-				back: '/article/articles_back/'
+				back: '/article/articles_back/',
+				sub: 'articles'
             }));
 			
 			$.ui.hideMask();
@@ -326,7 +334,8 @@ $.mvc.controller.create('article', {
 			$("#main").html($.template('article_detail_tpl', {
                 item: all,
 				list: '/article/articles/',
-				text: '主内分享'
+				text: '主内分享',
+				sub: 'articles'
             }));
 			$.ui.hideMask();
 		});
@@ -431,6 +440,7 @@ $.mvc.controller.create('settings', {
 			$.ui.titleBar.textContent = '设置';
 			$("#backButton")[0].style.visibility = 'hidden';
 			$("#menubadge")[0].style.float = 'left';
+			$("#shareButton")[0].style.visibility = 'hidden';
 			$.ui.hideMask();
 		});
 		$.ui.hideMask();
@@ -487,6 +497,7 @@ $.mvc.controller.create('bible', {
 			$("#main").html($.template('chapter_tpl', {
 				title: '思高圣经',
 				url: '/bible',
+				furl: 'bible/bible/'+t+'/'+c,
 				items: JSON.parse(j)
 			}));
 		});
@@ -510,6 +521,9 @@ $.mvc.controller.create('prayer', {
 			$.ui.titleBar.textContent = '常用经文';
 			$("#backButton")[0].style.visibility = 'hidden';
 			$("#menubadge")[0].style.float = 'left';
+
+			$("#shareButton")[0].style.visibility = 'visible';
+			sharedMsg = "常用祈祷经文（天主教小助手） http://cathassist.org/prayer/";
 			$.ui.hideMask();
 		});
 		$.ui.scrollToTop("#mainc",-10);
@@ -549,6 +563,7 @@ $.mvc.controller.create('catechism', {
 			$("#main").html($.template('chapter_tpl', {
 				title: '教理',
 				url: '/catechism',
+				furl: 'catechism/content/'+c,
 				items: JSON.parse(j)
 			}));
 		});
@@ -589,6 +604,7 @@ $.mvc.controller.create('codex', {
 			$("#main").html($.template('chapter_tpl', {
 				title: '法典',
 				url: '/codex',
+				furl: 'codex/content/'+c,
 				items: JSON.parse(j)
 			}));
 		});

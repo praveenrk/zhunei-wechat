@@ -2,6 +2,7 @@
 	$.ui.titleBar.textContent = it.title;
 	$("#backButton")[0].style.visibility = 'hidden';
 	$("#menubadge")[0].style.float = 'left';
+	$("#shareButton")[0].style.visibility = 'hidden';
 }}
 <ul id="stuff-list" class="list">
 	{{ for (var c in it.items){

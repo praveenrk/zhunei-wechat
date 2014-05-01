@@ -82,7 +82,7 @@
 			var _s = window.localStorage.fontsize;
 			if(!_s)
 			{
-				_s = "normal";
+				_s = "small";
 			}
 			setFontSize(_s);
 			
@@ -111,6 +111,7 @@
 <div id="afui" class="ios7">
 	<div id="header">
 		<a id='menubadge' onclick='af.ui.toggleSideMenu()' class='menuButton'></a>
+		<a id='shareButton' onclick="shareMessage(sharedMsg)" class="icon ion-share" style="float:right;font-size:40px;visibility:hidden;"></a>
 	</div>
 	<div id="content">
 		<div title='天主教小助手' id="mainc" class="panel" selected="true" data-footer='audioPlayer'>

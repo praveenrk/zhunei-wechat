@@ -5,6 +5,9 @@
 	bb.innerHTML= '日课...';
 	bb.style.visibility = 'visible';
 	$("#menubadge")[0].style.float = 'right';
+
+	$("#shareButton")[0].style.visibility = 'visible';
+	sharedMsg = stuffconfig[it.type]+"("+it.date+") http://cathassist.org/getstuff/stuff/"+it.date+"_"+it.type+".html"+" 来自：天主教小助手";
 }}
 <div id="stuff_detail">
 {{=replackAudioTag(it.stuff)}}
