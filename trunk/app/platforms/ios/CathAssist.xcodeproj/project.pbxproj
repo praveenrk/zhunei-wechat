@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0B4D3D01BF504DBE9A5B3250 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6B987FB486436C8089E716 /* CDVFileTransfer.m */; };
 		130018D91DD94612B69F1AB3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5098D52937EF499CB3EC2420 /* Social.framework */; };
