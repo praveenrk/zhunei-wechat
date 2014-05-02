@@ -183,6 +183,12 @@ function shareMessage(_msg)
         text: _msg
     };
     
+    if(!window.socialmessage)
+    {
+    	alert("分享功能不支持你的浏览器，欢迎你下载我们的app使用。");
+    	window.open("http://cathassist.org/app.html");
+    	return;
+    }
     window.socialmessage.send(message);
 }
 
