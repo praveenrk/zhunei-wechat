@@ -2,7 +2,7 @@
 <head>
 	<title>天主教小助手网络电台</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
-	<meta name="viewport" content="user-scalable=no, width=device-width" />
+	<meta name="viewport" content="user-scalable=no, width=device-width, minimal-ui" />
 	<link rel="stylesheet" type="text/css" href="http://cathassist.org/js/jPlayer/skin/cd/cd.css"/>
 	<style type="text/css">
 		.title-bar select{
