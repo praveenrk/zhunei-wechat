@@ -7,6 +7,7 @@
 	$result = mysql_query("select * from song L JOIN (SELECT CEIL(MAX(ID)*RAND()) AS ID FROM song) AS m ON L.ID >= m.ID LIMIT 1;");
 	if ($row = mysql_fetch_array($result))
 	{
+		$songid = $row['id'];
 		$result = mysql_query('select song.name as name,song.mp3 as mp3,song.alume as aid,song.singer as sid,alume.name as aname,alume.pic as pic,singer.name as sname from song,alume,singer where song.alume=alume.id and song.singer=singer.id and song.id='.$row['id'].';');
 		if($row = mysql_fetch_array($result))
 		{
@@ -17,6 +18,7 @@
 			$ret['pic'] = $row['pic'];
 			$ret['aid'] = $row['aid'];
 			$ret['sid'] = $row['sid'];
+			$ret['id'] = $songid;
 		}
 	}
 	
