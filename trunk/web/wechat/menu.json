@@ -24,6 +24,11 @@
 			"type" : "view",
 			"name" : "彼此代祷",
 			"url" : "http://www.cathassist.org/pray/index.php"
+		},
+		{
+			"type" : "view",
+			"name" : "互动社区",
+			"url" : "http://wx.wsq.qq.com/232967608"
 		}]
 	},
 	{
