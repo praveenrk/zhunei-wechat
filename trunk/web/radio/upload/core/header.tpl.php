@@ -42,7 +42,7 @@ $(document).ready(function(){
     </div>
     <div id="mainmenu">
     <ul style="display: block;" class="left sf-js-enabled">
-        <li id="dashboard" <?php if(empty($cid)) echo 'class="selected"'; ?> ><a class="top" href="/">后台首页</a></li>
+        <li id="dashboard" <?php if(empty($cid)) echo 'class="selected"'; ?> ><a class="top" href="./">后台首页</a></li>
 		<?php foreach($_admin_channelarr[$adminName] as $v){?>
 		<li id="dashboard" <?php if(!empty($cid)&& $cid==$v) echo 'class="selected"'; ?>><a class="top" href="?op=v&cid=<?php echo $v; ?>"><?php echo $_channelarr[$v]['channel']; ?></a></li>
 		<?php }?>

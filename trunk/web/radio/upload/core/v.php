@@ -89,10 +89,8 @@ switch($action)
 
 				$a=array();
 				$a['title'] = trim($v['title'])?trim($v['title']):(empty($filename)?'':$filename);
-				$a['url']   = trim($v['url'])?trim($v['url']):(empty($newfile)?'':$newfile);
-				$a['filename']=empty($$name)?'':$name;
+				$a['url']   = 'http://media.cathassist.org/radio/upload/'.trim($v['url'])?trim($v['url']):(empty($newfile)?'':$newfile);
 				$jsonarr[]=$a;
-			
 			}
 			if(!empty($jsonarr)){
 				
