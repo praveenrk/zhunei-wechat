@@ -7,7 +7,7 @@
             <div class="buttons"><a class="button" onClick="$('form').submit();">保存</a>&nbsp;<a class="button" onclick="javascript:history.go(-1);">返回</a></div>
         </div>
         <div class="content">
-        <form action="?op=<?php echo $op; ?>&cid=<?php echo $cid;?>&action=<?php echo $action; ?>" method="post" id="form" enctype="multipart/form-data" >
+        <form action="?op=<?php echo $op; ?>&cid=<?php echo $cid;?>&action=<?php echo $action; ?>" method="post" id="form"  >
         <table class="form" id="tbData" >
 		<tr><td>日期：</td><td cols='4' ><input type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"  class="Wdate" size="15" value="<?php echo $inputtime; ?>" name="inputtime" /></td></tr>
         <tr id="tr1">
@@ -15,9 +15,7 @@
         	<td>标题:</td>
             <td><input type="text" value="<?php echo $info['title']; ?>" name="info[1][title]" /></td>
             <td>音频链接:</td>
-            <td><input type="text" value="<?php echo $info['url']; ?>" name="info[1][url]" /></td>
-			<td>上传文件:</td>
-            <td><input type="file" value="<?php echo $info['myfile']; ?>" name="myfile[1]" /></td>
+            <td><input type="text" value="<?php echo ($info['url'] == "" ? $_channelarr[$cid]['path'] : $info['url']); ?>" name="info[1][url]" /></td>
         </tr>
         </table>
         <?php if(empty($id)){ ?>
@@ -42,8 +40,8 @@ $("#Bt_addTr").click(function(){
 	var str = '<tr id="tr'+trid+'">';
 	str += '<td><input type="checkbox" name="selected[]" value="'+trid+'" /></td><td>标题：</td><td><input type="text" value="" name="info['+trid+'][title]" /></td>';
 	//for (var i = 1;i<=1;i++){
-	str += '<td>音频链接:</td><td><input type="text" value="" name="info['+trid+'][url]" /></td>';
-	str += '<td>上传文件:</td><td><input type="file" value="" name="myfile['+trid+']" /></td>';
+	str += '<td>音频链接:</td><td><input type="text" value="<?php echo $_channelarr[$cid]['path']; ?>" name="info['+trid+'][url]" /></td>';
+	//str += '<td>上传文件:</td><td><input type="file" value="" name="myfile['+trid+']" /></td>';
 	//}
 	str += '</tr>';
 	$('#tbData').append(str);
