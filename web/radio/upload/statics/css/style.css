@@ -198,6 +198,11 @@ table.form tr td {
     z-index: 1;
 }
 
+#tr1 input[type="text"]
+{
+	width:300px;
+}
+
 #mainmenu ul
 {
 	margin:0px; padding: 0; position: relative;

@@ -58,6 +58,10 @@
 			{
 				return new CxChannel();
 			}
+			else if($c=="ai")
+			{
+				return new AiChannel();
+			}
 			else if($c=="vacn")
 			{
 				return new VacnChannel();
@@ -82,12 +86,12 @@
 	{
 		function getRadio($date)
 		{
-			$strDate = date('Y-m-d',$date);
+			$strDate = gmdate('Y-m-d',$date);
 			$cxfile = './cx/'.$strDate;
 			$cxjson = null;
 			if(!file_exists($cxfile))
 			{
-				$cxdate = date("Y-n-j", $date);
+				$cxdate = gmdate("Y-n-j", $date);
 				$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
 				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
@@ -119,12 +123,46 @@
 		}
 	}
 	
+	//福音爱广播
+	class AiChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			$strDate = gmdate('Y-m-d',$date);
+			$aifile = './ai/'.$strDate;
+			$aijson = null;
+			if(!file_exists($aifile))
+			{
+				$airadio = 'http://media.cathassist.org/radio/upload/data/airadio/'.$strDate.'/'.$strDate.'.txt';
+				$aicontent = file_get_contents($airadio);		//或是url list
+				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
+				$aijson["title"] = "福音爱广播";
+				$aijson["date"] = $strDate;
+				$aijson["logo"] = "http://cathassist.org/radio/logos/ai.png";
+				$i = 0;
+				$items = json_decode($aicontent,true);
+				foreach($items as $item)
+				{
+					$aijson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
+					$i++;
+				}
+				file_put_contents($aifile,json_encode($aijson));
+				BaseChannel::append2All("cx",$aijson);
+			}
+			else
+			{
+				$aijson = json_decode(file_get_contents($aifile),true);
+			}
+			return $aijson;
+		}
+	}
+	
 	//梵蒂冈中文广播
 	class VacnChannel extends BaseChannel
 	{
 		function getRadio($date)
 		{
-			$strDate = date('Y-m-d',$date);
+			$strDate = gmdate('Y-m-d',$date);
 			$vafile = './vacn/'.$strDate;
 			$vajson = null;
 			if(!file_exists($vafile))
@@ -158,7 +196,7 @@
 	{
 		function getRadio($date)
 		{
-			$strDate = date('Y-m-d',$date);
+			$strDate = gmdate('Y-m-d',$date);
 			$gosfile = './gos/'.$strDate;
 			$gosjson = null;
 			if(!file_exists($gosfile))
