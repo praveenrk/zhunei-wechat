@@ -256,5 +256,6 @@
 	{
 		die("Something is wrong about this channel.");
 	}
+	header('Content-type: application/json;text/html;charset=utf-8;');
 	echo(json_encode($ret));
 ?>
