@@ -5,24 +5,24 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>FFC13D30-4470-4DC4-8071-A20BCAC4AB3E</string>
+	<string>FF136E3C-59C7-4752-803A-2B5790D1838E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CathAssist</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D5EF7BC2-6932-491D-A830-7D8FD220A146</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>https://zhunei-wechat.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>app/platforms/ios/CathAssist.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D5EF7BC2-6932-491D-A830-7D8FD220A146</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>D5EF7BC2-6932-491D-A830-7D8FD220A146</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>https://gmail.com@zhunei-wechat.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -30,14 +30,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D5EF7BC2-6932-491D-A830-7D8FD220A146</string>
+	<string>90923C7C-909F-4A40-B05E-6FA5C891B7B0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D5EF7BC2-6932-491D-A830-7D8FD220A146</string>
+			<string>90923C7C-909F-4A40-B05E-6FA5C891B7B0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CathAssist</string>
 		</dict>
