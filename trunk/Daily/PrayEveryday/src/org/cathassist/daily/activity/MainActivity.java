@@ -133,6 +133,7 @@ public class MainActivity extends BaseActivity implements
 		mPager.setAdapter(test);
 		mIndicator.setViewPager(mPager);
 		mPager.setCurrentItem(0);
+		mPager.setOffscreenPageLimit(7);
 		mIndicator.notifyDataSetChanged();
 		mIndicator
 				.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
