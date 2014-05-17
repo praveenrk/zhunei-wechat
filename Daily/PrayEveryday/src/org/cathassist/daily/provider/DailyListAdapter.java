@@ -1,14 +1,21 @@
 package org.cathassist.daily.provider;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
 import org.cathassist.daily.bean.CalendarDay;
+import org.cathassist.daily.util.PublicFunction;
 import org.cathassist.daily.util.TimeFormatter;
+
+import com.umeng.analytics.c;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -22,7 +29,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class DiaryListAdapter extends BaseExpandableListAdapter {
+public class DailyListAdapter extends BaseExpandableListAdapter {
 	private Context context;
 	private LayoutInflater mInflater;
 	List<Integer> groupData = new ArrayList<Integer>();
@@ -30,7 +37,7 @@ public class DiaryListAdapter extends BaseExpandableListAdapter {
 	private Calendar nowTime,pageTime;
 	private PrayInEveryday prayEveryday;
 
-	public DiaryListAdapter(Context context, Map<String, Object> data,
+	public DailyListAdapter(Context context, Map<String, Object> data,
 			PrayInEveryday prayEveryday,Calendar calendar) {
 		this.context = context;
 		this.mInflater = LayoutInflater.from(context);
@@ -42,7 +49,7 @@ public class DiaryListAdapter extends BaseExpandableListAdapter {
 	}
 
 	public final class ViewHolder {
-		TextView txtDay, txtYear, txtMonth, txtWeek, txtTime, txtTitle, txtColor,
+		TextView txtDay, txtYear, txtMonth, txtWeek, txtTitle, txtColor,
 				txtFestival, txtMemorableDay, txtHoliday, txtSolarTerms;
 	}
 
@@ -146,13 +153,13 @@ public class DiaryListAdapter extends BaseExpandableListAdapter {
 			holder.txtMonth = (TextView) convertView
 					.findViewById(R.id.txt_month);
 			holder.txtWeek = (TextView) convertView.findViewById(R.id.txt_week);
-			holder.txtTime = (TextView) convertView.findViewById(R.id.txt_time);
 			holder.txtTitle = (TextView) convertView
 					.findViewById(R.id.txt_title);
 			holder.txtColor = (TextView) convertView.findViewById(R.id.txt_color);
 			holder.txtFestival = (TextView) convertView.findViewById(R.id.txt_festival);
 			holder.txtMemorableDay = (TextView) convertView
 					.findViewById(R.id.txt_memorableDay);
+			holder.txtHoliday = (TextView) convertView.findViewById(R.id.txt_holiday);
 //			holder.txtWeather = (TextView) convertView
 //					.findViewById(R.id.txt_weather);
 			holder.txtSolarTerms = (TextView) convertView
@@ -166,13 +173,22 @@ public class DiaryListAdapter extends BaseExpandableListAdapter {
 		
 		holder.txtFestival.setText(day.getFestival());
 		holder.txtMemorableDay
-				.setText(day.getMemorableDay());
+				.setText(PublicFunction.getDayNatureString(
+						context, day.getMemorableDay()));
+		holder.txtHoliday.setText(day.getHoliday());
 //		holder.txtWeather.setText(diaryApp.getWeatherById(diary.getWeather()));
-		holder.txtDay.setText(TimeFormatter.formatDateDD(Long.parseLong(day.getDate())));
-		holder.txtYear.setText(TimeFormatter.formatDateYYYY(Long.parseLong(day.getDate())));
-		holder.txtMonth.setText(TimeFormatter.formatDateMMM(Long.parseLong(day.getDate())));
-		holder.txtWeek.setText(TimeFormatter.formatDateWeek(Long.parseLong(day.getDate())));
-		holder.txtTime.setText(TimeFormatter.formatDateHHMM(Long.parseLong(day.getDate())));
+		DateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
+		long time = 0;
+		try {
+			time = f.parse(day.getDate()).getTime();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		holder.txtDay.setText(TimeFormatter.formatDateDD(time));
+		holder.txtYear.setText(TimeFormatter.formatDateYYYY(time));
+		holder.txtMonth.setText(TimeFormatter.formatDateMMM(time));
+		holder.txtWeek.setText(TimeFormatter.formatDateWeek(time));
 		holder.txtSolarTerms.setText(day.getSolarTerms());
 		return convertView;
 	}

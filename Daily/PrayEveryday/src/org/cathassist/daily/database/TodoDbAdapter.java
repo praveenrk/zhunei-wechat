@@ -1,8 +1,11 @@
 package org.cathassist.daily.database;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -199,17 +202,19 @@ public class TodoDbAdapter {
 		List<List<CalendarDay>> childData = new ArrayList<List<CalendarDay>>();
 		try {
 			synchronized (DBLOCK) {
-				String[] args = { String.valueOf(begin), String.valueOf(end) };
+				DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+				String[] args = { String.valueOf(f.format(new Date(begin))), String.valueOf(f.format(new Date(end))) };
 				cursor = readDatebase.query(TABLE_CALENDAR, CALENDAR_QUERY_COLUMNS, 
-						//CALENDAR_DATA + ">=? and " + CALENDAR_DATA + "<=?"
-						null, null, null, null,
-						CALENDAR_DATA + " DESC");
+						CALENDAR_DATA + ">=? and " + CALENDAR_DATA + "<=?",
+						args, null, null, null,
+						null);
 			}
 			if (cursor != null && cursor.moveToFirst()) {
 				int weekOfMonth = -1;
 				List<CalendarDay> diaryList = new ArrayList<CalendarDay>();
 				do {
-					long date = cursor.getLong(3);
+					DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+					long date = f.parse(cursor.getString(1)).getTime();
 					Calendar c = Calendar.getInstance();
 					c.setTimeInMillis(date);
 					if (weekOfMonth != c.get(Calendar.WEEK_OF_MONTH)) {

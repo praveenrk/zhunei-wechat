@@ -3,8 +3,10 @@ package org.cathassist.daily.activity;
 import java.util.Calendar;
 import java.util.Map;
 
+import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
-import org.cathassist.daily.provider.DiaryListAdapter;
+import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.DailyListAdapter;
 import org.cathassist.daily.util.PublicFunction;
 
 import android.os.AsyncTask;
@@ -14,19 +16,23 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockActivity;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 
-public class CalendarListActivity extends BaseActivity{
+public class CalendarListActivity extends SherlockActivity{
 	private PullToRefreshExpandableListView mListDiary;
 	private ExpandableListView mListView;
-	private DiaryListAdapter diaryListAdapter;
+	private DailyListAdapter dailyListAdapter;
 
 	private Calendar mCalendar;
 	private static final int TOP_REFRESH = 0;
 	private static final int BOTTOM_REFRESH = 1;
-
+	ActionBar actionBar;
+	TodoDbAdapter dbHelper;
+	PrayInEveryday prayEveryday;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +48,7 @@ public class CalendarListActivity extends BaseActivity{
 	}
 
 	private void findView() {
+		actionBar = getSupportActionBar();
 		mListDiary = (PullToRefreshExpandableListView)findViewById(R.id.list_calendar);
 		mListView = mListDiary.getRefreshableView();
 	}
@@ -68,7 +75,7 @@ public class CalendarListActivity extends BaseActivity{
 	private void initViewData() {
 		actionBar.setTitle(PublicFunction
 				.formatDateYYYYMM(mCalendar.getTimeInMillis()));
-		mListView.setAdapter(diaryListAdapter);
+		mListView.setAdapter(dailyListAdapter);
 		
 		mListView.setOnChildClickListener(new OnChildClickListener() {
 			@Override
@@ -104,6 +111,8 @@ public class CalendarListActivity extends BaseActivity{
 	}
 
 	private void initGlobalData() {
+		dbHelper = new TodoDbAdapter(this);
+		prayEveryday = (PrayInEveryday) getApplicationContext();
 		mCalendar = Calendar.getInstance();
 		dbHelper.open();
 		Map<String, Object> diaryListOfMonth = dbHelper
@@ -133,7 +142,7 @@ public class CalendarListActivity extends BaseActivity{
 		// childData.add(childList);
 		//
 		// }
-		diaryListAdapter = new DiaryListAdapter(CalendarListActivity.this,
+		dailyListAdapter = new DailyListAdapter(CalendarListActivity.this,
 				diaryListOfMonth,prayEveryday,mCalendar);
 
 	}
@@ -157,25 +166,27 @@ public class CalendarListActivity extends BaseActivity{
 			default:
 				break;
 			}
+			dbHelper.open();
 			Map<String, Object> returnData = dbHelper
 					.getDiaryListBetweenTime(PublicFunction
 							.getMinTimeOfMonth(mCalendar.getTimeInMillis()),
 							PublicFunction.getMaxTimeOfMonth(mCalendar
 									.getTimeInMillis()));
+			dbHelper.close();
 			return returnData;
 		}
 
 		@Override
 		protected void onPostExecute(Map<String, Object> diaryListOfMonth) {
 
-			diaryListAdapter = new DiaryListAdapter(CalendarListActivity.this,
+			dailyListAdapter = new DailyListAdapter(CalendarListActivity.this,
 					diaryListOfMonth, prayEveryday , mCalendar);
 
-			diaryListAdapter.notifyDataSetChanged();
-			mListView.setAdapter(diaryListAdapter);
+			dailyListAdapter.notifyDataSetChanged();
+			mListView.setAdapter(dailyListAdapter);
 			actionBar.setTitle(PublicFunction
 					.formatDateYYYYMM(mCalendar.getTimeInMillis()));
-			if (diaryListAdapter.getGroupCount() != 0) {
+			if (dailyListAdapter.getGroupCount() != 0) {
 				mListView.expandGroup(0);
 			}
 			// Call onRefreshComplete when the list has been refreshed.

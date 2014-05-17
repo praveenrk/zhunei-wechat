@@ -12,5 +12,4 @@
         ptr:ptrHeaderBackground="@android:color/darker_gray"
         ptr:ptrHeaderTextColor="@android:color/white"
         ptr:ptrMode="both" />
-
 </LinearLayout>

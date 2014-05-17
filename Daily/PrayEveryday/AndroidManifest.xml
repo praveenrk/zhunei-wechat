@@ -43,7 +43,8 @@
             android:name=".activity.CalendarListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:excludeFromRecents="true"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme" >
      <!--        android:theme="@style/titlebar"  -->
         </activity>
         <!-- Umeng Start -->
