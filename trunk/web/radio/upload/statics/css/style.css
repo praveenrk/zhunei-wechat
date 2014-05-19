@@ -198,7 +198,7 @@ table.form tr td {
     z-index: 1;
 }
 
-#tr1 input[type="text"]
+tr[id*="tr"] input[type="text"]
 {
 	width:300px;
 }
