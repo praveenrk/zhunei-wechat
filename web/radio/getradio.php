@@ -128,6 +128,10 @@
 	{
 		function getRadio($date)
 		{
+			if($date<mktime(8, 0, 0, 6, 1, 2014))
+			{
+				$date = mktime(8, 0, 0, 6, 1, 2014);
+			}
 			$strDate = gmdate('Y-m-d',$date);
 			$aifile = './ai/'.$strDate;
 			$aijson = null;
@@ -236,6 +240,7 @@
 	if(array_key_exists("date",$_GET))
 	{
 		$date = DateTime::createFromFormat('Y-m-d',$_GET["date"])->getTimestamp();
+		$date = $date+3600*8;
 		if($date>time()+3600*8)
 		{
 			$date=(time()+3600*8);
@@ -256,6 +261,7 @@
 	{
 		die("Something is wrong about this channel.");
 	}
+	
 	header('Content-type: application/json;text/html;charset=utf-8;');
 	echo(json_encode($ret));
 ?>
