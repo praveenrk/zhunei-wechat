@@ -128,6 +128,8 @@
 	{
 		function getRadio($date)
 		{
+			global $refresh;
+
 			if($date<mktime(8, 0, 0, 6, 1, 2014))
 			{
 				$date = mktime(8, 0, 0, 6, 1, 2014);
@@ -135,7 +137,7 @@
 			$strDate = gmdate('Y-m-d',$date);
 			$aifile = './ai/'.$strDate;
 			$aijson = null;
-			if(!file_exists($aifile))
+			if((!file_exists($aifile)) or $refresh)
 			{
 				$airadio = 'http://media.cathassist.org/radio/upload/data/airadio/'.$strDate.'/'.$strDate.'.txt';
 				$aicontent = file_get_contents($airadio);		//或是url list
@@ -244,6 +246,15 @@
 		if($date>time()+3600*8)
 		{
 			$date=(time()+3600*8);
+		}
+	}
+
+	$refresh = false;
+	if(array_key_exists("r",$_GET))
+	{
+		if($_GET["r"] == "1" or $_GET["r"]=="true")
+		{
+			$refresh = true;
 		}
 	}
 	
