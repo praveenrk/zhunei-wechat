@@ -113,7 +113,7 @@ switch($action)
 						
 					}
 
-					$jsonarr = array_merge ($jsonarr,$oldjsonarr);
+					$jsonarr = array_merge ($oldjsonarr,$jsonarr);
 				
 				}
 				$jsonstr = json_encode($jsonarr);
@@ -121,7 +121,8 @@ switch($action)
 			}
 			
 			//更新web服务器上的数据
-			file_get_contents('http://www.cathassist.org/radio/getradio.php?channel=ai&r=1&date='.$nowtime);
+			$url = 'http://www.cathassist.org/radio/getradio.php?channel=ai&r=1&date='.$_POST['inputtime'];
+			file_get_contents($url);
 
 			showmessage('操作成功','?op=v&cid='.$cid);
 			
@@ -169,6 +170,7 @@ switch($action)
 		@file_put_contents($jsonfile,$jsonstr);
 
 		//更新web服务器上的数据
+//		echo(file_get_contents($jsonfile));
 		file_get_contents('http://www.cathassist.org/radio/getradio.php?channel=ai&r=1&date='.$nowtime);
 
 		showmessage('删除成功');
