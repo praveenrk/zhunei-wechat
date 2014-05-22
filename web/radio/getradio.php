@@ -86,10 +86,11 @@
 	{
 		function getRadio($date)
 		{
+			global $refresh;
 			$strDate = gmdate('Y-m-d',$date);
 			$cxfile = './cx/'.$strDate;
 			$cxjson = null;
-			if(!file_exists($cxfile))
+			if(!file_exists($cxfile) or $refresh)
 			{
 				$cxdate = gmdate("Y-n-j", $date);
 				$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
@@ -168,10 +169,12 @@
 	{
 		function getRadio($date)
 		{
+			global $refresh;
+			
 			$strDate = gmdate('Y-m-d',$date);
 			$vafile = './vacn/'.$strDate;
 			$vajson = null;
-			if(!file_exists($vafile))
+			if(!file_exists($vafile) or $refresh)
 			{
 				$vajson["title"] = "梵蒂冈中文广播";
 				$vajson["date"] = $strDate;
@@ -202,10 +205,12 @@
 	{
 		function getRadio($date)
 		{
+			global $refresh;
+			
 			$strDate = gmdate('Y-m-d',$date);
 			$gosfile = './gos/'.$strDate;
 			$gosjson = null;
-			if(!file_exists($gosfile))
+			if(!file_exists($gosfile) or $refresh)
 			{
 				$gosjson["title"] = "每日福音";
 				$gosjson["date"] = $strDate;
