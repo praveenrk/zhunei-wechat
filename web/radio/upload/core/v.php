@@ -120,6 +120,9 @@ switch($action)
 				@file_put_contents($jsonfile,$jsonstr);
 			}
 			
+			//更新web服务器上的数据
+			file_get_contents('http://www.cathassist.org/radio/getradio.php?channel=ai&r=1&date='.$nowtime);
+
 			showmessage('操作成功','?op=v&cid='.$cid);
 			
 		}
@@ -164,6 +167,9 @@ switch($action)
 		$jsonarr = array_values($infos);
 		$jsonstr = json_encode($jsonarr);
 		@file_put_contents($jsonfile,$jsonstr);
+
+		//更新web服务器上的数据
+		file_get_contents('http://www.cathassist.org/radio/getradio.php?channel=ai&r=1&date='.$nowtime);
 
 		showmessage('删除成功');
 
