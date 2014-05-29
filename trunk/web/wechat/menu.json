@@ -52,7 +52,12 @@
 		{
 			"type" : "view",
 			"name" : "晨星生命之音",
-			"url" : "http://www.cathassist.org/radio/index.php?channel=cx"
+			"url" : "http://www.cathassist.org/radio/index.php?channel=cx&from=wxmenu"
+		},
+		{
+			"type" : "view",
+			"name" : "福音i广播",
+			"url" : "http://www.cathassist.org/radio/index.php?channel=ai&from=wxmenu"
 		}]
 	},
 	{
