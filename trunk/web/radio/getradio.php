@@ -143,7 +143,7 @@
 				$airadio = 'http://media.cathassist.org/radio/upload/data/airadio/'.$strDate.'/'.$strDate.'.txt';
 				$aicontent = file_get_contents($airadio);		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
-				$aijson["title"] = "福音爱广播";
+				$aijson["title"] = "福音i广播";
 				$aijson["date"] = $strDate;
 				$aijson["logo"] = "http://cathassist.org/radio/logos/ai.png";
 				$i = 0;
@@ -152,6 +152,10 @@
 				{
 					$aijson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
 					$i++;
+				}
+				if($i<1)
+				{
+					return null;
 				}
 				file_put_contents($aifile,json_encode($aijson));
 				BaseChannel::append2All("cx",$aijson);
