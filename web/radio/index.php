@@ -159,7 +159,7 @@
                     <span class="wrap">
                         <select id="jpchannel">
                             <option value="cx">晨星生命之音</option>
-                            <option value="ai">福音爱广播</option>
+                            <option value="ai">福音i广播</option>
                             <option value="vacn">梵蒂冈广播</option>
                             <option value="gos">每日福音</option>
                         </select>
@@ -212,7 +212,7 @@
             <div class="jp-playlist snap-drawers">
                 <div class="snap-drawer snap-drawer-right">
                     <ul>
-                        <li>泰泽祈祷选用歌曲</li>
+                        <li>电台小助手</li>
                     </ul>
                 </div>
             </div>
