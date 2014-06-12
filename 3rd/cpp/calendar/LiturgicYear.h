@@ -10,12 +10,12 @@
 */
 #ifndef __CA_CALENDAR_LITURGIC_YEAR_H__
 #define __CA_CALENDAR_LITURGIC_YEAR_H__
-#include "Date.h"
+#include "LiturgicDay.h"
 
 namespace CathAssist
 {
 	namespace Calendar
-	{
+	{   
 		class LiturgicYear
 		{
 		public:
@@ -23,15 +23,19 @@ namespace CathAssist
 			~LiturgicYear(void);
 
 		public:
+            std::string getDay(const int& year,const int& month,const int& day);
 			void printSelf();
 
 		private:
 			//礼仪年中的关键日期
-            Date ep;            // Epiphany of the Lord     主受洗日
-			Date bl;			// End of Christmas season	上一年圣诞期的结束日（主受洗日）
-			Date aw;			// Ash Wednesday			圣灰礼仪周三（四旬期开始）
-			Date ps;			// Pentecost Sunday			圣神降临节（复活期结束）
-			Date av;			// First Sunday of Advent	将临期第一主日，将临期的开始
+            LiturgicDay ep;            // Epiphany of the Lord     主受洗日
+			LiturgicDay bl;			// End of Christmas season	上一年圣诞期的结束日（主受洗日）
+			LiturgicDay aw;			// Ash Wednesday			圣灰礼仪周三（四旬期开始）
+            LiturgicDay easter;        // Easter sunday            复活节（主日）
+			LiturgicDay ps;			// Pentecost Sunday			圣神降临节（复活期结束）
+			LiturgicDay av;			// First Sunday of Advent	将临期第一主日，将临期的开始
+            
+            int year;           // Current year             当前年份
 		};
 	}
 }
