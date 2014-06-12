@@ -66,12 +66,12 @@ LiturgicYear::~LiturgicYear(void)
 {
 }
 
-std::string LiturgicYear::getDay(const int& year,const int& month,const int& day)
+LiturgicDay LiturgicYear::getLiturgicDay(const Date& d)
 {
+    //填充数据
+    LiturgicDay ld = d;
     
-    
-    
-    return "";
+    return ld;
 }
 
 void LiturgicYear::printSelf()

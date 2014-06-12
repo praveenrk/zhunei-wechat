@@ -10,10 +10,10 @@
 */
 
 #include "LiturgicDay.h"
-#include <iostream>
+#include <sstream>
+#include <iomanip>
 
 using namespace CathAssist::Calendar;
-
 
 LiturgicDay::LiturgicDay()
     : Date()
@@ -49,6 +49,14 @@ LiturgicDay::~LiturgicDay()
 std::string LiturgicDay::toLiturgicString() const
 {
     //返回礼仪年日期对应的字符串，格式化输出本身
+	std::ostringstream ostr;
+    ostr<<"Date\t:\t"<<toString()<<std::endl;
+    ostr<<"Color\t:\t"<<getColorStr(color)<<std::endl;
+    ostr<<"Rank\t:\t"<<getRankStr(rank)<<std::endl;
+    ostr<<"Season\t:\t"<<getSeasonStr(season)<<std::endl;
+    ostr<<"Cele\t:\t"<<celebration<<std::endl;
+    ostr<<"Invit\t:\t"<<invitatory<<std::endl;
     
-    return "";
+    
+    return ostr.str();
 }

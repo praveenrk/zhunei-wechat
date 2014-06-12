@@ -2,9 +2,11 @@
 
 std::map<int,LiturgicYear*> CathAssist::Calendar::Calendar::mapLiturgicYear;
 
-std::string CathAssist::Calendar::Calendar::getDay(const int& year, const int& month,const int& day)
+
+LiturgicDay CathAssist::Calendar::Calendar::getLiturgicDay(const Date& d)
 {
     LiturgicYear* pYear = NULL;
+    int year = d.year();
     std::map<int,LiturgicYear*>::iterator iter = mapLiturgicYear.find(year);
     if(iter==mapLiturgicYear.end())
     {
@@ -16,7 +18,12 @@ std::string CathAssist::Calendar::Calendar::getDay(const int& year, const int& m
         pYear = iter->second;
     }
     
-    return pYear->getDay(year,month,day);
+    return pYear->getLiturgicDay(d);
+}
+
+LiturgicDay CathAssist::Calendar::Calendar::getLiturgicDay(const int& year, const int& month,const int& day)
+{
+    return getLiturgicDay(Date(year,month,day));
 }
 
 void CathAssist::Calendar::Calendar::initCalendar()
