@@ -4,6 +4,7 @@
 using namespace std;
 using namespace CathAssist::Calendar;
 
+//打印某年全年的日子
 void printYear(const int& year)
 {
     Date d(year,1,1);

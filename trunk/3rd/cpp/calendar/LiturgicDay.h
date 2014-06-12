@@ -11,11 +11,22 @@
 #ifndef __CA_CALENDAR_LITURGIC_DAY_H__
 #define __CA_CALENDAR_LITURGIC_DAY_H__
 #include "Date.h"
+#include <list>
+#include <map>
 
 namespace CathAssist
 {
 	namespace Calendar
 	{
+        typedef struct CellInfo
+        {
+            rank_t rank;                //优先级
+            color_t color;              //祭衣颜色
+            std::string celebration;    //节日
+        } CellInfo_t;
+        
+        typedef std::multimap<rank_t,CellInfo> CellMap;
+        
         class LiturgicDay : public Date
         {
         public:
@@ -25,29 +36,31 @@ namespace CathAssist
             ~LiturgicDay();
             
         public:
-            color_t getColor(){ return color; }
-            void setColor(color_t c){ color = c; }
-            
-            rank_t getRank(){ return rank; }
-            void setRank(rank_t r){ rank = r; }
-            
             season_t getSeason(){ return season; }
             void setSeason(season_t s){ season = s; }
             
-            std::string getCelebration()const{ return celebration; }
-            void setCelebration(const std::string& c){ celebration = c; }
+            std::list<CellInfo> getCellInfos() const;
+            void appendCell(const CellInfo& c);
+            void appendCell(rank_t r,color_t c,const std::string& cele);
             
-            std::string getInvitatory()const{ return invitatory; }
-            void setInvitatory(const std::string& i){ invitatory = i; }
+//            rank_t getRank(){ return rank; }
+//            void setRank(rank_t r){ rank = r; }
+            
+//            std::string getCelebration()const{ return celebration; }
+//            void setCelebration(const std::string& c){ celebration = c; }
+            
+//            std::string getInvitatory()const{ return invitatory; }
+//            void setInvitatory(const std::string& i){ invitatory = i; }
             
             std::string toLiturgicString() const;
             
         private:
-            color_t color;          /* White, Red, Green, etc.	*/
-            rank_t rank;			/* Feast, Solemnity, etc.	*/
-            season_t season;		/* Advent, Lent, Ordinary, etc.	*/
-            std::string celebration;		/* "Christmas", "Easter", etc.	*/
-            std::string invitatory;		/* Invitatory of the day	*/
+            season_t season;            // Advent, Lent, Ordinary, etc.
+            
+            //多个数据
+            CellMap mapCells;
+            
+//            std::string invitatory;		// Invitatory of the day, 好像是当天选用的读经，暂时未使用
         };
     }
 }

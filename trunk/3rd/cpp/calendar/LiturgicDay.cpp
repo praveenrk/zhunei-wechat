@@ -17,16 +17,12 @@ using namespace CathAssist::Calendar;
 
 LiturgicDay::LiturgicDay()
     : Date()
-    , color(NOCOLOR)
-    , rank(WEEKDAY)
     , season(ORDINARY)
 {
 }
 
 LiturgicDay::LiturgicDay(const Date& d)
     : Date(d)
-    , color(NOCOLOR)
-    , rank(WEEKDAY)
     , season(ORDINARY)
 {
     
@@ -34,8 +30,6 @@ LiturgicDay::LiturgicDay(const Date& d)
 
 LiturgicDay::LiturgicDay(const int& year, const int& month, const int& day)
     : Date(year,month,day)
-    , color(NOCOLOR)
-    , rank(WEEKDAY)
     , season(ORDINARY)
 {
     
@@ -46,16 +40,50 @@ LiturgicDay::~LiturgicDay()
     
 }
 
+std::list<CellInfo> LiturgicDay::getCellInfos() const
+{
+    std::list<CellInfo> cells;
+    
+    CellMap::const_reverse_iterator iter = mapCells.rbegin();
+    while (iter!=mapCells.rend())
+    {
+        cells.push_back(iter->second);
+        ++iter;
+    }
+    
+    return cells;
+}
+
+void LiturgicDay::appendCell(const CellInfo& c)
+{
+    mapCells.insert(std::make_pair(c.rank, c));
+}
+
+void LiturgicDay::appendCell(rank_t r,color_t c,const std::string& cele)
+{
+    appendCell({r,c,cele});
+}
+
 std::string LiturgicDay::toLiturgicString() const
 {
     //返回礼仪年日期对应的字符串，格式化输出本身
 	std::ostringstream ostr;
     ostr<<"Date\t:\t"<<toString()<<std::endl;
-    ostr<<"Color\t:\t"<<getColorStr(color)<<std::endl;
-    ostr<<"Rank\t:\t"<<getRankStr(rank)<<std::endl;
-    ostr<<"Season\t:\t"<<getSeasonStr(season)<<std::endl;
-    ostr<<"Cele\t:\t"<<celebration<<std::endl;
-    ostr<<"Invit\t:\t"<<invitatory<<std::endl;
+    ostr<<"Season\t:\t"<<CathAssist::Calendar::getSeasonStr(season)<<std::endl;
+    
+    
+    CellMap::const_reverse_iterator iter = mapCells.rbegin();
+    ostr<<"Cells\t:\t"<<std::endl;
+    while (iter!=mapCells.rend())
+    {
+        ostr<<"("<<CathAssist::Calendar::getColorStr(iter->second.color);
+        ostr<<"\t"<<CathAssist::Calendar::getRankStr(iter->second.rank);
+        ostr<<"\t"<<iter->second.celebration<<");";
+        ++iter;
+    }
+    
+    
+    //ostr<<"Invit\t:\t"<<invitatory<<std::endl;
     
     
     return ostr.str();
