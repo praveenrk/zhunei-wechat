@@ -23,7 +23,7 @@ namespace CathAssist
 			~LiturgicYear(void);
 
 		public:
-            std::string getDay(const int& year,const int& month,const int& day);
+            LiturgicDay getLiturgicDay(const Date& d);
 			void printSelf();
 
 		private:
