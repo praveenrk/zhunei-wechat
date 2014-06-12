@@ -10,7 +10,7 @@
 */
 
 #include "LiturgicYear.h"
-#include <iostream>
+#include <sstream>
 
 using namespace CathAssist::Calendar;
 
@@ -74,13 +74,16 @@ LiturgicDay LiturgicYear::getLiturgicDay(const Date& d)
     return ld;
 }
 
-void LiturgicYear::printSelf()
+std::string LiturgicYear::toString() const
 {
-    std::cout<<"年份:"<<year<<std::endl;
-	std::cout<<"主显节\t\t:\t"<<ep.toString()<<std::endl;
-	std::cout<<"主受洗日\t\t:\t"<<bl.toString()<<std::endl;
-	std::cout<<"圣灰礼仪\t\t:\t"<<aw.toString()<<std::endl;
-	std::cout<<"复活节\t\t:\t"<<easter.toString()<<std::endl;
-    std::cout<<"圣神降临\t\t:\t"<<ps.toString()<<std::endl;
-    std::cout<<"将临期第一主日\t:\t"<<av.toString()<<std::endl;
+    std::ostringstream ostr;
+    ostr<<"年份:"<<year<<std::endl;
+	ostr<<"主显节\t\t:\t"<<ep.toString()<<std::endl;
+	ostr<<"主受洗日\t\t:\t"<<bl.toString()<<std::endl;
+	ostr<<"圣灰礼仪\t\t:\t"<<aw.toString()<<std::endl;
+	ostr<<"复活节\t\t:\t"<<easter.toString()<<std::endl;
+    ostr<<"圣神降临\t\t:\t"<<ps.toString()<<std::endl;
+    ostr<<"将临期第一主日\t:\t"<<av.toString()<<std::endl;
+    
+    return ostr.str();
 }

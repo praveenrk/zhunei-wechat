@@ -24,7 +24,7 @@ namespace CathAssist
 
 		public:
             LiturgicDay getLiturgicDay(const Date& d);
-			void printSelf();
+            std::string toString() const;
 
 		private:
 			//礼仪年中的关键日期

@@ -6,6 +6,10 @@ using namespace CathAssist::Calendar;
 
 int main(int _Argc, char ** _Argv, char ** _Env)
 {
+    /*
+     示例代码,2014年的输出
+     
+    //初始化Calendar，只需在程序入口调用一次
     Calendar::initCalendar();
     
     Date d(2014,1,1);
@@ -16,13 +20,16 @@ int main(int _Argc, char ** _Argv, char ** _Env)
         cout<<ld.toLiturgicString()<<endl;
     }
     
-//	for(int i=2000;i<2010;++i)
-//	{
-//		LiturgicYear y(i);
-//		y.printSelf();
-//        cout<<endl;
-//	}
-    
+    //释放Calendar资源，只需在程序结束时调用一次（放置内存泄露）
     Calendar::releaseCalendar();
+    */
+    
+    
+	for(int i=2000;i<2010;++i)
+	{
+		LiturgicYear y(i);
+		cout<<y.toString()<<endl;
+	}
+    
 	return 0;
 }
