@@ -20,6 +20,7 @@ void CathAssist::Calendar::LiturgicYear::initPropers()
 {
 	//初始化常用节日（日期固定）
 
+	//1月
 	mapPropers.insert(std::make_pair(101,CellInfo(SOLEMNITY,WHITE,"天主之母节")));
 	mapPropers.insert(std::make_pair(102,CellInfo(MEMORIAL,WHITE,"圣巴西略及圣额我略·纳齐安（主教、圣师)")));
 	mapPropers.insert(std::make_pair(103,CellInfo(OPTIONAL,NOCOLOR,"耶稣圣名节")));
@@ -29,7 +30,17 @@ void CathAssist::Calendar::LiturgicYear::initPropers()
 	mapPropers.insert(std::make_pair(117,CellInfo(MEMORIAL,WHITE,"圣安东尼（院长）")));
 	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣法比盎（教宗、殉道)")));
 	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣巴斯弟盎（殉道）")));
-	mapPropers.insert(std::make_pair(121,CellInfo(MEMORIAL,WHITE,"圣依搦斯（童贞、殉道")));
+	mapPropers.insert(std::make_pair(121,CellInfo(MEMORIAL,RED,"圣依搦斯（童贞、殉道)")));
+	mapPropers.insert(std::make_pair(122,CellInfo(OPTIONAL,NOCOLOR,"圣味增爵（执事、殉道）")));
+	mapPropers.insert(std::make_pair(124,CellInfo(MEMORIAL,WHITE,"圣方济各·沙雷氏（主教、圣师）")));
+	mapPropers.insert(std::make_pair(125,CellInfo(FEAST,WHITE,"圣保禄归化（宗徒）")));
+	mapPropers.insert(std::make_pair(126,CellInfo(MEMORIAL,WHITE,"圣弟茂德与圣弟铎（主教）")));
+	mapPropers.insert(std::make_pair(127,CellInfo(OPTIONAL,NOCOLOR,"圣安琪拉·美利西（童贞）")));
+	mapPropers.insert(std::make_pair(128,CellInfo(MEMORIAL,WHITE,"圣多玛斯·阿奎纳（司铎、圣师）")));
+	mapPropers.insert(std::make_pair(131,CellInfo(MEMORIAL,WHITE,"圣若望·鲍思高（司铎")));
+
+
+	//12月份
 	mapPropers.insert(std::make_pair(1225,CellInfo(SOLEMNITY,WHITE,"圣诞节")));
 }
 
