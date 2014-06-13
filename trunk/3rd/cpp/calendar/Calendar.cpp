@@ -17,7 +17,7 @@ LiturgicDay CathAssist::Calendar::Calendar::getLiturgicDay(const Date& d)
     {
         pYear = iter->second;
     }
-    
+
     return pYear->getLiturgicDay(d);
 }
 
@@ -28,7 +28,8 @@ LiturgicDay CathAssist::Calendar::Calendar::getLiturgicDay(const int& year, cons
 
 void CathAssist::Calendar::Calendar::initCalendar()
 {
-    //do nothing
+	//初始化硬性规定的节日
+	LiturgicYear::initPropers();
 }
 
 void CathAssist::Calendar::Calendar::releaseCalendar()

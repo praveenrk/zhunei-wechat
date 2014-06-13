@@ -1,5 +1,6 @@
-#include <iostream>
+﻿#include <iostream>
 #include "Calendar.h"
+#include <time.h>
 
 using namespace std;
 using namespace CathAssist::Calendar;
@@ -22,9 +23,13 @@ int main(int _Argc, char ** _Argv, char ** _Env)
 {
     //初始化Calendar，只需在程序入口调用一次
     Calendar::initCalendar();
-    
+
+	time_t begin = time(0);
+
     //示例代码,2014年的输出
     printYear(2014);
+
+	cout<<"Used time(s):"<<time(0)-begin<<endl;
     
     /*
 	for(int i=2000;i<2010;++i)

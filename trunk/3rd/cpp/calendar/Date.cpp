@@ -229,8 +229,6 @@ int Date::weekNumber(int* yearNumber /*= 0*/) const
     int year = Date::year();
     int yday = dayOfYear() - 1;
     int wday = dayOfWeek();
-    if (wday == 7)
-        wday = 0;
     int w;
 
     for (;;)
@@ -267,6 +265,9 @@ int Date::weekNumber(int* yearNumber /*= 0*/) const
     }
     if (yearNumber != 0)
         *yearNumber = year;
+
+	if(wday == 0)
+		w+=1;
     return w;
 }
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
 ============================================================================
 文件名称	:	LiturgicDay.cpp
 公司		:	CathAssist
@@ -40,6 +40,20 @@ LiturgicDay::~LiturgicDay()
     
 }
 
+color_t LiturgicDay::getColor() const
+{
+	CellMap::const_reverse_iterator iter = mapCells.rbegin();
+	while(iter!=mapCells.rend())
+	{
+		if(iter->second.color!=NOCOLOR)
+			return iter->second.color;
+
+		++iter;
+	}
+
+	return NOCOLOR;
+}
+
 std::list<CellInfo> LiturgicDay::getCellInfos() const
 {
     std::list<CellInfo> cells;
@@ -61,25 +75,32 @@ void LiturgicDay::appendCell(const CellInfo& c)
 
 void LiturgicDay::appendCell(rank_t r,color_t c,const std::string& cele)
 {
-	CellInfo cell = {r,c,cele};
+	CellInfo cell(r,c,cele);
     appendCell(cell);
+}
+
+std::string LiturgicDay::toWeekdayString() const
+{
+	std::ostringstream ostr;
+	ostr<<CathAssist::Calendar::getSeasonStr(season)
+		<<"第"<<getChineseNumStr(weekOfSeason)<<"主日("<<CathAssist::Calendar::getDayStr(dayOfWeek())<<")";
+
+	return ostr.str();
 }
 
 std::string LiturgicDay::toLiturgicString() const
 {
     //返回礼仪年日期对应的字符串，格式化输出本身
 	std::ostringstream ostr;
-    ostr<<"Date\t:\t"<<toString()<<std::endl;
-    ostr<<"Season\t:\t"<<CathAssist::Calendar::getSeasonStr(season)<<std::endl;
+    ostr<<"日期\t:\t"<<toString()<<std::endl;
+    ostr<<"颜色\t:\t"<<CathAssist::Calendar::getColorStr(getColor())<<std::endl;
     
     
     CellMap::const_reverse_iterator iter = mapCells.rbegin();
-    ostr<<"Cells\t:\t"<<std::endl;
+    ostr<<"节日:\t"<<std::endl;
     while (iter!=mapCells.rend())
     {
-        ostr<<"("<<CathAssist::Calendar::getColorStr(iter->second.color);
-        ostr<<"\t"<<CathAssist::Calendar::getRankStr(iter->second.rank);
-        ostr<<"\t"<<iter->second.celebration<<");";
+        ostr<<"    "<<iter->second.celebration<<std::endl;
         ++iter;
     }
     
