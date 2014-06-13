@@ -18,7 +18,19 @@ std::multimap<int,CellInfo> CathAssist::Calendar::LiturgicYear::mapPropers;
 
 void CathAssist::Calendar::LiturgicYear::initPropers()
 {
+	//初始化常用节日（日期固定）
 
+	mapPropers.insert(std::make_pair(101,CellInfo(SOLEMNITY,WHITE,"天主之母节")));
+	mapPropers.insert(std::make_pair(102,CellInfo(MEMORIAL,WHITE,"圣巴西略及圣额我略·纳齐安（主教、圣师)")));
+	mapPropers.insert(std::make_pair(103,CellInfo(OPTIONAL,NOCOLOR,"耶稣圣名节")));
+	mapPropers.insert(std::make_pair(106,CellInfo(SOLEMNITY,WHITE,"主显节")));
+	mapPropers.insert(std::make_pair(107,CellInfo(OPTIONAL,NOCOLOR,"圣雷孟（司铎）")));
+	mapPropers.insert(std::make_pair(113,CellInfo(OPTIONAL,NOCOLOR,"圣依拉略（主教、圣师）")));
+	mapPropers.insert(std::make_pair(117,CellInfo(MEMORIAL,WHITE,"圣安东尼（院长）")));
+	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣法比盎（教宗、殉道)")));
+	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣巴斯弟盎（殉道）")));
+	mapPropers.insert(std::make_pair(121,CellInfo(MEMORIAL,WHITE,"圣依搦斯（童贞、殉道")));
+	mapPropers.insert(std::make_pair(1225,CellInfo(SOLEMNITY,WHITE,"圣诞节")));
 }
 
 
@@ -427,5 +439,18 @@ void LiturgicYear::testChristmas2(LiturgicDay& ld)
 
 void LiturgicYear::testProper(LiturgicDay& ld)
 {
+	int v = ld.month()*100+ld.day();
+
+	std::multimap<int,CellInfo>::const_iterator iter = mapPropers.find(v);
+	std::multimap<int,CellInfo>::size_type count = mapPropers.count(v);
+
+	std::multimap<int,CellInfo>::size_type i = 0;
+	while(i<count)
+	{
+		ld.appendCell(iter->second);
+
+		++iter;
+		++i;
+	}
 
 }
