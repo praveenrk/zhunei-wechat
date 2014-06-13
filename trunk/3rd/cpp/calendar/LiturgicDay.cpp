@@ -61,7 +61,8 @@ void LiturgicDay::appendCell(const CellInfo& c)
 
 void LiturgicDay::appendCell(rank_t r,color_t c,const std::string& cele)
 {
-    appendCell({r,c,cele});
+	CellInfo cell = {r,c,cele};
+    appendCell(cell);
 }
 
 std::string LiturgicDay::toLiturgicString() const
