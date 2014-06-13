@@ -1,4 +1,4 @@
-#ifndef __CA_CALENDAR_DEFINE_H__
+ï»¿#ifndef __CA_CALENDAR_DEFINE_H__
 #define __CA_CALENDAR_DEFINE_H__
 #include <string>
 
@@ -19,25 +19,25 @@ namespace CathAssist
 			switch(d)
 			{
 			case SUN:
-				return "ĞÇÆÚÈÕ";
+				return "æ˜ŸæœŸæ—¥";
 				break;
 			case MON:
-				return "ĞÇÆÚÒ»";
+				return "æ˜ŸæœŸä¸€";
 				break;
 			case TUE:
-				return "ĞÇÆÚ¶ş";
+				return "æ˜ŸæœŸäºŒ";
 				break;
 			case WED:
-				return "ĞÇÆÚÈı";
+				return "æ˜ŸæœŸä¸‰";
 				break;
 			case THU:
-				return "ĞÇÆÚËÄ";
+				return "æ˜ŸæœŸå››";
 				break;
 			case FRI:
-				return "ĞÇÆÚÎå";
+				return "æ˜ŸæœŸäº”";
 				break;
 			case SAT:
-				return "ĞÇÆÚÁù";
+				return "æ˜ŸæœŸå…­";
 				break;
 			}
 			return "Not define";
@@ -66,25 +66,25 @@ namespace CathAssist
             switch(c)
             {
                 case NOCOLOR:
-                    return "ÎŞ";
+                    return "æ— ";
                     break;
                 case GREEN:
-                    return "ÂÌ";
+                    return "ç»¿";
                     break;
                 case WHITE:
-                    return "°×";
+                    return "ç™½";
                     break;
                 case RED:
-                    return "ºì";
+                    return "çº¢";
                     break;
                 case PURPLE:
-                    return "×Ï";
+                    return "ç´«";
                     break;
                 case ROSE:
-                    return "Ãµ";
+                    return "ç«";
                     break;
                 case BLACK:
-                    return "ºÚ";
+                    return "é»‘";
                     break;
             }
             return "Not define";
@@ -165,22 +165,22 @@ namespace CathAssist
             switch(s)
             {
                 case ORDINARY:
-                    return "³£ÄêÆÚ";
+                    return "å¸¸å¹´æœŸ";
                     break;
                 case ADVENT:
-                    return "½«ÁÙÆÚ";
+                    return "å°†ä¸´æœŸ";
                     break;
                 case CHRISTMAS:
-                    return "Ê¥µ®ÆÚ";
+                    return "åœ£è¯æœŸ";
                     break;
                 case LENT:
-                    return "ËÄÑ®ÆÚ";
+                    return "å››æ—¬æœŸ";
                     break;
                 case EASTER:
-                    return "¸´»îÆÚ";
+                    return "å¤æ´»æœŸ";
                     break;
                 case PASCHAL:
-                    return "ÓâÔ½½Ú";	//Ash Wed., Holy Week & Easter Octave
+                    return "é€¾è¶ŠèŠ‚";	//Ash Wed., Holy Week & Easter Octave
                     break;
             }
             return "Not define";
@@ -190,17 +190,17 @@ namespace CathAssist
 		{
 			static std::string numStr[] = 
 			{
-				"Ê®",
-				"Ò»",
-				"¶ş",
-				"Èı",
-				"ËÄ",
-				"Îå",
-				"Áù",
-				"Æß",
-				"°Ë",
-				"¾Å",
-				"Ê®",
+				"å",
+				"ä¸€",
+				"äºŒ",
+				"ä¸‰",
+				"å››",
+				"äº”",
+				"å…­",
+				"ä¸ƒ",
+				"å…«",
+				"ä¹",
+				"å",
 			};
 
 
@@ -212,18 +212,18 @@ namespace CathAssist
 			}
 			else if(n<20)
 			{
-				return "Ê®"+numStr[n%10];
+				return "å"+numStr[n%10];
 			}
 			else if(n<30)
 			{
-				return "Ø¥"+numStr[n%10];
+				return "å»¿"+numStr[n%10];
 			}
 			else if(n<40)
 			{
 				if(n==30)
-					return "ÈıÊ®";
+					return "ä¸‰å";
 				else
-					return "ÈıÊ®"+numStr[n%10];
+					return "ä¸‰å"+numStr[n%10];
 			}
 			
 			return "Not define";
