@@ -23,6 +23,12 @@ namespace CathAssist
             rank_t rank;                //优先级
             color_t color;              //祭衣颜色
             std::string celebration;    //节日
+			CellInfo(rank_t r,color_t c,const std::string& cel)
+			{
+				rank = r;
+				color = c;
+				celebration = cel;
+			}
         } CellInfo_t;
         
         typedef std::multimap<rank_t,CellInfo> CellMap;
@@ -38,10 +44,19 @@ namespace CathAssist
         public:
             season_t getSeason(){ return season; }
             void setSeason(season_t s){ season = s; }
+
+			//获取祭衣颜色（取优先级最高的节日颜色）
+			color_t getColor() const;
+
+			//获取礼仪年第N主日
+			int getWeekOfSeason() const{ return weekOfSeason; }
+			//设置礼仪年第N主日
+			void setWeekOfSeason(const int& w){ weekOfSeason = w; }
             
             std::list<CellInfo> getCellInfos() const;
             void appendCell(const CellInfo& c);
             void appendCell(rank_t r,color_t c,const std::string& cele);
+
             
 //            rank_t getRank(){ return rank; }
 //            void setRank(rank_t r){ rank = r; }
@@ -52,10 +67,13 @@ namespace CathAssist
 //            std::string getInvitatory()const{ return invitatory; }
 //            void setInvitatory(const std::string& i){ invitatory = i; }
             
+			std::string toWeekdayString() const;
+
             std::string toLiturgicString() const;
             
         private:
             season_t season;            // Advent, Lent, Ordinary, etc.
+			int weekOfSeason;			// Week of season
             
             //多个数据
             CellMap mapCells;

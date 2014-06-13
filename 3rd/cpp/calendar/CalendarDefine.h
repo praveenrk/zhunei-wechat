@@ -13,6 +13,36 @@ namespace CathAssist
 		{
 		   SUN = 0, MON, TUE, WED, THU, FRI, SAT
 		} day_t;
+
+		static std::string getDayStr(day_t d)
+		{
+			switch(d)
+			{
+			case SUN:
+				return "星期日";
+				break;
+			case MON:
+				return "星期一";
+				break;
+			case TUE:
+				return "星期二";
+				break;
+			case WED:
+				return "星期三";
+				break;
+			case THU:
+				return "星期四";
+				break;
+			case FRI:
+				return "星期五";
+				break;
+			case SAT:
+				return "星期六";
+				break;
+			}
+			return "Not define";
+		}
+
 		/*
 		 * Months of the Year
 		 */
@@ -36,25 +66,25 @@ namespace CathAssist
             switch(c)
             {
                 case NOCOLOR:
-                    return "None";
+                    return "无";
                     break;
                 case GREEN:
-                    return "Green";
+                    return "绿";
                     break;
                 case WHITE:
-                    return "White";
+                    return "白";
                     break;
                 case RED:
-                    return "Red";
+                    return "红";
                     break;
                 case PURPLE:
-                    return "Purple";
+                    return "紫";
                     break;
                 case ROSE:
-                    return "Rose";
+                    return "玫";
                     break;
                 case BLACK:
-                    return "Black";
+                    return "黑";
                     break;
             }
             return "Not define";
@@ -135,26 +165,69 @@ namespace CathAssist
             switch(s)
             {
                 case ORDINARY:
-                    return "Ordinary";
+                    return "常年期";
                     break;
                 case ADVENT:
-                    return "Advent";
+                    return "将临期";
                     break;
                 case CHRISTMAS:
-                    return "Christmas";
+                    return "圣诞期";
                     break;
                 case LENT:
-                    return "Lent";
+                    return "四旬期";
                     break;
                 case EASTER:
-                    return "Easter";
+                    return "复活期";
                     break;
                 case PASCHAL:
-                    return "Paschal";
+                    return "逾越节";	//Ash Wed., Holy Week & Easter Octave
                     break;
             }
             return "Not define";
         }
+
+		static std::string getChineseNumStr(const int& n)
+		{
+			static std::string numStr[] = 
+			{
+				"十",
+				"一",
+				"二",
+				"三",
+				"四",
+				"五",
+				"六",
+				"七",
+				"八",
+				"九",
+				"十",
+			};
+
+
+			if(n<1||n>39)
+				return "Not define";
+			if(n<=10)
+			{
+				return numStr[n];
+			}
+			else if(n<20)
+			{
+				return "十"+numStr[n%10];
+			}
+			else if(n<30)
+			{
+				return "廿"+numStr[n%10];
+			}
+			else if(n<40)
+			{
+				if(n==30)
+					return "三十";
+				else
+					return "三十"+numStr[n%10];
+			}
+			
+			return "Not define";
+		}
 	}
 }
 
