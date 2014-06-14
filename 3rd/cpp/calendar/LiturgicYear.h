@@ -51,7 +51,7 @@ namespace CathAssist
 
 		private:
 			//礼仪年中的关键日期
-            LiturgicDay ep;         // Epiphany of the Lord     主显节
+            Date ep;         // Epiphany of the Lord     主显节
 			LiturgicDay bl;			// End of Christmas season	上一年圣诞期的结束日（主受洗日）
 			LiturgicDay aw;			// Ash Wednesday			圣灰礼仪周三（四旬期开始）
             LiturgicDay easter;     // Easter sunday            复活节（主日）
