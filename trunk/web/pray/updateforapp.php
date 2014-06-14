@@ -20,7 +20,7 @@
 	}
 	
 	if(isset($_GET["text"]))
-		$text = trim($_GET["text"]);
+		$text = checkSqlArg(trim($_GET["text"]));
 	if(strlen($text)<20)
 	{
 		$error= "请输入祈祷意向!";
@@ -46,7 +46,7 @@
 	
 	if(isset($_GET['name']))
 	{
-		$name=trim($_GET['name']);
+		$name=checkSqlArg(trim($_GET['name']));
 	}
 	
 	//先从数据库中获取

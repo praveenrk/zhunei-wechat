@@ -9,8 +9,8 @@ if(!isset($_POST['submit'])){
     exit('非法访问!');
 }
 
-$username = htmlspecialchars($_POST['username']);
-$password = htmlspecialchars($_POST['password']);
+$username = checkSqlArg($_POST['username']);
+$password = checkSqlArg($_POST['password']);
 
 //检测用户名及密码是否正确
 $result = mysql_query("select * from users where username='".$username."' and password='".$password."' limit 1;");
