@@ -1,5 +1,8 @@
 package org.cathassist.daily.bean;
 
+import org.cathassist.daily.provider.EnumManager;
+import org.cathassist.daily.provider.EnumManager.rank_t;
+
 import android.database.Cursor;
 
 public class CalendarDay {
@@ -11,9 +14,6 @@ public class CalendarDay {
 	private int memorableDay;
 	private String solarTerms;
 	private String holiday;
-	private String bible;
-	private String pray;
-	private String updateTime;
 
 	public CalendarDay() {
 
@@ -21,7 +21,7 @@ public class CalendarDay {
 
 	public CalendarDay(long id, String date, int dayType, String summary,
 			String festival, int memorableDay, String solarTerms,
-			String holiday, String bible, String pray, String updateTime) {
+			String holiday) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -31,9 +31,6 @@ public class CalendarDay {
 		this.memorableDay = memorableDay;
 		this.solarTerms = solarTerms;
 		this.holiday = holiday;
-		this.bible = bible;
-		this.pray = pray;
-		this.updateTime = updateTime;
 	}
 	
 	public CalendarDay(Cursor cursor) {
@@ -45,9 +42,6 @@ public class CalendarDay {
 		this.memorableDay = cursor.getInt(5);
 		this.solarTerms = cursor.getString(6);
 		this.holiday = cursor.getString(7);
-		this.bible = cursor.getString(8);
-		this.pray = cursor.getString(9);
-		this.updateTime = cursor.getString(10);
 	}
 
 	public long getId() {
@@ -114,27 +108,47 @@ public class CalendarDay {
 		this.holiday = holiday;
 	}
 
-	public String getBible() {
-		return bible;
-	}
-
-	public void setBible(String bible) {
-		this.bible = bible;
-	}
-
-	public String getPray() {
-		return pray;
-	}
-
-	public void setPray(String pray) {
-		this.pray = pray;
-	}
-
-	public String getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
+	public void set(rank_t rank,String value){
+		switch (rank.getValue()) {
+		case EnumManager.WEEKDAY_VALUE:
+			if (summary==null||summary.equals("")) {
+				this.summary = value;
+			}
+			break;
+		case EnumManager.COMMEMORATION_VALUE:
+			break;
+		case EnumManager.OPTIONAL_VALUE:
+			this.holiday = value;
+			break;
+		case EnumManager.MEMORIAL_VALUE:
+			this.holiday = value;
+			this.memorableDay = 1;
+			break;
+		case EnumManager.FEAST_VALUE:
+			this.summary = value;
+			break;
+		case EnumManager.SUNDAY_VALUE:
+			if (summary==null||summary.equals("")) {
+				this.summary = value;
+			}
+			break;
+		case EnumManager.LORD_VALUE:
+			this.summary = value;
+			break;
+		case EnumManager.ASHWED_VALUE:
+//			this.summary = value;
+			break;
+		case EnumManager.HOLYWEEK_VALUE:
+			this.summary = value;
+			break;
+		case EnumManager.TRIDUUM_VALUE:
+			this.summary = value;
+			break;
+		case EnumManager.SOLEMNITY_VALUE:
+			this.summary = value;
+			break;
+		default:
+			break;
+		}
 	}
 }

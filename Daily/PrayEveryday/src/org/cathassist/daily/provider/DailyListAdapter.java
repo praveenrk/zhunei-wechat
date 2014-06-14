@@ -19,6 +19,7 @@ import com.umeng.analytics.c;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,8 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
+		Log.e("childData count=", childData.size()+"");
+		Log.e("groupPosition", groupPosition+"");
 		return childData.size() == 0 ? childData.size() : childData.get(
 				groupPosition).size();
 	}

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
 import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.CalendarManager;
 import org.cathassist.daily.provider.DailyListAdapter;
 import org.cathassist.daily.util.PublicFunction;
 
@@ -115,11 +116,13 @@ public class CalendarListActivity extends SherlockActivity{
 		prayEveryday = (PrayInEveryday) getApplicationContext();
 		mCalendar = Calendar.getInstance();
 		dbHelper.open();
-		Map<String, Object> diaryListOfMonth = dbHelper
-				.getDiaryListBetweenTime(PublicFunction
-						.getMinTimeOfMonth(mCalendar.getTimeInMillis()),
-						PublicFunction.getMaxTimeOfMonth(mCalendar
-								.getTimeInMillis()));
+//		Map<String, Object> diaryListOfMonth = dbHelper
+//				.getDiaryListBetweenTime(PublicFunction
+//						.getMinTimeOfMonth(mCalendar.getTimeInMillis()),
+//						PublicFunction.getMaxTimeOfMonth(mCalendar
+//								.getTimeInMillis()));\
+		CalendarManager calendarManager = CalendarManager.getInstance();
+		Map<String, Object> diaryListOfMonth =calendarManager.getCalendarListByMonth(System.currentTimeMillis());
 		dbHelper.close();
 		// for (Diary diary:diaryListOfMonth) {
 		// Calendar diaryCalendar;
@@ -167,11 +170,13 @@ public class CalendarListActivity extends SherlockActivity{
 				break;
 			}
 			dbHelper.open();
-			Map<String, Object> returnData = dbHelper
-					.getDiaryListBetweenTime(PublicFunction
-							.getMinTimeOfMonth(mCalendar.getTimeInMillis()),
-							PublicFunction.getMaxTimeOfMonth(mCalendar
-									.getTimeInMillis()));
+//			Map<String, Object> returnData = dbHelper
+//					.getDiaryListBetweenTime(PublicFunction
+//							.getMinTimeOfMonth(mCalendar.getTimeInMillis()),
+//							PublicFunction.getMaxTimeOfMonth(mCalendar
+//									.getTimeInMillis()));
+			CalendarManager calendarManager = CalendarManager.getInstance();
+			Map<String, Object> returnData =calendarManager.getCalendarListByMonth(mCalendar.getTimeInMillis());
 			dbHelper.close();
 			return returnData;
 		}

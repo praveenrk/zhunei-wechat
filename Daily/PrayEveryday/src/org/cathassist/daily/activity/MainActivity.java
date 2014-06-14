@@ -8,46 +8,40 @@ import java.util.TimerTask;
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
 import org.cathassist.daily.activity.MainFragment.OnArticleSelectedListener;
-import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.bean.DayContent;
-import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.EnumManager.ContentType;
 import org.cathassist.daily.provider.MainActivityFragmentPagerAdapter;
 import org.cathassist.daily.provider.UpdateApp;
-import org.cathassist.daily.provider.EnumManager.ContentType;
 import org.cathassist.daily.util.GetSharedPreference;
 import org.cathassist.daily.util.NetworkTool;
 import org.cathassist.daily.util.PublicFunction;
 import org.cathassist.daily.util.PublicFunction.OnClickCancelListener;
-import org.json.JSONArray;
+import org.cathassist.daily.util.TimeFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.umeng.analytics.MobclickAgent;
-import com.viewpagerindicator.TabPageIndicator;
-
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ParseException;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.umeng.analytics.MobclickAgent;
+import com.viewpagerindicator.TabPageIndicator;
 
 public class MainActivity extends BaseActivity implements
 		OnClickCancelListener, OnArticleSelectedListener {
@@ -209,62 +203,26 @@ public class MainActivity extends BaseActivity implements
 				calendar.add(Calendar.DATE, -15);
 				String deleteTime = PublicFunction
 						.getYearMonthDayForSql(calendar.getTime());
-				String httpUrl1 = PrayInEveryday.SERVER_URL
-						+ "everyday1.php?startdate=" + startTime + "&enddate="
-						+ endTime;
-
-				dbHelper.open();
-				dbHelper.deleteOldData(deleteTime);
-				String[] updateTime = dbHelper.getDaysUpdateTimeByDate(
-						startTime, endTime);
-				dbHelper.close();
-				for (int i = 0; i < updateTime.length; i++) {
-					httpUrl1 += "&update" + i + "=" + updateTime[i];
-				}
-				String result1 = NetworkTool.getContent(httpUrl1);
-				if (result1.contains("NoNewData"))
-					return "NoNewData";
-				CalendarDay calendarDay;
 				DayContent dayContent;
 				dbHelper.open();
-				JSONArray jArray;
 				JSONObject jsonObject;
 				try {
-					calendarDay = new CalendarDay();
-					jArray = new JSONArray(result1);
-					JSONObject json_data = null;
-					for (int i = 0; i < jArray.length(); i++) {
-						json_data = jArray.getJSONObject(i);
-						calendarDay = new CalendarDay();
-						calendarDay.setDate(json_data.getString("date"));
-						calendarDay.setDayType(json_data.getInt("daytype"));
-						calendarDay.setSummary(json_data.getString("summary"));
-						calendarDay
-								.setFestival(json_data.getString("festival"));
-						calendarDay.setMemorableDay(json_data
-								.getInt("ismemorableday"));
-						calendarDay.setSolarTerms(json_data
-								.getString("solarterms"));
-						calendarDay.setHoliday(json_data.getString("holiday"));
-						calendarDay.setBible(json_data.getString("bible"));
-						calendarDay.setPray(json_data.getString("pray"));
-						calendarDay.setUpdateTime(json_data
-								.getString("updatetime"));
-						dbHelper.insertCalendarDay(calendarDay);
-
+					for (int i = 0; i < 15; i++) {
+						Calendar c=Calendar.getInstance();
+						c.add(Calendar.DAY_OF_YEAR, i);
+						String dateString=TimeFormatter.formatDateYYYYMMDD(c.getTimeInMillis());
 						String httpUrl2 = PrayInEveryday.SERVER_URL2
-								+ json_data.getString("date");
+								+ dateString;
 						String result2 = NetworkTool.getContent(httpUrl2);
 						dayContent = new DayContent();
-						dayContent.setDate(json_data.getString("date"));
-						dayContent.setUpdateTime(json_data
-								.getString("updatetime"));
+						dayContent.setDate(dateString);
+						dayContent.setUpdateTime(c.getTimeInMillis()+"");
 						jsonObject = new JSONObject(result2);
 						for (int j = 0; j < ContentType.values().length; j++) {
 							dayContent.setContentType(j);
 							dayContent
 									.setContent(jsonObject.getString(ContentType
-											.getContentDataNameFromContentType(j)));
+													.getContentDataNameFromContentType(j)));
 							dbHelper.insertContent(dayContent);
 						}
 					}
