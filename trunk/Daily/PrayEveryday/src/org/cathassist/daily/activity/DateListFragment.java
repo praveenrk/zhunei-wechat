@@ -1,6 +1,7 @@
 package org.cathassist.daily.activity;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,12 +37,11 @@ public class DateListFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 		dbHelper = new TodoDbAdapter(getActivity());
 		SampleAdapter adapter = new SampleAdapter(getActivity());
-		dbHelper.open();
-		List<DateBean> dateList = dbHelper.getDateList();
-		dbHelper.close();
 		int position = 0;
-		for (int i = 0; i < dateList.size(); i++) {
-			DateBean dateBean = dateList.get(i);
+		for (int i = 0; i < 7; i++) {
+			Calendar calendar=Calendar.getInstance();
+			calendar.add(Calendar.DAY_OF_YEAR, i);
+			DateBean dateBean = new DateBean(i, PublicFunction.getYearMonthDayForSql(new Date(calendar.getTimeInMillis())));
 			SampleItem sampleItem = new SampleItem(dateBean.getDate(),
 					dateBean.getId());
 			adapter.add(sampleItem);
@@ -49,7 +49,6 @@ public class DateListFragment extends ListFragment {
 					.equals(dateBean.getDate())) {
 				position = adapter.getPosition(sampleItem);
 			}
-
 			dateMap.put(dateBean.getId(), dateBean.getDate());
 		}
 		setListAdapter(adapter);

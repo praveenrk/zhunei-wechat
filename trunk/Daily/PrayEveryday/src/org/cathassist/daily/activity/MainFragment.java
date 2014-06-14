@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 public final class MainFragment extends Fragment implements OnClickListener {
 	private TextView txtDayTitle, txtDate, txtSolarTerms, txtHoliday,
-			txtFestival, txtDayNature, txtBibleSentence, txtBible, txtPray;
+			txtFestival, txtDayNature;
 	private TodoDbAdapter dbHelper;
 	private CalendarDay calendarDay;
 	private String dateString;
@@ -105,13 +105,8 @@ public final class MainFragment extends Fragment implements OnClickListener {
 			txtFestival.setText(calendarDay.getFestival());
 			txtDayNature.setText(PublicFunction.getDayNatureString(
 					getActivity(), calendarDay.getMemorableDay()));
-			txtBible.setText(calendarDay.getBible());
-			txtBible.setTextColor(Color.DKGRAY);
 			ZHConverter converter = ZHConverter
 					.getInstance(ZHConverter.SIMPLIFIED);
-			txtPray.setText(converter.convert(calendarDay.getPray()));
-			txtPray.setTextColor(Color.DKGRAY);
-			txtBibleSentence.setText(R.string.bible_sentence);
 			// txtBible.setText();
 			// txtPray.setText();
 			setTextColor(calendarDay.getDayType(),
@@ -128,9 +123,6 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		txtHoliday = (TextView) view.findViewById(R.id.txt_holiday);
 		txtFestival = (TextView) view.findViewById(R.id.txt_festival);
 		txtDayNature = (TextView) view.findViewById(R.id.txt_daynature);
-		txtBible = (TextView) view.findViewById(R.id.txt_bible);
-		txtPray = (TextView) view.findViewById(R.id.txt_pray);
-		txtBibleSentence = (TextView) view.findViewById(R.id.bible_sentence);
 		btnLaudes = (Button) view.findViewById(R.id.btn_laudes);
 		btnHoramedia = (Button) view.findViewById(R.id.btn_horamedia);
 		btnMatutinum = (Button) view.findViewById(R.id.btn_matutinum);

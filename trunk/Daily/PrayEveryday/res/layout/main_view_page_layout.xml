@@ -80,45 +80,6 @@
         android:layout_marginTop="4dp"
         android:background="#0099cc" />
 
-    <TextView
-        android:id="@+id/bible_sentence"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/txt_bible"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6sp"
-        android:visibility="gone" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="4dp"
-        android:background="#0099cc"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/pray_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pray_time"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/txt_pray"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6sp"
-        android:visibility="gone" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -61,15 +61,11 @@ public class TodoDbAdapter {
 	public static final String CALENDAR_ISMEMORABLEDAY = "ismemorableday"; // 5
 	public static final String CALENDAR_SOLARTERMS = "solarterms";// 6
 	public static final String CALENDAR_HOLIDAY = "holiday";// 7
-	public static final String CALENDAR_BIBLE = "bible";// 8
-	public static final String CALENDAR_PRAY = "pray";// 9
-	public static final String CALENDAR_UPDATETIME = "updatetime";
 
 	static final String[] CALENDAR_QUERY_COLUMNS = { CALENDAR_ID,
 			CALENDAR_DATA, CALENDAR_DAYTYPE, CALENDAR_SUMMARY,
 			CALENDAR_FESTIVAL, CALENDAR_ISMEMORABLEDAY, CALENDAR_SOLARTERMS,
-			CALENDAR_HOLIDAY, CALENDAR_BIBLE, CALENDAR_PRAY,
-			CALENDAR_UPDATETIME };
+			CALENDAR_HOLIDAY};
 
 	public static final String TABLE_BIBLEWORD_CREATE = "CREATE TABLE "
 			+ TABLE_CALENDAR + " (" + CALENDAR_ID
@@ -77,9 +73,7 @@ public class TodoDbAdapter {
 			+ " DATE NOT NULL," + CALENDAR_DAYTYPE + " TINYINT NOT NULL,"
 			+ CALENDAR_SUMMARY + " TEXT NOT NULL," + CALENDAR_FESTIVAL
 			+ " TEXT," + CALENDAR_ISMEMORABLEDAY + " TINYINT NOT NULL,"
-			+ CALENDAR_SOLARTERMS + " TEXT," + CALENDAR_HOLIDAY + " TEXT,"
-			+ CALENDAR_BIBLE + " TEXT," + CALENDAR_PRAY + " TEXT,"
-			+ CALENDAR_UPDATETIME + " TIMESTAMP NOT NULL" + ");";
+			+ CALENDAR_SOLARTERMS + " TEXT," + CALENDAR_HOLIDAY + " TEXT" + ");";
 
 	public boolean insertCalendarDay(CalendarDay calendarDay) {
 		ContentValues contentValues = new ContentValues();
@@ -91,9 +85,6 @@ public class TodoDbAdapter {
 				calendarDay.getMemorableDay());
 		contentValues.put(CALENDAR_SOLARTERMS, calendarDay.getSolarTerms());
 		contentValues.put(CALENDAR_HOLIDAY, calendarDay.getHoliday());
-		contentValues.put(CALENDAR_BIBLE, calendarDay.getBible());
-		contentValues.put(CALENDAR_PRAY, calendarDay.getPray());
-		contentValues.put(CALENDAR_UPDATETIME, calendarDay.getUpdateTime());
 		try {
 			synchronized (DBLOCK) {
 				database.insert(TABLE_CALENDAR, null, contentValues);
@@ -110,44 +101,12 @@ public class TodoDbAdapter {
 			synchronized (DBLOCK) {
 				Cursor cursor = database.query(TABLE_CALENDAR,
 						CALENDAR_QUERY_COLUMNS, CALENDAR_DATA + "='" + date
-								+ "'", null, null, null, CALENDAR_UPDATETIME
-								+ " DESC");
+								+ "'", null, null, null, null);
 				CalendarDay calendarDay = null;
 				if (cursor != null && cursor.moveToFirst()) {
 					calendarDay = new CalendarDay(cursor);
 				}
 				return calendarDay;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public String[] getDaysUpdateTimeByDate(String startDate, String endDate) {
-		Map<String, String> map = new LinkedHashMap<String, String>();
-		String[] array = new String[15];
-		try {
-			synchronized (DBLOCK) {
-				Cursor cursor = database.query(TABLE_CALENDAR, new String[] {
-						CALENDAR_UPDATETIME, CALENDAR_DATA }, CALENDAR_DATA
-						+ ">='" + startDate + "' and " + CALENDAR_DATA + "<='"
-						+ endDate + "'", null, null, null, CALENDAR_DATA
-						+ " ASC");
-
-				if (cursor != null && cursor.moveToFirst()) {
-					do {
-						map.put(cursor.getString(1), cursor.getString(0));
-					} while (cursor.moveToNext());
-				}
-				Collection<String> c = map.values();
-				Iterator<String> it = c.iterator();
-				int i = 0;
-				for (; it.hasNext();) {
-					array[i] = it.next();
-					i++;
-				}
-				return array;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -315,7 +274,7 @@ public class TodoDbAdapter {
 	
 	public void deleteOldData(String date){
 		deleteOldEveryday(date);
-		deleteOldEveryday(date);
+		deleteOldDayContent(date);
 	}
 	// /**
 	// * 关闭已经过时的提醒
