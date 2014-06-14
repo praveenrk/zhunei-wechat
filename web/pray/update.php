@@ -22,7 +22,9 @@
 	}
 	
 	if(isset($_POST["text"]))
-		$text = trim($_POST["text"]);
+	{
+		$text = checkSqlArg(trim($_POST["text"]));
+	}
 	if(strlen($text)<20)
 	{
 		$error= "请输入祈祷意向!";
@@ -61,7 +63,7 @@
 	
 	if(isset($_POST['name']))
 	{
-		$name=trim($_POST['name']);
+		$name=checkSqlArg(trim($_POST['name']));
 		$_SESSION['name'] = $name;
 	}
 	
