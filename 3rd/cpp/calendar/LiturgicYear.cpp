@@ -74,7 +74,8 @@ void CathAssist::Calendar::LiturgicYear::initPropers()
 	mapPropers.insert(std::make_pair(411,CellInfo(MEMORIAL,RED,"圣达尼老（主教、殉道）")));
 	mapPropers.insert(std::make_pair(413,CellInfo(OPTIONAL,NOCOLOR,"圣玛尔定一世（教宗、殉道）")));
 	mapPropers.insert(std::make_pair(421,CellInfo(OPTIONAL,NOCOLOR,"圣安瑟莫（主教、圣师）")));
-	mapPropers.insert(std::make_pair(423,CellInfo(OPTIONAL,NOCOLOR,"圣乔治（殉道）；或布拉格的圣道博")));
+	mapPropers.insert(std::make_pair(423,CellInfo(OPTIONAL,NOCOLOR,"圣乔治（殉道）")));
+	mapPropers.insert(std::make_pair(423,CellInfo(OPTIONAL,NOCOLOR,"布拉格的圣道博")));
 	mapPropers.insert(std::make_pair(424,CellInfo(OPTIONAL,NOCOLOR,"圣斐德理（司铎、殉道）")));
 	mapPropers.insert(std::make_pair(425,CellInfo(FEAST,RED,"圣马尔谷（圣史）")));
 	mapPropers.insert(std::make_pair(428,CellInfo(OPTIONAL,NOCOLOR,"圣伯多禄·查纳（司铎、殉道）")));
@@ -522,7 +523,7 @@ void LiturgicYear::testEaster(LiturgicDay& ld)
 		}
 		else
 		{
-			ld.appendCell(SOLEMNITY,WHITE,ld.toWeekdayString());
+			ld.appendCell(SOLEMNITY,WHITE,"复活节庆期第八日(慈悲主日)");
 		}
 	}
 	else if(dayFromEaster == 39)

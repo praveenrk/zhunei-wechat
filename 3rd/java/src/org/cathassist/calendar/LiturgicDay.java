@@ -122,10 +122,18 @@ public class LiturgicDay extends Date
 	}
 	
 	String toWeekdayString()
-	{	
-		return String.format("%s第%s主日(%s)", season.toString(),
-				getChineseNumStr(weekOfSeason),
-				dayOfWeek().toString());
+	{
+		if(dayOfWeek()==day_t.SUN)
+		{
+			return String.format("%s第%s主日", season.toString(),
+					getChineseNumStr(weekOfSeason));
+		}
+		else
+		{
+			return String.format("%s第%s主日(%s)", season.toString(),
+					getChineseNumStr(weekOfSeason),
+					dayOfWeek().toString());
+		}
 	}
 	
 	String toLiturgicString()

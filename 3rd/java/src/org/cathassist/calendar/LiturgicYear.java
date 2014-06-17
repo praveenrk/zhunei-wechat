@@ -66,7 +66,8 @@ public class LiturgicYear
 		mapPropers.put(411,new CellInfo(rank_t.MEMORIAL,color_t.RED,"圣达尼老（主教、殉道）"));
 		mapPropers.put(413,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣玛尔定一世（教宗、殉道）"));
 		mapPropers.put(421,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣安瑟莫（主教、圣师）"));
-		mapPropers.put(423,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣乔治（殉道）；或布拉格的圣道博"));
+		mapPropers.put(423,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣乔治（殉道）"));
+		mapPropers.put(423,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"或布拉格的圣道博"));
 		mapPropers.put(424,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣斐德理（司铎、殉道）"));
 		mapPropers.put(425,new CellInfo(rank_t.FEAST,color_t.RED,"圣马尔谷（圣史）"));
 		mapPropers.put(428,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯多禄·查纳（司铎、殉道）"));
@@ -523,7 +524,7 @@ public class LiturgicYear
 			}
 			else
 			{
-				ld.appendCell(rank_t.SOLEMNITY,color_t.WHITE,ld.toWeekdayString());
+				ld.appendCell(rank_t.SOLEMNITY,color_t.WHITE,"复活节庆期第八日(慈悲主日)");
 			}
 		}
 		else if(dayFromEaster == 39)
