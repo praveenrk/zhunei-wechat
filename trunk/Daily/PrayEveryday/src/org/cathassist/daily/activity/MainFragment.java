@@ -1,9 +1,14 @@
 package org.cathassist.daily.activity;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.cathassist.daily.R;
 import org.cathassist.daily.R.id;
 import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.database.TodoDbAdapter;
+import org.cathassist.daily.provider.CalendarManager;
 import org.cathassist.daily.util.PublicFunction;
 
 import com.spreada.utils.chinese.ZHConverter;
@@ -95,7 +100,15 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		}
 		txtDate.setText(dateString);
 		Log.e("dateString", dateString);
-		calendarDay = dbHelper.getCalendarDayByDate(dateString);
+		DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		long date = 0;
+		try {
+			date = f.parse(dateString).getTime();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		calendarDay = CalendarManager.getInstance().getCalendar(date);
 		dbHelper.close();
 		txtDayTitle.setText(dateString);
 		if (calendarDay != null) {
