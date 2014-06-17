@@ -559,7 +559,11 @@ void LiturgicYear::testOrdinary2(LiturgicDay& ld)
 
 	int dayFromEaster = easter.daysTo(ld);
 
-	if(dayFromEaster == 56)
+	if(dayFromEaster == 53)
+	{
+		ld.appendCell(LORD,WHITE,"我们的主耶稣基督—永恒的大司祭");
+	}
+	else if(dayFromEaster == 56)
 	{
 		ld.appendCell(SOLEMNITY,WHITE,"圣三主日");
 	}

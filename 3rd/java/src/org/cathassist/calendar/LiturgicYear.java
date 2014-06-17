@@ -560,7 +560,11 @@ public class LiturgicYear
 
 		int dayFromEaster = easter.daysTo(ld);
 
-		if(dayFromEaster == 56)
+		if(dayFromEaster == 53)
+		{
+			ld.appendCell(rank_t.LORD,color_t.WHITE,"我们的主耶稣基督—永恒的大司祭");
+		}
+		else if(dayFromEaster == 56)
 		{
 			ld.appendCell(rank_t.SOLEMNITY,color_t.WHITE,"圣三主日");
 		}
