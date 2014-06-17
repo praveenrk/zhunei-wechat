@@ -82,8 +82,16 @@ void LiturgicDay::appendCell(rank_t r,color_t c,const std::string& cele)
 std::string LiturgicDay::toWeekdayString() const
 {
 	std::ostringstream ostr;
-	ostr<<CathAssist::Calendar::getSeasonStr(season)
-		<<"第"<<getChineseNumStr(weekOfSeason)<<"主日("<<CathAssist::Calendar::getDayStr(dayOfWeek())<<")";
+	if(dayOfWeek()==SUN)
+	{
+		ostr<<CathAssist::Calendar::getSeasonStr(season)
+			<<"第"<<getChineseNumStr(weekOfSeason)<<"主日";
+	}
+	else
+	{
+		ostr<<CathAssist::Calendar::getSeasonStr(season)
+			<<"第"<<getChineseNumStr(weekOfSeason)<<"主日("<<CathAssist::Calendar::getDayStr(dayOfWeek())<<")";
+	}
 
 	return ostr.str();
 }
