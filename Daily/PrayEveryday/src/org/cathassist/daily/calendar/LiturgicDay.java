@@ -126,7 +126,6 @@ public class LiturgicDay extends Date {
 					.next();
 			str = str + "\t" + entry.getValue().celebration + "\n";
 		}
-
 		return str;
 	}
 
@@ -148,6 +147,7 @@ public class LiturgicDay extends Date {
 			calendarDay.set(entry.getKey(), entry.getValue().celebration);
 			// str = str+"\t"+entry.getValue().celebration+"\n";
 		}
+		calendarDay.setColor(getColor().toString());
 		return calendarDay;
 	}
 }

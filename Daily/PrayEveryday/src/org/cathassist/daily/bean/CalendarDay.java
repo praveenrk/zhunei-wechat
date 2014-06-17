@@ -9,11 +9,12 @@ public class CalendarDay {
 	private long id;
 	private String date;
 	private int dayType;
-	private String summary;
-	private String festival;
+	private String summary = "";
+	private String festival = "";
 	private int memorableDay;
-	private String solarTerms;
-	private String holiday;
+	private String solarTerms = "";
+	private String holiday = "";
+	private String color = "";
 
 	public CalendarDay() {
 
@@ -21,7 +22,7 @@ public class CalendarDay {
 
 	public CalendarDay(long id, String date, int dayType, String summary,
 			String festival, int memorableDay, String solarTerms,
-			String holiday) {
+			String holiday, String color) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -31,12 +32,13 @@ public class CalendarDay {
 		this.memorableDay = memorableDay;
 		this.solarTerms = solarTerms;
 		this.holiday = holiday;
+		this.color = color;
 	}
-	
+
 	public CalendarDay(Cursor cursor) {
 		this.id = cursor.getLong(0);
 		this.date = cursor.getString(1);
-		this.dayType =  cursor.getInt(2);
+		this.dayType = cursor.getInt(2);
 		this.summary = cursor.getString(3);
 		this.festival = cursor.getString(4);
 		this.memorableDay = cursor.getInt(5);
@@ -108,27 +110,35 @@ public class CalendarDay {
 		this.holiday = holiday;
 	}
 
-	public void set(rank_t rank,String value){
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public void set(rank_t rank, String value) {
 		switch (rank.getValue()) {
 		case EnumManager.WEEKDAY_VALUE:
-			if (summary==null||summary.equals("")) {
+			if (summary == null || summary.equals("")) {
 				this.summary = value;
 			}
 			break;
 		case EnumManager.COMMEMORATION_VALUE:
 			break;
 		case EnumManager.OPTIONAL_VALUE:
-			this.holiday = value;
+			this.festival += value;
 			break;
 		case EnumManager.MEMORIAL_VALUE:
-			this.holiday = value;
+			this.festival += value;
 			this.memorableDay = 1;
 			break;
 		case EnumManager.FEAST_VALUE:
 			this.summary = value;
 			break;
 		case EnumManager.SUNDAY_VALUE:
-			if (summary==null||summary.equals("")) {
+			if (summary == null || summary.equals("")) {
 				this.summary = value;
 			}
 			break;
@@ -136,7 +146,7 @@ public class CalendarDay {
 			this.summary = value;
 			break;
 		case EnumManager.ASHWED_VALUE:
-//			this.summary = value;
+			// this.summary = value;
 			break;
 		case EnumManager.HOLYWEEK_VALUE:
 			this.summary = value;

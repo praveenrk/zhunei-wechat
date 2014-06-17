@@ -35,11 +35,11 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 	private LayoutInflater mInflater;
 	List<Integer> groupData = new ArrayList<Integer>();
 	List<List<CalendarDay>> childData = new ArrayList<List<CalendarDay>>();
-	private Calendar nowTime,pageTime;
+	private Calendar nowTime, pageTime;
 	private PrayInEveryday prayEveryday;
 
 	public DailyListAdapter(Context context, Map<String, Object> data,
-			PrayInEveryday prayEveryday,Calendar calendar) {
+			PrayInEveryday prayEveryday, Calendar calendar) {
 		this.context = context;
 		this.mInflater = LayoutInflater.from(context);
 		this.groupData = (List<Integer>) data.get("groupData");
@@ -61,8 +61,8 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		Log.e("childData count=", childData.size()+"");
-		Log.e("groupPosition", groupPosition+"");
+		Log.e("childData count=", childData.size() + "");
+		Log.e("groupPosition", groupPosition + "");
 		return childData.size() == 0 ? childData.size() : childData.get(
 				groupPosition).size();
 	}
@@ -121,11 +121,15 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 			weekString = context.getString(R.string.fourth_week);
 			break;
 		case 5:
-			weekString =context.getString(R.string.fifth_week);
+			weekString = context.getString(R.string.fifth_week);
 		default:
 			break;
 		}
-		if (TimeFormatter.isBetweenInTimes(TimeFormatter.getMinTimeOfMonth(nowTime.getTimeInMillis()), TimeFormatter.getMaxTimeOfMonth(nowTime.getTimeInMillis()), pageTime.getTimeInMillis())&&nowTime.get(Calendar.WEEK_OF_MONTH) == weekOfMonth) {
+		if (TimeFormatter.isBetweenInTimes(
+				TimeFormatter.getMinTimeOfMonth(nowTime.getTimeInMillis()),
+				TimeFormatter.getMaxTimeOfMonth(nowTime.getTimeInMillis()),
+				pageTime.getTimeInMillis())
+				&& nowTime.get(Calendar.WEEK_OF_MONTH) == weekOfMonth) {
 			weekString += " ( " + context.getString(R.string.this_week) + " ) ";
 		}
 		return weekString;
@@ -158,13 +162,16 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 			holder.txtWeek = (TextView) convertView.findViewById(R.id.txt_week);
 			holder.txtTitle = (TextView) convertView
 					.findViewById(R.id.txt_title);
-			holder.txtColor = (TextView) convertView.findViewById(R.id.txt_color);
-			holder.txtFestival = (TextView) convertView.findViewById(R.id.txt_festival);
+			holder.txtColor = (TextView) convertView
+					.findViewById(R.id.txt_color);
+			holder.txtFestival = (TextView) convertView
+					.findViewById(R.id.txt_festival);
 			holder.txtMemorableDay = (TextView) convertView
 					.findViewById(R.id.txt_memorableDay);
-			holder.txtHoliday = (TextView) convertView.findViewById(R.id.txt_holiday);
-//			holder.txtWeather = (TextView) convertView
-//					.findViewById(R.id.txt_weather);
+			holder.txtHoliday = (TextView) convertView
+					.findViewById(R.id.txt_holiday);
+			// holder.txtWeather = (TextView) convertView
+			// .findViewById(R.id.txt_weather);
 			holder.txtSolarTerms = (TextView) convertView
 					.findViewById(R.id.txt_solarterms);
 			convertView.setTag(holder);// 绑定ViewHolder对象
@@ -173,14 +180,13 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 		}
 		CalendarDay day = childData.get(groupPosition).get(childPosition);
 		holder.txtTitle.setText(day.getSummary());
-		
+		holder.txtColor.setText(day.getColor());
 		holder.txtFestival.setText(day.getFestival());
-		holder.txtMemorableDay
-				.setText(PublicFunction.getDayNatureString(
-						context, day.getMemorableDay()));
+		holder.txtMemorableDay.setText(PublicFunction.getDayNatureString(
+				context, day.getMemorableDay()));
 		holder.txtHoliday.setText(day.getHoliday());
-//		holder.txtWeather.setText(diaryApp.getWeatherById(diary.getWeather()));
-		DateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
+		// holder.txtWeather.setText(diaryApp.getWeatherById(diary.getWeather()));
+		DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		long time = 0;
 		try {
 			time = f.parse(day.getDate()).getTime();
