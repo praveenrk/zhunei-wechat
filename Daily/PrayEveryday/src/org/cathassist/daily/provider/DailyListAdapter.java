@@ -51,7 +51,7 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 
 	public final class ViewHolder {
 		TextView txtDay, txtYear, txtMonth, txtWeek, txtTitle, txtColor,
-				txtFestival, txtMemorableDay, txtHoliday, txtSolarTerms;
+				txtFestival, txtMemorableDay, txtHoliday, txtSolarTerms, txtChineseDate;
 	}
 
 	@Override
@@ -122,6 +122,10 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 			break;
 		case 5:
 			weekString = context.getString(R.string.fifth_week);
+			break;
+		case 6:
+			weekString = context.getString(R.string.sixth_week);
+			break;
 		default:
 			break;
 		}
@@ -174,6 +178,7 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 			// .findViewById(R.id.txt_weather);
 			holder.txtSolarTerms = (TextView) convertView
 					.findViewById(R.id.txt_solarterms);
+			holder.txtChineseDate = (TextView) convertView.findViewById(R.id.txt_chinese_date);
 			convertView.setTag(holder);// 绑定ViewHolder对象
 		} else {
 			holder = (ViewHolder) convertView.getTag();// 取出ViewHolder对象
@@ -185,6 +190,7 @@ public class DailyListAdapter extends BaseExpandableListAdapter {
 		holder.txtMemorableDay.setText(PublicFunction.getDayNatureString(
 				context, day.getMemorableDay()));
 		holder.txtHoliday.setText(day.getHoliday());
+		holder.txtChineseDate.setText(day.getChineseDate());
 		// holder.txtWeather.setText(diaryApp.getWeatherById(diary.getWeather()));
 		DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		long time = 0;

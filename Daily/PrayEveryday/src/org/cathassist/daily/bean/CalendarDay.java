@@ -8,6 +8,7 @@ import android.database.Cursor;
 public class CalendarDay {
 	private long id;
 	private String date;
+	private String chineseDate;
 	private int dayType;
 	private String summary = "";
 	private String festival = "";
@@ -22,7 +23,7 @@ public class CalendarDay {
 
 	public CalendarDay(long id, String date, int dayType, String summary,
 			String festival, int memorableDay, String solarTerms,
-			String holiday, String color) {
+			String holiday, String color, String chineseDate) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -33,6 +34,7 @@ public class CalendarDay {
 		this.solarTerms = solarTerms;
 		this.holiday = holiday;
 		this.color = color;
+		this.chineseDate = chineseDate;
 	}
 
 	public CalendarDay(Cursor cursor) {
@@ -118,6 +120,14 @@ public class CalendarDay {
 		this.color = color;
 	}
 
+	public String getChineseDate() {
+		return chineseDate;
+	}
+
+	public void setChineseDate(String chineseDate) {
+		this.chineseDate = chineseDate;
+	}
+
 	public void set(rank_t rank, String value) {
 		switch (rank.getValue()) {
 		case EnumManager.WEEKDAY_VALUE:
@@ -161,4 +171,5 @@ public class CalendarDay {
 			break;
 		}
 	}
+	
 }

@@ -58,13 +58,14 @@ public class CalendarManager {
 		c.setTimeInMillis(time);
 		CalendarDay calendarDay = new CalendarDay();
 		Lunar lunar = new Lunar(c.getTimeInMillis());
+		lunar.findFestival();
 		LiturgicDay ld = getLiturgicDay(c.get(Calendar.YEAR),
 				c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
 		calendarDay.setDate(PublicFunction.getYearMonthDayForSql(new Date(c
 				.getTimeInMillis())));
 		calendarDay.setDayType(0);
-		calendarDay.setFestival(lunar.getLunarDateString());
-		calendarDay.setHoliday(lunar.getSFestivalName());
+		calendarDay.setChineseDate(lunar.getLunarDateString());
+		calendarDay.setHoliday(lunar.getLFestivalName()+"  "+lunar.getSFestivalName());
 		calendarDay.setMemorableDay(0);
 		calendarDay.setSolarTerms(lunar.getTermString());
 		ld.getCalendarDay(calendarDay);
@@ -99,12 +100,14 @@ public class CalendarManager {
 			}
 			CalendarDay calendarDay = new CalendarDay();
 			Lunar lunar = new Lunar(c.getTimeInMillis());
+			lunar.findFestival();
 			LiturgicDay ld = getLiturgicDay(c.get(Calendar.YEAR),
 					c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH));
 			calendarDay.setDate(PublicFunction.getYearMonthDayForSql(new Date(c
 					.getTimeInMillis())));
 			calendarDay.setDayType(0);
-			calendarDay.setHoliday(lunar.getLunarDateString());
+			calendarDay.setHoliday(lunar.getLFestivalName()+"  "+lunar.getSFestivalName());
+			calendarDay.setChineseDate(lunar.getLunarDateString());
 			calendarDay.setMemorableDay(0);
 			calendarDay.setSolarTerms(lunar.getTermString());
 			ld.getCalendarDay(calendarDay);
