@@ -88,6 +88,7 @@ public class LiturgicYear
 		mapPropers.put(520,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯尔纳定（司铎）"));
 		mapPropers.put(521,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣多福·麦哲伦（司铎）及其他殉道者（殉道）"));
 		mapPropers.put(522,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣李达（绝望主保）"));
+		mapPropers.put(524,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"进教之佑圣母 "));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯达（司铎、圣师）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣额我略七世（教宗）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣玛达肋纳·巴斯（童贞）"));

@@ -74,7 +74,9 @@ public class CalendarListActivity extends SherlockActivity {
 		dailyListAdapter = new DailyListAdapter(CalendarListActivity.this,
 				diaryListOfMonth, prayEveryday, mCalendar);
 		mListView.setAdapter(dailyListAdapter);
-		mListView.expandGroup(calendarManager.getOpen());
+		//TODO jpf
+		mListView.expandGroup(0);
+//		mListView.expandGroup(calendarManager.getOpen());
 	}
 
 	private void initViewData() {
@@ -94,16 +96,16 @@ public class CalendarListActivity extends SherlockActivity {
 					@Override
 					public void onPullDownToRefresh(
 							PullToRefreshBase<ExpandableListView> refreshView) {
-						Toast.makeText(CalendarListActivity.this, "Top",
-								Toast.LENGTH_LONG).show();
+//						Toast.makeText(CalendarListActivity.this, "Top",
+//								Toast.LENGTH_LONG).show();
 						new GetDataTask(TOP_REFRESH).execute();
 					}
 
 					@Override
 					public void onPullUpToRefresh(
 							PullToRefreshBase<ExpandableListView> refreshView) {
-						Toast.makeText(CalendarListActivity.this, "Bottom",
-								Toast.LENGTH_LONG).show();
+//						Toast.makeText(CalendarListActivity.this, "Bottom",
+//								Toast.LENGTH_LONG).show();
 						new GetDataTask(BOTTOM_REFRESH).execute();
 					}
 				});
@@ -157,8 +159,8 @@ public class CalendarListActivity extends SherlockActivity {
 			actionBar.setTitle(PublicFunction.formatDateYYYYMM(mCalendar
 					.getTimeInMillis()));
 			if (dailyListAdapter.getGroupCount() != 0) {
-				mListView.expandGroup(CalendarManager.getInstance().getOpen());
-
+//				mListView.expandGroup(CalendarManager.getInstance().getOpen());
+				mListView.expandGroup(0);
 			}
 			// Call onRefreshComplete when the list has been refreshed.
 			mListDiary.onRefreshComplete();
