@@ -20,6 +20,7 @@ public class LiturgicYear
 		mapPropers.put(107,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣雷孟（司铎）"));
 		mapPropers.put(113,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣依拉略（主教、圣师）"));
 		mapPropers.put(117,new CellInfo(rank_t.MEMORIAL,color_t.WHITE,"圣安东尼（院长）"));
+        mapPropers.put(118,new CellInfo(rank_t.MEMORIAL,color_t.NOCOLOR,"为基督徒合一祈祷周（18 - 25日）"));
 		mapPropers.put(120,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣法比盎（教宗、殉道)"));
 		mapPropers.put(120,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣巴斯弟盎（殉道）"));
 		mapPropers.put(121,new CellInfo(rank_t.MEMORIAL,color_t.RED,"圣依搦斯（童贞、殉道)"));
@@ -87,6 +88,7 @@ public class LiturgicYear
 		mapPropers.put(520,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯尔纳定（司铎）"));
 		mapPropers.put(521,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣多福·麦哲伦（司铎）及其他殉道者（殉道）"));
 		mapPropers.put(522,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣李达（绝望主保）"));
+        mapPropers.put(524,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"进教之佑圣母"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯达（司铎、圣师）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣额我略七世（教宗）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣玛达肋纳·巴斯（童贞）"));
