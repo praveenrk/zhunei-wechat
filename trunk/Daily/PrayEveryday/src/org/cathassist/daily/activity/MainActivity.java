@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import org.cathassist.daily.PrayInEveryday;
 import org.cathassist.daily.R;
 import org.cathassist.daily.activity.MainFragment.OnArticleSelectedListener;
+import org.cathassist.daily.bean.CalendarDay;
 import org.cathassist.daily.bean.DayContent;
 import org.cathassist.daily.provider.EnumManager.ContentType;
 import org.cathassist.daily.provider.MainActivityFragmentPagerAdapter;
@@ -45,8 +46,7 @@ import com.viewpagerindicator.TabPageIndicator;
 
 public class MainActivity extends BaseActivity implements
 		OnClickCancelListener, OnArticleSelectedListener {
-	
-	
+
 	private ViewPager mPager;
 	private TabPageIndicator mIndicator;
 	ProgressDialog progressDialog;
@@ -167,7 +167,8 @@ public class MainActivity extends BaseActivity implements
 			toggle();
 			return true;
 		case R.id.main_actionbar_calendar:
-			Intent intentCalendar=new Intent(MainActivity.this, CalendarListActivity.class);
+			Intent intentCalendar = new Intent(MainActivity.this,
+					CalendarListActivity.class);
 			startActivity(intentCalendar);
 			break;
 		case R.id.main_actionbar_update:
@@ -203,28 +204,36 @@ public class MainActivity extends BaseActivity implements
 				calendar.add(Calendar.DATE, -15);
 				String deleteTime = PublicFunction
 						.getYearMonthDayForSql(calendar.getTime());
+				dbHelper.deleteOldData(deleteTime);
 				DayContent dayContent;
 				dbHelper.open();
 				JSONObject jsonObject;
 				try {
 					for (int i = 0; i < 15; i++) {
-						Calendar c=Calendar.getInstance();
+						Calendar c = Calendar.getInstance();
 						c.add(Calendar.DAY_OF_YEAR, i);
-						String dateString=TimeFormatter.formatDateYYYYMMDD(c.getTimeInMillis());
+						String dateString = TimeFormatter.formatDateYYYYMMDD(c
+								.getTimeInMillis());
+						if (dbHelper.getCalendarDayByDate(dateString)!=null) {
+							continue;
+						}
 						String httpUrl2 = PrayInEveryday.SERVER_URL2
 								+ dateString;
 						String result2 = NetworkTool.getContent(httpUrl2);
 						dayContent = new DayContent();
 						dayContent.setDate(dateString);
-						dayContent.setUpdateTime(c.getTimeInMillis()+"");
+						dayContent.setUpdateTime(c.getTimeInMillis() + "");
 						jsonObject = new JSONObject(result2);
 						for (int j = 0; j < ContentType.values().length; j++) {
 							dayContent.setContentType(j);
 							dayContent
 									.setContent(jsonObject.getString(ContentType
-													.getContentDataNameFromContentType(j)));
+											.getContentDataNameFromContentType(j)));
 							dbHelper.insertContent(dayContent);
 						}
+						CalendarDay calendarDay = new CalendarDay();
+						calendarDay.setDate(dateString);
+						dbHelper.insertCalendarDay(calendarDay);
 					}
 				} catch (JSONException e1) {
 					MobclickAgent.reportError(MainActivity.this, e1);

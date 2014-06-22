@@ -10,12 +10,12 @@ import org.cathassist.daily.provider.CalendarManager;
 import org.cathassist.daily.provider.DailyListAdapter;
 import org.cathassist.daily.util.PublicFunction;
 
-import android.R.anim;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -85,12 +85,7 @@ public class CalendarListActivity extends SherlockActivity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-				// Intent intent = new Intent(getActivity(),
-				// ShowDiaryActivity.class);
-				// Bundle bundle = new Bundle();
-				// bundle.putInt("diaryId", (int) id);
-				// intent.putExtras(bundle);
-				// startActivity(intent);
+
 				return false;
 			}
 		});
@@ -144,11 +139,6 @@ public class CalendarListActivity extends SherlockActivity {
 				break;
 			}
 			dbHelper.open();
-			// Map<String, Object> returnData = dbHelper
-			// .getDiaryListBetweenTime(PublicFunction
-			// .getMinTimeOfMonth(mCalendar.getTimeInMillis()),
-			// PublicFunction.getMaxTimeOfMonth(mCalendar
-			// .getTimeInMillis()));
 			CalendarManager calendarManager = CalendarManager.getInstance();
 			Map<String, Object> returnData = calendarManager
 					.getCalendarListByMonth(mCalendar.getTimeInMillis());
@@ -191,7 +181,7 @@ public class CalendarListActivity extends SherlockActivity {
 			finish();
 			break;
 		case R.id.calendar_select_time:
-			new DatePickerDialog(CalendarListActivity.this, new OnDateSetListener() {
+			DatePickerDialog datePickerDialog = new DatePickerDialog(CalendarListActivity.this, new OnDateSetListener() {
 				@Override
 				public void onDateSet(DatePicker view, int year, int monthOfYear,
 						int dayOfMonth) {
@@ -200,7 +190,12 @@ public class CalendarListActivity extends SherlockActivity {
 					mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 					backToTime(mCalendar);
 				}
-			}, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show();
+			}, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+			datePickerDialog.show();
+			DatePicker dp = findDatePicker((ViewGroup) datePickerDialog.getWindow().getDecorView());  
+			if (dp != null) {  
+			    ((ViewGroup)((ViewGroup) dp.getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(View.GONE);  
+			} 
 			break;
 		case R.id.calendar_back:
 			backToTime(Calendar.getInstance());
@@ -210,5 +205,19 @@ public class CalendarListActivity extends SherlockActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	private DatePicker findDatePicker(ViewGroup group) {  
+        if (group != null) {  
+            for (int i = 0, j = group.getChildCount(); i < j; i++) {  
+                View child = group.getChildAt(i);  
+                if (child instanceof DatePicker) {  
+                    return (DatePicker) child;  
+                } else if (child instanceof ViewGroup) {  
+                    DatePicker result = findDatePicker((ViewGroup) child);  
+                    if (result != null)  
+                        return result;  
+                }  
+            }  
+        }  
+        return null;  
+    } 
 }

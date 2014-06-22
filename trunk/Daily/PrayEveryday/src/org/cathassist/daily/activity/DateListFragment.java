@@ -36,12 +36,12 @@ public class DateListFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		dbHelper = new TodoDbAdapter(getActivity());
+		dbHelper.open();
+		List<DateBean> list = dbHelper.getDateList();
+		dbHelper.close();
 		SampleAdapter adapter = new SampleAdapter(getActivity());
 		int position = 0;
-		for (int i = 0; i < 7; i++) {
-			Calendar calendar=Calendar.getInstance();
-			calendar.add(Calendar.DAY_OF_YEAR, i);
-			DateBean dateBean = new DateBean(i, PublicFunction.getYearMonthDayForSql(new Date(calendar.getTimeInMillis())));
+		for (DateBean dateBean:list) {
 			SampleItem sampleItem = new SampleItem(dateBean.getDate(),
 					dateBean.getId());
 			adapter.add(sampleItem);
@@ -51,6 +51,19 @@ public class DateListFragment extends ListFragment {
 			}
 			dateMap.put(dateBean.getId(), dateBean.getDate());
 		}
+//		for (int i = 0; i < list.size() ; i++) {
+//			Calendar calendar=Calendar.getInstance();
+//			calendar.add(Calendar.DAY_OF_YEAR, i);
+//			DateBean dateBean = new DateBean(i, PublicFunction.getYearMonthDayForSql(new Date(calendar.getTimeInMillis())));
+//			SampleItem sampleItem = new SampleItem(dateBean.getDate(),
+//					dateBean.getId());
+//			adapter.add(sampleItem);
+//			if (PublicFunction.getYearMonthDayForSql(calendar.getTime())
+//					.equals(dateBean.getDate())) {
+//				position = adapter.getPosition(sampleItem);
+//			}
+//			dateMap.put(dateBean.getId(), dateBean.getDate());
+//		}
 		setListAdapter(adapter);
 		setSelection(position);
 	}

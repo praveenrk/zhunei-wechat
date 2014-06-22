@@ -31,7 +31,7 @@ import android.widget.TextView;
 
 public final class MainFragment extends Fragment implements OnClickListener {
 	private TextView txtDayTitle, txtDate, txtSolarTerms, txtHoliday,
-			txtFestival, txtDayNature;
+			txtFestival, txtDayNature, txtColor;
 	private TodoDbAdapter dbHelper;
 	private CalendarDay calendarDay;
 	private String dateString;
@@ -118,6 +118,7 @@ public final class MainFragment extends Fragment implements OnClickListener {
 			txtFestival.setText(calendarDay.getFestival());
 			txtDayNature.setText(PublicFunction.getDayNatureString(
 					getActivity(), calendarDay.getMemorableDay()));
+			txtColor.setText(calendarDay.getColor());
 			ZHConverter converter = ZHConverter
 					.getInstance(ZHConverter.SIMPLIFIED);
 			// txtBible.setText();
@@ -143,6 +144,7 @@ public final class MainFragment extends Fragment implements OnClickListener {
 		btnCompletorium = (Button) view.findViewById(R.id.btn_completorium);
 		btnMass = (Button) view.findViewById(R.id.btn_mass);
 		btnBible = (Button) view.findViewById(R.id.btn_bible);
+		txtColor = (TextView) view.findViewById(R.id.txt_color);
 	}
 
 	private void setListener() {

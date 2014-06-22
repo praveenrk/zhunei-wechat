@@ -3,6 +3,8 @@ package org.cathassist.daily.util;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,16 +12,22 @@ import java.util.regex.Pattern;
 /**
  * 提供一些农历相关信息
  * 
- * @author 林志斌,修改by 大师♂罗莊 jpf
+ * @author 林志斌,修改by 大师♂罗莊 ，添加天主教节日by 靳鹏飞
  */
 public class Lunar {
 
 	public static void main(String[] args) {
-		Lunar l = new Lunar(System.currentTimeMillis());
+		Calendar calendar=Calendar.getInstance();
+		calendar.set(Calendar.MONTH, 5);
+		calendar.set(Calendar.DAY_OF_MONTH,2);
+		Lunar l = new Lunar(calendar.getTimeInMillis());
 		System.out.println("节气:" + l.getTermString());
 		System.out.println("干支历:" + l.getCyclicalDateString());
-		System.out.println("星期" + l.getDayOfWeek());    //星期日为星期1，星期六为星期7 
-		System.out.println("农历" + l.getLunarDateString()); 
+		System.out.println("星期" + l.getDayOfWeek());     //星期日为星期1，星期六为星期7 
+		System.out.println("农历" + l.getLunarDateString());
+		l.findFestival();
+		System.out.println("节日1："+ l.getSFestivalName());
+		System.out.println("节日2："+ l.getLFestivalName());
 	}
 
 	/**
@@ -106,7 +114,7 @@ public class Lunar {
 	 * 国历节日 *表示放假日
 	 */
 	private final static String[] sFtv = { "0101 元旦", "0214 情人节", "0308 妇女节",
-			"0501 劳动节", "0504 青年节", "0601 儿童节", "0808 父亲节",
+			"0501 劳动节", "0504 青年节", "0601 儿童节", "0808 父亲节","0815 圣母升天节",
 			"1001 国庆节" };
 	/**
 	 * 农历节日 *表示放假日
@@ -116,7 +124,14 @@ public class Lunar {
 	/**
 	 * 某月的第几个星期几
 	 */
-	private static String[] wFtv = { "0520 母亲节" };
+	private final static String[] wFtv = { "0520 母亲节" };
+	
+	/**
+	 * 天主教固定節日
+	 * @param str
+	 * @return
+	 */
+	private final static String[] sCaFtv = { "0520圣伯尔纳定（司铎）"}; 
 
 	private static int toInt(String str) {
 		try {
@@ -131,7 +146,7 @@ public class Lunar {
 	private final static Pattern wFreg = Pattern
 			.compile("^(\\d{2})(\\d)(\\d)([\\s\\*])(.+)$");
 
-	private synchronized void findFestival() {
+	public synchronized void findFestival() {
 		int sM = this.getSolarMonth();
 		int sD = this.getSolarDay();
 		int lM = this.getLunarMonth();
@@ -214,6 +229,8 @@ public class Lunar {
 	private String lFestivalName = "";
 	private String description = "";
 	private boolean isHoliday = false;
+	private boolean isCathFestival = false;
+	private String cathFestivalName = "";
 
 	/**
 	 * 返回农历年闰月月份
