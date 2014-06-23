@@ -88,7 +88,7 @@ public class LiturgicYear
 		mapPropers.put(520,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯尔纳定（司铎）"));
 		mapPropers.put(521,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣多福·麦哲伦（司铎）及其他殉道者（殉道）"));
 		mapPropers.put(522,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣李达（绝望主保）"));
-        mapPropers.put(524,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"进教之佑圣母"));
+        mapPropers.put(524,new CellInfo(rank_t.FEAST,color_t.WHITE,"进教之佑圣母"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣伯达（司铎、圣师）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣额我略七世（教宗）"));
 		mapPropers.put(525,new CellInfo(rank_t.OPTIONAL,color_t.NOCOLOR,"圣玛达肋纳·巴斯（童贞）"));
@@ -505,7 +505,14 @@ public class LiturgicYear
 		{
 			if(ld.dayOfWeek()==day_t.SUN)
 			{
-				ld.appendCell(rank_t.SUNDAY,color_t.WHITE,ld.toWeekdayString());
+				if(dayFromEaster == 21)
+				{
+					ld.appendCell(rank_t.SUNDAY,color_t.WHITE,ld.toWeekdayString()+"(善牧主日)");
+				}
+				else
+				{
+					ld.appendCell(rank_t.SUNDAY,color_t.WHITE,ld.toWeekdayString());
+				}
 			}
 			else
 			{
@@ -670,6 +677,16 @@ public class LiturgicYear
 
 	void testProper(LiturgicDay ld)
 	{
+		{
+			//中华圣母（5月的第二个周六）
+			if(ld.month() == 5 && ld.dayOfWeek() == 6)
+			{
+				if(ld.day() > 7)
+				{
+					ld.appendCell(rank_t.MEMORIAL,color_t.WHITE,"中华圣母");
+				}
+			}
+		}
 		int v = ld.month()*100+ld.day();
 		
 		Set<CellInfo> values = mapPropers.get(v);
