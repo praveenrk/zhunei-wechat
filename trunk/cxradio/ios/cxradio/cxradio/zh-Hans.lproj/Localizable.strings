@@ -1,0 +1,7 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleDisplayName = "晨星生命之音";
+"Now" = "当前时间";
+"Loading" = "加载中...";
+"Radio Right" = "版权归 晨星生命之音 所有";
+"Soft Right" = "本软件由 天主教小助手 协助开发";

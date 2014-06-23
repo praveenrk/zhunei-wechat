@@ -1,0 +1,9 @@
+platform :ios, '7.0'
+
+
+pod "AMSlideMenu", "~> 1.5.3"
+pod "RMDateSelectionViewController", "~> 1.2.0"
+pod 'AFNetworking', '~> 2.2.3'
+pod 'StreamingKit', '~> 0.1.22'
+pod 'MBProgressHUD', '~> 0.8'
+pod 'FFCircularProgressView'
