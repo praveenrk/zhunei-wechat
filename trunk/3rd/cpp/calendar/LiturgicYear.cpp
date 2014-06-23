@@ -28,6 +28,7 @@ void CathAssist::Calendar::LiturgicYear::initPropers()
 	mapPropers.insert(std::make_pair(107,CellInfo(OPTIONAL,NOCOLOR,"圣雷孟（司铎）")));
 	mapPropers.insert(std::make_pair(113,CellInfo(OPTIONAL,NOCOLOR,"圣依拉略（主教、圣师）")));
 	mapPropers.insert(std::make_pair(117,CellInfo(MEMORIAL,WHITE,"圣安东尼（院长）")));
+	mapPropers.insert(std::make_pair(118,CellInfo(OPTIONAL,NOCOLOR,"为基督徒合一祈祷周（18 - 25日）")));
 	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣法比盎（教宗、殉道)")));
 	mapPropers.insert(std::make_pair(120,CellInfo(OPTIONAL,NOCOLOR,"圣巴斯弟盎（殉道）")));
 	mapPropers.insert(std::make_pair(121,CellInfo(MEMORIAL,RED,"圣依搦斯（童贞、殉道)")));
@@ -95,6 +96,7 @@ void CathAssist::Calendar::LiturgicYear::initPropers()
 	mapPropers.insert(std::make_pair(520,CellInfo(OPTIONAL,NOCOLOR,"圣伯尔纳定（司铎）")));
 	mapPropers.insert(std::make_pair(521,CellInfo(OPTIONAL,NOCOLOR,"圣多福·麦哲伦（司铎）及其他殉道者（殉道）")));
 	mapPropers.insert(std::make_pair(522,CellInfo(OPTIONAL,NOCOLOR,"圣李达（绝望主保）")));
+	mapPropers.insert(std::make_pair(524,CellInfo(FEAST,WHITE,"进教之佑圣母")));
 	mapPropers.insert(std::make_pair(525,CellInfo(OPTIONAL,NOCOLOR,"圣伯达（司铎、圣师）")));
 	mapPropers.insert(std::make_pair(525,CellInfo(OPTIONAL,NOCOLOR,"圣额我略七世（教宗）")));
 	mapPropers.insert(std::make_pair(525,CellInfo(OPTIONAL,NOCOLOR,"圣玛达肋纳·巴斯（童贞）")));
@@ -500,7 +502,14 @@ void LiturgicYear::testEaster(LiturgicDay& ld)
 	{
 		if(ld.dayOfWeek()==SUN)
 		{
-			ld.appendCell(SUNDAY,WHITE,ld.toWeekdayString());
+			if(dayFromEaster == 21)
+			{
+				ld.appendCell(SUNDAY,WHITE,ld.toWeekdayString()+"（善牧主日）");
+			}
+			else
+			{
+				ld.appendCell(SUNDAY,WHITE,ld.toWeekdayString());
+			}
 		}
 		else
 		{
@@ -668,6 +677,18 @@ void LiturgicYear::testChristmas2(LiturgicDay& ld)
 
 void LiturgicYear::testProper(LiturgicDay& ld)
 {
+	{
+		//中华圣母（5月的第二个周六）
+		if(ld.month() == 5 && ld.dayOfWeek() == 6)
+		{
+			if(ld.day() > 7)
+			{
+				ld.appendCell(MEMORIAL,WHITE,"中华圣母");
+			}
+		}
+	}
+
+
 	int v = ld.month()*100+ld.day();
 
 	std::multimap<int,CellInfo>::const_iterator iter = mapPropers.find(v);
