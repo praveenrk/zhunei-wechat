@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C232DF411912379400151912 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF401912379400151912 /* Foundation.framework */; };
+		C232DF431912379400151912 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF421912379400151912 /* CoreGraphics.framework */; };
+		C232DF451912379400151912 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF441912379400151912 /* UIKit.framework */; };
+		C232DF4B1912379400151912 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C232DF491912379400151912 /* Localizable.strings */; };
+		C232DF4D1912379400151912 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C232DF4C1912379400151912 /* main.m */; };
+		C232DF511912379400151912 /* CRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C232DF501912379400151912 /* CRAppDelegate.m */; };
+		C232DF541912379400151912 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C232DF521912379400151912 /* Main_iPhone.storyboard */; };
+		C232DF571912379400151912 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C232DF551912379400151912 /* Main_iPad.storyboard */; };
+		C232DF5A1912379400151912 /* CRTrackPlayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C232DF591912379400151912 /* CRTrackPlayVC.m */; };
+		C232DF5C1912379400151912 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C232DF5B1912379400151912 /* Images.xcassets */; };
+		C232DF631912379400151912 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF621912379400151912 /* XCTest.framework */; };
+		C232DF641912379400151912 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF401912379400151912 /* Foundation.framework */; };
+		C232DF651912379400151912 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C232DF441912379400151912 /* UIKit.framework */; };
+		C232DF6D1912379400151912 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C232DF6B1912379400151912 /* InfoPlist.strings */; };
+		C232DF6F1912379400151912 /* cxradioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C232DF6E1912379400151912 /* cxradioTests.m */; };
+		C23BEA21191EE50A0039CDA3 /* CRChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C23BEA20191EE50A0039CDA3 /* CRChannelModel.m */; };
+		C23BEA24191EE9970039CDA3 /* CRTrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C23BEA23191EE9970039CDA3 /* CRTrackModel.m */; };
+		C2939A671920371600DC7BE3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2939A661920371600DC7BE3 /* AudioToolbox.framework */; };
+		C2939A711922496100DC7BE3 /* CRTrackListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2939A701922496100DC7BE3 /* CRTrackListCell.m */; };
+		C2939A741922515800DC7BE3 /* CRTracksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2939A731922515800DC7BE3 /* CRTracksManager.m */; };
+		C2FC34CB191DB50700BDA923 /* CRChannelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FC34CA191DB50700BDA923 /* CRChannelVC.m */; };
+		C2FC34CE191DB57C00BDA923 /* CRTrackListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FC34CD191DB57C00BDA923 /* CRTrackListVC.m */; };
+		F27AB8E18CA64D5C85B1598A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE85B5F64CA84A0D86653A30 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C232DF661912379400151912 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C232DF351912379300151912 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C232DF3C1912379400151912;
+			remoteInfo = cxradio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F7455F52CCE46E0B91833E0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		C232DF3D1912379400151912 /* cxradio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cxradio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C232DF401912379400151912 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C232DF421912379400151912 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C232DF441912379400151912 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C232DF481912379400151912 /* cxradio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cxradio-Info.plist"; sourceTree = "<group>"; };
+		C232DF4A1912379400151912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C232DF4C1912379400151912 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C232DF4E1912379400151912 /* cxradio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cxradio-Prefix.pch"; sourceTree = "<group>"; };
+		C232DF4F1912379400151912 /* CRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRAppDelegate.h; sourceTree = "<group>"; };
+		C232DF501912379400151912 /* CRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRAppDelegate.m; sourceTree = "<group>"; };
+		C232DF531912379400151912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		C232DF561912379400151912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		C232DF581912379400151912 /* CRTrackPlayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTrackPlayVC.h; sourceTree = "<group>"; };
+		C232DF591912379400151912 /* CRTrackPlayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CRTrackPlayVC.m; sourceTree = "<group>"; };
+		C232DF5B1912379400151912 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C232DF611912379400151912 /* cxradioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cxradioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C232DF621912379400151912 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C232DF6A1912379400151912 /* cxradioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cxradioTests-Info.plist"; sourceTree = "<group>"; };
+		C232DF6C1912379400151912 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C232DF6E1912379400151912 /* cxradioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cxradioTests.m; sourceTree = "<group>"; };
+		C23BEA19191E7F230039CDA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C23BEA1A191E7F230039CDA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main_iPhone.strings"; sourceTree = "<group>"; };
+		C23BEA1B191E7F230039CDA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main_iPad.strings"; sourceTree = "<group>"; };
+		C23BEA1C191E7F230039CDA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C23BEA1F191EE50A0039CDA3 /* CRChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRChannelModel.h; path = Model/CRChannelModel.h; sourceTree = "<group>"; };
+		C23BEA20191EE50A0039CDA3 /* CRChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRChannelModel.m; path = Model/CRChannelModel.m; sourceTree = "<group>"; };
+		C23BEA22191EE9970039CDA3 /* CRTrackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRTrackModel.h; path = Model/CRTrackModel.h; sourceTree = "<group>"; };
+		C23BEA23191EE9970039CDA3 /* CRTrackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTrackModel.m; path = Model/CRTrackModel.m; sourceTree = "<group>"; };
+		C251E3AD192832D400EA3B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C2939A661920371600DC7BE3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C2939A681920371600DC7BE3 /* cxradio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cxradio.entitlements; sourceTree = "<group>"; };
+		C2939A6F1922496100DC7BE3 /* CRTrackListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTrackListCell.h; sourceTree = "<group>"; };
+		C2939A701922496100DC7BE3 /* CRTrackListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTrackListCell.m; sourceTree = "<group>"; };
+		C2939A721922515800DC7BE3 /* CRTracksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRTracksManager.h; path = Model/CRTracksManager.h; sourceTree = "<group>"; };
+		C2939A731922515800DC7BE3 /* CRTracksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTracksManager.m; path = Model/CRTracksManager.m; sourceTree = "<group>"; };
+		C2FC34C9191DB50700BDA923 /* CRChannelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRChannelVC.h; sourceTree = "<group>"; };
+		C2FC34CA191DB50700BDA923 /* CRChannelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRChannelVC.m; sourceTree = "<group>"; };
+		C2FC34CC191DB57C00BDA923 /* CRTrackListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTrackListVC.h; sourceTree = "<group>"; };
+		C2FC34CD191DB57C00BDA923 /* CRTrackListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTrackListVC.m; sourceTree = "<group>"; };
+		EE85B5F64CA84A0D86653A30 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C232DF3A1912379400151912 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF431912379400151912 /* CoreGraphics.framework in Frameworks */,
+				C232DF451912379400151912 /* UIKit.framework in Frameworks */,
+				C2939A671920371600DC7BE3 /* AudioToolbox.framework in Frameworks */,
+				C232DF411912379400151912 /* Foundation.framework in Frameworks */,
+				F27AB8E18CA64D5C85B1598A /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C232DF5E1912379400151912 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF631912379400151912 /* XCTest.framework in Frameworks */,
+				C232DF651912379400151912 /* UIKit.framework in Frameworks */,
+				C232DF641912379400151912 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C232DF341912379300151912 = {
+			isa = PBXGroup;
+			children = (
+				C232DF461912379400151912 /* cxradio */,
+				C232DF681912379400151912 /* cxradioTests */,
+				C232DF3F1912379400151912 /* Frameworks */,
+				C232DF3E1912379400151912 /* Products */,
+				5F7455F52CCE46E0B91833E0 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		C232DF3E1912379400151912 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C232DF3D1912379400151912 /* cxradio.app */,
+				C232DF611912379400151912 /* cxradioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C232DF3F1912379400151912 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2939A661920371600DC7BE3 /* AudioToolbox.framework */,
+				C232DF401912379400151912 /* Foundation.framework */,
+				C232DF421912379400151912 /* CoreGraphics.framework */,
+				C232DF441912379400151912 /* UIKit.framework */,
+				C232DF621912379400151912 /* XCTest.framework */,
+				EE85B5F64CA84A0D86653A30 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C232DF461912379400151912 /* cxradio */ = {
+			isa = PBXGroup;
+			children = (
+				C2939A681920371600DC7BE3 /* cxradio.entitlements */,
+				C23BEA1E191EDFF40039CDA3 /* Models */,
+				C232DF4F1912379400151912 /* CRAppDelegate.h */,
+				C232DF501912379400151912 /* CRAppDelegate.m */,
+				C232DF521912379400151912 /* Main_iPhone.storyboard */,
+				C232DF551912379400151912 /* Main_iPad.storyboard */,
+				C232DF581912379400151912 /* CRTrackPlayVC.h */,
+				C232DF591912379400151912 /* CRTrackPlayVC.m */,
+				C2FC34C9191DB50700BDA923 /* CRChannelVC.h */,
+				C2FC34CA191DB50700BDA923 /* CRChannelVC.m */,
+				C2939A6F1922496100DC7BE3 /* CRTrackListCell.h */,
+				C2939A701922496100DC7BE3 /* CRTrackListCell.m */,
+				C2FC34CC191DB57C00BDA923 /* CRTrackListVC.h */,
+				C2FC34CD191DB57C00BDA923 /* CRTrackListVC.m */,
+				C232DF5B1912379400151912 /* Images.xcassets */,
+				C232DF471912379400151912 /* Supporting Files */,
+			);
+			path = cxradio;
+			sourceTree = "<group>";
+		};
+		C232DF471912379400151912 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C232DF481912379400151912 /* cxradio-Info.plist */,
+				C232DF491912379400151912 /* Localizable.strings */,
+				C232DF4C1912379400151912 /* main.m */,
+				C232DF4E1912379400151912 /* cxradio-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C232DF681912379400151912 /* cxradioTests */ = {
+			isa = PBXGroup;
+			children = (
+				C232DF6E1912379400151912 /* cxradioTests.m */,
+				C232DF691912379400151912 /* Supporting Files */,
+			);
+			path = cxradioTests;
+			sourceTree = "<group>";
+		};
+		C232DF691912379400151912 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C232DF6A1912379400151912 /* cxradioTests-Info.plist */,
+				C232DF6B1912379400151912 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C23BEA1E191EDFF40039CDA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C23BEA1F191EE50A0039CDA3 /* CRChannelModel.h */,
+				C23BEA20191EE50A0039CDA3 /* CRChannelModel.m */,
+				C23BEA22191EE9970039CDA3 /* CRTrackModel.h */,
+				C23BEA23191EE9970039CDA3 /* CRTrackModel.m */,
+				C2939A721922515800DC7BE3 /* CRTracksManager.h */,
+				C2939A731922515800DC7BE3 /* CRTracksManager.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C232DF3C1912379400151912 /* cxradio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C232DF721912379400151912 /* Build configuration list for PBXNativeTarget "cxradio" */;
+			buildPhases = (
+				5ABDD607C3584419A82175DA /* Check Pods Manifest.lock */,
+				C232DF391912379400151912 /* Sources */,
+				C232DF3A1912379400151912 /* Frameworks */,
+				C232DF3B1912379400151912 /* Resources */,
+				BC0C0EE7049A4C38A8EF547D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cxradio;
+			productName = cxradio;
+			productReference = C232DF3D1912379400151912 /* cxradio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C232DF601912379400151912 /* cxradioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C232DF751912379400151912 /* Build configuration list for PBXNativeTarget "cxradioTests" */;
+			buildPhases = (
+				C232DF5D1912379400151912 /* Sources */,
+				C232DF5E1912379400151912 /* Frameworks */,
+				C232DF5F1912379400151912 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C232DF671912379400151912 /* PBXTargetDependency */,
+			);
+			name = cxradioTests;
+			productName = cxradioTests;
+			productReference = C232DF611912379400151912 /* cxradioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C232DF351912379300151912 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = CathAssist;
+				TargetAttributes = {
+					C232DF3C1912379400151912 = {
+						DevelopmentTeam = YM33ZKJD96;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					C232DF601912379400151912 = {
+						TestTargetID = C232DF3C1912379400151912;
+					};
+				};
+			};
+			buildConfigurationList = C232DF381912379300151912 /* Build configuration list for PBXProject "cxradio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = C232DF341912379300151912;
+			productRefGroup = C232DF3E1912379400151912 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C232DF3C1912379400151912 /* cxradio */,
+				C232DF601912379400151912 /* cxradioTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C232DF3B1912379400151912 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF571912379400151912 /* Main_iPad.storyboard in Resources */,
+				C232DF5C1912379400151912 /* Images.xcassets in Resources */,
+				C232DF541912379400151912 /* Main_iPhone.storyboard in Resources */,
+				C232DF4B1912379400151912 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C232DF5F1912379400151912 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF6D1912379400151912 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5ABDD607C3584419A82175DA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BC0C0EE7049A4C38A8EF547D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C232DF391912379400151912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF4D1912379400151912 /* main.m in Sources */,
+				C2FC34CB191DB50700BDA923 /* CRChannelVC.m in Sources */,
+				C2939A741922515800DC7BE3 /* CRTracksManager.m in Sources */,
+				C2939A711922496100DC7BE3 /* CRTrackListCell.m in Sources */,
+				C2FC34CE191DB57C00BDA923 /* CRTrackListVC.m in Sources */,
+				C23BEA24191EE9970039CDA3 /* CRTrackModel.m in Sources */,
+				C232DF511912379400151912 /* CRAppDelegate.m in Sources */,
+				C23BEA21191EE50A0039CDA3 /* CRChannelModel.m in Sources */,
+				C232DF5A1912379400151912 /* CRTrackPlayVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C232DF5D1912379400151912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C232DF6F1912379400151912 /* cxradioTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C232DF671912379400151912 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C232DF3C1912379400151912 /* cxradio */;
+			targetProxy = C232DF661912379400151912 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C232DF491912379400151912 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C232DF4A1912379400151912 /* en */,
+				C23BEA19191E7F230039CDA3 /* zh-Hans */,
+				C251E3AD192832D400EA3B26 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		C232DF521912379400151912 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C232DF531912379400151912 /* Base */,
+				C23BEA1A191E7F230039CDA3 /* zh-Hans */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C232DF551912379400151912 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C232DF561912379400151912 /* Base */,
+				C23BEA1B191E7F230039CDA3 /* zh-Hans */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C232DF6B1912379400151912 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C232DF6C1912379400151912 /* en */,
+				C23BEA1C191E7F230039CDA3 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C232DF701912379400151912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C232DF711912379400151912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C232DF731912379400151912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F7455F52CCE46E0B91833E0 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = cxradio/cxradio.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cxradio/cxradio-Prefix.pch";
+				INFOPLIST_FILE = "cxradio/cxradio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C232DF741912379400151912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F7455F52CCE46E0B91833E0 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = cxradio/cxradio.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cxradio/cxradio-Prefix.pch";
+				INFOPLIST_FILE = "cxradio/cxradio-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C232DF761912379400151912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cxradio.app/cxradio";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cxradio/cxradio-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "cxradioTests/cxradioTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C232DF771912379400151912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cxradio.app/cxradio";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cxradio/cxradio-Prefix.pch";
+				INFOPLIST_FILE = "cxradioTests/cxradioTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C232DF381912379300151912 /* Build configuration list for PBXProject "cxradio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C232DF701912379400151912 /* Debug */,
+				C232DF711912379400151912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C232DF721912379400151912 /* Build configuration list for PBXNativeTarget "cxradio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C232DF731912379400151912 /* Debug */,
+				C232DF741912379400151912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C232DF751912379400151912 /* Build configuration list for PBXNativeTarget "cxradioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C232DF761912379400151912 /* Debug */,
+				C232DF771912379400151912 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C232DF351912379300151912 /* Project object */;
+}
