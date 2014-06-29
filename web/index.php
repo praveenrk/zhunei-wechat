@@ -62,6 +62,7 @@
 			<h1><a href="app.html">应用下载</a></h1>
 			<h2><a href="http://bible.cathassist.org/" alt="圣经小助手">圣经小助手</a></h2>
 			<h2><a href="http://app.cathassist.org/desc.html" alt="天主教小助手">天主教小助手</a></h2>
+			<h2><a href="http://www.cathassist.org/app/daily.html" alt="日课小助手">日课小助手</a></h2>
 			</br></br>
 			<h1>欢迎关注天主教小助手微信公众帐号</h1>
 			<p>拿起你的微信扫描下面的二维码即可关注(帐号为:<b>iGospel</b>)，也可以在微信中搜索<b>天主教小助手</b>进行关注</p>
