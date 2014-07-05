@@ -679,7 +679,7 @@ public class LiturgicYear
 	{
 		{
 			//中华圣母（5月的第二个周六）
-			if(ld.month() == 5 && ld.dayOfWeek() == 6)
+			if(ld.month() == 5 && ld.dayOfWeek() == day_t.SAT)
 			{
 				if(ld.day() > 7)
 				{
