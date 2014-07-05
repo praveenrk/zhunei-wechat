@@ -5,24 +5,24 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>D95EE353-C8AE-42A3-8994-9B0C909E6F15</string>
+	<string>1C12A6C9-C135-4736-8C33-9622A47F2716</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Bible Assistant</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>87F17C0E-9C60-4334-AE5B-5F15F9F5B98F</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>https://zhunei-wechat.googlecode.com/svn/trunk</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>bible/ios/Bible Assistant/Bible Assistant.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>87F17C0E-9C60-4334-AE5B-5F15F9F5B98F</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>87F17C0E-9C60-4334-AE5B-5F15F9F5B98F</key>
+		<key>90923C7C-909F-4A40-B05E-6FA5C891B7B0</key>
 		<string>https://gmail.com@zhunei-wechat.googlecode.com/svn</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -30,14 +30,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>87F17C0E-9C60-4334-AE5B-5F15F9F5B98F</string>
+	<string>90923C7C-909F-4A40-B05E-6FA5C891B7B0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>87F17C0E-9C60-4334-AE5B-5F15F9F5B98F</string>
+			<string>90923C7C-909F-4A40-B05E-6FA5C891B7B0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CathAssist</string>
 		</dict>
