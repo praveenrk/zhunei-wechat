@@ -158,7 +158,10 @@
 					return null;
 				}
 				file_put_contents($aifile,json_encode($aijson));
-				BaseChannel::append2All("cx",$aijson);
+				if($date==(time()+3600*8))
+				{
+					BaseChannel::append2All("ai",$aijson);
+				}
 			}
 			else
 			{
