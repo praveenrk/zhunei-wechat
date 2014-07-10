@@ -33,7 +33,7 @@ import org.apache.http.client.methods.HttpGet;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.http.AndroidHttpClient;
-import android.os.FileUtils;
+import org.cathassist.bible.lib.FileUtils;
 import android.os.PowerManager;
 import android.os.Process;
 import android.text.TextUtils;

@@ -133,6 +133,8 @@ public class DownloadAdapter extends CursorAdapter {
             title = mResources.getString(R.string.missing_title);
         }
 
+        //int progress = getProgressValue(totalBytes, currentBytes);
+
         vh.title.setText(title);
         vh.down.setText(getSizeText(currentBytes));
         vh.size.setText(getSizeText(totalBytes));

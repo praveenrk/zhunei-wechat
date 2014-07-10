@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.os;
+package org.cathassist.bible.lib;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
