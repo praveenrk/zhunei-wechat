@@ -1,4 +1,4 @@
-package org.cathassist.bible;
+package org.cathassist.bible.mark;
 
 import android.content.Context;
 import android.database.Cursor;

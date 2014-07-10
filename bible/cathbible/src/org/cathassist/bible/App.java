@@ -1,5 +1,6 @@
 package org.cathassist.bible;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -49,6 +50,7 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
 
         MobclickAgent.reportError(App.get(), "Uncaught Error:" + getExceptionCause(ex));
 
+        /*
         SharedPreferences settings = getSharedPreferences(Para.STORE_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         Calendar nowTime = Calendar.getInstance();
@@ -56,18 +58,22 @@ public class App extends Application implements Thread.UncaughtExceptionHandler 
         lastTime.setTimeInMillis(settings.getLong("last_crash",0));
         editor.putLong("last_crash",nowTime.getTimeInMillis());
         editor.commit();
+        */
 
+        android.os.Process.killProcess(android.os.Process.myPid());
+
+        /*
         if((nowTime.getTimeInMillis() - lastTime.getTimeInMillis()) > 15000) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent restartIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager mgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 500,
-                    restartIntent); // 500ms后重启应用*/
+                    restartIntent); // 500ms后重启应用
             android.os.Process.killProcess(android.os.Process.myPid());
         } else {
             android.os.Process.killProcess(android.os.Process.myPid());
-        }
+        }*/
     }
 
     private String getExceptionCause(Throwable ex) {
