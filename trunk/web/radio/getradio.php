@@ -39,7 +39,7 @@
 			{
 				$curDate = DateTime::createFromFormat('Y-m-d',$ja[$c]['date'])->getTimestamp();
 				$newDate = DateTime::createFromFormat('Y-m-d',$j['date'])->getTimestamp();
-				if($curDate<$newDate)
+				if($curDate<=$newDate)
 				{
 					$ja[$c] = $j;
 					file_put_contents("list",json_encode($ja));
@@ -99,6 +99,7 @@
 				$cxjson["title"] = "晨星生命之音";
 				$cxjson["date"] = $strDate;
 				$cxjson["logo"] = "http://cathassist.org/radio/logos/cx.png";
+				$cxjson["desc"] = "我们因爱而相聚";
 				$i = 0;
 				foreach($cxlist as $v)
 				{
@@ -146,6 +147,7 @@
 				$aijson["title"] = "福音i广播";
 				$aijson["date"] = $strDate;
 				$aijson["logo"] = "http://cathassist.org/radio/logos/ai.png";
+				$aijson["desc"] = "来自8090的声音";
 				$i = 0;
 				$items = json_decode($aicontent,true);
 				foreach($items as $item)
@@ -186,6 +188,7 @@
 				$vajson["title"] = "梵蒂冈中文广播";
 				$vajson["date"] = $strDate;
 				$vajson["logo"] = "http://cathassist.org/radio/logos/vacn.jpg";
+				$vajson["desc"] = "每天半小时来自宗座的声音";
 				$itemsrc = "http://media.cathassist.org/vaticanradio/cn/mp3/".$strDate.".mp3";
 				if(url_exists($itemsrc))
 				{
@@ -222,6 +225,7 @@
 				$gosjson["title"] = "每日福音";
 				$gosjson["date"] = $strDate;
 				$gosjson["logo"] = "http://cathassist.org/radio/logos/gos.jpg";
+				$gosjson["desc"] = "一起聆听主的教诲";
 				$itemsrc = "http://media.cathassist.org/thought/mp3/".$strDate.".mp3";
 				if(url_exists($itemsrc))
 				{
