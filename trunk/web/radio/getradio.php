@@ -147,7 +147,7 @@
 				$aijson["title"] = "福音i广播";
 				$aijson["date"] = $strDate;
 				$aijson["logo"] = "http://cathassist.org/radio/logos/ai.png";
-				$aijson["desc"] = "来自8090的声音";
+//				$aijson["desc"] = "来自8090的声音";
 				$i = 0;
 				$items = json_decode($aicontent,true);
 				foreach($items as $item)
