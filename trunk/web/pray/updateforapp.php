@@ -49,6 +49,11 @@
 		$name=checkSqlArg(trim($_GET['name']));
 	}
 	
+	if( (strpos($name, "张译公") !== false) || (strpos($text, "张译公") !== false) )
+	{
+		die("");
+	}
+
 	//先从数据库中获取
 	$result = mysql_query("insert into pray (name,text,createtime) values ('".$name."','".$text."',utc_timestamp());");
 	if(mysql_affected_rows()<1)
@@ -57,7 +62,7 @@
 		gotoend();
 	}
 	//send to wbto
-	add2weibolist('#彼此代祷# '.$name.'：'.$text);
+	//add2weibolist('#彼此代祷# '.$name.'：'.$text);
 	$ret['error']=$error;
 	die($_GET['callback'].'('.json_encode($ret).')');
 ?>

@@ -66,6 +66,11 @@
 		$name=checkSqlArg(trim($_POST['name']));
 		$_SESSION['name'] = $name;
 	}
+
+	if( (strpos($name, "张译公") !== false) || (strpos($text, "张译公") !== false) )
+	{
+		die("");
+	}
 	
 	//先从数据库中获取
 	$result = mysql_query("insert into pray (name,text,createtime) values ('".$name."','".$text."',utc_timestamp());");
@@ -74,6 +79,7 @@
 		$error = "添加祈祷意向失败，请稍后重试...";
 		gotoend();
 	}
+	
 	//send to wbto
-	add2weibolist('#彼此代祷# '.$name.'：'.$text);
+	//add2weibolist('#彼此代祷# '.$name.'：'.$text);
 ?>
