@@ -79,6 +79,12 @@ $.post("./pray.php",{"mode":"del","id":id},function(msg){
 		color:#999;
 	}
 	
+	div.tips p
+	{
+		color:#990000;
+		margin: auto;
+	}
+	
 	input{}
 	
 	.css_btn_class {
@@ -115,6 +121,12 @@ $.post("./pray.php",{"mode":"del","id":id},function(msg){
 	</style>
 </head>
 <html>
+<body>
+<div class="tips">
+	<p>望大家的代祷意向符合以下要求：</p>
+	<p>&nbsp;&nbsp;1、请不要在意向中使用任何人的姓名；</p>
+	<p>&nbsp;&nbsp;2、请不要在意向中诅咒别人</p>
+</div>
 <?php
 	//先从数据库中获取
 //	mysql_query("delete from pray where createtime>(utc_timestamp()-3600);");
@@ -148,6 +160,7 @@ $.post("./pray.php",{"mode":"del","id":id},function(msg){
 	<p>验证码：<input name="cap" id="input_cap" type="text" maxlength="4" /><img src="/include/captcha/code_math.php" id="getcode_math" title="看不清，点击换一张" align="absmiddle"/></p>
 	<div align="center"><a href="#" class="css_btn_class" onclick="postText()">提交</a></div>
 </form>
+</body>
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 <?php require_once("../include/define.php"); echo(getWechatShareScript(ROOT_WEB_URL.'pray/index.php','代祷本——天主教小助手',ROOT_WEB_URL.'pray/icon.png'));?>
 </html>
