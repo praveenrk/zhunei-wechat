@@ -37,10 +37,10 @@
 	}
 	$cur_time = date(time());
 	$last_time = $_SESSION['pray_time'];
-	if(abs($cur_time-$last_time) < 600)
+	if(abs($cur_time-$last_time) < 3600)
 	{
 		//10分钟只能提交一次祈祷意向
-		$error = '请不要频繁提交祈祷意向，'.(600-abs($cur_time-$last_time)).'秒后再试，主佑！';
+		$error = '请不要频繁提交祈祷意向，'.(3600-abs($cur_time-$last_time)).'秒后再试，主佑！';
 		gotoend();
 	}
 	else
