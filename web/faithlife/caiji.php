@@ -34,7 +34,7 @@ function get_content($url){
 
 	$html = @file_get_contents($url);
 	
-	$html = explode('<p style="font-size:12px;font-weight:normal;">', $html);
+	$html = explode('<p class="text-center padding_10">', $html);
 	if(is_array($html)) $html1 = explode('</p>', $html[1]);
 	$str=$html1[0];
 	$strarr=explode('|',$str);
@@ -46,11 +46,12 @@ function get_content($url){
 	//$data['comefrom']=trim($comeformarr[1]);
 
 
-	$html =explode('div class="content">',$html[1]);
+	$html =explode('div class="xindecontent">',$html[1]);
 	//print_r($html[1]);exit;
-	if(is_array($html)) $html = explode('<div class="bk10"></div>', $html[1]);
+	if(is_array($html)) $html = explode('</div>', $html[1]);
 	$data['content']=preg_replace('#(<img[^>]*?)\s+(?i)style\s*=\s*(?:\'[^\']*\'|"[^"]*"|\S+)([^<]*?>)#',"$1$2",$html[0]);
 	//print_r($html[0]);exit;
+	echo($data['content']);
 	return $data;
 }
 
@@ -71,8 +72,8 @@ foreach($urls as $k=>$url_list){
 			//$v = new_addslashes($v);
 			$v['title'] = strip_tags($v['title']);
 			$md5 = md5($v['url']);
-			if ( !$db->get_one('id','faithlife'," md5url='$md5' ") ) {
-				
+			if ( !$db->get_one('id','faithlife'," md5url='$md5' ") )
+			{
 				$cinfo = get_content($v['url']);//获取发布时间、作者、来源、内容
 
 				//生成静态页面
@@ -88,6 +89,7 @@ foreach($urls as $k=>$url_list){
 
 				$db->insert($addinfo,'faithlife');
 				echo('new '.$file.'</br>');
+				die();
 			}
 		}
 	}
