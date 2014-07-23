@@ -166,7 +166,7 @@ class wechatCallbackapiTest
 			while ($row = mysql_fetch_array($result) and $ArtCount<10)
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
-				$picurl = "";
+				$picurl = $row['picurl'];
 				if($ArtCount==0)
 				{
 					$picurl = "http://cathassist.org/logo_l.jpg";
