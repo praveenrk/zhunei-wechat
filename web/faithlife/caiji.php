@@ -2,14 +2,23 @@
 require '..'.DIRECTORY_SEPARATOR.'include'.DIRECTORY_SEPARATOR.'common.inc.php';
 include WX_PATH.'include'.DIRECTORY_SEPARATOR.'collection.class.php';
 
+/*
+曾经使用的方式
 $urls=array(
 	'1'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=16',//人生信仰
 	'2'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=27',//福音传播
 	'3'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=33',//信德文萃
 	'4'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=39',//礼仪生活
-	'5'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=44',//礼仪生活
+	'5'=>'http://www.chinacatholic.org/index.php?m=content&c=rss&rssid=44',//网友分享
 );
 $cjconfig=array('sourcecharset'=>'utf-8','sourcetype'=>4);
+*/
+
+$urls=array(
+	'1'=>'http://xinde.org/category/19.html',//人生信仰
+);
+$cjconfig=array('sourcecharset'=>'utf-8','sourcetype'=>5);
+
 $ctypearr=array(
 '1'=>'人生信仰',
 '2'=>'福音传播',

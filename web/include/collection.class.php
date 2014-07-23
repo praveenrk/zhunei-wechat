@@ -173,6 +173,26 @@ class collection {
 					$data[$k]['url'] = $v['link'];
 					$data[$k]['title'] = $v['title'];
 				}
+			}
+			else if ($config['sourcetype'] == 5)
+			{
+				//HTML List
+				$doc = self::loadNprepare($html,'utf-8');
+				$classname = 'list-div';
+				$finder = new DomXPath($doc);
+				$nodes = $finder->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $classname ')]");
+				
+				$data = array();
+				$k = 0;
+				foreach ($nodes as $node)
+				{
+					$nTitle = $node->childNodes->item(0);
+				//	$data[$k]['url'] = $v['link'];
+					$data[$k]['title'] = $node->childNodes->item(1)->textContent;
+					echo($node->childNodes->item(3)->nodeName);
+					
+					$k++;
+				}
 			} else {
 				$html = self::cut_html($html, $config['url_start'], $config['url_end']);
 				$html = str_replace(array("\r", "\n"), '', $html);
@@ -209,6 +229,28 @@ class collection {
 		} else {
 			return false;
 		}
+	}
+	
+	/***
+	此函数可以解决使用dom的乱码问题
+	***/
+	public static function loadNprepare($content,$encod='') {
+        if (!empty($content)) {
+                if (empty($encod))
+                        $encod = mb_detect_encoding($content);
+                $headpos = mb_strpos($content,'<head>');
+                if (FALSE=== $headpos)
+                        $headpos= mb_strpos($content,'<HEAD>');
+                if (FALSE!== $headpos) {
+                        $headpos+=6;
+                        $content = mb_substr($content,0,$headpos) . '<meta http-equiv="Content-Type" content="text/html; charset='.$encod.'">' .mb_substr($content,$headpos);
+                }
+                $content=mb_convert_encoding($content, 'HTML-ENTITIES', $encod);
+        }
+        $dom = new DomDocument;
+        $res = $dom->loadHTML($content);
+        if (!$res) return FALSE;
+        return $dom;
 	}
 	
 	/**
