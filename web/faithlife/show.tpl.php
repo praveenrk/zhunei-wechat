@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="topic">
-<span class="current"><a href="<?=SITE_URL?>">首页</a> › <a href="<?=SITE_URL?>faithlife/index.php">信仰生活</a> › <a href="<?=SITE_URL?>faithlife/list.php?ctype=<?=$k?>"><?=$ctypearr[$k]?></a></span>
+<span class="current"><a href="<?=SITE_URL?>">首页</a> › <a href="<?=SITE_URL?>faithlife/index.php">信仰生活</a> › <a href="<?=SITE_URL?>faithlife/list.php?ctype=<?=$k?>"><?=$ctypearr[(int)($k/100)]?></a></span>
 <h1 class="topic-title"><?=$v['title']?></h1>
 </div>
 <div class="content"><?=$cinfo['content']?></div>

@@ -15,7 +15,37 @@ $cjconfig=array('sourcecharset'=>'utf-8','sourcetype'=>4);
 */
 
 $urls=array(
-	'1'=>'http://xinde.org/category/19.html',//人生信仰
+	101=>'http://www.chinacatholic.org/category/17.html',//人生信仰
+	102=>'http://www.chinacatholic.org/category/18.html',//人生信仰
+	103=>'http://www.chinacatholic.org/category/19.html',//人生信仰
+	104=>'http://www.chinacatholic.org/category/20.html',//人生信仰
+	105=>'http://www.chinacatholic.org/category/21.html',//人生信仰
+	106=>'http://www.chinacatholic.org/category/22.html',//人生信仰
+	107=>'http://www.chinacatholic.org/category/23.html',//人生信仰
+	108=>'http://www.chinacatholic.org/category/24.html',//人生信仰
+	109=>'http://www.chinacatholic.org/category/25.html',//人生信仰
+	110=>'http://www.chinacatholic.org/category/26.html',//人生信仰
+
+	201=>'http://www.chinacatholic.org/category/28.html',//福音传播
+	202=>'http://www.chinacatholic.org/category/29.html',//福音传播
+	203=>'http://www.chinacatholic.org/category/30.html',//福音传播
+	204=>'http://www.chinacatholic.org/category/31.html',//福音传播
+	205=>'http://www.chinacatholic.org/category/32.html',//福音传播
+
+	301=>'http://www.chinacatholic.org/category/34.html',//信德文萃
+	302=>'http://www.chinacatholic.org/category/35.html',//信德文萃
+	303=>'http://www.chinacatholic.org/category/36.html',//信德文萃
+	304=>'http://www.chinacatholic.org/category/37.html',//信德文萃
+	305=>'http://www.chinacatholic.org/category/38.html',//信德文萃
+
+	401=>'http://www.chinacatholic.org/category/40.html',//礼仪生活
+	402=>'http://www.chinacatholic.org/category/41.html',//礼仪生活
+	403=>'http://www.chinacatholic.org/category/42.html',//礼仪生活
+	404=>'http://www.chinacatholic.org/category/43.html',//礼仪生活
+
+	501=>'http://www.chinacatholic.org/category/45.html',//网友分享
+	502=>'http://www.chinacatholic.org/category/46.html',//网友分享
+	503=>'http://www.chinacatholic.org/category/47.html',//网友分享
 );
 $cjconfig=array('sourcecharset'=>'utf-8','sourcetype'=>5);
 
@@ -49,16 +79,15 @@ function get_content($url){
 	$html =explode('div class="xindecontent">',$html[1]);
 	//print_r($html[1]);exit;
 	if(is_array($html)) $html = explode('</div>', $html[1]);
-	$data['content']=preg_replace('#(<img[^>]*?)\s+(?i)style\s*=\s*(?:\'[^\']*\'|"[^"]*"|\S+)([^<]*?>)#',"$1$2",$html[0]);
+	$data['content']=str_replace('src="/uploadfile/','src="http://www.chinacatholic.org/uploadfile/',$html[0]);
 	//print_r($html[0]);exit;
-	echo($data['content']);
+//	echo($data['content']);
 	return $data;
 }
 
 
 @set_time_limit(600);
 foreach($urls as $k=>$url_list){
-
 	$url = collection::get_url_lists($url_list, $cjconfig);
 	//var_dump($url );exit;
 	if (is_array($url) && !empty($url)){
@@ -84,12 +113,11 @@ foreach($urls as $k=>$url_list){
 				$nurl=WX_PATH.$file;
 				createhtml($nurl);
 				
-				$addinfo = array('md5url'=>$md5, 'ctype'=>$k, 'furl'=>$v['url'], 'title'=>$v['title'], 'nurl'=>$file, 'inputtime'=>$cinfo['inputtime']);
+				$addinfo = array('md5url'=>$md5, 'ctype'=>(int)($k/100), 'furl'=>$v['url'], 'title'=>$v['title'], 'nurl'=>$file, 'inputtime'=>$cinfo['inputtime'], 'picurl'=>$v['pic']);
 				$addinfo = new_addslashes($addinfo);
 
 				$db->insert($addinfo,'faithlife');
 				echo('new '.$file.'</br>');
-				die();
 			}
 		}
 	}
