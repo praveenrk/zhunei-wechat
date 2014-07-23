@@ -188,10 +188,21 @@ class collection {
 				{
 					$nTitle = $node->childNodes->item(0);
 				//	$data[$k]['url'] = $v['link'];
-					$data[$k]['title'] = $node->childNodes->item(1)->textContent;
-					echo($node->childNodes->item(3)->nodeName);
 					
-					$k++;
+					$listA = $node->getElementsByTagName("a");
+					if($listA->length>0)
+					{
+						$aNode = $listA->item(0);
+						$data[$k]['title'] = $aNode->textContent;
+						$data[$k]['url'] = "http://www.chinacatholic.org".$aNode->getAttribute("href");
+						
+						$listPic = $node->getElementsByTagName("img");
+						if($listPic->length>0)
+						{
+							$data[$k]['pic'] = "http://www.chinacatholic.org".$listPic->item(0)->getAttribute("src");
+						}
+						$k++;
+					}
 				}
 			} else {
 				$html = self::cut_html($html, $config['url_start'], $config['url_end']);
