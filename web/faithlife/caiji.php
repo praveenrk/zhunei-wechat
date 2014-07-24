@@ -80,8 +80,11 @@ function get_content($url){
 	//print_r($html[1]);exit;
 	if(is_array($html)) $html = explode('</div>', $html[1]);
 	$data['content']=str_replace('src="/uploadfile/','src="http://www.chinacatholic.org/uploadfile/',$html[0]);
-	//移出style属性
-	$data['content'] = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $data['content']);
+	//移出margin-left属性
+//	$data['content']=str_replace('margin-left: 240px;', '', $data['content']);
+//	$data['content'] = preg_replace('/(<p.+?)style=".+?"(>.+?)/i', "$1$2", $data['content']);
+	$data['content'] = preg_replace('/margin-left.*[1,10]px;/', '', $data['content']);
+
 	//print_r($html[0]);exit;
 //	echo($data['content']);
 	return $data;
