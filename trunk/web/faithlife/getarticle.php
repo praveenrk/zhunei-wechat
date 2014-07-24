@@ -16,16 +16,16 @@
 	
 	function getList($from,$count)
 	{
-		$sql = 'select id,title,ctype,inputtime from faithlife where id<'.$from.' order by id desc limit '.$count.';';
+		$sql = 'select id,title,ctype,inputtime,picurl from faithlife where id<'.$from.' order by inputtime desc limit '.$count.';';
 		if($from<0)
 		{
-			$sql = 'select id,title,ctype,inputtime from faithlife order by id desc limit '.$count.';';
+			$sql = 'select id,title,ctype,inputtime,picurl from faithlife order by inputtime desc limit '.$count.';';
 		}
 		$result = mysql_query($sql);
 		$i = 0;
 		while ($row = mysql_fetch_array($result))
 		{
-			$ret[$i] = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>'','cate'=>$row['ctype'],'time'=>$row['inputtime']);
+			$ret[$i] = array('id'=>$row['id'],'title'=>$row['title'],'pic'=>$row['picurl'],'cate'=>$row['ctype'],'time'=>$row['inputtime']);
 			$i++;
 		}
 		return $ret;

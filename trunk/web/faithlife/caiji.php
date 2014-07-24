@@ -80,6 +80,8 @@ function get_content($url){
 	//print_r($html[1]);exit;
 	if(is_array($html)) $html = explode('</div>', $html[1]);
 	$data['content']=str_replace('src="/uploadfile/','src="http://www.chinacatholic.org/uploadfile/',$html[0]);
+	//移出style属性
+	$data['content'] = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $data['content']);
 	//print_r($html[0]);exit;
 //	echo($data['content']);
 	return $data;
