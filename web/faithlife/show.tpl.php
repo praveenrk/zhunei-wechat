@@ -20,6 +20,6 @@
 <script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
 <script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script>
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(){SetWechatShare("<?=$v['title']?>",window.location.href,"http://cathassist.org/logo.jpg","<?=$v['title']?>");});
+document.addEventListener("DOMContentLoaded", function(){SetWechatShare("<?=$v['title']?>",window.location.href,"<?=$v['pic']?>","<?=$v['title']?>");});
 </script>
 </html>
