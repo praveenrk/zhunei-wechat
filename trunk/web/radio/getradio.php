@@ -77,7 +77,13 @@
 		}
 		public function getRadio($date)
 		{
-			return json_decode(file_get_contents("list"),true);
+			$all = json_decode(file_get_contents("list"),true);
+			$all["cx"]["desc"] = "我们因爱而相聚";
+			$all["vacn"]["desc"] = "每天半小时来自宗座的声音";
+			$all["ai"]["desc"] = "来自8090的声音";
+			$all["gos"]["desc"] = "一起聆听主的教诲";
+
+			return $all;
 		}
 	}
 	
