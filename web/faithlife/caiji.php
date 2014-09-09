@@ -104,6 +104,7 @@ foreach($urls as $k=>$url_list){
 				continue;
 			}
 			//$v = new_addslashes($v);
+			$v['url'] = str_replace('/index/id','',$v['url']);
 			$v['title'] = strip_tags($v['title']);
 			$md5 = md5($v['url']);
 			if ( !$db->get_one('id','faithlife'," md5url='$md5' ") )
