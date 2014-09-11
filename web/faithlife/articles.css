@@ -71,3 +71,13 @@ a.src{
 	padding-left:5px;
 	padding-right:5px;
 }
+
+audio{
+	width:100%
+}
+
+body{
+	max-width:700px;
+	margin:5px auto;
+	border:solid 5px transparent;
+}

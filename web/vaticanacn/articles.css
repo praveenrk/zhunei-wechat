@@ -75,3 +75,9 @@ audio{
 	width:100%;
 	margin-top:20px;
 }
+
+body{
+	max-width:700px;
+	margin:5px auto;
+	border:solid 5px transparent;
+}

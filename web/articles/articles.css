@@ -59,3 +59,9 @@ a.src{
 audio{
 	width:100%
 }
+
+body{
+	max-width:700px;
+	margin:5px auto;
+	border:solid 5px transparent;
+}
