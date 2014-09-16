@@ -21,7 +21,7 @@
 		{
 			$ititle = trim($item->title);
 			$itcontent = $item->description;
-			$itcontent = str_replace('Thumbnail.jpg','Articolo.jpg',$itcontent);
+			$itcontent = str_ireplace('Thumbnail.jpg','Articolo.jpg',$itcontent);
 			$ittopicID = 32;
 			$ittopicName = "其他";
 			$itlink = $item->link;
