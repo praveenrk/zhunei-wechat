@@ -6,23 +6,15 @@ require_once("html2text.php");
 define("TOKEN", "test");
 
 $wechatObj = new wechatCallbackapiTest();
-if($wechatObj->checkSignature())
-{
-	$wechatObj->responseMsg();
-}
+$wechatObj->responseMsg();
 
 class wechatCallbackapiTest
 {
 	public function valid()
     {
         $echoStr = $_GET["echostr"];
-
-        //valid signature , option
-        if($this->checkSignature())
-		{
-        	echo $echoStr;
-        	exit;
-        }
+		echo $echoStr;
+		die('');
     }
 
     public function responseMsg()
@@ -33,7 +25,6 @@ class wechatCallbackapiTest
 		if (!empty($postStr))
 		{
 			$resultStr = "";
-			
 			$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
 			if($postObj->MsgType=="text")
 			{
