@@ -25,7 +25,7 @@
 	$pic = "";
 	$aid = 0;
 	$sid = 0;
-	$result = mysql_query('select song.name as name,song.mp3 as mp3,song.alume as aid,song.singer as sid,alume.name as aname,alume.pic as pic,singer.name as sname from song,alume,singer where song.alume=alume.id and song.singer=singer.id and song.id='.$id.';');
+	$result = mysql_query('select song.name as name,song.src as mp3,song.alume as aid,song.singer as sid,alume.name as aname,alume.pic as pic,singer.name as sname from song,alume,singer where song.alume=alume.id and song.singer=singer.id and song.id='.$id.';');
 	if($row = mysql_fetch_array($result))
 	{
 		$mp3 = $row['mp3'];
