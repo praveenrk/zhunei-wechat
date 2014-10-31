@@ -521,31 +521,18 @@ class wechatCallbackapiTest
 		if($isLarge>0)
 		{
 			$picurl = ROOT_WEB_URL."wechat/pics/".$mode."_l1.jpg";
-			$index = strpos($content,"\n",140);
-			$desc = "";
-			if($index>0)
-			{
-				$title = $title."\n".substr($content,0,$index);
-				$desc = substr($content,0,$index);
-			}
-			else
-				$desc = mb_substr($content,0,20,"UTF-8");
-				
-			$resultStr = sprintf($textTpl,$title,$url,$desc, $picurl);
+		}
+		
+		$index = strpos($content,"\n",20);
+		if($index>-1 and $index<100)
+		{
+			$title = $title."\n".substr($content,0,$index);
 		}
 		else
 		{
-			$index = strpos($content,"\n",20);
-			if($index>-1 and $index<100)
-			{
-				$title = $title."\n".substr($content,0,$index);
-			}
-			else
-			{
-				$title = $title."\n".mb_substr($content,0,30,"UTF-8");
-			}
-			$resultStr = sprintf($textTpl,$title,$url,mb_substr($content,0,30,"UTF-8"), $picurl);
+			$title = $title."\n".mb_substr($content,0,30,"UTF-8");
 		}
+		$resultStr = sprintf($textTpl,$title,$url,mb_substr($content,0,30,"UTF-8"), $picurl);
 		return $resultStr;
 	}
 	
