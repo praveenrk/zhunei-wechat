@@ -508,7 +508,7 @@ class wechatCallbackapiTest
 		'saint' => '圣人传记',
 		);
 		$title = "";
-		$url = ROOT_WEB_URL."getstuff/stuff/".gmdate("Y-m-d",time()+3600*8+($offset*24*3600))."_".$mode.".html";
+		$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".gmdate("Y-m-d",time()+3600*8+($offset*24*3600))."&mode=".$mode;
 		if($content=="")
 		{
 			$content = convert_html_to_text(file_get_contents($url));
