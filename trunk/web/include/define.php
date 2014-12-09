@@ -1,6 +1,15 @@
 <?php
 define("ROOT_WEB_URL", "http://www.cathassist.org/");
 
+function is_weixin()
+{
+	if(strpos($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')!==false)
+	{
+		return true;
+	}
+	return false;
+};
+
 function getWechatShareScript($link,$title,$imgurl)
 {	
 	return '<script language="javascript" type="text/javascript">
@@ -62,5 +71,5 @@ document.addEventListener(\'WeixinJSBridgeReady\', function onBridgeReady() {
             });
         }, false);
 </script>';
-}
+};
 ?>
