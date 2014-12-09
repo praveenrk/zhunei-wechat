@@ -14,3 +14,18 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', 'UA-29392184-2', 'cathassist.org');
 ga('send', 'pageview');
+
+//淘宝广告代码
+window.onload = function(){
+	var div = document.createElement("div");
+	div.style.margin = "20px auto";
+	var tb = document.createElement("a");
+	tb.href = "http://taobao.cathassist.org/";
+	tb.innerHTML = "小助手淘宝店";
+	tb.target="_blank";
+	tb.style.textAlign = "center";
+	tb.style.display = "block"
+	div.appendChild(tb);
+	var s = document.getElementsByTagName("body")[0];
+	s.appendChild(div);
+};
