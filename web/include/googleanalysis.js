@@ -28,4 +28,10 @@ window.onload = function(){
 	div.appendChild(tb);
 	var s = document.getElementsByTagName("body")[0];
 	s.appendChild(div);
+	
+	//Snow in Christmas
+	document.body.style.backgroundColor = "rgb(233,233,233)";
+	var jsSnow = document.createElement("script");
+	jsSnow.src = "http://www.cathassist.org/js/snowstorm.js";
+	document.body.appendChild(jsSnow);
 };
