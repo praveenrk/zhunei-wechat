@@ -62,6 +62,7 @@
 			<h1><a href="app.html">应用下载</a></h1>
 			<h2><a href="http://bible.cathassist.org/" alt="圣经小助手">圣经小助手</a></h2>
 			<h2><a href="http://app.cathassist.org/desc.html" alt="天主教小助手">天主教小助手</a></h2>
+			<h2><a href="http://www.cathassist.org/app/radio.html" alt="电台小助手">电台小助手</a></h2>
 			<h2><a href="http://www.cathassist.org/app/daily.html" alt="日课小助手">日课小助手</a></h2>
 			</br></br>
 			<h2>欢迎关注天主教小助手微信公众帐号</h2>
