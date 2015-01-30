@@ -166,10 +166,7 @@
 					return null;
 				}
 				file_put_contents($aifile,json_encode($aijson));
-				if($date==(time()+3600*8))
-				{
-					BaseChannel::append2All("ai",$aijson);
-				}
+				BaseChannel::append2All("ai",$aijson);
 			}
 			else
 			{
