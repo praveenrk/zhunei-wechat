@@ -98,7 +98,7 @@
 			if(!file_exists($lmp3))
 			{
 				$cxdate = date("Y-n-j", $tmNow);
-				$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
+				$cxradio = 'http://211.149.237.175/playlist/'.$cxdate.'.txt';
 				$cxlist = explode("\n",file_get_contents($cxradio));		//»òÊÇurl list
 				if(count($cxlist)>1)
 				{
