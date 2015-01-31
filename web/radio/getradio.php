@@ -99,7 +99,7 @@
 			if(!file_exists($cxfile) or $refresh)
 			{
 				$cxdate = gmdate("Y-n-j", $date);
-				$cxradio = 'http://211.149.237.175//playlist/'.$cxdate.'.txt';
+				$cxradio = 'http://211.149.237.175/playlist/'.$cxdate.'.txt';
 				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
 				$cxjson["title"] = "晨星生命之音";
