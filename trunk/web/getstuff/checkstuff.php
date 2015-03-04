@@ -46,7 +46,7 @@
 				}
 				else
 				{
-					$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$datestr."&mode=".$value;
+					$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$datestr."&mode=".$value."&force=true";
 					$contents = file_get_contents($url); 
 					fwrite($fp,$contents);
 					fclose($fp);

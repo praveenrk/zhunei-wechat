@@ -302,7 +302,12 @@
 		{
 			$isupdate = true;
 			$row = mysql_fetch_array($result);
-			if($row['valid']>0 and strlen($row["mass"])>5)
+			if(array_key_exists("force",$_GET) && $row['lastupdate']!=date('Y-m-d'))
+			{
+				//强制刷新
+				getstuff();
+			}
+			else if($row['valid']>0 and strlen($row["mass"])>5)
 			{
 				//已经拥有数据可以直接获取
 				$stuff_mass = $row["mass"];		//弥撒
