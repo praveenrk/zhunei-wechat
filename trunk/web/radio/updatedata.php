@@ -58,14 +58,14 @@
 		if(!file_exists($cxfile))
 		{
 			$cxdate = date("Y-n-j", $date);
-			$cxradio = 'http://radio.cxsm.org/playlist/'.$cxdate.'.txt';
+			$cxradio = 'http://211.149.237.175/playlist/'.$cxdate.'.txt';
 			if(url_exists($cxradio))
 			{
 				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
 				$cxjson["title"] = "晨星生命之音";
 				$cxjson["date"] = $strDate;
-				$cxjson["logo"] = "http://cathassist.org/radio/logos/cx.png";
+				$cxjson["logo"] = "http://www.cathassist.org/radio/logos/cx.png";
 				$i = 0;
 				foreach($cxlist as $v)
 				{
@@ -94,7 +94,7 @@
 		{
 			$vajson["title"] = "梵蒂冈中文广播";
 			$vajson["date"] = $strDate;
-			$vajson["logo"] = "http://cathassist.org/radio/logos/vacn.jpg";
+			$vajson["logo"] = "http://www.cathassist.org/radio/logos/vacn.jpg";
 			$itemsrc = "http://media.cathassist.org/vaticanradio/cn/mp3/".$strDate.".mp3";
 			if(url_exists($itemsrc))
 			{
@@ -118,7 +118,7 @@
 		{
 			$gosjson["title"] = "每日福音";
 			$gosjson["date"] = $strDate;
-			$gosjson["logo"] = "http://cathassist.org/radio/logos/gos.jpg";
+			$gosjson["logo"] = "http://www.cathassist.org/radio/logos/gos.jpg";
 			$itemsrc = "http://media.cathassist.org/thought/mp3/".$strDate.".mp3";
 			if(url_exists($itemsrc))
 			{
