@@ -137,6 +137,13 @@
 		});
 		
 		var argC = getQueryString("channel");
+
+		var argD = getQueryString("date");
+		if(argD != null && argD != "")
+		{
+			curDate = new Date(argD);
+		}
+		
 		$("#jpchannel").val(argC);
 		channel = $("#jpchannel").val();
 		getRadio(curDate);
