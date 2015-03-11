@@ -15,7 +15,7 @@ function SetWechatShare(title,link,img,desc)
 		imgUrl = "http://www.cathassist.org/logo.jpg";
 	}
 	
-	wxShareData = wxShareData || [];
+	wxShareData = new Object();
 
 	wxShareData.title = shareTitle;
 	wxShareData.link = lineLink;
@@ -45,28 +45,13 @@ function SetWechatShare(title,link,img,desc)
 			});
 			
 			wx.ready(function () {
-				/*分享到朋友圈
-				wx.onMenuShareTimeline({
-					title: wxShareData.title, // 分享标题
-					link: wxShareData.link,
-					imgUrl: wxShareData.imgUrl,
-					success: function (res) {
-						//alert("success");
-					},
-					cancel: function (res) {
-						//alert("cancel");
-					}
-				});*/
-				
-				//分享到朋友圈
 				wx.onMenuShareTimeline(wxShareData);
-				//分享给朋友
 				wx.onMenuShareAppMessage(wxShareData);
 				wx.onMenuShareQQ(wxShareData);
 				wx.onMenuShareWeibo(wxShareData);
 			});
 		}
 	}
-	xmlhttp.open("GET","http://www.cathassist.org/wechat/GetJsSignPack.php?type=json&url="+wxShareData.link,true);
+	xmlhttp.open("GET","http://www.cathassist.org/wechat/GetJsSignPack.php?type=json&url="+escape(wxShareData.link),true);
 	xmlhttp.send();
 }
