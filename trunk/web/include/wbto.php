@@ -1,26 +1,18 @@
 <?php
 require_once("../include/dbconn.php");
+require_once("../include/weibo/config.php");
+require_once("../include/weibo/saetv2.ex.class.php");
 
 //用于发送微博到微博通
 function send2wbto($content)
 {
-	$username = '天主教小助手';
-	$password = 'pass';
-	
-	$fields = array();
-	$fields['source'] = 'wordpress';
-	$fields['content'] = urlencode($content);
-	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, "http://wbto.cn/api/update.json");
-	curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-	curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,TRUE);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-	curl_setopt($ch, CURLOPT_POST, TRUE);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-	$result = curl_exec($ch);
-	curl_close($ch);  
+	$c = new SaeTClientV2( WB_AKEY , WB_SKEY , file_get_contents("../include/weibo/token.txt") );
+	$ret = $c->update( $content );	//发送微博
+	if ( isset($ret['error_code']) && $ret['error_code'] > 0 ) {
+		echo "<p>发送失败，错误：{$ret['error_code']}:{$ret['error']}</p>";
+	} else {
+		echo "<p>发送成功</p>";
+	}
 }
 
 function add2weibolist($content,$t=0)
@@ -43,5 +35,5 @@ function check2updateweibo()
 	}
 }
 //how to use
-//send_to_wbto('欢迎大家关注天主教小助手的微博');
+//send2wbto('欢迎大家关注天主教小助手的微博');
 ?>
